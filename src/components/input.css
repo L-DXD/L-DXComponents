@@ -1,0 +1,34 @@
+
+input:focus {
+  border-color: #3399ff;
+  box-shadow: 0 0 0 5px rgba(51, 153, 255, 0.3);
+}
+
+.dx-input {
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: 8px;
+  outline: none;
+}
+
+.dx-flex-input {
+  flex-grow: 1;
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
