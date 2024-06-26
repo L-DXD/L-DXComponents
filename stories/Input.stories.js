@@ -1,25 +1,38 @@
-import { fn } from '@storybook/test';
-import { DXInput } from '@/components/Input.js';
+import '/src/components/Input.js'
+import {html} from "lit";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Components/Input',
-  tags: ['autodocs'],
-  render: (args) => DXInput(args),
-  argTypes: {
-    labelAlign: {
-      control: { type: 'select' },
-      options: ['front', 'top'],
+    title: 'Components/Input',
+    tags: ['autodocs'],
+    component: 'l-input',
+    argTypes: {
+        labelAlign: {
+            control: {type: 'select'},
+            options: ['front', 'top'],
+            table: {
+                defaultValue: {summary: 'top'}
+            }
+        },
+        isRequired: {
+          control: {type: 'select'},
+          options: ['false', 'true'],
+          table: {
+            defaultValue: {summary: 'false'}
+          }
+        },
     },
-    isRequired: { control: 'boolean' },
-  },
 };
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
-  args: {
-    primary: true,
-    label: 'Text input',
-    id:'input01'
-  },
+const Template = (args) => {
+  console.log(args);
+    return html`
+        <l-input label=${args.label} id=${args.id} labelAlign=${args.labelAlign} isRequired=${args.isRequired} ></l-input>`
+}
+
+export const Default = Template.bind({});
+Default.args = {
+    label: 'label',
+    id: 'input01',
+    labelAlign: 'top',
+    isRequired: 'false'
 };

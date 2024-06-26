@@ -6,10 +6,21 @@
     <title>Vite App</title>
   </head>
   <script type="module" src="components/Button.js"></script>
+  <script type="module" src="components/Input.js"></script>
   <button type="button" class="storybook-button storybook-button--medium storybook-button--primary" style="">
     Button3
   </button>
   <script type="module" src="components/MyElement.js"></script>
 
-  <my-element></my-element>
+  <my-element title='dd'></my-element>
+  <l-input label="" id="input01111" labelalign="front" ></l-input>
+
+  <script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+      // document.body.innerHTML+='<p>dddd</p>'
+
+      setTimeout(()=>{document.body.innerHTML+='<p>dddd</p>'},1000)
+    })
+
+  </script>
 </html>
