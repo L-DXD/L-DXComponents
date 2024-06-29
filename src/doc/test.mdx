@@ -57,3 +57,55 @@ Your development environment is critical. Here are some tools and resources to h
 - **Package Manager**: [npm](https://www.npmjs.com/) is the package manager we use for JavaScript projects. Install it to manage project dependencies.
 
 ---
+
+[//]: # (const meta: Meta<typeof Example> = {)
+
+[//]: # (component: Example,)
+
+[//]: # (argTypes: {)
+
+[//]: # (parent: { control: 'select', options: ['one', 'two', 'three'] },)
+
+[//]: # ()
+[//]: # (    // 👇 parentExists 속성은 parent가 존재할 때만 control이 보여짐)
+
+[//]: # (    parentExists: { if: { arg: 'parent', exists: true } },)
+
+[//]: # ()
+[//]: # (    // 👇 parentDoesNotExist 속성은 parent가 존재하지 않을 때 보여짐)
+
+[//]: # (    parentDoesNotExist: { if: { arg: 'parent', exists: false } },)
+
+[//]: # ()
+[//]: # (    // 👇 parent가 true일 때만 보여짐)
+
+[//]: # (    parentIsTruthy: { if: { arg: 'parent' } },)
+
+[//]: # (    parentIsTruthyVerbose: { if: { arg: 'parent', truthy: true } },)
+
+[//]: # ()
+[//]: # (    // 👇 parent가 false일 때만 보여짐)
+
+[//]: # (    parentIsNotTruthy: { if: { arg: 'parent', truthy: false } },)
+
+[//]: # ()
+[//]: # (    // 👇 parent가 three일 때만 보여짐)
+
+[//]: # (    parentIsEqToValue: { if: { arg: 'parent', eq: 'three' } },)
+
+[//]: # ()
+[//]: # (    // 👇 parent가 three가 아닐 때만 보여짐)
+
+[//]: # (    parentIsNotEqToValue: { if: { arg: 'parent', neq: 'three' } },)
+
+[//]: # ()
+[//]: # ()
+[//]: # (	  // 글로벌 타입에서도 적용이 가능하다)
+
+[//]: # (    // 👇 theme가 true일 때만 보여짐)
+
+[//]: # (    parentExists: { if: { global: 'theme', exists: true } },)
+
+[//]: # (},)
+
+[//]: # (};)

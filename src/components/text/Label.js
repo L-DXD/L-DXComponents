@@ -42,11 +42,12 @@ class LLabel extends LitElement {
     }
 
     render() {
-        let isLabelFront = (this.labelAlign && this.labelAlign == 'front');
+        let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
+
         return html`
-            <label class="${(isLabelFront && this.label) ? 'l-flex-label' : 'l-label'}" for="${this.id}">
+            <label class="${(isLabelLeft && this.label) ? 'l-flex-label' : 'l-label'}" for="${this.id}">
                 ${this.required == 'true'
-                        ? (isLabelFront
+                        ? (isLabelLeft
                                 ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this.label}`
                                 : html`${this.label}<span style="color: #df1414;margin-left: 2px">*</span>`)
                         : this.label}

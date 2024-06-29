@@ -27,17 +27,17 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => html`
       </div>
       <div>
         ${user
-          ? Button({ size: 'small', onClick: onLogout, label: 'Log out' })
+          ? Button({ size: 'small', onClick: onLogout, feedback: 'Log out' })
           : html`${Button({
               size: 'small',
               onClick: onLogin,
-              label: 'Log in',
+              feedback: 'Log in',
             })}
             ${Button({
               primary: true,
               size: 'small',
               onClick: onCreateAccount,
-              label: 'Sign up',
+              feedback: 'Sign up',
             })}`}
       </div>
     </div>

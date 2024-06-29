@@ -1,10 +1,15 @@
 // EventManager.js
-import {LitElement} from "lit";
+import {css, LitElement} from "lit";
+import {SharedStyles} from "@/components/commons/SharedStyles.js";
 
 class LitParents extends LitElement{
 
-    constructor(selector) {
+    constructor() {
         super();
+
+    }
+
+    setSelector(selector) {
         this.selector = selector;
     }
 
@@ -19,6 +24,10 @@ class LitParents extends LitElement{
             inputElement.value = value;
             this.inputValue = value;  // Update the reactive property
         }
+    }
+
+    isValid() {
+        return !!getValue();
     }
 
     addEventListener(type, listener, options) {

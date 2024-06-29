@@ -26,9 +26,9 @@ class LLabelContainer extends LitElement {
     }
 
     render() {
-        let isLabelFront = (this.labelAlign && this.labelAlign == 'front');
+        let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
         return html`
-            <div class="${isLabelFront && 'container'}">
+            <div class="${isLabelLeft && 'container'}">
                 <slot></slot>
             </div>
         `
