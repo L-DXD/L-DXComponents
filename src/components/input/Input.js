@@ -106,6 +106,8 @@ class LInput extends LitParents {
             label: {type: String},
             feedback: {type: String},
             labelAlign: {type: String},
+            labelWidth: {type: String},
+            labelTextAlign: {type: String},
             required: {type: Boolean},
             disabled: {type: Boolean},
             readonly: {type: Boolean},
@@ -126,6 +128,8 @@ class LInput extends LitParents {
                     label: `${this.label}`,
                     id: `${this.id}`,
                     labelAlign: `${this.labelAlign}`,
+                    labelWidth: `${this.labelWidth}`,
+                    labelTextAlign: `${this.labelTextAlign}`,
                     required: `${this.required}`
                 })}
                 <input type="${this.type}"
@@ -145,6 +149,8 @@ class LInput extends LitParents {
             </div>
             ${new LFeedback({
                 feedback: `${this.feedback}`,
+                labelAlign: `${this.labelAlign}`,
+                labelWidth: `${this.labelWidth}`,
             })}
         `;
     }

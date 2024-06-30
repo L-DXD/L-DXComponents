@@ -21,22 +21,28 @@ class LFeedback extends LitElement {
         ]
     ;
 
-    constructor({feedback}) {
+    constructor({feedback, labelAlign, labelWidth}) {
         super();
 
         this.feedback = feedback;
+        this.labelAlign = labelAlign;
+        this.labelWidth = labelWidth;
     }
 
     static get properties() {
         return {
             feedback: {type: String},
+            labelAlign: {type: String},
+            labelWidth: {type: String},
         };
     }
 
     render() {
         let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
         return html`
-            <div class="valid-feedback">
+            <div class="valid-feedback"
+                style="padding-left: calc(${this.labelWidth} + ${isLabelLeft ? `10px` : '0px'})"
+            >
                 ${this.feedback}
             </div>
         `

@@ -51,6 +51,7 @@ export default {
                 defaultValue: {summary: 'left'},
                 subcategory: "text"
             }
+            , if: {arg: 'labelAlign', eq:'left'},
         },
         feedback: {
             table: {
@@ -167,6 +168,8 @@ const Template = (args) => {
                 type=${args.type}
                 label=${args.label}
                 labelAlign=${args.labelAlign}
+                labelWidth=${args.labelWidth}
+                labelTextAlign=${args.labelTextAlign}
                 feedback=${args.feedback}
                 id=${args.id}
                 name=${args.name}
