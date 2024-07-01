@@ -17,6 +17,7 @@ export default {
         },
         id: {table: {category: "properties",}},
         name: {table: {category: "properties",}},
+        width: {table: {category: "properties",}},
 
         label: {
             table: {
@@ -57,6 +58,15 @@ export default {
             table: {
                 category: "properties",
                 subcategory: "text",
+            }
+        },
+        feedbackType : {
+            control: {type: 'select'},
+            options: ['hint', 'error'],
+            table: {
+                category: "properties",
+                defaultValue: {summary: 'hint'},
+                subcategory: "text"
             }
         },
         placeholder: {
@@ -173,6 +183,7 @@ const Template = (args) => {
                 feedback=${args.feedback}
                 id=${args.id}
                 name=${args.name}
+                width=${args.width}
                 maxlength=${args.maxlength}
                 minlength=${args.minlength}
                 ?required=${args.required}
@@ -186,11 +197,12 @@ const Template = (args) => {
         </l-input>`
 }
 
-export const InputWithLabelAndFeedback = Template.bind({});
-InputWithLabelAndFeedback.args = {
+export const InputWithTopLabelAndFeedback = Template.bind({});
+InputWithTopLabelAndFeedback.args = {
     type: 'text',
     id: 'input01',
     name: 'name',
+    width: 'auto',
     label: 'label',
     labelAlign: 'top',
     labelWidth: 'auto',
@@ -203,6 +215,26 @@ InputWithLabelAndFeedback.args = {
     pattern: '',
     placeholder: '',
 };
+
+export const InputWithLeftLabelAndFeedback = Template.bind({});
+InputWithLeftLabelAndFeedback.args = {
+    type: 'text',
+    id: 'input01',
+    name: 'name',
+    width: 'auto',
+    label: 'label : ',
+    labelAlign: 'left',
+    labelWidth: '50px',
+    labelTextAlign: 'left',
+    feedback: 'feedback',
+    required: false,
+    disabled: false,
+    readonly: false,
+    value: '',
+    pattern: '',
+    placeholder: '',
+};
+
 
 
 export const Input = Template.bind({});

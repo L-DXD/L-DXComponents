@@ -103,8 +103,10 @@ class LInput extends LitParents {
             type: {type: String},
             id: {type: String},
             name: {type: String},
+            width: {type: String},
             label: {type: String},
             feedback: {type: String},
+            feedbackType: {type: String},
             labelAlign: {type: String},
             labelWidth: {type: String},
             labelTextAlign: {type: String},
@@ -123,7 +125,10 @@ class LInput extends LitParents {
         let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
 
         return html`
-            <div class="${isLabelLeft ? 'container' : ''}">
+            <div 
+                class="${isLabelLeft ? 'container' : ''}"
+                style="width: ${this.width ? this.width : 'auto'}"
+            >
                 ${new LLabel({
                     label: `${this.label}`,
                     id: `${this.id}`,
@@ -149,6 +154,8 @@ class LInput extends LitParents {
             </div>
             ${new LFeedback({
                 feedback: `${this.feedback}`,
+                feedbackType: `${this.feedbackType}`,
+                width: `${this.width}`,
                 labelAlign: `${this.labelAlign}`,
                 labelWidth: `${this.labelWidth}`,
             })}

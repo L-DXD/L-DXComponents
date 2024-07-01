@@ -46,6 +46,8 @@ class LLabel extends LitElement {
     }
 
     render() {
+        if(!this.label)
+            return '';
         let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
 
         return html`
