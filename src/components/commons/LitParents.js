@@ -22,7 +22,7 @@ class LitParents extends LitElement{
         const inputElement = this.shadowRoot.querySelector(this.selector);
         if (inputElement) {
             inputElement.value = value;
-            this.inputValue = value;  // Update the reactive property
+            this.inputValue = value;
         }
     }
 

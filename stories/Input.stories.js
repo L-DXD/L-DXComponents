@@ -1,6 +1,7 @@
 import '/src/components/input/Input.js'
 import {html} from "lit";
-import {fn} from "@storybook/test";
+import { ifDefined } from 'lit/directives/if-defined.js';
+
 
 export default {
     title: 'Components/Input',
@@ -11,17 +12,20 @@ export default {
             control: {type: 'select'},
             options: ['text', 'number', 'password', 'tel', 'hidden'],
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: 'text'}
             }
         },
-        id: {table: {category: "properties",}},
-        name: {table: {category: "properties",}},
-        width: {table: {category: "properties",}},
+        id: {table: {category: "attribures",}},
+        name: {table: {category: "attribures",}},
+        width: {
+            control: {type: 'text'},
+            table: {category: "attribures",}
+        },
 
         label: {
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "text",
             }
         },
@@ -29,7 +33,7 @@ export default {
             control: {type: 'select'},
             options: ['left', 'top'],
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: 'top'},
                 subcategory: "text"
             }
@@ -38,7 +42,7 @@ export default {
             control: 'text'
             , description: 'Sets the width of the label (only visible when labelAlign is "left")'
             , table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: 'auto'},
                 subcategory: "text",
             }
@@ -48,7 +52,7 @@ export default {
             control: {type: 'select'},
             options: ['left', 'right'],
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: 'left'},
                 subcategory: "text"
             }
@@ -56,7 +60,7 @@ export default {
         },
         feedback: {
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "text",
             }
         },
@@ -64,67 +68,67 @@ export default {
             control: {type: 'select'},
             options: ['hint', 'error'],
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: 'hint'},
                 subcategory: "text"
             }
         },
         placeholder: {
+            control: {type: 'text'},
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "text",
             }
         },
         value: {
+            control: {type: 'text'},
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "text",
             }
         },
         maxlength: {
             control: {type: 'number'},
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "validate",
             }
         },
         minlength: {
             control: {type: 'number'},
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "validate",
             }
         },
         pattern: {
+            control: {type: 'text'},
             table: {
-                category: "properties",
+                category: "attribures",
                 subcategory: "validate",
             },
             description: "ex) [0-9]{3}-[0-9]{4}-[0-9]{4}",
         },
 
         required: {
-            control: {type: 'select'},
-            options: [false, true],
+            control: 'boolean',
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: false},
                 subcategory: "validate"
             }
         },
         disabled: {
-            control: {type: 'select'},
-            options: [false, true],
+            control: {type: 'boolean'},
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: false}
             }
         },
         readonly: {
-            control: {type: 'select'},
-            options: [false, true],
+            control: {type: 'boolean'},
             table: {
-                category: "properties",
+                category: "attribures",
                 defaultValue: {summary: false}
             }
         },
@@ -172,29 +176,26 @@ export default {
 
 
 const Template = (args) => {
-    console.log(args);
     return html`
         <l-input
-                type=${args.type}
-                label=${args.label}
-                labelAlign=${args.labelAlign}
-                labelWidth=${args.labelWidth}
-                labelTextAlign=${args.labelTextAlign}
-                feedback=${args.feedback}
-                id=${args.id}
-                name=${args.name}
-                width=${args.width}
-                maxlength=${args.maxlength}
-                minlength=${args.minlength}
+                type=${ifDefined(args.type)}
+                label=${ifDefined(args.label)}
+                labelAlign=${ifDefined(args.labelAlign)}
+                labelWidth=${ifDefined(args.labelWidth)}
+                labelTextAlign=${ifDefined(args.labelTextAlign)}
+                feedback=${ifDefined(args.feedback)}
+                id=${ifDefined(args.id)}
+                name=${ifDefined(args.name)}
+                width=${ifDefined(args.width)}
+                maxlength=${ifDefined(args.maxlength)}
+                minlength=${ifDefined(args.minlength)}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
-                placeholder="${args.placeholder}"
-                pattern="${args.pattern}"
-                value="${args.value}"
-        >
-
-        </l-input>`
+                placeholder="${ifDefined(args.placeholder)}"
+                pattern="${ifDefined(args.pattern)}"
+                value="${ifDefined(args.value)}"
+        />`
 }
 
 export const InputWithTopLabelAndFeedback = Template.bind({});
@@ -202,18 +203,14 @@ InputWithTopLabelAndFeedback.args = {
     type: 'text',
     id: 'input01',
     name: 'name',
-    width: 'auto',
     label: 'label',
-    labelAlign: 'top',
     labelWidth: 'auto',
     labelTextAlign: 'left',
     feedback: 'feedback',
     required: false,
     disabled: false,
     readonly: false,
-    value: '',
-    pattern: '',
-    placeholder: '',
+
 };
 
 export const InputWithLeftLabelAndFeedback = Template.bind({});
@@ -221,7 +218,6 @@ InputWithLeftLabelAndFeedback.args = {
     type: 'text',
     id: 'input01',
     name: 'name',
-    width: 'auto',
     label: 'label : ',
     labelAlign: 'left',
     labelWidth: '50px',
@@ -230,9 +226,7 @@ InputWithLeftLabelAndFeedback.args = {
     required: false,
     disabled: false,
     readonly: false,
-    value: '',
-    pattern: '',
-    placeholder: '',
+
 };
 
 
@@ -247,7 +241,5 @@ Input.args = {
     required: false,
     disabled: false,
     readonly: false,
-    value: '',
-    pattern: '',
-    placeholder: '',
+
 };
