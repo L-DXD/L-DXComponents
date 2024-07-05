@@ -23,16 +23,6 @@ class LLabel extends LitElement {
         ]
     ;
 
-    constructor({label, id, labelAlign, labelWidth, labelTextAlign, required}) {
-        super();
-
-        this.label = label;
-        this.id = id;
-        this.labelAlign = labelAlign;
-        this.labelWidth = labelWidth;
-        this.labelTextAlign = labelTextAlign;
-        this.required = required;
-    }
 
     static get properties() {
         return {

@@ -21,80 +21,79 @@ class LInput extends LitParents {
 
             // component css
             , css`
-          *, ::after, ::before {
-            box-sizing: border-box;
-          }
+            *, ::after, ::before {
+                box-sizing: border-box;
+            }
 
-          .l-input {
-            width: 100%;
-            padding: .375rem .75rem;
-            font-size: .875rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--bs-body-color);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            border: var(--bs-border-width) solid var(--bs-border-color);
-            border-radius: 8px;
-            outline: none;
-          }
+            .l-input {
+                width: 100%;
+                padding: .375rem .75rem;
+                font-size: .875rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: var(--bs-body-color);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border: var(--bs-border-width) solid var(--bs-border-color);
+                border-radius: 8px;
+                outline: none;
+            }
 
-          .l-flex-input {
-            flex-grow: 1;
-            padding: .375rem .75rem;
-            font-size: .875rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--bs-body-color);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            border: var(--bs-border-width) solid var(--bs-border-color);
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.3s ease-in-out;
-          }
+            .l-flex-input {
+                flex-grow: 1;
+                padding: .375rem .75rem;
+                font-size: .875rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: var(--bs-body-color);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border: var(--bs-border-width) solid var(--bs-border-color);
+                border-radius: 8px;
+                outline: none;
+                transition: all 0.3s ease-in-out;
+            }
 
-          .is-valid {
-            border-color: var(--bs-success);
-            padding-right: calc(1.5em + .75rem);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%231b8835' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(.375em + .1875rem) center;
-            background-size: calc(.75em + .375rem) calc(.75em + .375rem)
-          }
+            .is-valid {
+                border-color: var(--bs-success);
+                padding-right: calc(1.5em + .75rem);
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%231b8835' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right calc(.375em + .1875rem) center;
+                background-size: calc(.75em + .375rem) calc(.75em + .375rem)
+            }
 
-          .is-invalid {
-            border-color: var(--bs-danger);
-            padding-right: calc(1.5em + .75rem);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23df1414'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23df1414' stroke='none'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(.375em + .1875rem) center;
-            background-size: calc(.75em + .375rem) calc(.75em + .375rem)
-          }
+            .is-invalid {
+                border-color: var(--bs-danger);
+                padding-right: calc(1.5em + .75rem);
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23df1414'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23df1414' stroke='none'/%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right calc(.375em + .1875rem) center;
+                background-size: calc(.75em + .375rem) calc(.75em + .375rem)
+            }
         `
         ];
 
 
-    isValid = (pattern, value, required) => {
-        const regex = new RegExp(pattern);
+    formatValue(value) {
+        // 예시: 숫자 포맷팅 (쉼표 추가)
+        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
-        const isValueEmpty = value => !value;
-        const isPatternInvalid = (regex, value) => regex && !regex.test(value);
+    isValid() {
+        const regex = new RegExp(this.pattern);
+        const value = this.getValue();
 
-        if (isValueEmpty(value) && required) {
+        if (!value && this.required) {
             return false;
-        } else {
-            return !isPatternInvalid(regex, value);
-        }
-    };
+        } else return !(regex && !regex.test(value));
+    }
 
     validate() {
-        const element = this.shadowRoot.querySelector(this.selector);
-
-        if (this.isValid(this.pattern, this.getValue(), this.required)) {
-            element.classList.remove('is-invalid');
+        if (this.isValid()) {
+            this.shadowRoot.querySelector(this.selector).classList.remove('is-invalid');
         } else {
-            element.classList.add('is-invalid');
+            this.shadowRoot.querySelector(this.selector).classList.add('is-invalid');
         }
     }
 
@@ -131,16 +130,15 @@ class LInput extends LitParents {
                     style="width: ${this.width ? this.width : 'auto'}"
             >
                 ${
-                        this.label === undefined ? '' :
-                                new LLabel({
-                                    label: `${this.label}`,
-                                    id: `${this.id}`,
-                                    labelAlign: `${this.labelAlign}`,
-                                    labelWidth: `${this.labelWidth}`,
-                                    labelTextAlign: `${this.labelTextAlign}`,
-                                    required: `${this.required}`
-                                })
-                }
+                        this.label === undefined ? '' : 
+                        new LLabel({
+                            label: `${this.label}`,
+                            id: `${this.id}`,
+                            labelAlign: `${this.labelAlign}`,
+                            labelWidth: `${this.labelWidth}`,
+                            labelTextAlign: `${this.labelTextAlign}`,
+                            required: `${this.required}`
+                        })}
                 <input type="${this.type}"
                        class="${isLabelLeft ? 'l-flex-input' : 'l-input'}"
                        id="${this.id}"
@@ -156,16 +154,13 @@ class LInput extends LitParents {
                        @blur="${this.validate}"
                 >
             </div>
-            ${
-                    this.feedback === undefined ? '' :
-                            new LFeedback({
-                                feedback: `${this.feedback}`,
-                                feedbackType: `${this.feedbackType}`,
-                                width: `${this.width}`,
-                                labelAlign: `${this.labelAlign}`,
-                                labelWidth: `${this.labelWidth}`,
-                            })
-            }
+            ${new LFeedback({
+                feedback: `${this.feedback}`,
+                feedbackType: `${this.feedbackType}`,
+                width: `${this.width}`,
+                labelAlign: `${this.labelAlign}`,
+                labelWidth: `${this.labelWidth}`,
+            })}
         `;
     }
 }

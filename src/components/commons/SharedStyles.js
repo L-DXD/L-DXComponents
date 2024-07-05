@@ -11,8 +11,7 @@ class SharedStyles {
                 font-weight: var(--bs-body-font-weight);
                 line-height: var(--bs-body-line-height);
                 color: var(--bs-body-color);
-
-                background-color: var(--bs-body-bg);
+                
                 -webkit-text-size-adjust: 100%;
                 -webkit-tap-highlight-color: transparent;
             }
