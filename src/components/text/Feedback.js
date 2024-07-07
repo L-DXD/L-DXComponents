@@ -35,7 +35,7 @@ class LFeedback extends LitElement {
         return html`
             <div class="valid-feedback"
                 style="
-                    padding-left: calc(${this.leftMargin} + ${isLabelLeft ? `10px` : '0px'})
+                    padding-left: calc(${this.leftMargin} + ${isLabelLeft ? `15px` : '0px'})
                     ;width: ${this.width ? this.width : 'auto'};
                 "
             >

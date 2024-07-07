@@ -1,35 +1,40 @@
 import {css, html, LitElement} from 'lit';
+import {SharedStyles} from "@/components/commons/SharedStyles.js";
 
 class InputContainer extends LitElement {
+
     static styles =
         [
+
             // component css
-            css`
-              .container {
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-              }
-            `
-        ]
-    ;
+            , css`
+
+
+          .container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+          }
+
+        `
+        ];
 
     static get properties() {
         return {
+            class: {type: String},
             width: {type: String},
             labelAlign: {type: String},
         };
     }
 
     render() {
-        let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
-
         return html`
             <div
-                class="${isLabelLeft ? 'container' : ''}"
-                style="width: ${this.width ? this.width : 'auto'}"
+                    class="${this.class}"
+                    style="width: ${this.width ? this.width : 'auto'}"
             >
-                <slot></slot>
+                <slot name="label"></slot>
+                <slot name="input"></slot>
             </div>
         `
     }

@@ -1,24 +1,24 @@
 import {css, html, LitElement} from 'lit';
 import '../commons/common.css';
-import {SharedStyles} from "../commons/SharedStyles.js";
+
 
 class LLabel extends LitElement {
     static styles =
         [
             // component css
             css`
-                label {
-                    display: inline-block;
-                }
+              label {
+                display: inline-block;
+              }
 
-                .l-label {
-                    margin-bottom: .5rem;
-                }
+              .l-label {
+                margin-bottom: .5rem;
+              }
 
-                .l-flex-label {
-                    margin-right: 10px;
-                    white-space: nowrap; /* Prevents label text from wrapping */
-                }
+              .l-flex-label {
+                margin-right: 10px;
+                white-space: nowrap; /* Prevents label text from wrapping */
+              }
             `
         ]
     ;
@@ -36,7 +36,7 @@ class LLabel extends LitElement {
     }
 
     render() {
-        if(!this.label)
+        if (!this.label)
             return '';
         let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
 
@@ -45,8 +45,8 @@ class LLabel extends LitElement {
                     class="${(isLabelLeft && this.label) ? 'l-flex-label' : 'l-label'}"
                     for="${this.id}"
                     style="
-                        width: ${this.labelWidth ?? 'auto'};
-                        text-align: ${this.labelTextAlign ?? 'left'}
+                        width: ${this.labelWidth || 'auto'};
+                        text-align: ${this.labelTextAlign || 'left'}
                     "
             >
                 ${this.required == 'true'

@@ -17,16 +17,12 @@ class SharedStyles {
             }
 
             button, input, optgroup, select, textarea {
+                margin: 0;
                 font-family: inherit;
                 font-size: inherit;
                 line-height: inherit;
             }
 
-            .container {
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-            }
 
             input:focus {
                 border-color: #3399ff;
