@@ -1,6 +1,6 @@
 import '/src/components/input/Input.js'
 import {html} from "lit";
-import { ifDefined } from 'lit/directives/if-defined.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
 
 
 export default {
@@ -10,10 +10,18 @@ export default {
     argTypes: {
         type: {
             control: {type: 'select'},
-            options: ['text', 'number', 'password', 'tel', 'hidden', 'file'],
+            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file'],
             table: {
                 category: "attribures",
                 defaultValue: {summary: 'text'}
+            }
+        },
+        size: {
+            control: {type: 'select'},
+            options: ['default','large','small'],
+            table: {
+                category: "attribures",
+                defaultValue: {summary: 'default'}
             }
         },
         id: {table: {category: "attribures",}},
@@ -43,7 +51,7 @@ export default {
                 defaultValue: {summary: 'auto'},
                 subcategory: "text",
             }
-            , if: {arg: 'labelAlign', eq:'left'},
+            , if: {arg: 'labelAlign', eq: 'left'},
         },
         labelTextAlign: {
             control: {type: 'select'},
@@ -53,7 +61,7 @@ export default {
                 defaultValue: {summary: 'left'},
                 subcategory: "text"
             }
-            , if: {arg: 'labelAlign', eq:'left'},
+            , if: {arg: 'labelAlign', eq: 'left'},
         },
         feedback: {
             table: {
@@ -61,22 +69,37 @@ export default {
                 subcategory: "text",
             }
         },
-        feedbackType : {
+        feedbackType: {
             control: {type: 'select'},
-            options: ['hint', 'error'],
+            options: ['normal', 'hint', 'error'],
             table: {
                 category: "attribures",
-                defaultValue: {summary: 'hint'},
+                defaultValue: {summary: 'normal'},
                 subcategory: "text"
             }
         },
+        feedbackVisibleType: {
+            control: {type: 'select'},
+            options: ['none', 'visible', 'valid', 'invalid'],
+            table: {
+                category: "attribures",
+                defaultValue: {summary: 'none'},
+                subcategory: "text"
+            },
+            description: "none : 항상 숨김<br/>" +
+                "visible : 항상 표시<br/>" +
+                "valid : 유효할때 표시<br/>" +
+                "invalid : 유효하지 않을 때 표시",
+        },
         placeholder: {
+            control: {type: 'text'},
             table: {
                 category: "attribures",
                 subcategory: "text",
             }
         },
         value: {
+            control: {type: 'text'},
             table: {
                 category: "attribures",
                 subcategory: "text",
@@ -97,6 +120,7 @@ export default {
             }
         },
         pattern: {
+            control: {type: 'text'},
             table: {
                 category: "attribures",
                 subcategory: "validate",
@@ -113,16 +137,14 @@ export default {
             }
         },
         disabled: {
-            control: {type: 'select'},
-            options: [false, true],
+            control: 'boolean',
             table: {
                 category: "attribures",
                 defaultValue: {summary: false}
             }
         },
         readonly: {
-            control: {type: 'select'},
-            options: [false, true],
+            control: 'boolean',
             table: {
                 category: "attribures",
                 defaultValue: {summary: false}
@@ -164,7 +186,19 @@ export default {
                 subcategory: "validate",
                 type: {summary: "(()=> return new Boolean) "},
             },
-            description: "값의 유효성을 체크합니다.",
+            description: "입력값의 유효성을 체크합니다.",
+        },
+        checkValidity: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "validate",
+                type: {summary: "function()"},
+            },
+            description: "입력값의 유효성을 체크합니다.",
         }
 
     },
@@ -175,11 +209,14 @@ const Template = (args) => {
     return html`
         <l-input
                 type=${ifDefined(args.type)}
+                size=${ifDefined(args.size)}
                 label=${ifDefined(args.label)}
                 labelAlign=${ifDefined(args.labelAlign)}
                 labelWidth=${ifDefined(args.labelWidth)}
                 labelTextAlign=${ifDefined(args.labelTextAlign)}
                 feedback=${ifDefined(args.feedback)}
+                feedbackType=${ifDefined(args.feedbackType)}
+                feedbackVisibleType=${ifDefined(args.feedbackVisibleType)}
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 width=${ifDefined(args.width)}
@@ -192,7 +229,7 @@ const Template = (args) => {
                 pattern="${ifDefined(args.pattern)}"
                 value="${ifDefined(args.value)}"
         >
-</l-input>`
+        </l-input>`
 }
 
 export const InputWithTopLabelAndFeedback = Template.bind({});
@@ -206,12 +243,10 @@ InputWithTopLabelAndFeedback.args = {
     labelWidth: 'auto',
     labelTextAlign: 'left',
     feedback: 'feedback',
+    feedbackType: 'normal',
     required: false,
     disabled: false,
     readonly: false,
-    value: '',
-    pattern: '',
-    placeholder: '',
 };
 
 export const InputWithLeftLabelAndFeedback = Template.bind({});
@@ -228,24 +263,90 @@ InputWithLeftLabelAndFeedback.args = {
     required: false,
     disabled: false,
     readonly: false,
-    value: '',
-    pattern: '',
-    placeholder: '',
 };
 
 
-
-export const Input = Template.bind({});
-Input.args = {
+export const SimpleInput = Template.bind({});
+SimpleInput.args = {
     type: 'text',
     id: 'input01',
     name: 'name',
-    label: '',
     labelAlign: 'top',
     required: false,
     disabled: false,
     readonly: false,
-    value: '',
-    pattern: '',
-    placeholder: '',
+};
+
+export const InputRequireValidity = Template.bind({});
+InputRequireValidity.args = {
+    type: 'text',
+    id: 'input01',
+    name: 'name',
+    width: '100%',
+    label: 'label',
+    labelAlign: 'top',
+    labelWidth: 'auto',
+    labelTextAlign: 'left',
+    feedback: '필수 값 입니다.',
+    feedbackType: 'error',
+    feedbackVisibleType: 'invalid',
+    required: true,
+    disabled: false,
+    readonly: false,
+};
+
+export const InputPatternValidity = Template.bind({});
+InputPatternValidity.args = {
+    type: 'text',
+    id: 'input01',
+    name: 'name',
+    width: '100%',
+    label: 'Phone',
+    labelAlign: 'top',
+    labelWidth: 'auto',
+    labelTextAlign: 'left',
+    feedback: 'invalid pattern',
+    feedbackType: 'error',
+    feedbackVisibleType: 'invalid',
+    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
+    required: false,
+    disabled: false,
+    readonly: false,
+};
+
+export const InputPatternAndRequireValidity = Template.bind({});
+InputPatternAndRequireValidity.args = {
+    type: 'text',
+    id: 'input01',
+    name: 'name',
+    width: '100%',
+    label: 'Phone',
+    labelAlign: 'top',
+    labelWidth: 'auto',
+    labelTextAlign: 'left',
+    feedback: 'invalid value',
+    feedbackType: 'error',
+    feedbackVisibleType: 'invalid',
+    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
+    required: true,
+    disabled: false,
+    readonly: false,
+};
+
+const sizeTemplate = (args) => {
+    return html`
+        <div class="card-body">
+            <div class="row">
+                <l-input label="default size" value="default"></l-input>
+                <l-input size='large' label="large size" value="large"></l-input>
+                <l-input size='small' label="small size" value="small"></l-input>
+            </div>
+        </div>
+
+    `
+}
+
+export const size = sizeTemplate.bind({});
+size.args = {
+
 };

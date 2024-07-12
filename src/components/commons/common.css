@@ -1,5 +1,17 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
 
-:root,[data-bs-theme=light] {
+/*!
+ * Droplet v2.0.0 (https://seantheme.com/droplet/)
+ * Copyright 2024 SeanTheme
+ *//*!
+ * Bootstrap  v5.3.3 (https://getbootstrap.com/)
+ * Copyright 2011-2024 The Bootstrap Authors
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+
+:root, [data-bs-theme=light] {
     --bs-blue: #0066ff;
     --bs-indigo: #612bff;
     --bs-purple: #a104ff;
@@ -54,37 +66,37 @@
     --bs-gray-700: #33373a;
     --bs-gray-800: #26292b;
     --bs-gray-900: #151718;
-    --bs-default-rgb: 255,255,255;
-    --bs-theme-rgb: 0,102,255;
-    --bs-theme-color-rgb: 255,255,255;
-    --bs-primary-rgb: 0,102,255;
-    --bs-secondary-rgb: 85,92,96;
-    --bs-warning-rgb: 255,159,12;
-    --bs-danger-rgb: 223,20,20;
-    --bs-success-rgb: 27,136,53;
-    --bs-info-rgb: 14,179,255;
-    --bs-dark-rgb: 22,22,22;
-    --bs-black-rgb: 0,0,0;
-    --bs-white-rgb: 255,255,255;
-    --bs-purple-rgb: 161,4,255;
-    --bs-indigo-rgb: 97,43,255;
-    --bs-red-rgb: 223,20,20;
-    --bs-pink-rgb: 223,21,120;
-    --bs-green-rgb: 27,136,53;
-    --bs-yellow-rgb: 249,232,13;
-    --bs-teal-rgb: 60,210,165;
-    --bs-muted-rgb: 85,92,96;
-    --bs-light-rgb: 213,214,215;
-    --bs-lime-rgb: 129,243,45;
-    --bs-gray-100-rgb: 213,214,215;
-    --bs-gray-200-rgb: 179,182,183;
-    --bs-gray-300-rgb: 153,157,160;
-    --bs-gray-400-rgb: 128,133,136;
-    --bs-gray-500-rgb: 85,92,96;
-    --bs-gray-600-rgb: 64,69,72;
-    --bs-gray-700-rgb: 51,55,58;
-    --bs-gray-800-rgb: 38,41,43;
-    --bs-gray-900-rgb: 21,23,24;
+    --bs-default-rgb: 255, 255, 255;
+    --bs-theme-rgb: 0, 102, 255;
+    --bs-theme-color-rgb: 255, 255, 255;
+    --bs-primary-rgb: 0, 102, 255;
+    --bs-secondary-rgb: 85, 92, 96;
+    --bs-warning-rgb: 255, 159, 12;
+    --bs-danger-rgb: 223, 20, 20;
+    --bs-success-rgb: 27, 136, 53;
+    --bs-info-rgb: 14, 179, 255;
+    --bs-dark-rgb: 22, 22, 22;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-purple-rgb: 161, 4, 255;
+    --bs-indigo-rgb: 97, 43, 255;
+    --bs-red-rgb: 223, 20, 20;
+    --bs-pink-rgb: 223, 21, 120;
+    --bs-green-rgb: 27, 136, 53;
+    --bs-yellow-rgb: 249, 232, 13;
+    --bs-teal-rgb: 60, 210, 165;
+    --bs-muted-rgb: 85, 92, 96;
+    --bs-light-rgb: 213, 214, 215;
+    --bs-lime-rgb: 129, 243, 45;
+    --bs-gray-100-rgb: 213, 214, 215;
+    --bs-gray-200-rgb: 179, 182, 183;
+    --bs-gray-300-rgb: 153, 157, 160;
+    --bs-gray-400-rgb: 128, 133, 136;
+    --bs-gray-500-rgb: 85, 92, 96;
+    --bs-gray-600-rgb: 64, 69, 72;
+    --bs-gray-700-rgb: 51, 55, 58;
+    --bs-gray-800-rgb: 38, 41, 43;
+    --bs-gray-900-rgb: 21, 23, 24;
     --bs-primary-text-emphasis: #002966;
     --bs-secondary-text-emphasis: #222526;
     --bs-success-text-emphasis: #0b3615;
@@ -109,35 +121,35 @@
     --bs-danger-border-subtle: #f2a1a1;
     --bs-light-border-subtle: #b3b6b7;
     --bs-dark-border-subtle: #555c60;
-    --bs-white-rgb: 255,255,255;
-    --bs-black-rgb: 0,0,0;
-    --bs-font-sans-serif: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    --bs-font-monospace: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-    --bs-body-font-family: "Inter",sans-serif;
+    --bs-body-font-family: "Inter", sans-serif;
     --bs-body-font-size: 0.875rem;
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.5;
     --bs-body-color: #222222;
-    --bs-body-color-rgb: 34,34,34;
+    --bs-body-color-rgb: 34, 34, 34;
     --bs-body-bg: #f1f3f4;
-    --bs-body-bg-rgb: 241,243,244;
+    --bs-body-bg-rgb: 241, 243, 244;
     --bs-emphasis-color: #000000;
-    --bs-emphasis-color-rgb: 0,0,0;
+    --bs-emphasis-color-rgb: 0, 0, 0;
     --bs-secondary-color: rgba(34, 34, 34, 0.75);
-    --bs-secondary-color-rgb: 34,34,34;
+    --bs-secondary-color-rgb: 34, 34, 34;
     --bs-secondary-bg: #d5d6d7;
-    --bs-secondary-bg-rgb: 213,214,215;
+    --bs-secondary-bg-rgb: 213, 214, 215;
     --bs-tertiary-color: rgba(34, 34, 34, 0.5);
-    --bs-tertiary-color-rgb: 34,34,34;
+    --bs-tertiary-color-rgb: 34, 34, 34;
     --bs-tertiary-bg: #f1f3f4;
-    --bs-tertiary-bg-rgb: 241,243,244;
+    --bs-tertiary-bg-rgb: 241, 243, 244;
     --bs-heading-color: #000000;
     --bs-link-color: #0066ff;
-    --bs-link-color-rgb: 0,102,255;
+    --bs-link-color-rgb: 0, 102, 255;
     --bs-link-decoration: underline;
     --bs-link-hover-color: rgba(0, 102, 255, 0.5);
-    --bs-link-hover-color-rgb: 0,102,255;
+    --bs-link-hover-color-rgb: 0, 102, 255;
     --bs-code-color: #df1578;
     --bs-highlight-color: #222222;
     --bs-highlight-bg: #fefacf;
@@ -168,19 +180,19 @@
 [data-bs-theme=dark] {
     color-scheme: dark;
     --bs-body-color: #aaaaaa;
-    --bs-body-color-rgb: 170,170,170;
+    --bs-body-color-rgb: 170, 170, 170;
     --bs-body-bg: #161616;
-    --bs-body-bg-rgb: 22,22,22;
+    --bs-body-bg-rgb: 22, 22, 22;
     --bs-emphasis-color: #d5d6d7;
-    --bs-emphasis-color-rgb: 213,214,215;
+    --bs-emphasis-color-rgb: 213, 214, 215;
     --bs-secondary-color: rgba(170, 170, 170, 0.75);
-    --bs-secondary-color-rgb: 170,170,170;
+    --bs-secondary-color-rgb: 170, 170, 170;
     --bs-secondary-bg: #26292b;
-    --bs-secondary-bg-rgb: 38,41,43;
+    --bs-secondary-bg-rgb: 38, 41, 43;
     --bs-tertiary-color: rgba(170, 170, 170, 0.5);
-    --bs-tertiary-color-rgb: 170,170,170;
+    --bs-tertiary-color-rgb: 170, 170, 170;
     --bs-tertiary-bg: #1e2022;
-    --bs-tertiary-bg-rgb: 30,32,34;
+    --bs-tertiary-bg-rgb: 30, 32, 34;
     --bs-primary-text-emphasis: #66a3ff;
     --bs-secondary-text-emphasis: #999da0;
     --bs-success-text-emphasis: #76b886;
@@ -208,8 +220,8 @@
     --bs-heading-color: #fff;
     --bs-link-color: #66a3ff;
     --bs-link-hover-color: #99c2ff;
-    --bs-link-color-rgb: 102,163,255;
-    --bs-link-hover-color-rgb: 153,194,255;
+    --bs-link-color-rgb: 102, 163, 255;
+    --bs-link-hover-color-rgb: 153, 194, 255;
     --bs-code-color: #ec73ae;
     --bs-highlight-color: #aaaaaa;
     --bs-highlight-bg: #645d05;
@@ -220,3 +232,46 @@
     --bs-form-invalid-color: #ec7272;
     --bs-form-invalid-border-color: #ec7272
 }
+
+:root, [data-bs-theme=light] {
+    --bs-component-bg: #FFFFFF;
+    --bs-component-bg-rgb: 255, 255, 255;
+    --bs-component-color: #222222;
+    --bs-component-color-rgb: 34, 34, 34;
+    --bs-app-header-bg: #FFFFFF;
+    --bs-app-header-color: #222222;
+    --bs-app-header-color-rgb: 34, 34, 34;
+    --bs-app-header-border-color: rgba(0, 0, 0, 0.1);
+    --bs-app-header-scroll-box-shadow: 0 0.1875rem 0.75rem rgba(0, 0, 0, 0.1);
+    --bs-app-sidebar-link-color: #222222;
+    --bs-app-sidebar-link-hover-color: #222222;
+    --bs-app-sidebar-link-hover-bg: #e3e7eb;
+    --bs-app-sidebar-link-active-color: #0052cc;
+    --bs-app-sidebar-link-active-bg: rgba(var(--bs-theme-rgb), 0.15);
+    --bs-app-sidebar-mobile-bg: rgba(255, 255, 255, 0.98);
+    --bs-theme-bg-subtle: #cce0ff
+}
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth
+    }
+}
+
+body {
+    margin: 0;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: var(--bs-body-bg);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent
+}
+
+

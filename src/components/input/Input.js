@@ -5,7 +5,9 @@ import {InputContainer} from "../group/InputContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import '../commons/common.css';
 import {SharedStyles} from "../commons/SharedStyles.js";
+import {TextStyles} from "../commons/TextStyles.js";
 import {LitParents} from "../commons/LitParents.js";
+import {ifDefined} from "lit/directives/if-defined.js";
 
 
 class LInput extends LitParents {
@@ -19,86 +21,29 @@ class LInput extends LitParents {
     static styles =
         [
             // common css
-            SharedStyles.styles
-
+            SharedStyles.styles,
+            // text css
+            TextStyles.styles,
             // component css
-            , css`
-          *, ::after, ::before {
-            box-sizing: border-box;
-          }
+             css`
+                 
+                 .form-left-control {
+                     flex-grow: 1;
+                     padding: .375rem .75rem;
+                     font-size: .875rem;
+                     font-weight: 400;
+                     line-height: 1.5;
+                     color: var(--bs-body-color);
+                     -webkit-appearance: none;
+                     -moz-appearance: none;
+                     border: var(--bs-border-width) solid var(--bs-border-color);
+                     border-radius: 8px;
+                     outline: none;
+                     transition: all 0.3s ease-in-out;
+                 }
 
 
-          .l-input {
-
-            width: 100%;
-            padding: .375rem .75rem;
-            font-size: .875rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--bs-body-color);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            border: var(--bs-border-width) solid var(--bs-border-color);
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.3s ease-in-out;
-          }
-
-
-          .l-left-input {
-            flex-grow: 1;
-            padding: .375rem .75rem;
-            font-size: .875rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--bs-body-color);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            border: var(--bs-border-width) solid var(--bs-border-color);
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.3s ease-in-out;
-          }
-
-          .is-valid {
-            border-color: var(--bs-success);
-            padding-right: calc(1.5em + .75rem);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%231b8835' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(.375em + .1875rem) center;
-            background-size: calc(.75em + .375rem) calc(.75em + .375rem)
-          }
-
-          .is-invalid {
-            border-color: var(--bs-danger);
-            padding-right: calc(1.5em + .75rem);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23df1414'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23df1414' stroke='none'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(.375em + .1875rem) center;
-            background-size: calc(.75em + .375rem) calc(.75em + .375rem)
-          }
-
-          .l-input::file-selector-button {
-            padding: .375rem .75rem;
-            margin: -.375rem -.75rem;
-            -webkit-margin-end: .75rem;
-            margin-inline-end: .75rem;
-            color: var(--bs-body-color);
-            background-color: var(--bs-tertiary-bg);
-            pointer-events: none;
-            border-color: inherit;
-            border-style: solid;
-            border-width: 0;
-            border-inline-end-width: var(--bs-border-width);
-            border-radius: 0;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
-          }
-          ::file-selector-button {
-            font: inherit;
-            -webkit-appearance: button;
-          }
-
-        `
+             `
         ];
 
 
@@ -107,33 +52,51 @@ class LInput extends LitParents {
         return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
-    isValid() {
-        const regex = new RegExp(this.pattern);
-        const value = this.getValue();
+    isValid(pattern, required) {
+        const regex = new RegExp(pattern);
+        const value = this.getValue().trim();
 
-        if (!value && this.required) {
+        console.log(regex, regex.test(value), !(regex && !regex.test(value)))
+
+        if (!value && required) {
             return false;
-        } else return !(regex && !regex.test(value));
+        } else return !((regex && value) && !regex.test(value));
     }
 
     validate() {
-        if (this.isValid()) {
+        if(this.feedbackVisibleType !== 'visible') {
+            this.shadowRoot.querySelector('l-feedback').setAttribute('hidden',true);
+        }
+
+        if (this.isValid(this.pattern, this.required)) {
             this.shadowRoot.querySelector(this.selector).classList.remove('is-invalid');
+            if(this.feedbackVisibleType === 'valid') {
+                this.shadowRoot.querySelector('l-feedback').removeAttribute('hidden');
+            }
         } else {
             this.shadowRoot.querySelector(this.selector).classList.add('is-invalid');
+            if(this.feedbackVisibleType === 'invalid') {
+                this.shadowRoot.querySelector('l-feedback').removeAttribute('hidden');
+            }
         }
+    }
+
+    checkValidity() {
+        this.validate();
     }
 
 
     static get properties() {
         return {
             type: {type: String},
+            size: {type: String},
             id: {type: String},
             name: {type: String},
             width: {type: String},
             label: {type: String},
             feedback: {type: String},
             feedbackType: {type: String},
+            feedbackVisibleType: {type: String},
             labelAlign: {type: String},
             labelWidth: {type: String},
             labelTextAlign: {type: String},
@@ -152,7 +115,6 @@ class LInput extends LitParents {
     render() {
         let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
 
-
         return html`
             <l-input-container
                     class="${
@@ -160,47 +122,51 @@ class LInput extends LitParents {
                                 'container': isLabelLeft
                             })
                     }"
-                    width="${this.width}"
+                    width="${ifDefined(this.width)}"
             >
                 <l-label
                         slot="label"
-                        label="${this.label}"
+                        label="${ifDefined(this.label)}"
                         id="${this.id}"
-                        labelAlign="${this.labelAlign}"
-                        labelWidth="${this.labelWidth}"
-                        labelTextAlign="${this.labelTextAlign}"
-                        required="${this.required}"
+                        labelAlign="${ifDefined(this.labelAlign)}"
+                        labelWidth="${ifDefined(this.labelWidth)}"
+                        labelTextAlign="${ifDefined(this.labelTextAlign)}"
+                        required="${ifDefined(this.required)}"
                 >
 
                 </l-label>
                 <input
                         slot="input"
-                        type="${this.type}"
+                        type="${this.type === 'planText' ? 'text' : this.type}"
                         class="${
                                 classMap({
-                                    'l-input': !isLabelLeft
-                                    , 'l-left-input': isLabelLeft
+                                    'form-control': !isLabelLeft
+                                    , 'form-left-control': isLabelLeft
+                                    , 'form-control-plaintext': this.type === 'planText'
+                                    , 'form-control-lg': this.size === 'large'
+                                    , 'form-control-sm': this.size === 'small'
                                 })
                         }"
-                        id=" ${this.id}"
-                        name="${this.name}"
-                        minlength="${this.minlength}"
-                        maxlength="${this.maxlength}"
+                        id="${ifDefined(this.id)}"
+                        name="${ifDefined(this.name)}"
+                        minlength="${ifDefined(this.minlength)}"
+                        maxlength="${ifDefined(this.maxlength)}"
                         ?required=${this.required}
                         ?disabled=${this.disabled}
                         ?readonly=${this.readonly}
-                        placeholder="${this.placeholder}"
-                        pattern="${this.pattern}"
-                        value="${this.value}"
+                        placeholder="${ifDefined(this.placeholder)}"
+                        pattern="${ifDefined(this.pattern)}"
+                        value="${ifDefined(this.value)}"
                         @blur="${this.validate}"
                 >
             </l-input-container>
             <l-feedback
-                    feedback="${this.feedback}"
-                    feedbackType="${this.feedbackType}"
-                    width="${this.width}"
-                    labelAlign="${this.labelAlign}"
-                    leftMargin="${this.labelWidth}"
+                    feedback="${ifDefined(this.feedback)}"
+                    feedbackType="${ifDefined(this.feedbackType)}"
+                    width="${ifDefined(this.width)}"
+                    labelAlign="${ifDefined(this.labelAlign)}"
+                    leftMargin="${ifDefined(this.labelWidth)}"
+                    ?hidden="${this.feedbackVisibleType !== 'visible'}"
             >
 
             </l-feedback>

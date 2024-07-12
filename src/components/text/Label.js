@@ -7,18 +7,42 @@ class LLabel extends LitElement {
         [
             // component css
             css`
-              label {
-                display: inline-block;
-              }
+                label {
+                    display: inline-block;
+                }
 
-              .l-label {
-                margin-bottom: .5rem;
-              }
+                .form-label {
+                    margin-bottom: .5rem
+                }
 
-              .l-flex-label {
-                margin-right: 10px;
-                white-space: nowrap; /* Prevents label text from wrapping */
-              }
+                .col-form-label {
+                    padding-top: calc(.375rem + var(--bs-border-width));
+                    padding-bottom: calc(.375rem + var(--bs-border-width));
+                    margin-bottom: 0;
+                    font-size: inherit;
+                    line-height: 1.5
+                }
+
+                .col-form-label-lg {
+                    padding-top: calc(.5rem + var(--bs-border-width));
+                    padding-bottom: calc(.5rem + var(--bs-border-width));
+                    font-size: 1.09375rem
+                }
+
+                .col-form-label-sm {
+                    padding-top: calc(.25rem + var(--bs-border-width));
+                    padding-bottom: calc(.25rem + var(--bs-border-width));
+                    font-size: .765625rem
+                }
+
+                .l-label {
+                    margin-bottom: .5rem;
+                }
+
+                .form-left-label {
+                    margin-right: 10px;
+                    white-space: nowrap; /* Prevents label text from wrapping */
+                }
             `
         ]
     ;
@@ -42,7 +66,7 @@ class LLabel extends LitElement {
 
         return html`
             <label
-                    class="${(isLabelLeft && this.label) ? 'l-flex-label' : 'l-label'}"
+                    class="${(isLabelLeft && this.label) ? 'form-left-label' : 'form-label'}"
                     for="${this.id}"
                     style="
                         width: ${this.labelWidth || 'auto'};
