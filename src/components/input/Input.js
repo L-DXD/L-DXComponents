@@ -14,93 +14,36 @@ class LInput extends LitParents {
 
     constructor() {
         super();
-
         super.setSelector('input');
+
     }
 
-    static styles =
-        [
-            // common css
-            SharedStyles.styles,
-            // text css
-            TextStyles.styles,
-            // component css
-             css`
-                 
-                 .form-left-control {
-                     flex-grow: 1;
-                     padding: .375rem .75rem;
-                     font-size: .875rem;
-                     font-weight: 400;
-                     line-height: 1.5;
-                     color: var(--bs-body-color);
-                     -webkit-appearance: none;
-                     -moz-appearance: none;
-                     border: var(--bs-border-width) solid var(--bs-border-color);
-                     border-radius: 8px;
-                     outline: none;
-                     transition: all 0.3s ease-in-out;
-                 }
-
-
-             `
-        ];
-
-
-    formatValue(value) {
-        // 예시: 숫자 포맷팅 (쉼표 추가)
-        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    isValid(pattern, required) {
-        const regex = new RegExp(pattern);
-        const value = this.getValue().trim();
-
-        console.log(regex, regex.test(value), !(regex && !regex.test(value)))
-
-        if (!value && required) {
-            return false;
-        } else return !((regex && value) && !regex.test(value));
-    }
-
-    validate() {
-        if(this.feedbackVisibleType !== 'visible') {
-            this.shadowRoot.querySelector('l-feedback').setAttribute('hidden',true);
-        }
-
-        if (this.isValid(this.pattern, this.required)) {
-            this.shadowRoot.querySelector(this.selector).classList.remove('is-invalid');
-            if(this.feedbackVisibleType === 'valid') {
-                this.shadowRoot.querySelector('l-feedback').removeAttribute('hidden');
-            }
-        } else {
-            this.shadowRoot.querySelector(this.selector).classList.add('is-invalid');
-            if(this.feedbackVisibleType === 'invalid') {
-                this.shadowRoot.querySelector('l-feedback').removeAttribute('hidden');
-            }
-        }
-    }
-
-    checkValidity() {
-        this.validate();
-    }
-
+    static styles = [
+        ...super.styles,
+        css`
+          .form-left-control {
+            flex-grow: 1;
+            padding: .375rem .75rem;
+            font-size: .875rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--bs-body-color);
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border: var(--bs-border-width) solid var(--bs-border-color);
+            border-radius: 8px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+          }
+        `
+    ];
 
     static get properties() {
         return {
+            // input properties
             type: {type: String},
-            size: {type: String},
-            id: {type: String},
             name: {type: String},
-            width: {type: String},
-            label: {type: String},
-            feedback: {type: String},
-            feedbackType: {type: String},
-            feedbackVisibleType: {type: String},
-            labelAlign: {type: String},
-            labelWidth: {type: String},
-            labelTextAlign: {type: String},
-            required: {type: Boolean},
+            size: {type: String},
             disabled: {type: Boolean},
             readonly: {type: Boolean},
             value: {type: String},
@@ -111,9 +54,8 @@ class LInput extends LitParents {
         };
     }
 
-
     render() {
-        let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
+        let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         return html`
             <l-input-container
@@ -128,9 +70,9 @@ class LInput extends LitParents {
                         slot="label"
                         label="${ifDefined(this.label)}"
                         id="${this.id}"
-                        labelAlign="${ifDefined(this.labelAlign)}"
-                        labelWidth="${ifDefined(this.labelWidth)}"
-                        labelTextAlign="${ifDefined(this.labelTextAlign)}"
+                        label-align="${ifDefined(this['label-align'])}"
+                        label-width="${ifDefined(this['label-width'])}"
+                        label-text-align="${ifDefined(this['label-text-align'])}"
                         required="${ifDefined(this.required)}"
                 >
 
@@ -162,11 +104,11 @@ class LInput extends LitParents {
             </l-input-container>
             <l-feedback
                     feedback="${ifDefined(this.feedback)}"
-                    feedbackType="${ifDefined(this.feedbackType)}"
+                    feedback-type="${ifDefined(this['feedback-type'])}"
                     width="${ifDefined(this.width)}"
-                    labelAlign="${ifDefined(this.labelAlign)}"
-                    leftMargin="${ifDefined(this.labelWidth)}"
-                    ?hidden="${this.feedbackVisibleType !== 'visible'}"
+                    label-align="${ifDefined(this['label-align'])}"
+                    left-margin="${ifDefined(this['label-width'])}"
+                    ?hidden="${this['feedback-visible-type'] !== 'visible'}"
             >
 
             </l-feedback>

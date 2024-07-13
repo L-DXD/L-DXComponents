@@ -3,6 +3,7 @@ import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 
+
 export default {
     title: 'Components/Input',
     tags: ['autodocs'],
@@ -34,7 +35,7 @@ export default {
                 subcategory: "text",
             }
         },
-        labelAlign: {
+        'label-align': {
             control: {type: 'select'},
             options: ['left', 'top'],
             table: {
@@ -43,17 +44,17 @@ export default {
                 subcategory: "text"
             }
         },
-        labelWidth: {
+        'label-width': {
             control: 'text'
-            , description: 'Sets the width of the label (only visible when labelAlign is "left")'
+            , description: 'Sets the width of the label (only visible when label-align is "left")'
             , table: {
                 category: "attribures",
                 defaultValue: {summary: 'auto'},
                 subcategory: "text",
             }
-            , if: {arg: 'labelAlign', eq: 'left'},
+            , if: {arg: 'label-align', eq: 'left'},
         },
-        labelTextAlign: {
+        'label-text-align': {
             control: {type: 'select'},
             options: ['left', 'right'],
             table: {
@@ -61,7 +62,7 @@ export default {
                 defaultValue: {summary: 'left'},
                 subcategory: "text"
             }
-            , if: {arg: 'labelAlign', eq: 'left'},
+            , if: {arg: 'label-align', eq: 'left'},
         },
         feedback: {
             table: {
@@ -69,7 +70,7 @@ export default {
                 subcategory: "text",
             }
         },
-        feedbackType: {
+        'feedback-type': {
             control: {type: 'select'},
             options: ['normal', 'hint', 'error'],
             table: {
@@ -78,7 +79,7 @@ export default {
                 subcategory: "text"
             }
         },
-        feedbackVisibleType: {
+        'feedback-visible-type': {
             control: {type: 'select'},
             options: ['none', 'visible', 'valid', 'invalid'],
             table: {
@@ -211,12 +212,12 @@ const Template = (args) => {
                 type=${ifDefined(args.type)}
                 size=${ifDefined(args.size)}
                 label=${ifDefined(args.label)}
-                labelAlign=${ifDefined(args.labelAlign)}
-                labelWidth=${ifDefined(args.labelWidth)}
-                labelTextAlign=${ifDefined(args.labelTextAlign)}
+                label-align=${ifDefined(args['label-align'])}
+                label-width=${ifDefined(args['label-width'])}
+                label-text-align=${ifDefined(args['label-text-align'])}
                 feedback=${ifDefined(args.feedback)}
-                feedbackType=${ifDefined(args.feedbackType)}
-                feedbackVisibleType=${ifDefined(args.feedbackVisibleType)}
+                feedback-type=${ifDefined(args['feedback-type'])}
+                feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 width=${ifDefined(args.width)}
@@ -239,11 +240,12 @@ InputWithTopLabelAndFeedback.args = {
     name: 'name',
     width: '100%',
     label: 'label',
-    labelAlign: 'top',
-    labelWidth: 'auto',
-    labelTextAlign: 'left',
+    'label-align': 'top',
+    'label-width': 'auto',
+    'label-text-align': 'left',
     feedback: 'feedback',
-    feedbackType: 'normal',
+    'feedback-type': 'normal',
+    'feedback-visible-type': 'visible',
     required: false,
     disabled: false,
     readonly: false,
@@ -256,10 +258,12 @@ InputWithLeftLabelAndFeedback.args = {
     name: 'name',
     width: 'auto',
     label: 'label : ',
-    labelAlign: 'left',
-    labelWidth: '50px',
-    labelTextAlign: 'left',
+    'label-align': 'left',
+    'label-width': '50px',
+    'label-text-align': 'left',
     feedback: 'feedback',
+    'feedback-type': 'normal',
+    'feedback-visible-type': 'visible',
     required: false,
     disabled: false,
     readonly: false,
@@ -271,7 +275,7 @@ SimpleInput.args = {
     type: 'text',
     id: 'input01',
     name: 'name',
-    labelAlign: 'top',
+    'label-align': 'top',
     required: false,
     disabled: false,
     readonly: false,
@@ -284,12 +288,12 @@ InputRequireValidity.args = {
     name: 'name',
     width: '100%',
     label: 'label',
-    labelAlign: 'top',
-    labelWidth: 'auto',
-    labelTextAlign: 'left',
+    'label-align': 'top',
+    'label-width': 'auto',
+    'label-text-align': 'left',
     feedback: '필수 값 입니다.',
-    feedbackType: 'error',
-    feedbackVisibleType: 'invalid',
+    'feedback-type': 'error',
+    'feedback-visible-type': 'invalid',
     required: true,
     disabled: false,
     readonly: false,
@@ -302,12 +306,12 @@ InputPatternValidity.args = {
     name: 'name',
     width: '100%',
     label: 'Phone',
-    labelAlign: 'top',
-    labelWidth: 'auto',
-    labelTextAlign: 'left',
+    'label-align': 'top',
+    'label-width': 'auto',
+    'label-text-align': 'left',
     feedback: 'invalid pattern',
-    feedbackType: 'error',
-    feedbackVisibleType: 'invalid',
+    'feedback-type': 'error',
+    'feedback-visible-type': 'invalid',
     pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
     required: false,
     disabled: false,
@@ -321,12 +325,12 @@ InputPatternAndRequireValidity.args = {
     name: 'name',
     width: '100%',
     label: 'Phone',
-    labelAlign: 'top',
-    labelWidth: 'auto',
-    labelTextAlign: 'left',
+    'label-align': 'top',
+    'label-width': 'auto',
+    'label-text-align': 'left',
     feedback: 'invalid value',
-    feedbackType: 'error',
-    feedbackVisibleType: 'invalid',
+    'feedback-type': 'error',
+    'feedback-visible-type': 'invalid',
     pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
     required: true,
     disabled: false,
@@ -335,14 +339,14 @@ InputPatternAndRequireValidity.args = {
 
 const sizeTemplate = (args) => {
     return html`
-        <div class="card-body">
-            <div class="row">
-                <l-input label="default size" value="default"></l-input>
-                <l-input size='large' label="large size" value="large"></l-input>
-                <l-input size='small' label="small size" value="small"></l-input>
-            </div>
-        </div>
+        <l-input label="default size" value="default"></l-input>
 
+        <div style="margin: 16px"></div>
+
+        <l-input size='large' label="large size" value="large"></l-input>
+        <div style="margin: 16px"></div>
+
+        <l-input size='small' label="small size" value="small"></l-input>
     `
 }
 

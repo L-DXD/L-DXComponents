@@ -7,23 +7,21 @@ class InputContainer extends LitElement {
         [
 
             // component css
-            , css`
+            css`
+              .container {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+              }
 
-
-          .container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-          }
-
-        `
+            `
         ];
 
     static get properties() {
         return {
             class: {type: String},
             width: {type: String},
-            labelAlign: {type: String},
+            'label-align': {type: String},
         };
     }
 

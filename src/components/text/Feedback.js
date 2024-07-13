@@ -84,15 +84,15 @@ class LFeedback extends LitElement {
     static get properties() {
         return {
             feedback: {type: String},
-            feedbackType: {type: String},
+            'feedback-type': {type: String},
             width: {type: String},
-            labelAlign: {type: String},
-            leftMargin: {type: String},
+            'label-align': {type: String},
+            'left-margin': {type: String},
         };
     }
 
     render() {
-        let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
+        let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         const feedbackHtml = {
                 'normal': html`<div class="valid-feedback">${this.feedback}</div>`,
@@ -104,11 +104,11 @@ class LFeedback extends LitElement {
         return html`
             <div
                  style="
-                    padding-left: calc(${this.leftMargin} + ${isLabelLeft ? `15px` : '0px'})
+                    padding-left: calc(${this['left-margin']} + ${isLabelLeft ? `15px` : '0px'})
                     ;width: ${this.width ? this.width : 'auto'};
                 "
             >
-                    ${feedbackHtml[this.feedbackType]}
+                    ${feedbackHtml[this['feedback-type']]}
             </div>
         `
     }

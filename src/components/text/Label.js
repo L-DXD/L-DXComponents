@@ -52,9 +52,9 @@ class LLabel extends LitElement {
         return {
             label: {type: String},
             id: {type: String},
-            labelAlign: {type: String},
-            labelWidth: {type: String},
-            labelTextAlign: {type: String},
+            'label-align': {type: String},
+            'label-width': {type: String},
+            'label-text-align': {type: String},
             required: {type: String},
         };
     }
@@ -62,15 +62,15 @@ class LLabel extends LitElement {
     render() {
         if (!this.label)
             return '';
-        let isLabelLeft = (this.labelAlign && this.labelAlign == 'left');
+        let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         return html`
             <label
                     class="${(isLabelLeft && this.label) ? 'form-left-label' : 'form-label'}"
                     for="${this.id}"
                     style="
-                        width: ${this.labelWidth || 'auto'};
-                        text-align: ${this.labelTextAlign || 'left'}
+                        width: ${this['label-width'] || 'auto'};
+                        text-align: ${this['label-text-align'] || 'left'}
                     "
             >
                 ${this.required == 'true'
