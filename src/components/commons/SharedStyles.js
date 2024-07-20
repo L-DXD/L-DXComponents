@@ -511,7 +511,7 @@ class SharedStyles {
             }
 
             .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-                --bs-gutter-x: 20px;
+                //--bs-gutter-x: 20px;
                 --bs-gutter-y: 0;
                 width: 100%;
                 padding-right: calc(var(--bs-gutter-x) * .5);

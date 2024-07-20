@@ -28,8 +28,8 @@ class InputContainer extends LitElement {
     render() {
         return html`
             <div
-                    class="${this.class}"
-                    style="width: ${this.width ? this.width : 'auto'}"
+                    class="${this['class']}"
+                    style="width: ${this['width'] ? this['width'] : 'auto'}"
             >
                 <slot name="label"></slot>
                 <slot name="input"></slot>

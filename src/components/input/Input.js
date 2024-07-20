@@ -8,8 +8,9 @@ import {SharedStyles} from "../commons/SharedStyles.js";
 import {TextStyles} from "../commons/TextStyles.js";
 import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
+import {customElement, property, eventOptions, query} from 'lit/decorators.js';
 
-
+// @customElement('l-input')
 class LInput extends LitParents {
 
     constructor() {
@@ -64,48 +65,48 @@ class LInput extends LitParents {
                                 'container': isLabelLeft
                             })
                     }"
-                    width="${ifDefined(this.width)}"
+                    width="${ifDefined(this['width'])}"
             >
                 <l-label
                         slot="label"
-                        label="${ifDefined(this.label)}"
-                        id="${this.id}"
+                        label="${ifDefined(this['label'])}"
+                        id="${this['id']}"
                         label-align="${ifDefined(this['label-align'])}"
                         label-width="${ifDefined(this['label-width'])}"
                         label-text-align="${ifDefined(this['label-text-align'])}"
-                        required="${ifDefined(this.required)}"
+                        required="${ifDefined(this['required'])}"
                 >
 
                 </l-label>
                 <input
                         slot="input"
-                        type="${this.type === 'planText' ? 'text' : this.type}"
+                        type="${this['type'] === 'planText' ? 'text' : this['type']}"
                         class="${
                                 classMap({
                                     'form-control': !isLabelLeft
                                     , 'form-left-control': isLabelLeft
-                                    , 'form-control-plaintext': this.type === 'planText'
-                                    , 'form-control-lg': this.size === 'large'
-                                    , 'form-control-sm': this.size === 'small'
+                                    , 'form-control-plaintext': this['type'] === 'planText'
+                                    , 'form-control-lg': this['size'] === 'large'
+                                    , 'form-control-sm': this['size'] === 'small'
                                 })
                         }"
-                        id="${ifDefined(this.id)}"
-                        name="${ifDefined(this.name)}"
-                        minlength="${ifDefined(this.minlength)}"
-                        maxlength="${ifDefined(this.maxlength)}"
-                        ?required=${this.required}
-                        ?disabled=${this.disabled}
-                        ?readonly=${this.readonly}
-                        placeholder="${ifDefined(this.placeholder)}"
-                        pattern="${ifDefined(this.pattern)}"
-                        value="${ifDefined(this.value)}"
-                        @blur="${this.validate}"
+                        id="${ifDefined(this['id'])}"
+                        name="${ifDefined(this['name'])}"
+                        minlength="${ifDefined(this['minlength'])}"
+                        maxlength="${ifDefined(this['maxlength'])}"
+                        ?required=${this['required']}
+                        ?disabled=${this['disabled']}
+                        ?readonly=${this['readonly']}
+                        placeholder="${ifDefined(this['placeholder'])}"
+                        pattern="${ifDefined(this['pattern'])}"
+                        value="${ifDefined(this['value'])}"
+                        @blur="${this['validate']}"
                 >
             </l-input-container>
             <l-feedback
-                    feedback="${ifDefined(this.feedback)}"
+                    feedback="${ifDefined(this['feedback'])}"
                     feedback-type="${ifDefined(this['feedback-type'])}"
-                    width="${ifDefined(this.width)}"
+                    width="${ifDefined(this['width'])}"
                     label-align="${ifDefined(this['label-align'])}"
                     left-margin="${ifDefined(this['label-width'])}"
                     ?hidden="${this['feedback-visible-type'] !== 'visible'}"

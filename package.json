@@ -16,6 +16,7 @@
     "@storybook/addon-essentials": "^8.1.10",
     "@storybook/addon-links": "^8.1.10",
     "@storybook/blocks": "^8.1.10",
+    "@storybook/builder-vite": "^8.2.4",
     "@storybook/test": "^8.1.10",
     "@storybook/web-components": "^8.1.10",
     "@storybook/web-components-vite": "^8.1.10",

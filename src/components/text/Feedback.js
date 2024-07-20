@@ -95,9 +95,9 @@ class LFeedback extends LitElement {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         const feedbackHtml = {
-                'normal': html`<div class="valid-feedback">${this.feedback}</div>`,
-                'hint': html`<div class="form-group"><small class="form-hint form-text text-muted">${this.feedback}</small></div>`,
-                'error': html`<div class="invalid-feedback">${this.feedback}</div>`
+                'normal': html`<div class="valid-feedback">${this['feedback']}</div>`,
+                'hint': html`<div class="form-group"><small class="form-hint form-text text-muted">${this['feedback']}</small></div>`,
+                'error': html`<div class="invalid-feedback">${this['feedback']}</div>`
             }
         ;
 
@@ -105,10 +105,10 @@ class LFeedback extends LitElement {
             <div
                  style="
                     padding-left: calc(${this['left-margin']} + ${isLabelLeft ? `15px` : '0px'})
-                    ;width: ${this.width ? this.width : 'auto'};
+                    ;width: ${this['width'] ? this['width'] : 'auto'};
                 "
             >
-                    ${feedbackHtml[this['feedback-type']]}
+                ${feedbackHtml[this['feedback-type']]}
             </div>
         `
     }

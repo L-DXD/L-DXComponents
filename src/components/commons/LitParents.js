@@ -63,7 +63,7 @@ class LitParents extends LitElement {
         const value = this.getValue().trim();
         const feedbackElement = this.shadowRoot.querySelector('l-feedback');
         const inputElement = this.shadowRoot.querySelector(this.selector);
-        const isValid = this.isValid(value, this.pattern, this.required);
+        const isValid = this.isValid(value, this['pattern'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
         inputElement.classList.toggle('is-invalid', !isValid); // Toggle 'is-invalid' based on validity

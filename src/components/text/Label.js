@@ -60,24 +60,24 @@ class LLabel extends LitElement {
     }
 
     render() {
-        if (!this.label)
+        if (!this['label'])
             return '';
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         return html`
             <label
-                    class="${(isLabelLeft && this.label) ? 'form-left-label' : 'form-label'}"
-                    for="${this.id}"
+                    class="${(isLabelLeft && this['label']) ? 'form-left-label' : 'form-label'}"
+                    for="${this['id']}"
                     style="
                         width: ${this['label-width'] || 'auto'};
                         text-align: ${this['label-text-align'] || 'left'}
                     "
             >
-                ${this.required == 'true'
+                ${this['required'] == 'true'
                         ? (isLabelLeft
-                                ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this.label}`
-                                : html`${this.label}<span style="color: #df1414;margin-left: 2px">*</span>`)
-                        : this.label}
+                                ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this['label']}`
+                                : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
+                        : this['label']} 
             </label>
         `
     }
