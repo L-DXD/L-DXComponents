@@ -1,7 +1,7 @@
 // vite.config.js
 import { fileURLToPath, URL } from 'node:url';
-
 import { defineConfig } from 'vite';
+import babel from '@rollup/plugin-babel';
 
 export default defineConfig({
 
@@ -39,4 +39,11 @@ export default defineConfig({
             }
         }
     },
+    plugins: [
+        babel({
+            babelHelpers: 'bundled',
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
+            include: ['src/**/*'],
+        })
+    ]
 });

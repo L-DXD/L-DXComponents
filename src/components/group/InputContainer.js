@@ -1,7 +1,9 @@
 import {css, html, LitElement} from 'lit';
 import {SharedStyles} from "@/components/commons/SharedStyles.js";
+import {customElement} from "lit/decorators.js";
 
-class InputContainer extends LitElement {
+@customElement('l-input-container')
+export class InputContainer extends LitElement {
 
     static styles =
         [
@@ -37,6 +39,3 @@ class InputContainer extends LitElement {
         `
     }
 }
-
-customElements.define('l-input-container', InputContainer);
-export {InputContainer};

@@ -1,8 +1,10 @@
 import {css, html, LitElement} from 'lit';
 import '../commons/common.css';
+import {customElement} from "lit/decorators.js";
 
 
-class LLabel extends LitElement {
+@customElement('l-label')
+export class LLabel extends LitElement {
     static styles =
         [
             // component css
@@ -82,6 +84,3 @@ class LLabel extends LitElement {
         `
     }
 }
-
-customElements.define('l-label', LLabel);
-export {LLabel};

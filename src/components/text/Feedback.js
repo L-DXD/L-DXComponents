@@ -2,8 +2,10 @@ import {css, html, LitElement} from 'lit';
 import '../commons/common.css';
 import {classMap} from "lit/directives/class-map.js";
 import {SharedStyles as TextStyles} from "@/components/commons/SharedStyles.js";
+import {customElement} from "lit/decorators.js";
 
-class LFeedback extends LitElement {
+@customElement('l-feedback')
+export class LFeedback extends LitElement {
     static styles =
         [
             // text css
@@ -113,6 +115,3 @@ class LFeedback extends LitElement {
         `
     }
 }
-
-customElements.define('l-feedback', LFeedback);
-export {LFeedback};
