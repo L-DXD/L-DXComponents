@@ -1,24 +1,20 @@
 import {css, html, LitElement, render} from 'lit';
-import {LLabel} from '../text/Label.js';
 import {LFeedback} from "../text/Feedback.js";
-import {InputContainer} from "../group/InputContainer.js";
+import {InputContainer} from "../container/InputContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import '../commons/common.css';
 import {SharedStyles} from "../commons/SharedStyles.js";
 import {TextStyles} from "../commons/TextStyles.js";
 import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {customElement, property, eventOptions, query} from 'lit/decorators.js';
+import {customElement} from 'lit/decorators.js';
 
 @customElement('l-input')
-class LInput extends LitParents {
-
-
+class LInput extends InputContainer {
 
     constructor() {
         super();
         super.setSelector('input');
-
     }
 
     static styles = [
@@ -62,24 +58,18 @@ class LInput extends LitParents {
 
         return html`
             <l-input-container
-                    class="${
-                            classMap({
-                                'container': isLabelLeft
-                            })
-                    }"
                     width="${ifDefined(this['width'])}"
+                    id="${this['id']}"
+                    label="${ifDefined(this['label'])}"
+                    label-align="${ifDefined(this['label-align'])}"
+                    label-width="${ifDefined(this['label-width'])}"
+                    label-text-align="${ifDefined(this['label-text-align'])}"
+                    required="${ifDefined(this['required'])}"
+                    feedback="${ifDefined(this['feedback'])}"
+                    feedback-type="${ifDefined(this['feedback-type'])}"
+                    feedback-visible-type="${ifDefined(this['feedback-visible-type'])}"
             >
-                <l-label
-                        slot="label"
-                        label="${ifDefined(this['label'])}"
-                        id="${this['id']}"
-                        label-align="${ifDefined(this['label-align'])}"
-                        label-width="${ifDefined(this['label-width'])}"
-                        label-text-align="${ifDefined(this['label-text-align'])}"
-                        required="${ifDefined(this['required'])}"
-                >
-
-                </l-label>
+                
                 <input
                         slot="input"
                         type="${this['type'] === 'planText' ? 'text' : this['type']}"
@@ -105,16 +95,7 @@ class LInput extends LitParents {
                         @blur="${this['validate']}"
                 >
             </l-input-container>
-            <l-feedback
-                    feedback="${ifDefined(this['feedback'])}"
-                    feedback-type="${ifDefined(this['feedback-type'])}"
-                    width="${ifDefined(this['width'])}"
-                    label-align="${ifDefined(this['label-align'])}"
-                    left-margin="${ifDefined(this['label-width'])}"
-                    ?hidden="${this['feedback-visible-type'] !== 'visible'}"
-            >
 
-            </l-feedback>
         `;
     }
 }

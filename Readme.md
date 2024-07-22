@@ -10,7 +10,11 @@ customElements.define('l-feedback', LFeedback);
 @customElement('l-feedback')
 ```
 
+### 계층구조
+LitParents.js > InputContainer.js > Input.js
 
+
+### lit-html 함수
 ifDefined  
 AttributeParts의 경우 값이 정의된 경우 속성을 설정하고 값이 정의되지 않은 경우 속성을 제거합니다.
 

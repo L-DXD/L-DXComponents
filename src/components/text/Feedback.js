@@ -12,72 +12,72 @@ export class LFeedback extends LitElement {
             TextStyles.styles,
             // component css
             css`
-                .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-                    margin-left: calc(var(--bs-border-width) * -1);
-                    border-top-left-radius: 0;
-                    border-bottom-left-radius: 0
-                }
+              .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+                margin-left: calc(var(--bs-border-width) * -1);
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0
+              }
 
-                .valid-feedback {
-                    //display: none;
-                    width: 100%;
-                    margin-top: .25rem;
-                    font-size: .875em;
-                    color: var(--bs-success-text)
-                }
+              .valid-feedback {
+                //display: none;
+                width: 100%;
+                margin-top: .25rem;
+                font-size: .875em;
+                color: var(--bs-success-text)
+              }
 
-                .is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
-                    display: block;
-                }
+              .is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
+                display: block;
+              }
 
-                .form-check-inline .form-check-input ~ .valid-feedback {
-                    margin-left: .5em
-                }
+              .form-check-inline .form-check-input ~ .valid-feedback {
+                margin-left: .5em
+              }
 
-                .invalid-feedback {
-                    //display: none;
-                    width: 100%;
-                    margin-top: .25rem;
-                    font-size: .875em;
-                    color: var(--bs-danger)
-                }
+              .invalid-feedback {
+                //display: none;
+                width: 100%;
+                margin-top: .25rem;
+                font-size: .875em;
+                color: var(--bs-danger)
+              }
 
-                .is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
-                    display: block
-                }
+              .is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
+                display: block
+              }
 
-                .form-check-inline .form-check-input ~ .invalid-feedback {
-                    margin-left: .5em
-                }
+              .form-check-inline .form-check-input ~ .invalid-feedback {
+                margin-left: .5em
+              }
 
 
-                .form-group {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.2rem;
-                    width: 100%;
-                }
+              .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+                width: 100%;
+              }
 
-                .form-group [class^=form-hint] {
-                    margin-top: .25rem;
-                    color: var(--bs-gray-500);
-                    padding-left: calc(2rem + 0.4rem);
-                }
+              .form-group [class^=form-hint] {
+                margin-top: .25rem;
+                color: var(--bs-gray-500);
+                padding-left: calc(2rem + 0.4rem);
+              }
 
-                .form-group [class^=form-hint]::before {
-                    display: inline-flex;
-                    width: 1rem;
-                    height: 1rem;
-                    flex-shrink: 0;
-                    flex-grow: 0;
-                    content: "";
-                    margin-left: calc((2rem + 0.4rem) * -1);
-                    margin-right: 2px;
-                    vertical-align: top;
+              .form-group [class^=form-hint]::before {
+                display: inline-flex;
+                width: 1rem;
+                height: 1rem;
+                flex-shrink: 0;
+                flex-grow: 0;
+                content: "";
+                margin-left: calc((2rem + 0.4rem) * -1);
+                margin-right: 2px;
+                vertical-align: top;
 
-                    background: url(/assets/ico_hint_20.svg) no-repeat center;
-                    background-size: contain;
-                }
+                background: url(/assets/ico_hint_20.svg) no-repeat center;
+                background-size: contain;
+              }
 
             `
         ]
@@ -94,6 +94,7 @@ export class LFeedback extends LitElement {
     }
 
     render() {
+        console.log(this['feedback']);
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         const feedbackHtml = {

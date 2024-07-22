@@ -7,7 +7,7 @@ export default {
     title: 'Components/Input',
     tags: ['autodocs'],
     component: 'l-input',
-    decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
+    // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
         type: {
             control: {type: 'select'},
