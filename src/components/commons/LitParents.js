@@ -18,6 +18,10 @@ class LitParents extends LitElement {
         this.selector = selector;
     }
 
+    get getSelector() {
+        return this.selector;
+    }
+
     getValue() {
         const inputElement = this.shadowRoot.querySelector(this.selector);
         return inputElement ? inputElement.value : null;

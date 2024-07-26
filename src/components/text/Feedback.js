@@ -94,7 +94,6 @@ export class LFeedback extends LitElement {
     }
 
     render() {
-        console.log(this['feedback']);
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         const feedbackHtml = {
