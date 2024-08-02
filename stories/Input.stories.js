@@ -106,6 +106,24 @@ export default {
                 subcategory: "text",
             }
         },
+        'valid-trigger-type': {
+            control: {type: 'select'},
+            options: ['blur', 'change', 'focus'],
+            table: {
+                category: "attribures",
+                subcategory: "validate",
+                defaultValue: {summary: 'blur'},
+            }
+        },
+        'valid-length-type': {
+            control: {type: 'select'},
+            options: ['length', 'byte'],
+            table: {
+                category: "attribures",
+                subcategory: "validate",
+                defaultValue: {summary: 'length'},
+            }
+        },
         maxlength: {
             control: {type: 'number'},
             table: {

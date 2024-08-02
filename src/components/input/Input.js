@@ -53,6 +53,12 @@ class LInput extends InputContainer {
         };
     }
 
+    createRenderRoot() {
+        const root = super.createRenderRoot();
+        console.log('root', root);
+        return root
+    }
+
     render() {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
@@ -69,7 +75,6 @@ class LInput extends InputContainer {
                     feedback-type="${ifDefined(this['feedback-type'])}"
                     feedback-visible-type="${ifDefined(this['feedback-visible-type'])}"
             >
-                
                 <input
                         slot="input"
                         type="${this['type'] === 'planText' ? 'text' : this['type']}"
@@ -92,7 +97,7 @@ class LInput extends InputContainer {
                         placeholder="${ifDefined(this['placeholder'])}"
                         pattern="${ifDefined(this['pattern'])}"
                         value="${ifDefined(this['value'])}"
-                        @blur="${this['validate']}"
+                        @blur="${super.validate}"
                 >
             </l-input-container>
 

@@ -61,7 +61,6 @@ export class InputContainer extends LitParents {
 
     static get properties() {
         return {
-
             id: {type: String},
             class: {type: String},
             width: {type: String},

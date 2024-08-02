@@ -112,14 +112,6 @@ export default {
                 subcategory: "validate",
             }
         },
-        pattern: {
-            control: {type: 'text'},
-            table: {
-                category: "attribures",
-                subcategory: "validate",
-            },
-            description: "ex) [0-9]{3}-[0-9]{4}-[0-9]{4}",
-        },
 
         required: {
             control: 'boolean',
@@ -286,41 +278,6 @@ InputRequireValidity.args = {
     readonly: false,
 };
 
-export const InputPatternValidity = Template.bind({});
-InputPatternValidity.args = {
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid pattern',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternAndRequireValidity = Template.bind({});
-InputPatternAndRequireValidity.args = {
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid value',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: true,
-    disabled: false,
-    readonly: false,
-};
 
 const sizeTemplate = (args) => {
     return html`

@@ -52,9 +52,11 @@ class LTextarea extends InputContainer {
         };
     }
 
+
     render() {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
+        // type, pattern 삭제
         return html`
             <l-input-container
                     width="${ifDefined(this['width'])}"
@@ -88,10 +90,8 @@ class LTextarea extends InputContainer {
                         ?disabled=${this['disabled']}
                         ?readonly=${this['readonly']}
                         placeholder="${ifDefined(this['placeholder'])}"
-                        pattern="${ifDefined(this['pattern'])}"
-                        value="${ifDefined(this['value'])}"
-                        @blur="${this['validate']}"
-                ></textarea>
+                        @blur="${super.validate}"
+                >${ifDefined(this['value'])}</textarea>
             </l-input-container>
 
         `;
