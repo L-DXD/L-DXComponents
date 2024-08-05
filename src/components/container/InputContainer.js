@@ -24,9 +24,26 @@ export class InputContainer extends LitParents {
                 align-items: center;
                 margin-bottom: 10px;
               }
-
             `
         ];
+
+
+    getByteLength(str) {
+        const contents = str;
+        let str_character;
+        let int_char_count = 0;
+        let int_contents_length = contents.length;
+
+        for (let k = 0; k < int_contents_length; k++) {
+            str_character = contents.charAt(k);
+            if (escape(str_character).length > 4)
+                int_char_count += 2;
+            else
+                int_char_count++;
+        }
+
+        return int_char_count;
+    }
 
     isValid(value, pattern, required) {
         const regex = new RegExp(pattern);
@@ -36,22 +53,48 @@ export class InputContainer extends LitParents {
         } else return !((regex && value) && !regex.test(value));
     }
 
+
+
+
+    // change 이벤트 핸들러
+    createChangeHandler(maxBytes) {
+        if(!(((typeof maxBytes) == 'string') && parseInt(maxBytes) == maxBytes)) return;
+
+        return function handleChange(event) {
+            const input = event.target;
+            let value = input.value;
+            let byteLength = this.getByteLength(value);
+
+            if (byteLength > maxBytes) {
+                // 입력된 내용이 최대 바이트 수를 초과한 경우 자르기
+                let cutIndex = value.length;
+                while (byteLength > maxBytes && cutIndex > 0) {
+                    cutIndex--;
+                    byteLength = this.getByteLength(value.substring(0, cutIndex));
+                }
+                input.value = value.substring(0, cutIndex);
+            }
+        };
+    }
+
+
+
     validate() {
         const value = this.getValue().trim();
         const $container = this.shadowRoot.querySelector('l-input-container');
-        const feedbackElement = $container.shadowRoot.querySelector('l-feedback');
-        const inputElement = this.shadowRoot.querySelector(this.selector);
-        const isValid = this.isValid(value, this['pattern'], this['required']);
+        const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
+        const $inputElement = this.shadowRoot.querySelector(this.selector);
+        const isFlag = this.isValid(value, this['pattern'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
-        inputElement.classList.toggle('is-invalid', !isValid); // Toggle 'is-invalid' based on validity
+        $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
 
         if (feedbackVisibleType == 'visible') {
             return;
         }
-        feedbackElement.setAttribute('hidden', true); // Assume hidden first
-        if ((isValid && feedbackVisibleType == 'valid') || (!isValid && feedbackVisibleType == 'invalid')) {
-            feedbackElement.removeAttribute('hidden');
+        $feedbackElement.setAttribute('hidden', true); // Assume hidden first
+        if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
+            $feedbackElement.removeAttribute('hidden');
         }
     }
 
@@ -104,6 +147,7 @@ export class InputContainer extends LitParents {
                     >
                     </l-label>
                     <slot name="input"></slot>
+                    <slot name="count"></slot>
                 </div>
 
             </div>
@@ -116,6 +160,7 @@ export class InputContainer extends LitParents {
                     left-margin="${ifDefined(this['label-width'])}"
                     ?hidden="${this['feedback-visible-type'] !== 'visible'}"
             >
+                
 
             </l-feedback>
         `

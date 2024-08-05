@@ -1,4 +1,4 @@
-import {css, html, LitElement, render} from 'lit';
+import {css, html, LitElement, nothing, render} from 'lit';
 import {LFeedback} from "../text/Feedback.js";
 import {InputContainer} from "../container/InputContainer.js";
 import {classMap} from "lit/directives/class-map.js";
@@ -50,17 +50,15 @@ class LInput extends InputContainer {
             placeholder: {type: String},
             maxlength: {type: String},
             minlength: {type: String},
+            'valid-length-type': {type: String},
         };
     }
 
-    createRenderRoot() {
-        const root = super.createRenderRoot();
-        console.log('root', root);
-        return root
-    }
 
     render() {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
+
+
 
         return html`
             <l-input-container
@@ -89,8 +87,10 @@ class LInput extends InputContainer {
                         }"
                         id="${ifDefined(this['id'])}"
                         name="${ifDefined(this['name'])}"
-                        minlength="${ifDefined(this['minlength'])}"
-                        maxlength="${ifDefined(this['maxlength'])}"
+
+                        maxlength="${(this['valid-length-type'] != 'byte' ? ifDefined(this['maxlength']) : null) ?? nothing}"
+                        minlength="${(this['valid-length-type'] != 'byte' ? ifDefined(this['minlength']) : null) ?? nothing}"
+                        
                         ?required=${this['required']}
                         ?disabled=${this['disabled']}
                         ?readonly=${this['readonly']}
@@ -98,6 +98,7 @@ class LInput extends InputContainer {
                         pattern="${ifDefined(this['pattern'])}"
                         value="${ifDefined(this['value'])}"
                         @blur="${super.validate}"
+                        @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
                 >
             </l-input-container>
 

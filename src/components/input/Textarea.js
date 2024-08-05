@@ -1,4 +1,4 @@
-import {css, html, LitElement, render} from 'lit';
+import {css, html, LitElement, nothing, render} from 'lit';
 import {LFeedback} from "../text/Feedback.js";
 import {InputContainer} from "../container/InputContainer.js";
 import {classMap} from "lit/directives/class-map.js";
@@ -49,6 +49,7 @@ class LTextarea extends InputContainer {
             placeholder: {type: String},
             maxlength: {type: String},
             minlength: {type: String},
+            'valid-length-type': {type: String},
         };
     }
 
@@ -84,14 +85,18 @@ class LTextarea extends InputContainer {
                         }"
                         id="${ifDefined(this['id'])}"
                         name="${ifDefined(this['name'])}"
-                        minlength="${ifDefined(this['minlength'])}"
-                        maxlength="${ifDefined(this['maxlength'])}"
+                        
+                        maxlength="${(this['valid-length-type'] != 'byte' ? ifDefined(this['maxlength']) : null) ?? nothing}"
+                        minlength="${(this['valid-length-type'] != 'byte' ? ifDefined(this['minlength']) : null) ?? nothing}"
+                        
                         ?required=${this['required']}
                         ?disabled=${this['disabled']}
                         ?readonly=${this['readonly']}
                         placeholder="${ifDefined(this['placeholder'])}"
                         @blur="${super.validate}"
+                        @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
                 >${ifDefined(this['value'])}</textarea>
+                
             </l-input-container>
 
         `;

@@ -12,72 +12,94 @@ export class LFeedback extends LitElement {
             TextStyles.styles,
             // component css
             css`
-              .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
-                margin-left: calc(var(--bs-border-width) * -1);
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0
-              }
+                .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+                    margin-left: calc(var(--bs-border-width) * -1);
+                    border-top-left-radius: 0;
+                    border-bottom-left-radius: 0
+                }
 
-              .valid-feedback {
-                //display: none;
-                width: 100%;
-                margin-top: .25rem;
-                font-size: .875em;
-                color: var(--bs-success-text)
-              }
+                .valid-feedback {
+                    //display: none;
+                    width: 100%;
+                    margin-top: .25rem;
+                    font-size: .875em;
+                    color: var(--bs-success-text);
+                    flex: 9;
+                    white-space: nowrap; /* 텍스트를 단일 줄로 표시 */
+                    overflow: hidden;    /* 넘치는 내용을 숨김 */
+                    text-overflow: ellipsis; /* 넘치는 부분을 '...'으로 표시 */
+                }
 
-              .is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
-                display: block;
-              }
+                .is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
+                    display: block;
+                }
 
-              .form-check-inline .form-check-input ~ .valid-feedback {
-                margin-left: .5em
-              }
+                .form-check-inline .form-check-input ~ .valid-feedback {
+                    margin-left: .5em
+                }
 
-              .invalid-feedback {
-                //display: none;
-                width: 100%;
-                margin-top: .25rem;
-                font-size: .875em;
-                color: var(--bs-danger)
-              }
+                .invalid-feedback {
+                    //display: none;
+                    width: 100%;
+                    margin-top: .25rem;
+                    font-size: .875em;
+                    color: var(--bs-danger);
+                    flex: 9;
+                    white-space: nowrap; /* 텍스트를 단일 줄로 표시 */
+                    overflow: hidden;    /* 넘치는 내용을 숨김 */
+                    text-overflow: ellipsis; /* 넘치는 부분을 '...'으로 표시 */
+                }
 
-              .is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
-                display: block
-              }
+                .is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
+                    display: block
+                }
 
-              .form-check-inline .form-check-input ~ .invalid-feedback {
-                margin-left: .5em
-              }
+                .form-check-inline .form-check-input ~ .invalid-feedback {
+                    margin-left: .5em
+                }
 
 
-              .form-group {
-                display: flex;
-                flex-direction: column;
-                gap: 1.2rem;
-                width: 100%;
-              }
+                .form-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1.2rem;
+                    width: 100%;
+                    flex: 9;
+                    white-space: nowrap; /* 텍스트를 단일 줄로 표시 */
+                    overflow: hidden;    /* 넘치는 내용을 숨김 */
+                    text-overflow: ellipsis; /* 넘치는 부분을 '...'으로 표시 */
+                }
 
-              .form-group [class^=form-hint] {
-                margin-top: .25rem;
-                color: var(--bs-gray-500);
-                padding-left: calc(2rem + 0.4rem);
-              }
+                .form-group [class^=form-hint] {
+                    margin-top: .25rem;
+                    color: var(--bs-gray-500);
+                    padding-left: calc(2rem + 0.4rem);
+                }
 
-              .form-group [class^=form-hint]::before {
-                display: inline-flex;
-                width: 1rem;
-                height: 1rem;
-                flex-shrink: 0;
-                flex-grow: 0;
-                content: "";
-                margin-left: calc((2rem + 0.4rem) * -1);
-                margin-right: 2px;
-                vertical-align: top;
+                .form-group [class^=form-hint]::before {
+                    display: inline-flex;
+                    width: 1rem;
+                    height: 1rem;
+                    flex-shrink: 0;
+                    flex-grow: 0;
+                    content: "";
+                    margin-left: calc((2rem + 0.4rem) * -1);
+                    margin-right: 2px;
+                    vertical-align: top;
 
-                background: url(/assets/ico_hint_20.svg) no-repeat center;
-                background-size: contain;
-              }
+                    background: url(/assets/ico_hint_20.svg) no-repeat center;
+                    background-size: contain;
+                }
+
+                .textarea-count {
+                    font-size: var(--bs-body-font-size);
+                    width: 100%;
+                    margin-top: .25rem;
+                    margin-bottom: 0rem;
+                    text-align: right;
+                    flex:1;
+                    display: none;
+                }
 
             `
         ]
@@ -107,10 +129,14 @@ export class LFeedback extends LitElement {
             <div
                  style="
                     padding-left: calc(${this['left-margin']} + ${isLabelLeft ? `15px` : '0px'})
-                    ;width: ${this['width'] ? this['width'] : 'auto'};
+                    ;width: ${this['width'] ? this['width'] : 'auto'}
+                    ;display: flex;   
                 "
             >
                 ${feedbackHtml[this['feedback-type']]}
+                <p slot="count" class="textarea-count">
+                    <span class="text-num">0</span><span class="text-num">/100</span>
+                </p>
             </div>
         `
     }

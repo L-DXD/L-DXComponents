@@ -13,17 +13,17 @@ export default {
             control: {type: 'select'},
             options: ['default','large','small'],
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: 'default'}
             }
         },
-        id: {table: {category: "attribures",}},
-        name: {table: {category: "attribures",}},
-        width: {table: {category: "attribures",}},
+        id: {table: {category: "attributes",}},
+        name: {table: {category: "attributes",}},
+        width: {table: {category: "attributes",}},
 
         label: {
             table: {
-                category: "attribures",
+                category: "attributes",
                 subcategory: "text",
             }
         },
@@ -31,7 +31,7 @@ export default {
             control: {type: 'select'},
             options: ['left', 'top'],
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: 'top'},
                 subcategory: "text"
             }
@@ -40,7 +40,7 @@ export default {
             control: 'text'
             , description: 'Sets the width of the label (only visible when label-align is "left")'
             , table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: 'auto'},
                 subcategory: "text",
             }
@@ -50,7 +50,7 @@ export default {
             control: {type: 'select'},
             options: ['left', 'right'],
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: 'left'},
                 subcategory: "text"
             }
@@ -58,7 +58,7 @@ export default {
         },
         feedback: {
             table: {
-                category: "attribures",
+                category: "attributes",
                 subcategory: "text",
             }
         },
@@ -66,7 +66,7 @@ export default {
             control: {type: 'select'},
             options: ['normal', 'hint', 'error'],
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: 'normal'},
                 subcategory: "text"
             }
@@ -75,7 +75,7 @@ export default {
             control: {type: 'select'},
             options: ['none', 'visible', 'valid', 'invalid'],
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: 'none'},
                 subcategory: "text"
             },
@@ -87,28 +87,37 @@ export default {
         placeholder: {
             control: {type: 'text'},
             table: {
-                category: "attribures",
+                category: "attributes",
                 subcategory: "text",
             }
         },
         value: {
             control: {type: 'text'},
             table: {
-                category: "attribures",
+                category: "attributes",
                 subcategory: "text",
+            }
+        },
+        'valid-length-type': {
+            control: {type: 'select'},
+            options: ['length', 'byte'],
+            table: {
+                category: "attributes",
+                subcategory: "validate",
+                defaultValue: {summary: 'length'},
             }
         },
         maxlength: {
             control: {type: 'number'},
             table: {
-                category: "attribures",
+                category: "attributes",
                 subcategory: "validate",
             }
         },
         minlength: {
             control: {type: 'number'},
             table: {
-                category: "attribures",
+                category: "attributes",
                 subcategory: "validate",
             }
         },
@@ -116,7 +125,7 @@ export default {
         required: {
             control: 'boolean',
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: false},
                 subcategory: "validate"
             }
@@ -124,14 +133,14 @@ export default {
         disabled: {
             control: 'boolean',
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: false}
             }
         },
         readonly: {
             control: 'boolean',
             table: {
-                category: "attribures",
+                category: "attributes",
                 defaultValue: {summary: false}
             }
         },
@@ -204,6 +213,7 @@ const Template = (args) => {
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 width=${ifDefined(args.width)}
+                valid-length-type=${ifDefined(args['valid-length-type'])}
                 maxlength=${ifDefined(args.maxlength)}
                 minlength=${ifDefined(args.minlength)}
                 ?required=${args.required}

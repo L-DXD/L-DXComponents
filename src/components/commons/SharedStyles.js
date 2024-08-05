@@ -8,6 +8,8 @@ class SharedStyles {
                 box-sizing: border-box
             }
 
+            
+
             hr {
                 margin: 1rem 0;
                 color: inherit;
