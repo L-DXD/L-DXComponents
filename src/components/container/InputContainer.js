@@ -54,8 +54,6 @@ export class InputContainer extends LitParents {
     }
 
 
-
-
     // change 이벤트 핸들러
     createChangeHandler(maxBytes) {
         if(!(((typeof maxBytes) == 'string') && parseInt(maxBytes) == maxBytes)) return;
@@ -77,8 +75,6 @@ export class InputContainer extends LitParents {
         };
     }
 
-
-
     validate() {
         const value = this.getValue().trim();
         const $container = this.shadowRoot.querySelector('l-input-container');
@@ -87,11 +83,14 @@ export class InputContainer extends LitParents {
         const isFlag = this.isValid(value, this['pattern'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
+        console.log('isFlag : ' + isFlag);
+
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
 
         if (feedbackVisibleType == 'visible') {
             return;
         }
+
         $feedbackElement.setAttribute('hidden', true); // Assume hidden first
         if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
             $feedbackElement.removeAttribute('hidden');

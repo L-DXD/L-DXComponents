@@ -18,23 +18,24 @@ class LInput extends InputContainer {
     }
 
     static styles = [
-        ...super.styles,
-        css`
-          .form-left-control {
-            flex-grow: 1;
-            padding: .375rem .75rem;
-            font-size: .875rem;
-            font-weight: 400;
-            line-height: 1.5;
-            color: var(--bs-body-color);
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            border: var(--bs-border-width) solid var(--bs-border-color);
-            border-radius: 8px;
-            outline: none;
-            transition: all 0.3s ease-in-out;
-          }
-        `
+        ...super.styles
+        // ,
+        // css`
+        //   .form-left-control {
+        //     flex-grow: 1;
+        //     padding: .375rem .75rem;
+        //     font-size: .875rem;
+        //     font-weight: 400;
+        //     line-height: 1.5;
+        //     color: var(--bs-body-color);
+        //     -webkit-appearance: none;
+        //     -moz-appearance: none;
+        //     border: var(--bs-border-width) solid var(--bs-border-color);
+        //     border-radius: 8px;
+        //     outline: none;
+        //     transition: all 0.3s ease-in-out;
+        //   }
+        // `
     ];
 
     static get properties() {
@@ -78,7 +79,7 @@ class LInput extends InputContainer {
                         type="${this['type'] === 'planText' ? 'text' : this['type']}"
                         class="${
                                 classMap({
-                                    'form-control': !isLabelLeft
+                                    'form-control': true
                                     , 'form-left-control': isLabelLeft
                                     , 'form-control-plaintext': this['type'] === 'planText'
                                     , 'form-control-lg': this['size'] === 'large'

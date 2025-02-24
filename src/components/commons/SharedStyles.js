@@ -2282,8 +2282,8 @@ class SharedStyles {
                 padding-bottom: calc(.25rem + var(--bs-border-width));
                 font-size: .765625rem
             }
-            
 
+            /* 기존 form-control 스타일 (공통) */
             .form-control {
                 display: block;
                 width: 100%;
@@ -2292,15 +2292,51 @@ class SharedStyles {
                 font-weight: 400;
                 line-height: 1.5;
                 color: var(--bs-body-color);
-                -webkit-appearance: none;
-                -moz-appearance: none;
                 appearance: none;
                 background-color: var(--bs-component-bg);
                 background-clip: padding-box;
                 border: var(--bs-border-width) solid var(--bs-border-color);
                 border-radius: 8px;
-                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+                transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
             }
+
+            /* form-left-control은 공통 form-control 스타일을 기반으로 추가 속성만 포함 */
+            .form-left-control {
+                text-align: left;  /* 왼쪽 정렬 */
+            }
+            
+            //.form-left-control {
+            //    flex-grow: 1;
+            //    padding: .375rem .75rem;
+            //    font-size: .875rem;
+            //    font-weight: 400;
+            //    line-height: 1.5;
+            //    color: var(--bs-body-color);
+            //    -webkit-appearance: none;
+            //    -moz-appearance: none;
+            //    border: var(--bs-border-width) solid var(--bs-border-color);
+            //    border-radius: 8px;
+            //    outline: none;
+            //    transition: all 0.3s ease-in-out;
+            //}
+            //
+            //.form-control {
+            //    display: block;
+            //    width: 100%;
+            //    padding: .375rem .75rem;
+            //    font-size: .875rem;
+            //    font-weight: 400;
+            //    line-height: 1.5;
+            //    color: var(--bs-body-color);
+            //    -webkit-appearance: none;
+            //    -moz-appearance: none;
+            //    appearance: none;
+            //    background-color: var(--bs-component-bg);
+            //    background-clip: padding-box;
+            //    border: var(--bs-border-width) solid var(--bs-border-color);
+            //    border-radius: 8px;
+            //    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+            //}
 
             @media (prefers-reduced-motion: reduce) {
                 .form-control {
