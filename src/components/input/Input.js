@@ -1,16 +1,12 @@
-import {css, html, LitElement, nothing, render} from 'lit';
-import {LFeedback} from "../text/Feedback.js";
-import {InputContainer} from "../container/InputContainer.js";
+import {html, nothing} from 'lit';
+import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import '../commons/common.css';
-import {SharedStyles} from "../commons/SharedStyles.js";
-import {TextStyles} from "../commons/TextStyles.js";
-import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 
-@customElement('l-input')
-class LInput extends InputContainer {
+@customElement('l-c-input')
+class LInput extends LabelAndFeedContainer {
 
     constructor() {
         super();
@@ -19,23 +15,6 @@ class LInput extends InputContainer {
 
     static styles = [
         ...super.styles
-        // ,
-        // css`
-        //   .form-left-control {
-        //     flex-grow: 1;
-        //     padding: .375rem .75rem;
-        //     font-size: .875rem;
-        //     font-weight: 400;
-        //     line-height: 1.5;
-        //     color: var(--bs-body-color);
-        //     -webkit-appearance: none;
-        //     -moz-appearance: none;
-        //     border: var(--bs-border-width) solid var(--bs-border-color);
-        //     border-radius: 8px;
-        //     outline: none;
-        //     transition: all 0.3s ease-in-out;
-        //   }
-        // `
     ];
 
     static get properties() {
@@ -57,12 +36,11 @@ class LInput extends InputContainer {
 
 
     render() {
+        console.log('render');
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
-
-
         return html`
-            <l-input-container
+            <l-label-feed-container
                     width="${ifDefined(this['width'])}"
                     id="${this['id']}"
                     label="${ifDefined(this['label'])}"
@@ -101,7 +79,7 @@ class LInput extends InputContainer {
                         @blur="${super.validate}"
                         @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
                 >
-            </l-input-container>
+            </l-label-feed-container>
 
         `;
     }

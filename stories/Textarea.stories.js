@@ -4,9 +4,9 @@ import {ifDefined} from 'lit/directives/if-defined.js';
 
 
 export default {
-    title: 'Components/Textarea',
+    title: 'Container Components/Textarea',
     tags: ['autodocs'],
-    component: 'l-textarea',
+    component: 'l-c-textarea',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
         size: {
@@ -201,7 +201,7 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-textarea
+        <l-c-textarea
                 size=${ifDefined(args.size)}
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
@@ -223,7 +223,7 @@ const Template = (args) => {
                 pattern="${ifDefined(args.pattern)}"
                 value="${ifDefined(args.value)}"
         >
-        </l-textarea>`
+        </l-c-textarea>`
 }
 
 export const InputWithTopLabelAndFeedback = Template.bind({});
@@ -291,14 +291,14 @@ InputRequireValidity.args = {
 
 const sizeTemplate = (args) => {
     return html`
-        <l-textarea label="default size" value="default"></l-textarea>
+        <l-c-textarea label="default size" value="default"></l-c-textarea>
 
         <div style="margin: 16px"></div>
 
-        <l-textarea size='large' label="large size" value="large"></l-textarea>
+        <l-c-textarea size='large' label="large size" value="large"></l-c-textarea>
         <div style="margin: 16px"></div>
 
-        <l-textarea size='small' label="small size" value="small"></l-textarea>
+        <l-c-textarea size='small' label="small size" value="small"></l-c-textarea>
     `
 }
 

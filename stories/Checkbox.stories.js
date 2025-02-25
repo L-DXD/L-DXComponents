@@ -7,16 +7,7 @@ export default {
     title: 'Components/Checkbox',
     tags: ['autodocs'],
     component: 'l-checkbox',
-    // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        type: {
-            control: {type: 'select'},
-            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'text'}
-            }
-        },
         size: {
             control: {type: 'select'},
             options: ['default','large','small'],
@@ -28,7 +19,6 @@ export default {
         id: {table: {category: "attributes",}},
         name: {table: {category: "attributes",}},
         width: {table: {category: "attributes",}},
-
         label: {
             table: {
                 category: "attributes",
@@ -37,98 +27,22 @@ export default {
         },
         'label-align': {
             control: {type: 'select'},
-            options: ['left', 'top'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'top'},
-                subcategory: "text"
-            }
-        },
-        'label-width': {
-            control: 'text'
-            , description: 'Sets the width of the label (only visible when label-align is "left")'
-            , table: {
-                category: "attributes",
-                defaultValue: {summary: 'auto'},
-                subcategory: "text",
-            }
-            , if: {arg: 'label-align', eq: 'left'},
-        },
-        'label-text-align': {
-            control: {type: 'select'},
             options: ['left', 'right'],
             table: {
                 category: "attributes",
-                defaultValue: {summary: 'left'},
-                subcategory: "text"
-            }
-            , if: {arg: 'label-align', eq: 'left'},
-        },
-        feedback: {
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        'feedback-type': {
-            control: {type: 'select'},
-            options: ['normal', 'hint', 'error'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'normal'},
-                subcategory: "text"
-            }
-        },
-        'feedback-visible-type': {
-            control: {type: 'select'},
-            options: ['none', 'visible', 'valid', 'invalid'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'none'},
+                defaultValue: {summary: 'right'},
                 subcategory: "text"
             },
-            description: "none : 항상 숨김<br/>" +
-                "visible : 항상 표시<br/>" +
-                "valid : 유효할때 표시<br/>" +
-                "invalid : 유효하지 않을 때 표시",
+            description: "개발예정.",
         },
-        placeholder: {
-            control: {type: 'text'},
+        checked: {
+            control: 'boolean',
             table: {
                 category: "attributes",
-                subcategory: "text",
+                defaultValue: {summary: false},
+                subcategory: "validate"
             }
         },
-        value: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        maxlength: {
-            control: {type: 'number'},
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-            }
-        },
-        minlength: {
-            control: {type: 'number'},
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-            }
-        },
-        pattern: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-            },
-            description: "ex) [0-9]{3}-[0-9]{4}-[0-9]{4}",
-        },
-
         required: {
             control: 'boolean',
             table: {
@@ -144,12 +58,14 @@ export default {
                 defaultValue: {summary: false}
             }
         },
-        readonly: {
-            control: 'boolean',
+
+        value: {
+            control: {type: 'text'},
             table: {
                 category: "attributes",
-                defaultValue: {summary: false}
-            }
+                subcategory: "text",
+            },
+            description: "checked일때 불러올 값.",
         },
 
         getValue: {
@@ -209,133 +125,31 @@ export default {
 const Template = (args) => {
     return html`
         <l-checkbox
-                type=${ifDefined(args.type)}
                 size=${ifDefined(args.size)}
-                label=${ifDefined(args.label)}
-                label-align=${ifDefined(args['label-align'])}
-                label-width=${ifDefined(args['label-width'])}
-                label-text-align=${ifDefined(args['label-text-align'])}
-                feedback=${ifDefined(args.feedback)}
-                feedback-type=${ifDefined(args['feedback-type'])}
-                feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 width=${ifDefined(args.width)}
-                maxlength=${ifDefined(args.maxlength)}
-                minlength=${ifDefined(args.minlength)}
+                label=${ifDefined(args.label)}
+                label-align=${ifDefined(args['label-align'])}
+                value="${ifDefined(args.value)}"
+                ?checked=${args.checked}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
-                ?readonly=${args.readonly}
-                placeholder="${ifDefined(args.placeholder)}"
-                pattern="${ifDefined(args.pattern)}"
-                value="${ifDefined(args.value)}"
         >
         </l-checkbox>`
 }
 
-export const InputWithTopLabelAndFeedback = Template.bind({});
-InputWithTopLabelAndFeedback.args = {
-    type: 'text',
+export const CheckboxDefault = Template.bind({});
+CheckboxDefault.args = {
     id: 'input01',
     name: 'name',
     width: '100%',
     label: 'label',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'feedback',
-    'feedback-type': 'normal',
-    'feedback-visible-type': 'visible',
+    'label-align': 'right',
     required: false,
-    disabled: false,
-    readonly: false,
+    disabled: false
 };
 
-export const InputWithLeftLabelAndFeedback = Template.bind({});
-InputWithLeftLabelAndFeedback.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: 'auto',
-    label: 'label : ',
-    'label-align': 'left',
-    'label-width': '50px',
-    'label-text-align': 'left',
-    feedback: 'feedback',
-    'feedback-type': 'normal',
-    'feedback-visible-type': 'visible',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-
-export const SimpleInput = Template.bind({});
-SimpleInput.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    'label-align': 'top',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputRequireValidity = Template.bind({});
-InputRequireValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'label',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: '필수 값 입니다.',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    required: true,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternValidity = Template.bind({});
-InputPatternValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid pattern',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternAndRequireValidity = Template.bind({});
-InputPatternAndRequireValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid value',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: true,
-    disabled: false,
-    readonly: false,
-};
 
 const sizeTemplate = (args) => {
     return html`
@@ -352,5 +166,31 @@ const sizeTemplate = (args) => {
 
 export const size = sizeTemplate.bind({});
 size.args = {
+
+};
+
+const horizontalTemplate = (args) => {
+    return html`
+        <l-checkbox label="chk1" value="1" id="chk1"></l-checkbox>
+        <l-checkbox label="chk2" value="1" id="chk2"></l-checkbox>
+        <l-checkbox label="chk3" value="1" id="chk3"></l-checkbox>
+    `
+}
+
+export const horizontal = horizontalTemplate.bind({});
+horizontal.args = {
+
+};
+
+const verticalTemplate = (args) => {
+    return html`
+        <l-checkbox label="chk1" value="1" width="100%" id="chk1"></l-checkbox>
+        <l-checkbox label="chk2" value="1" width="100%" id="chk2"></l-checkbox>
+        <l-checkbox label="chk3" value="1" width="100%" id="chk3"></l-checkbox>
+    `
+}
+
+export const vertical = verticalTemplate.bind({});
+vertical.args = {
 
 };

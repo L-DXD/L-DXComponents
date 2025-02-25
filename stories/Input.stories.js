@@ -4,9 +4,9 @@ import {ifDefined} from 'lit/directives/if-defined.js';
 
 
 export default {
-    title: 'Components/Input',
+    title: 'Container Components/Input',
     tags: ['autodocs'],
-    component: 'l-input',
+    component: 'l-c-input',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
         type: {
@@ -226,7 +226,7 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-input
+        <l-c-input
                 type=${ifDefined(args.type)}
                 size=${ifDefined(args.size)}
                 label=${ifDefined(args.label)}
@@ -249,7 +249,7 @@ const Template = (args) => {
                 pattern="${ifDefined(args.pattern)}"
                 value="${ifDefined(args.value)}"
         >
-        </l-input>`
+        </l-c-input>`
 }
 
 export const InputWithTopLabelAndFeedback = Template.bind({});
@@ -358,14 +358,14 @@ InputPatternAndRequireValidity.args = {
 
 const sizeTemplate = (args) => {
     return html`
-        <l-input label="default size" value="default"></l-input>
+        <l-c-input label="default size" value="default"></l-c-input>
 
         <div style="margin: 16px"></div>
 
-        <l-input size='large' label="large size" value="large"></l-input>
+        <l-c-input size='large' label="large size" value="large"></l-c-input>
         <div style="margin: 16px"></div>
 
-        <l-input size='small' label="small size" value="small"></l-input>
+        <l-c-input size='small' label="small size" value="small"></l-c-input>
     `
 }
 

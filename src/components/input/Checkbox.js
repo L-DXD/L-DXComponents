@@ -1,6 +1,6 @@
-import {css, html, LitElement, render} from 'lit';
+import {css, html, LitElement, nothing, render} from 'lit';
 import {LFeedback} from "../text/Feedback.js";
-import {InputContainer} from "../container/InputContainer.js";
+import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import '../commons/common.css';
 import {SharedStyles} from "../commons/SharedStyles.js";
@@ -10,7 +10,7 @@ import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 
 @customElement('l-checkbox')
-class LCheckbox extends InputContainer {
+class LCheckbox extends LitParents {
 
     constructor() {
         super();
@@ -24,68 +24,46 @@ class LCheckbox extends InputContainer {
     static get properties() {
         return {
             // input properties
-            type: {type: String},
-            name: {type: String},
             size: {type: String},
+            id: {type: String},
+            class: {type: String},
+            name: {type: String},
+            width: {type: String},
+            label: {type: String},
+            'label-align': {type: String},
+            checked: {type: Boolean},
+            required: {type: Boolean},
             disabled: {type: Boolean},
             readonly: {type: Boolean},
-            value: {type: String},
-            pattern: {type: String},
-            placeholder: {type: String},
-            maxlength: {type: String},
-            minlength: {type: String},
+            value: {type: String}
         };
     }
 
     render() {
-        let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
+        let isLabelRight = (this['label-align'] && this['label-align'] === 'right');
 
         return html`
-            <l-input-container
-                    width="${ifDefined(this['width'])}"
-                    id="${this['id']}"
-                    label="${ifDefined(this['label'])}"
-                    label-align="${ifDefined(this['label-align'])}"
-                    label-width="${ifDefined(this['label-width'])}"
-                    label-text-align="${ifDefined(this['label-text-align'])}"
-                    required="${ifDefined(this['required'])}"
-                    feedback="${ifDefined(this['feedback'])}"
-                    feedback-type="${ifDefined(this['feedback-type'])}"
-                    feedback-visible-type="${ifDefined(this['feedback-visible-type'])}"
-            >
-                <div class="form-group mb-4" slot="input">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" checked="">
-                        <label class="form-check-label" for="defaultCheck2">Checked checkbox</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck3" disabled="">
-                        <label class="form-check-label" for="defaultCheck3">Disabled checkbox</label>
-                    </div>
-                </div>
-
-                <div class="form-group mb-3" slot="input">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                        <label class="form-check-label" for="inlineCheckbox1">1</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" checked="">
-                        <label class="form-check-label" for="inlineCheckbox2">2</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"
-                               disabled="">
-                        <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
-                    </div>
-                </div>
-                
-            </l-input-container>
-
+            <div
+                    style="width: ${this['width'] ? this['width'] : nothing}"
+                    class="${
+                            classMap({
+                                'form-check': true
+                                , 'form-check-inline': true
+                                , 'form-control-lg': this['size'] === 'large'
+                                , 'form-control-sm': this['size'] === 'small'
+                            })
+                    }">
+                <input class="form-check-input"
+                       type="checkbox"
+                       value="${ifDefined(this['value'])}"
+                       id="${ifDefined(this['id'])}"
+                       name="${ifDefined(this['name'])}"
+                       ?required=${this['required']}
+                       ?checked=${this['checked']}
+                       ?disabled=${this['disabled']}
+                >
+                <label class="form-check-label" for="${ifDefined(this['id'])}">${ifDefined(this['label'])}</label>
+            </div>
         `;
     }
 }

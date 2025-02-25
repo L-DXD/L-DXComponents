@@ -7,8 +7,8 @@ import {customElement} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {LitParents} from "@/components/commons/LitParents.js";
 
-@customElement('l-input-container')
-export class InputContainer extends LitParents {
+@customElement('l-label-feed-container')
+export class LabelAndFeedContainer extends LitParents {
 
     constructor() {
         super();
@@ -77,7 +77,7 @@ export class InputContainer extends LitParents {
 
     validate() {
         const value = this.getValue().trim();
-        const $container = this.shadowRoot.querySelector('l-input-container');
+        const $container = this.shadowRoot.querySelector('l-label-feed-container');
         const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
         const $inputElement = this.shadowRoot.querySelector(this.selector);
         const isFlag = this.isValid(value, this['pattern'], this['required']);

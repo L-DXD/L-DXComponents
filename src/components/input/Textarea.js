@@ -1,6 +1,6 @@
 import {css, html, LitElement, nothing, render} from 'lit';
 import {LFeedback} from "../text/Feedback.js";
-import {InputContainer} from "../container/InputContainer.js";
+import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import '../commons/common.css';
 import {SharedStyles} from "../commons/SharedStyles.js";
@@ -9,8 +9,8 @@ import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 
-@customElement('l-textarea')
-class LTextarea extends InputContainer {
+@customElement('l-c-textarea')
+class LTextarea extends LabelAndFeedContainer {
 
     constructor() {
         super();
@@ -43,7 +43,7 @@ class LTextarea extends InputContainer {
 
         // type, pattern 삭제
         return html`
-            <l-input-container
+            <l-label-feed-container
                     width="${ifDefined(this['width'])}"
                     id="${this['id']}"
                     label="${ifDefined(this['label'])}"
@@ -81,7 +81,7 @@ class LTextarea extends InputContainer {
                         @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
                 >${ifDefined(this['value'])}</textarea>
                 
-            </l-input-container>
+            </l-label-feed-container>
 
         `;
     }

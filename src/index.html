@@ -11,20 +11,20 @@
 
   <lit-tomato></lit-tomato>
 
-  <l-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
-  </l-input>
+  <l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+  </l-c-input>
 
 
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
 
-      // document.querySelector('l-input').addEventListener('click', ()=>{
+      // document.querySelector('l-c-input').addEventListener('click', ()=>{
       //   alert('dd');
       // })
       setTimeout(()=>{
 
-        document.querySelector('l-input').checkValidity();
+        document.querySelector('l-c-input').checkValidity();
       },1000)
     })
 
