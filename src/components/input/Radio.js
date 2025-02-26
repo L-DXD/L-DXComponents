@@ -4,18 +4,24 @@ import '../commons/common.css';
 import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
+import './Radio.css';
+import '../commons/common.css';
 
-@customElement('l-checkbox')
-class LCheckbox extends LitParents {
+@customElement('l-radio')
+class LRadio extends LitParents {
 
     constructor() {
         super();
         super.setSelector('input');
     }
 
-    static styles = [
-        ...super.styles
-    ];
+    /**
+     *  Radio가 그룹으로 묶이지 않는 이슈가 있어 shadowroot 사용안함
+     * @returns {LRadio}
+     */
+    createRenderRoot() {
+        return this;
+    }
 
     static get properties() {
         return {
@@ -35,50 +41,16 @@ class LCheckbox extends LitParents {
         };
     }
 
-    /**
-     * 공통적으로 name 속성을 기반으로 같은 그룹의 체크된 값들을 가져오는 함수
-     * @param {string} key - 가져올 데이터 유형 ('label' | 'value')
-     * @param {boolean} onlyChecked - 체크된 항목만 가져올지 여부
-     * @returns {Array<{id: string, value: string}>} 체크된 항목 리스트
-     */
-    _getCheckboxGroupData(key, onlyChecked = false) {
-        const name = this.getAttribute("name");
+    getValue() {
+        const inputElement = this.querySelector(this.selector);
+        return inputElement ? inputElement.value : null;
+    }
 
-        if (!name) {
-            console.warn("이 체크박스에는 name 속성이 없습니다.");
-            return [];
+    setValue(value) {
+        const inputElement = this.querySelector(this.selector);
+        if (inputElement) {
+            inputElement.value = value;
         }
-
-        return Array.from(document.querySelectorAll(`l-checkbox[name="${name}"]`))
-            .map(lCheckbox => {
-                const checkbox = lCheckbox.shadowRoot
-                    ? lCheckbox.shadowRoot.querySelector('input[type="checkbox"]')
-                    : lCheckbox.querySelector('input[type="checkbox"]');
-
-                if (!checkbox || (onlyChecked && !checkbox.checked)) return null;
-
-                return {
-                    id: lCheckbox.id,
-                    value: key === "label" ? lCheckbox.getAttribute("label") : lCheckbox.value
-                };
-            })
-            .filter(Boolean); // null 값 제거
-    }
-
-    getCheckedTextsByNameGroup() {
-        return this._getCheckboxGroupData("label", true);
-    }
-
-    getCheckedValuesByNameGroup() {
-        return this._getCheckboxGroupData("value", true);
-    }
-
-    getTextsByNameGroup() {
-        return this._getCheckboxGroupData("label", false);
-    }
-
-    getValuesByNameGroup() {
-        return this._getCheckboxGroupData("value", false);
     }
 
     getText() {
@@ -101,8 +73,9 @@ class LCheckbox extends LitParents {
     }
 
     validate() {
+        console.log('validate')
         const value = this.getValue().trim();
-        const $inputElement = this.shadowRoot.querySelector(this.selector);
+        const $inputElement = this.querySelector(this.selector);
         const isFlag = this.isValid(value, this['required']);
 
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
@@ -113,7 +86,10 @@ class LCheckbox extends LitParents {
     }
 
     render() {
+
         let isLabelRight = (this['label-align'] && this['label-align'] === 'right');
+
+
         return html`
             <div
                     style="width: ${this['width'] ? this['width'] : nothing}"
@@ -126,7 +102,7 @@ class LCheckbox extends LitParents {
                             })
                     }">
                 <input class="form-check-input"
-                       type="checkbox"
+                       type="radio"
                        value="${ifDefined(this['value'])}"
                        id="${ifDefined(this['id'])}"
                        name="${ifDefined(this['name'])}"

@@ -1,11 +1,7 @@
-import {css, html, LitElement, nothing, render} from 'lit';
-import {LFeedback} from "../text/Feedback.js";
+import {html, nothing} from 'lit';
 import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import '../commons/common.css';
-import {SharedStyles} from "../commons/SharedStyles.js";
-import {TextStyles} from "../commons/TextStyles.js";
-import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 

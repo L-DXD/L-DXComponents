@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Vite App</title>
+</head>
+<script src="../dist/assets/index-v0.0.3.js"></script>
+<link href="../dist/assets/index-v0.0.3.css" rel="stylesheet"/>
+
+<!--  <script type="module" src="components/input/test.js"></script>-->
+
+<lit-tomato></lit-tomato>
+
+<l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error"
+           feedback-visible-type="invalid" id="input01" name="name" width="100%" required=""
+           pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+</l-c-input>
+
+<l-checkbox id="input01" name="chk" width="100%" label="label2" label-align="right" value="1" checked>
+</l-checkbox>
+<l-checkbox id="input02" name="chk" width="100%" label="label" label-align="right" value="2">
+</l-checkbox>
+
+<l-Radio id="check01" name="radio" width="100%" label="label2" label-align="right" value="1" checked>
+</l-Radio>
+<l-Radio id="check02" name="radio" width="100%" label="label" label-align="right" value="2">
+</l-Radio>
+
+
+<script type="application/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log(getCheckedTextsByName("chk"));
+
+        console.log(getCheckedValuesByName("chk"));
+        // document.querySelector('l-c-input').addEventListener('click', ()=>{
+        //   alert('dd');
+        // })
+        // setTimeout(()=>{
+        //
+        //   document.querySelector('l-c-input').checkValidity();
+        // },1000)
+    })
+
+    function getCheckedTextsByName(name) {
+        const checkboxes = document.querySelectorAll(`l-checkbox[name="${name}"]`);
+        const checkedValues = [];
+
+        checkboxes.forEach(lCheckbox => {
+            const checkbox = lCheckbox.shadowRoot
+                ? lCheckbox.shadowRoot.querySelector('input[type="checkbox"]')
+                : lCheckbox.querySelector('input[type="checkbox"]');
+
+            if (checkbox && checkbox.checked) {
+                checkedValues.push(
+                    {
+                        id: lCheckbox.id,
+                        value: lCheckbox.getAttribute("label")
+                    });
+            }
+        });
+
+        return checkedValues;
+    }
+
+    function getCheckedValuesByName(name) {
+        const checkboxes = document.querySelectorAll(`l-checkbox[name="${name}"]`);
+        const checkedValues = [];
+
+        checkboxes.forEach(lCheckbox => {
+            const checkbox = lCheckbox.shadowRoot
+                ? lCheckbox.shadowRoot.querySelector('input[type="checkbox"]')
+                : lCheckbox.querySelector('input[type="checkbox"]');
+
+            if (checkbox && checkbox.checked) {
+                checkedValues.push(
+                    {
+                        id: lCheckbox.id,
+                        value: lCheckbox.value
+                    });
+            }
+        });
+
+        return checkedValues;
+    }
+
+</script>
+</html>

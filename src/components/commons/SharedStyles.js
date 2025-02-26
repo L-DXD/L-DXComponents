@@ -19064,7 +19064,7 @@ class SharedStyles {
             }
 
 
-            .bg-default-900 {
+            .bg-default-900 {a
                 --bs-bg-opacity: 1;
                 background-color: rgba(51, 51, 51, var(--bs-bg-opacity)) !important
             }

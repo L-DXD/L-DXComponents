@@ -1,21 +1,21 @@
-import '/src/components/input/Checkbox.js'
+import '/src/components/input/Radio.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 
 export default {
-    title: 'Components/Checkbox',
+    title: 'Components/Radio',
     tags: ['autodocs'],
-    component: 'l-checkbox',
+    component: 'l-radio',
     argTypes: {
-        size: {
-            control: {type: 'select'},
-            options: ['default','large','small'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'default'}
-            }
-        },
+        // size: {
+        //     control: {type: 'select'},
+        //     options: ['default','large','small'],
+        //     table: {
+        //         category: "attributes",
+        //         defaultValue: {summary: 'default'}
+        //     }
+        // },
         id: {table: {category: "attributes",}},
         name: {table: {category: "attributes",}},
         width: {table: {category: "attributes",}},
@@ -120,62 +120,6 @@ export default {
             description: "Text값을 설정합니다.",
         },
 
-        getCheckedTextsByNameGroup: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return [])"},
-
-            },
-            description: "선택된 체크박스와 같은 이름의 체크된 Text값들을 가져옵니다.",
-        },
-
-        getTextsByNameGroup: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return [])"},
-
-            },
-            description: "선택된 체크박스와 같은 이름의 Text값들을 가져옵니다.",
-        },
-
-        getCheckedValuesByNameGroup: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return [])"},
-
-            },
-            description: "선택된 체크박스와 같은 이름의 체크된 Value값들을 가져옵니다.",
-        },
-
-        getValuesByNameGroup: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return [])"},
-
-            },
-            description: "선택된 체크박스와 같은 이름의 Value값들을 가져옵니다.",
-        },
-
         isValid: {
             control: {
                 type: {},
@@ -196,8 +140,8 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-checkbox
-                size=${ifDefined(args.size)}
+        <l-radio
+                
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 width=${ifDefined(args.width)}
@@ -208,11 +152,11 @@ const Template = (args) => {
                 ?required=${args.required}
                 ?disabled=${args.disabled}
         >
-        </l-checkbox>`
+        </l-radio>`
 }
 
-export const CheckboxDefault = Template.bind({});
-CheckboxDefault.args = {
+export const RadioDefault = Template.bind({});
+RadioDefault.args = {
     id: 'input01',
     name: 'name',
     width: '100%',
@@ -223,29 +167,12 @@ CheckboxDefault.args = {
 };
 
 
-const sizeTemplate = (args) => {
-    return html`
-        <l-checkbox label="default size" value="default"></l-checkbox>
-
-        <div style="margin: 16px"></div>
-
-        <l-checkbox size='large' label="large size" value="large"></l-checkbox>
-        <div style="margin: 16px"></div>
-
-        <l-checkbox size='small' label="small size" value="small"></l-checkbox>
-    `
-}
-
-export const size = sizeTemplate.bind({});
-size.args = {
-
-};
 
 const horizontalTemplate = (args) => {
     return html`
-        <l-checkbox label="chk1" value="1" id="chk1"></l-checkbox>
-        <l-checkbox label="chk2" value="1" id="chk2"></l-checkbox>
-        <l-checkbox label="chk3" value="1" id="chk3"></l-checkbox>
+        <l-radio label="chk1" value="1" id="chk1"></l-radio>
+        <l-radio label="chk2" value="1" id="chk2"></l-radio>
+        <l-radio label="chk3" value="1" id="chk3"></l-radio>
     `
 }
 
@@ -256,9 +183,9 @@ horizontal.args = {
 
 const verticalTemplate = (args) => {
     return html`
-        <l-checkbox label="chk1" value="1" width="100%" id="chk1"></l-checkbox>
-        <l-checkbox label="chk2" value="1" width="100%" id="chk2"></l-checkbox>
-        <l-checkbox label="chk3" value="1" width="100%" id="chk3"></l-checkbox>
+        <l-radio label="chk1" value="1" width="100%" id="chk1"></l-radio>
+        <l-radio label="chk2" value="1" width="100%" id="chk2"></l-radio>
+        <l-radio label="chk3" value="1" width="100%" id="chk3"></l-radio>
     `
 }
 

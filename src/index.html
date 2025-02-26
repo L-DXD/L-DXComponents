@@ -8,26 +8,54 @@
   <script type="module" src="components/Button.js"></script>
   <script type="module" src="components/input/Input.js"></script>
   <script type="module" src="components/input/Checkbox.js"></script>
+  <script type="module" src="components/input/Radio.js"></script>
 <!--  <script type="module" src="components/input/test.js"></script>-->
-
-  <lit-tomato></lit-tomato>
 
   <l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
   </l-c-input>
 
-  <l-checkbox id="input01" name="name" width="100%" label="label" label-align="right">
+  <l-checkbox id="input01" name="chk" width="100%" label="label2" label-align="right" value="1" required>
   </l-checkbox>
+  <l-checkbox id="input02" name="chk" width="100%" label="label" label-align="right" value="2" required>
+  </l-checkbox>
+
+  <l-checkbox id="input03" name="chk2" width="100%" label="label2" label-align="right" value="1" checked>
+  </l-checkbox>
+  <l-checkbox id="input04" name="chk2" width="100%" label="label" label-align="right" value="2">
+  </l-checkbox>
+
+  <l-Radio id="check01" name="radio" width="100%" label="label2" label-align="right" value="1" required>
+  </l-Radio>
+  <l-Radio id="check02" name="radio" width="100%" label="label" label-align="right" value="2">
+  </l-Radio>
+
 
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedTextsByNameGroup());
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedValuesByNameGroup());
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getTextsByNameGroup());
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getValuesByNameGroup());
+      // console.log(document.querySelector('l-checkbox').getValue());
+      // console.log(document.querySelector('l-checkbox').getText());
+      // console.log(document.querySelector('l-checkbox').setText('test'));
+
+      // console.log(document.querySelector('l-Radio[id="check01"]').getText());
+      // console.log(document.querySelector('l-Radio[id="check01"]').setText('test2'));
+      // console.log(document.querySelector('l-Radio[id="check01"]').setValue('2'));
+      // console.log(document.querySelector('l-Radio[id="check01"]').getValue());
+
+
 
       // document.querySelector('l-c-input').addEventListener('click', ()=>{
       //   alert('dd');
       // })
       setTimeout(()=>{
 
-        document.querySelector('l-c-input').checkValidity();
+        document.querySelector('l-checkbox[name="chk"]').checkValidity();
+
+        document.querySelector('l-Radio[name="radio"]').checkValidity();
       },1000)
     })
 
