@@ -41,7 +41,6 @@ class LCheckbox extends LitParents {
 
     render() {
         let isLabelRight = (this['label-align'] && this['label-align'] === 'right');
-
         return html`
             <div
                     style="width: ${this['width'] ? this['width'] : nothing}"
