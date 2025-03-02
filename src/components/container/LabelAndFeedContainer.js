@@ -83,7 +83,6 @@ export class LabelAndFeedContainer extends LitParents {
         const isFlag = this.isValid(value, this['pattern'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
-        console.log('isFlag : ' + isFlag);
 
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
 

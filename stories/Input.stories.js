@@ -2,7 +2,6 @@ import '/src/components/input/Input.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
-
 export default {
     title: 'Container Components/Input',
     tags: ['autodocs'],
@@ -155,13 +154,7 @@ export default {
                 subcategory: "validate"
             }
         },
-        inputClear: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
+
         disabled: {
             control: 'boolean',
             table: {
@@ -249,7 +242,6 @@ const Template = (args) => {
                 width=${ifDefined(args.width)}
                 maxlength=${ifDefined(args.maxlength)}
                 minlength=${ifDefined(args.minlength)}
-                ?inputClear=${args.inputClear}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
@@ -273,7 +265,6 @@ InputWithTopLabelAndFeedback.args = {
     feedback: 'feedback',
     'feedback-type': 'normal',
     'feedback-visible-type': 'visible',
-    inputClear: false,
     required: false,
     disabled: false,
     readonly: false,
@@ -292,7 +283,6 @@ InputWithLeftLabelAndFeedback.args = {
     feedback: 'feedback',
     'feedback-type': 'normal',
     'feedback-visible-type': 'visible',
-    inputClear: false,
     required: false,
     disabled: false,
     readonly: false,
@@ -305,7 +295,6 @@ SimpleInput.args = {
     id: 'input01',
     name: 'name',
     'label-align': 'top',
-    inputClear: false,
     required: false,
     disabled: false,
     readonly: false,
@@ -324,7 +313,6 @@ InputRequireValidity.args = {
     feedback: '필수 값 입니다.',
     'feedback-type': 'error',
     'feedback-visible-type': 'invalid',
-    inputClear: true,
     required: true,
     disabled: false,
     readonly: false,
@@ -344,7 +332,6 @@ InputPatternValidity.args = {
     'feedback-type': 'error',
     'feedback-visible-type': 'invalid',
     pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    inputClear: false,
     required: false,
     disabled: false,
     readonly: false,
@@ -364,7 +351,6 @@ InputPatternAndRequireValidity.args = {
     'feedback-type': 'error',
     'feedback-visible-type': 'invalid',
     pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    inputClear: true,
     required: true,
     disabled: false,
     readonly: false,

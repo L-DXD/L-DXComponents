@@ -4,20 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index-v0.0.3.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.3.css">
-  </head>
+    <script type="module" crossorigin src="/assets/index-v0.0.4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.4.css">
+  </head>
 <!--  <script type="module" src="components/input/test.js"></script>-->
+
+  <l-button type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+  </l-button>
 
   <l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
   </l-c-input>
 
-  <l-checkbox id="input01" name="chk" width="100%" label="label2" label-align="right" value="1" checked>
+  <l-checkbox id="input01" name="chk" width="100%" label="label2" label-align="right" value="1" required>
   </l-checkbox>
-  <l-checkbox id="input02" name="chk" width="100%" label="label" label-align="right" value="2">
+  <l-checkbox id="input02" name="chk" width="100%" label="label" label-align="right" value="2" required>
   </l-checkbox>
 
-  <l-Radio id="check01" name="radio" width="100%" label="label2" label-align="right" value="1" checked>
+  <l-checkbox id="input03" name="chk2" width="100%" label="label2" label-align="right" value="1" checked>
+  </l-checkbox>
+  <l-checkbox id="input04" name="chk2" width="100%" label="label" label-align="right" value="2">
+  </l-checkbox>
+
+  <l-Radio id="check01" name="radio" width="100%" label="label2" label-align="right" value="1" required>
   </l-Radio>
   <l-Radio id="check02" name="radio" width="100%" label="label" label-align="right" value="2">
   </l-Radio>
@@ -26,23 +34,30 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-      console.log(document.querySelector('l-checkbox').getCheckedTextsByNameGroup());
-      console.log(document.querySelector('l-checkbox').getCheckedValuesByNameGroup());
-      console.log(document.querySelector('l-checkbox').getTextsByNameGroup());
-      console.log(document.querySelector('l-checkbox').getValuesByNameGroup());
-      console.log(document.querySelector('l-checkbox').getValue());
-      console.log(document.querySelector('l-checkbox').getText());
-      console.log(document.querySelector('l-checkbox').setText('test'));
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedTextsByNameGroup());
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedValuesByNameGroup());
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getTextsByNameGroup());
+      // console.log(document.querySelector('l-checkbox[name="chk2"]').getValuesByNameGroup());
+      // console.log(document.querySelector('l-checkbox').getValue());
+      // console.log(document.querySelector('l-checkbox').getText());
+      // console.log(document.querySelector('l-checkbox').setText('test'));
+
+      // console.log(document.querySelector('l-Radio[id="check01"]').getText());
+      // console.log(document.querySelector('l-Radio[id="check01"]').setText('test2'));
+      // console.log(document.querySelector('l-Radio[id="check01"]').setValue('2'));
+      // console.log(document.querySelector('l-Radio[id="check01"]').getValue());
 
 
 
       // document.querySelector('l-c-input').addEventListener('click', ()=>{
       //   alert('dd');
       // })
-      // setTimeout(()=>{
-      //
-      //   document.querySelector('l-c-input').checkValidity();
-      // },1000)
+      setTimeout(()=>{
+
+        document.querySelector('l-checkbox[name="chk"]').checkValidity();
+
+        document.querySelector('l-Radio[name="radio"]').checkValidity();
+      },1000)
     })
 
   </script>

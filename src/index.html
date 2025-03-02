@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
-  <script type="module" src="components/Button.js"></script>
+  <script type="module" src="components/button/Button.js"></script>
   <script type="module" src="components/input/Input.js"></script>
   <script type="module" src="components/input/Checkbox.js"></script>
   <script type="module" src="components/input/Radio.js"></script>
 <!--  <script type="module" src="components/input/test.js"></script>-->
+
+  <l-button type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
+  </l-button>
 
   <l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
   </l-c-input>

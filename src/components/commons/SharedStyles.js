@@ -8,7 +8,6 @@ class SharedStyles {
                 box-sizing: border-box
             }
 
-            
 
             hr {
                 margin: 1rem 0;
@@ -562,7 +561,6 @@ class SharedStyles {
                 --bs-breakpoint-xxxl: 1900px
             }
 
-            
 
             [data-bs-theme=dark] {
                 --bs-component-bg: #28292b;
@@ -2284,6 +2282,7 @@ class SharedStyles {
             }
 
             /* 기존 form-control 스타일 (공통) */
+
             .form-control {
                 display: block;
                 width: 100%;
@@ -2301,10 +2300,11 @@ class SharedStyles {
             }
 
             /* form-left-control은 공통 form-control 스타일을 기반으로 추가 속성만 포함 */
+
             .form-left-control {
-                text-align: left;  /* 왼쪽 정렬 */
+                text-align: left; /* 왼쪽 정렬 */
             }
-            
+
             //.form-left-control {
             //    flex-grow: 1;
             //    padding: .375rem .75rem;
@@ -3080,7 +3080,6 @@ class SharedStyles {
                 color: var(--bs-success-text)
             }
 
-            
 
             .input-group > .form-control:not(:focus).is-valid, .input-group > .form-floating:not(:focus-within).is-valid, .input-group > .form-select:not(:focus).is-valid, .was-validated .input-group > .form-control:not(:focus):valid, .was-validated .input-group > .form-floating:not(:focus-within):valid, .was-validated .input-group > .form-select:not(:focus):valid {
                 z-index: 3
@@ -3286,20 +3285,20 @@ class SharedStyles {
             }
 
             .btn-default {
-                --bs-btn-color: #000000;
-                --bs-btn-bg: #FFFFFF;
-                --bs-btn-border-color: #FFFFFF;
-                --bs-btn-hover-color: #000000;
-                --bs-btn-hover-bg: white;
-                --bs-btn-hover-border-color: white;
+                --bs-btn-color: var(--bs-component-color);
+                --bs-btn-bg: var(--bs-component-bg);
+                --bs-btn-border-color: var(--bs-border-color);
+                --bs-btn-hover-color: var(--bs-component-color);
+                --bs-btn-hover-bg: var(--bs-border-color);
+                --bs-btn-hover-border-color: var(--bs-border-color);
                 --bs-btn-focus-shadow-rgb: 217, 217, 217;
-                --bs-btn-active-color: #000000;
-                --bs-btn-active-bg: white;
-                --bs-btn-active-border-color: white;
+                --bs-btn-active-color: var(--bs-component-color);
+                --bs-btn-active-bg: var(--bs-border-color);
+                --bs-btn-active-border-color: var(--bs-border-color);
+                --bs-btn-disabled-border-color: var(--bs-border-color);
                 --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
                 --bs-btn-disabled-color: #000000;
                 --bs-btn-disabled-bg: #FFFFFF;
-                --bs-btn-disabled-border-color: #FFFFFF
             }
 
             .btn-theme {
@@ -3370,8 +3369,8 @@ class SharedStyles {
                 --bs-btn-disabled-border-color: #555c60
             }
 
-            .btn-warning {
-                --bs-btn-color: #000000;
+            .btn-orange {
+                --bs-btn-color: #ffffff;
                 --bs-btn-bg: #ff9f0c;
                 --bs-btn-border-color: #ff9f0c;
                 --bs-btn-hover-color: #000000;
@@ -3385,6 +3384,23 @@ class SharedStyles {
                 --bs-btn-disabled-color: #000000;
                 --bs-btn-disabled-bg: #ff9f0c;
                 --bs-btn-disabled-border-color: #ff9f0c
+            }
+
+            .btn-light-orange {
+                --bs-btn-color: #ffae2d;
+                --bs-btn-bg: #fff1dd;
+                --bs-btn-border-color: #fff1dd;
+                --bs-btn-hover-color: #000000;
+                --bs-btn-hover-bg: #ffdeac;
+                --bs-btn-hover-border-color: #ffdeac;
+                --bs-btn-focus-shadow-rgb: 217, 135, 10;
+                --bs-btn-active-color: #000000;
+                --bs-btn-active-bg: #ffdeac;
+                --bs-btn-active-border-color: #ffdeac;
+                --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+                --bs-btn-disabled-color: #000000;
+                --bs-btn-disabled-bg: #fff1dd;
+                --bs-btn-disabled-border-color: #fff1dd
             }
 
             .btn-danger {
@@ -3897,7 +3913,7 @@ class SharedStyles {
                 --bs-gradient: none
             }
 
-            .btn-outline-warning {
+            .btn-outline-orange {
                 --bs-btn-color: #ff9f0c;
                 --bs-btn-border-color: #ff9f0c;
                 --bs-btn-hover-color: #000000;
@@ -3911,6 +3927,23 @@ class SharedStyles {
                 --bs-btn-disabled-color: #ff9f0c;
                 --bs-btn-disabled-bg: transparent;
                 --bs-btn-disabled-border-color: #ff9f0c;
+                --bs-gradient: none
+            }
+
+            .btn-outline-light-orange {
+                --bs-btn-color: #ff9f0c;
+                --bs-btn-border-color: #ffdeac;
+                --bs-btn-hover-color: #000000;
+                --bs-btn-hover-bg: #ffdeac;
+                --bs-btn-hover-border-color: #ffdeac;
+                --bs-btn-focus-shadow-rgb: 255, 159, 12;
+                --bs-btn-active-color: #000000;
+                --bs-btn-active-bg: #ffdeac;
+                --bs-btn-active-border-color: #ffdeac;
+                --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+                --bs-btn-disabled-color: #ffdeac;
+                --bs-btn-disabled-bg: transparent;
+                --bs-btn-disabled-border-color: #ffdeac;
                 --bs-gradient: none
             }
 
@@ -8816,7 +8849,7 @@ class SharedStyles {
                 content: ""
             }
 
-            
+
             .link-default {
                 color: RGBA(var(--bs-default-rgb), var(--bs-link-opacity, 1)) !important;
                 text-decoration-color: RGBA(var(--bs-default-rgb), var(--bs-link-underline-opacity, 1)) !important
@@ -19098,7 +19131,8 @@ class SharedStyles {
             }
 
 
-            .bg-default-900 {a
+            .bg-default-900 {
+                a
                 --bs-bg-opacity: 1;
                 background-color: rgba(51, 51, 51, var(--bs-bg-opacity)) !important
             }
@@ -19107,7 +19141,7 @@ class SharedStyles {
                 border-color: var(--bs-theme) !important
             }
 
-            
+
         `;
     }
 }
