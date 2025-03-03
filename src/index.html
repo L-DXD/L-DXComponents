@@ -9,7 +9,17 @@
   <script type="module" src="components/input/Input.js"></script>
   <script type="module" src="components/input/Checkbox.js"></script>
   <script type="module" src="components/input/Radio.js"></script>
+  <script type="module" src="components/select/Select.js"></script>
 <!--  <script type="module" src="components/input/test.js"></script>-->
+
+  <l-c-select label="Choose an option" name="mySelect" id="fruitSelect" default-type="all" required>
+  </l-c-select>
+
+  <l-c-select label="Choose an option" name="mySelect" id="animalSelect" default-type="select" required>
+  </l-c-select>
+
+  <l-c-select label="Choose an option" name="mySelect" id="humanSelect">
+  </l-c-select>
 
   <l-button type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
   </l-button>
@@ -36,6 +46,56 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
+    //   const selectComponent = document.querySelector('l-c-select');
+    //   console.log(selectComponent);
+    //   selectComponent.options = [
+    //     { value: '1', label: 'Option 1' },
+    //     { value: '2', label: 'Option 2' },
+    //     { value: '3', label: 'Option 3' }
+    //   ];
+
+      const selectComponent = document.getElementById('fruitSelect');
+      selectComponent.options = [
+        { value: '1', label: 'Apple' },
+        { value: '2', label: 'Banana' },
+        { value: '3', label: 'Orange' }
+      ];
+
+      // console.log(selectComponent);
+      //
+      // console.log(selectComponent.getOptions());
+      // console.log(selectComponent.getValue());
+      // console.log(selectComponent.getText());
+      // console.log(selectComponent.getSelectedIndex());
+      // console.log(selectComponent.getSelectedOption());
+
+
+
+      const selectComponent2 = document.getElementById('animalSelect');
+      selectComponent2.options = [
+        { value: '1', label: 'tiger' },
+        { value: '2', label: 'monkey' },
+        { value: '3', label: 'turtle' }
+      ];
+
+      selectComponent2.addEventListener('change', () => {
+        console.log("Changed Selected Option:", selectComponent2.getSelectedOption());
+      });
+
+      selectComponent2.addEventListener('blur', () => {
+        console.log("blur Selected Option:", selectComponent2.getSelectedOption());
+      });
+
+      const selectComponent3 = document.getElementById('humanSelect');
+      selectComponent3.options = [
+        { value: '1', label: 'tom' },
+        { value: '2', label: 'bom' },
+        { value: '3', label: 'ammy' }
+      ];
+
+
+
+
       // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedTextsByNameGroup());
       // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedValuesByNameGroup());
       // console.log(document.querySelector('l-checkbox[name="chk2"]').getTextsByNameGroup());
@@ -55,11 +115,16 @@
       //   alert('dd');
       // })
       setTimeout(()=>{
+        const fruitSelect = document.getElementById('fruitSelect');
+        fruitSelect.checkValidity();
 
-        document.querySelector('l-checkbox[name="chk"]').checkValidity();
+        const animalSelect = document.getElementById('animalSelect');
+        animalSelect.checkValidity();
 
-        document.querySelector('l-Radio[name="radio"]').checkValidity();
-      },1000)
+        // document.querySelector('l-checkbox[name="chk"]').checkValidity();
+        //
+        // document.querySelector('l-Radio[name="radio"]').checkValidity();
+      },1000);
     })
 
   </script>
