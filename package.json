@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@rollup/plugin-babel": "^6.0.4",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.29.0",
+    "tui-date-picker": "^4.3.3"
   }
 }
