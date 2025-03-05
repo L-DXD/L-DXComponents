@@ -4,59 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index-v0.0.5.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.5.css">
+    <script type="module" crossorigin src="/assets/index-v0.0.6.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.6.css">
   </head>
+
 <!--  <script type="module" src="components/input/test.js"></script>-->
 
+  <l-c-datepicker></l-c-datepicker>
   <l-c-select label="Choose an option" name="mySelect" id="fruitSelect" default-type="all" required>
   </l-c-select>
 
-  <l-c-select label="Choose an option" name="mySelect" id="animalSelect" default-type="select" required>
-  </l-c-select>
+<!--  <l-c-select label="Choose an option" name="mySelect" id="animalSelect" default-type="select" required>-->
+<!--  </l-c-select>-->
 
-  <l-c-select label="Choose an option" name="mySelect" id="humanSelect">
-  </l-c-select>
+<!--  <l-c-select label="Choose an option" name="mySelect" id="humanSelect">-->
+<!--  </l-c-select>-->
 
-  <l-button type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
-  </l-button>
+<!--  <l-button type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">-->
+<!--  </l-button>-->
 
-  <l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">
-  </l-c-input>
+<!--  <l-c-input type="text" label="Phone" label-align="top" feedback="invalid value" feedback-type="error" feedback-visible-type="invalid" id="input01" name="name" width="100%" required="" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}">-->
+<!--  </l-c-input>-->
 
-  <l-checkbox id="input01" name="chk" width="100%" label="label2" label-align="right" value="1" required>
-  </l-checkbox>
-  <l-checkbox id="input02" name="chk" width="100%" label="label" label-align="right" value="2" required>
-  </l-checkbox>
+<!--  <l-checkbox id="input01" name="chk" width="100%" label="label2" label-align="right" value="1" required>-->
+<!--  </l-checkbox>-->
+<!--  <l-checkbox id="input02" name="chk" width="100%" label="label" label-align="right" value="2" required>-->
+<!--  </l-checkbox>-->
 
-  <l-checkbox id="input03" name="chk2" width="100%" label="label2" label-align="right" value="1" checked>
-  </l-checkbox>
-  <l-checkbox id="input04" name="chk2" width="100%" label="label" label-align="right" value="2">
-  </l-checkbox>
+<!--  <l-checkbox id="input03" name="chk2" width="100%" label="label2" label-align="right" value="1" checked>-->
+<!--  </l-checkbox>-->
+<!--  <l-checkbox id="input04" name="chk2" width="100%" label="label" label-align="right" value="2">-->
+<!--  </l-checkbox>-->
 
-  <l-Radio id="check01" name="radio" width="100%" label="label2" label-align="right" value="1" required>
-  </l-Radio>
-  <l-Radio id="check02" name="radio" width="100%" label="label" label-align="right" value="2">
-  </l-Radio>
+<!--  <l-Radio id="check01" name="radio" width="100%" label="label2" label-align="right" value="1" required>-->
+<!--  </l-Radio>-->
+<!--  <l-Radio id="check02" name="radio" width="100%" label="label" label-align="right" value="2">-->
+<!--  </l-Radio>-->
 
 
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-    //   const selectComponent = document.querySelector('l-c-select');
-    //   console.log(selectComponent);
-    //   selectComponent.options = [
-    //     { value: '1', label: 'Option 1' },
-    //     { value: '2', label: 'Option 2' },
-    //     { value: '3', label: 'Option 3' }
-    //   ];
-
-      const selectComponent = document.getElementById('fruitSelect');
+      const selectComponent = document.querySelector('l-c-select');
+      console.log(selectComponent);
       selectComponent.options = [
-        { value: '1', label: 'Apple' },
-        { value: '2', label: 'Banana' },
-        { value: '3', label: 'Orange' }
+        { value: '1', label: 'Option 1' },
+        { value: '2', label: 'Option 2' },
+        { value: '3', label: 'Option 3' }
       ];
+
+      // const selectComponent = document.getElementById('fruitSelect');
+      // selectComponent.options = [
+      //   { value: '1', label: 'Apple' },
+      //   { value: '2', label: 'Banana' },
+      //   { value: '3', label: 'Orange' }
+      // ];
 
       // console.log(selectComponent);
       //
@@ -68,27 +70,27 @@
 
 
 
-      const selectComponent2 = document.getElementById('animalSelect');
-      selectComponent2.options = [
-        { value: '1', label: 'tiger' },
-        { value: '2', label: 'monkey' },
-        { value: '3', label: 'turtle' }
-      ];
-
-      selectComponent2.addEventListener('change', () => {
-        console.log("Changed Selected Option:", selectComponent2.getSelectedOption());
-      });
-
-      selectComponent2.addEventListener('blur', () => {
-        console.log("blur Selected Option:", selectComponent2.getSelectedOption());
-      });
-
-      const selectComponent3 = document.getElementById('humanSelect');
-      selectComponent3.options = [
-        { value: '1', label: 'tom' },
-        { value: '2', label: 'bom' },
-        { value: '3', label: 'ammy' }
-      ];
+      // const selectComponent2 = document.getElementById('animalSelect');
+      // selectComponent2.options = [
+      //   { value: '1', label: 'tiger' },
+      //   { value: '2', label: 'monkey' },
+      //   { value: '3', label: 'turtle' }
+      // ];
+      //
+      // selectComponent2.addEventListener('change', () => {
+      //   console.log("Changed Selected Option:", selectComponent2.getSelectedOption());
+      // });
+      //
+      // selectComponent2.addEventListener('blur', () => {
+      //   console.log("blur Selected Option:", selectComponent2.getSelectedOption());
+      // });
+      //
+      // const selectComponent3 = document.getElementById('humanSelect');
+      // selectComponent3.options = [
+      //   { value: '1', label: 'tom' },
+      //   { value: '2', label: 'bom' },
+      //   { value: '3', label: 'ammy' }
+      // ];
 
 
 
@@ -111,17 +113,17 @@
       // document.querySelector('l-c-input').addEventListener('click', ()=>{
       //   alert('dd');
       // })
-      setTimeout(()=>{
-        const fruitSelect = document.getElementById('fruitSelect');
-        fruitSelect.checkValidity();
-
-        const animalSelect = document.getElementById('animalSelect');
-        animalSelect.checkValidity();
-
-        // document.querySelector('l-checkbox[name="chk"]').checkValidity();
-        //
-        // document.querySelector('l-Radio[name="radio"]').checkValidity();
-      },1000);
+      // setTimeout(()=>{
+      //   const fruitSelect = document.getElementById('fruitSelect');
+      //   fruitSelect.checkValidity();
+      //
+      //   const animalSelect = document.getElementById('animalSelect');
+      //   animalSelect.checkValidity();
+      //
+      //   // document.querySelector('l-checkbox[name="chk"]').checkValidity();
+      //   //
+      //   // document.querySelector('l-Radio[name="radio"]').checkValidity();
+      // },1000);
     })
 
   </script>

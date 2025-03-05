@@ -1,0 +1,410 @@
+*, ::after, ::before {
+    box-sizing: border-box
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    appearance: none;
+    background-color: var(--bs-component-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: 8px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+/* form-left-control은 공통 form-control 스타일을 기반으로 추가 속성만 포함 */
+
+.form-left-control {
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .form-control {
+        transition: none
+    }
+}
+
+.form-control[type=file] {
+    overflow: hidden
+}
+
+.form-control[type=file]:not(:disabled):not([readonly]) {
+    cursor: pointer
+}
+
+.form-control:focus {
+    color: var(--bs-body-color);
+    background-color: var(--bs-component-bg);
+    border-color: #80b3ff;
+    outline: 0;
+    box-shadow: 0 0 0 .25rem rgba(0, 102, 255, .25)
+}
+
+.form-control::-webkit-date-and-time-value {
+    min-width: 85px;
+    height: 1.5em;
+    margin: 0
+}
+
+.form-control::-webkit-datetime-edit {
+    display: block;
+    padding: 0
+}
+
+.form-control::-moz-placeholder {
+    color: var(--bs-secondary-color);
+    opacity: 1
+}
+
+.form-control::placeholder {
+    color: var(--bs-secondary-color);
+    opacity: 1
+}
+
+.form-control:disabled {
+    background-color: var(--bs-form-control-disabled-bg);
+    opacity: 1
+}
+
+.form-control::file-selector-button {
+    padding: .375rem .75rem;
+    margin: -.375rem -.75rem;
+    margin-inline-end: .75rem;
+    color: var(--bs-body-color);
+    background-color: var(--bs-tertiary-bg);
+    pointer-events: none;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    border-inline-end-width: var(--bs-border-width);
+    border-radius: 0;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .form-control::file-selector-button {
+        transition: none
+    }
+}
+
+.form-control:hover:not(:disabled):not([readonly])::file-selector-button {
+    background-color: var(--bs-border-color)
+}
+
+.form-control-plaintext {
+    display: block;
+    width: 100%;
+    padding: .375rem 0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: transparent;
+    border: solid transparent;
+    border-width: var(--bs-border-width) 0
+}
+
+.form-control-plaintext:focus {
+    outline: 0
+}
+
+.form-control-plaintext.form-control-lg, .form-control-plaintext.form-control-sm {
+    padding-right: 0;
+    padding-left: 0
+}
+
+.form-control-sm {
+    min-height: calc(1.5em + .5rem + calc(var(--bs-border-width) * 2));
+    padding: .25rem .5rem;
+    font-size: .765625rem;
+    border-radius: 6px
+}
+
+.form-control-sm::file-selector-button {
+    padding: .25rem .5rem;
+    margin: -.25rem -.5rem;
+    margin-inline-end: .5rem
+}
+
+.form-control-lg {
+    min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2));
+    padding: .5rem 1rem;
+    font-size: 1.09375rem;
+    border-radius: 12px
+}
+
+.form-control-lg::file-selector-button {
+    padding: .5rem 1rem;
+    margin: -.5rem -1rem;
+    margin-inline-end: 1rem
+}
+
+textarea.form-control {
+    min-height: calc(1.5em + .75rem + calc(var(--bs-border-width) * 2))
+}
+
+textarea.form-control-sm {
+    min-height: calc(1.5em + .5rem + calc(var(--bs-border-width) * 2))
+}
+
+textarea.form-control-lg {
+    min-height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2))
+}
+
+.form-control-color {
+    width: 3rem;
+    height: calc(1.5em + .75rem + calc(var(--bs-border-width) * 2));
+    padding: .375rem
+}
+
+.form-control-color:not(:disabled):not([readonly]) {
+    cursor: pointer
+}
+
+.form-control-color::-moz-color-swatch {
+    border: 0 !important;
+    border-radius: 8px
+}
+
+.form-control-color::-webkit-color-swatch {
+    border: 0 !important;
+    border-radius: 8px
+}
+
+.form-control-color.form-control-sm {
+    height: calc(1.5em + .5rem + calc(var(--bs-border-width) * 2))
+}
+
+.form-control-color.form-control-lg {
+    height: calc(1.5em + 1rem + calc(var(--bs-border-width) * 2))
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%
+}
+
+.input-group > .form-control, .input-group > .form-floating, .input-group > .form-select {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0
+}
+
+.input-group > .form-control:focus, .input-group > .form-floating:focus-within, .input-group > .form-select:focus {
+    z-index: 5
+}
+
+.input-group .btn {
+    position: relative;
+    z-index: 2
+}
+
+.input-group .btn:focus {
+    z-index: 5
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--bs-tertiary-bg);
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: 8px
+}
+
+.input-group-lg > .btn, .input-group-lg > .form-control, .input-group-lg > .form-select, .input-group-lg > .input-group-text {
+    padding: .5rem 1rem;
+    font-size: 1.09375rem;
+    border-radius: 12px
+}
+
+.input-group-sm > .btn, .input-group-sm > .form-control, .input-group-sm > .form-select, .input-group-sm > .input-group-text {
+    padding: .25rem .5rem;
+    font-size: .765625rem;
+    border-radius: 6px
+}
+
+.input-group-lg > .form-select, .input-group-sm > .form-select {
+    padding-right: 3rem
+}
+
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-control, .input-group:not(.has-validation) > .form-floating:not(:last-child) > .form-select, .input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.input-group.has-validation > .dropdown-toggle:nth-last-child(n+4), .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-control, .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-select, .input-group.has-validation > :nth-last-child(n+3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+
+.input-group > .form-floating:not(:first-child) > .form-control, .input-group > .form-floating:not(:first-child) > .form-select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.btn-toolbar .input-group {
+    width: auto
+}
+
+.search-input-left {
+    padding-left: 2rem; /* 아이콘 자리 확보 */
+    background-color: #fff;
+}
+
+.search-input-left.has-icon {
+    background-image: url('../../assets/svg/search-svgrepo-com.svg'); /* 아이콘 경로 */
+    background-repeat: no-repeat;
+    background-position: 0.5rem center; /* 아이콘 위치 */
+    background-size: 16px 16px; /* 아이콘 크기 (적절히 조절) */
+}
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    margin-left: calc(var(--bs-border-width) * -1);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.valid-feedback {
+//display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: var(--bs-success-text);
+    flex: 9;
+    white-space: nowrap; /* 텍스트를 단일 줄로 표시 */
+    overflow: hidden;    /* 넘치는 내용을 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분을 '...'으로 표시 */
+}
+
+.is-valid ~ .valid-feedback, .is-valid ~ .valid-tooltip, .was-validated :valid ~ .valid-feedback, .was-validated :valid ~ .valid-tooltip {
+    display: block;
+}
+
+.form-check-inline .form-check-input ~ .valid-feedback {
+    margin-left: .5em
+}
+
+.invalid-feedback {
+//display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: .875em;
+    color: var(--bs-danger);
+    flex: 9;
+    white-space: nowrap; /* 텍스트를 단일 줄로 표시 */
+    overflow: hidden;    /* 넘치는 내용을 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분을 '...'으로 표시 */
+}
+
+.is-invalid ~ .invalid-feedback, .is-invalid ~ .invalid-tooltip, .was-validated :invalid ~ .invalid-feedback, .was-validated :invalid ~ .invalid-tooltip {
+    display: block
+}
+
+.form-check-inline .form-check-input ~ .invalid-feedback {
+    margin-left: .5em
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    flex: 9;
+    white-space: nowrap; /* 텍스트를 단일 줄로 표시 */
+    overflow: hidden;    /* 넘치는 내용을 숨김 */
+    text-overflow: ellipsis; /* 넘치는 부분을 '...'으로 표시 */
+}
+
+.form-group [class^=form-hint] {
+    margin-top: .25rem;
+    color: var(--bs-gray-500);
+    padding-left: calc(2rem + 0.4rem);
+}
+
+.form-group [class^=form-hint]::before {
+    display: inline-flex;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+    content: "";
+    margin-left: calc((2rem + 0.4rem) * -1);
+    margin-right: 2px;
+    vertical-align: top;
+
+    background: url(/assets/ico_hint_20.svg) no-repeat center;
+    background-size: contain;
+}
+
+.textarea-count {
+    font-size: var(--bs-body-font-size);
+    width: 100%;
+    margin-top: .25rem;
+    margin-bottom: 0rem;
+    text-align: right;
+    flex:1;
+    display: none;
+}
+
+label {
+    display: inline-block;
+}
+
+.form-label {
+    margin-bottom: .5rem
+}
+
+.col-form-label {
+    padding-top: calc(.375rem + var(--bs-border-width));
+    padding-bottom: calc(.375rem + var(--bs-border-width));
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1.5
+}
+
+.col-form-label-lg {
+    padding-top: calc(.5rem + var(--bs-border-width));
+    padding-bottom: calc(.5rem + var(--bs-border-width));
+    font-size: 1.09375rem
+}
+
+.col-form-label-sm {
+    padding-top: calc(.25rem + var(--bs-border-width));
+    padding-bottom: calc(.25rem + var(--bs-border-width));
+    font-size: .765625rem
+}
+
+.l-label {
+    margin-bottom: .5rem;
+}
+
+.form-left-label {
+    margin-right: 10px;
+    white-space: nowrap; /* Prevents label text from wrapping */
+}

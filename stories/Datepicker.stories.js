@@ -8,14 +8,6 @@ export default {
     component: 'l-c-datepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        type: {
-            control: {type: 'select'},
-            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file', 'search', 'email', 'url'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'text'}
-            }
-        },
         size: {
             control: {type: 'select'},
             options: ['default','large','small'],
@@ -254,7 +246,6 @@ const Template = (args) => {
 
 export const InputWithTopLabelAndFeedback = Template.bind({});
 InputWithTopLabelAndFeedback.args = {
-    type: 'text',
     id: 'input01',
     name: 'name',
     width: '100%',
