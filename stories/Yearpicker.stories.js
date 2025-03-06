@@ -1,11 +1,11 @@
-import '/src/components/input/Datepicker.js'
+import '/src/components/input/Yearpicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Datepicker',
+    title: 'Container Components/Yearpicker',
     tags: ['autodocs'],
-    component: 'l-c-datepicker',
+    component: 'l-c-yearpicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
         size: {
@@ -99,11 +99,11 @@ export default {
         },
         'format': {
             control: {type: 'select'},
-            options: ['yyyy-MM-dd', 'yyyy/MM/dd', 'yyyyMMdd'],
+            options: ['yyyy'],
             table: {
                 category: "attributes",
                 subcategory: "validate",
-                defaultValue: {summary: 'yyyy-MM-dd'},
+                defaultValue: {summary: 'yyyy'},
             }
         },
 
@@ -142,7 +142,7 @@ export default {
                 type: {summary: "(()=> return new String)"},
 
             },
-            description: "Datepicker값을 가져옵니다.",
+            description: "Yearpicker값을 가져옵니다.",
         },
         setValue: {
             control: {
@@ -154,9 +154,9 @@ export default {
                 subcategory: "value",
                 type: {summary: "function(value)"},
             },
-            description: "Datepicker값을 설정합니다.",
+            description: "Yearpicker값을 설정합니다.",
         },
-        initTodayDate: {
+        initCurrentYear: {
             control: {
                 type: {},
                 disable: true
@@ -199,7 +199,7 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-c-datepicker
+        <l-c-yearpicker
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 size=${ifDefined(args.size)}
@@ -220,13 +220,13 @@ const Template = (args) => {
                 ?readonly=${args.readonly}
                 value="${ifDefined(args.value)}"
         >
-        </l-c-datepicker>
+        </l-c-yearpicker>
 
     `
 }
 
-export const DatepickerWithTopLabelAndFeedback = Template.bind({});
-DatepickerWithTopLabelAndFeedback.args = {
+export const YearpickerWithTopLabelAndFeedback = Template.bind({});
+YearpickerWithTopLabelAndFeedback.args = {
     id: 'input02',
     name: 'name',
     width: '100%',
@@ -242,8 +242,8 @@ DatepickerWithTopLabelAndFeedback.args = {
     readonly: false,
 };
 
-export const DatepickerWithLeftLabelAndFeedback = Template.bind({});
-DatepickerWithLeftLabelAndFeedback.args = {
+export const YearpickerWithLeftLabelAndFeedback = Template.bind({});
+YearpickerWithLeftLabelAndFeedback.args = {
     type: 'text',
     id: 'input03',
     name: 'name',
@@ -260,13 +260,13 @@ DatepickerWithLeftLabelAndFeedback.args = {
     readonly: false,
 };
 
-export const DatepickerFormatCheck = Template.bind({});
-DatepickerFormatCheck.args = {
+export const YearpickerFormatCheck = Template.bind({});
+YearpickerFormatCheck.args = {
     id: 'input04',
     name: 'name',
     width: '100%',
-    format: 'yyyyMMdd',
-    value: '2024-12-31',
+    format: 'yyyy',
+    value: '2024-12',
     label: 'label',
     'label-align': 'top',
     'label-width': 'auto',
@@ -281,14 +281,14 @@ DatepickerFormatCheck.args = {
 
 const sizeTemplate = (args) => {
     return html`
-        <l-c-datepicker label="default size" id="default"></l-c-datepicker>
+        <l-c-yearpicker label="default size" id="default"></l-c-yearpicker>
 
         <div style="margin: 16px"></div>
 
-        <l-c-datepicker size='large' label="large size" id="largeDefault"></l-c-datepicker>
+        <l-c-yearpicker size='large' label="large size" id="largeDefault"></l-c-yearpicker>
         <div style="margin: 16px"></div>
 
-        <l-c-datepicker size='small' label="small size" id="smallDefault"></l-c-datepicker>
+        <l-c-yearpicker size='small' label="small size" id="smallDefault"></l-c-yearpicker>
     `
 }
 

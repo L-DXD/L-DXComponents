@@ -2,6 +2,12 @@
     box-sizing: border-box
 }
 
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 button, input, optgroup, select, textarea {
     margin: 0;
     font-family: inherit;
@@ -407,4 +413,79 @@ label {
 .form-left-label {
     margin-right: 10px;
     white-space: nowrap; /* Prevents label text from wrapping */
+}
+
+.invalid-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    max-width: 100%;
+    padding: .25rem .5rem;
+    margin-top: .1rem;
+    font-size: .765625rem;
+    color: #fff;
+    background-color: var(--bs-danger);
+    border-radius: var(--bs-border-radius)
+}
+
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: var(--bs-danger);
+    padding-right: calc(1.5em + .75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23df1414'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23df1414' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem)
+}
+
+.form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+    border-color: var(--bs-danger);
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25)
+}
+
+.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
+    padding-right: calc(1.5em + .75rem);
+    background-position: top calc(.375em + .1875rem) right calc(.375em + .1875rem)
+}
+
+.form-select.is-invalid, .was-validated .form-select:invalid {
+    border-color: var(--bs-danger)
+}
+
+.form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"], .was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"] {
+    --bs-form-select-bg-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23df1414'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23df1414' stroke='none'/%3e%3c/svg%3e");
+    padding-right: 4.125rem;
+    background-position: right .75rem center, center right 2.25rem;
+    background-size: 16px 12px, calc(.75em + .375rem) calc(.75em + .375rem)
+}
+
+.form-select.is-invalid:focus, .was-validated .form-select:invalid:focus {
+    border-color: var(--bs-danger);
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25)
+}
+
+.form-control-color.is-invalid, .was-validated .form-control-color:invalid {
+    width: calc(3rem + calc(1.5em + .75rem))
+}
+
+.form-check-input.is-invalid, .was-validated .form-check-input:invalid {
+    border-color: var(--bs-danger)
+}
+
+.form-check-input.is-invalid:checked, .was-validated .form-check-input:invalid:checked {
+    background-color: var(--bs-danger-text)
+}
+
+.form-check-input.is-invalid:focus, .was-validated .form-check-input:invalid:focus {
+    box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb), .25)
+}
+
+.form-check-input.is-invalid ~ .form-check-label, .was-validated .form-check-input:invalid ~ .form-check-label {
+    color: var(--bs-danger-text)
+}
+
+
+.input-group > .form-control:not(:focus).is-invalid, .input-group > .form-floating:not(:focus-within).is-invalid, .input-group > .form-select:not(:focus).is-invalid, .was-validated .input-group > .form-control:not(:focus):invalid, .was-validated .input-group > .form-floating:not(:focus-within):invalid, .was-validated .input-group > .form-select:not(:focus):invalid {
+    z-index: 4
 }

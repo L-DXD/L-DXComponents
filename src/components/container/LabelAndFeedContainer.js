@@ -103,7 +103,6 @@ export class LabelAndFeedContainer extends LitParents {
     static get properties() {
         return {
             id: {type: String},
-            class: {type: String},
             width: {type: String},
             required: {type: Boolean},
 
@@ -123,9 +122,9 @@ export class LabelAndFeedContainer extends LitParents {
     render() {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
+
         return html`
             <div
-                    class="${this['class']}"
                     style="width: ${this['width'] ? this['width'] : 'auto'}"
             >
                 <div

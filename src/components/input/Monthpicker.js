@@ -7,7 +7,7 @@ import DatePicker from "tui-date-picker";
 import './Input.css';
 import {classMap} from "lit/directives/class-map.js";
 
-@customElement('l-c-datepicker')
+@customElement('l-c-monthpicker')
 class LDatepicker extends LitElement {
 
     constructor() {
@@ -51,13 +51,14 @@ class LDatepicker extends LitElement {
     firstUpdated() {
         const wrapperId = `${this['id']}-wrapper`;
         const inputId = `${this['id']}-input`;
-        const format = this['format'] || 'yyyy-MM-dd';
+        const format = this['format'] || 'yyyy-MM';
 
 
         // TOAST UI DatePicker 초기화
         // datePicker를 인스턴스 변수로 저장 가능 (필요 시 접근)
         this.datePicker = new DatePicker(`#${wrapperId}`, {
             // date: new Date(),
+            type: 'month',
             input: {
                 element: `#${inputId}`,
                 format: format,
@@ -76,7 +77,7 @@ class LDatepicker extends LitElement {
 
     setValue(value) {
         if (this.datePicker && value) {
-            const format = this['format'] || 'yyyy-MM-dd'; // 포맷 확인 및 기본값
+            const format = this['format'] || 'yyyy-MM'; // 포맷 확인 및 기본값
 
             // 날짜 형식 검사
             const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
@@ -99,12 +100,12 @@ class LDatepicker extends LitElement {
 
     _getDateFormatRegex(format) {
         switch (format) {
-            case 'yyyy-MM-dd':
-                return /^\d{4}-\d{2}-\d{2}$/;
-            case 'yyyy/MM/dd':
-                return /^\d{4}\/\d{2}\/\d{2}$/;
-            case 'yyyyMMdd':
-                return /^\d{8}$/;
+            case 'yyyy-MM':
+                return /^\d{4}-\d{2}$/;
+            case 'yyyy/MM':
+                return /^\d{4}\/\d{2}$/;
+            case 'yyyyMM':
+                return /^\d{6}$/;
             default:
                 console.error(`Unsupported format: ${format}`);
                 return null;
@@ -115,17 +116,16 @@ class LDatepicker extends LitElement {
         let parts = null;
 
         switch (format) {
-            case 'yyyy-MM-dd': // '-' 구분자로 처리
+            case 'yyyy-MM': // '-' 구분자로 처리
                 parts = value.split('-');
-                return new Date(parts[0], parts[1] - 1, parts[2]);
-            case 'yyyy/MM/dd': // '/' 구분자로 처리
+                return new Date(parts[0], parts[1] - 1);
+            case 'yyyy/MM': // '/' 구분자로 처리
                 parts = value.split('/');
-                return new Date(parts[0], parts[1] - 1, parts[2]);
-            case 'yyyyMMdd': // 연속 문자열 처리
+                return new Date(parts[0], parts[1] - 1);
+            case 'yyyyMM': // 연속 문자열 처리
                 return new Date(
                     value.substring(0, 4),
-                    value.substring(4, 6) - 1,
-                    value.substring(6, 8)
+                    value.substring(4, 6) - 1
                 );
             default:
                 console.error(`Unsupported format: ${format}`);
@@ -136,15 +136,14 @@ class LDatepicker extends LitElement {
     _parseDateByFormat(date, format) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
 
         switch (format) {
-            case 'yyyy-MM-dd':
-                return `${year}-${month}-${day}`;
-            case 'yyyy/MM/dd':
-                return `${year}/${month}/${day}`;
-            case 'yyyyMMdd':
-                return `${year}${month}${day}`;
+            case 'yyyy-MM':
+                return `${year}-${month}`;
+            case 'yyyy/MM':
+                return `${year}/${month}`;
+            case 'yyyyMM':
+                return `${year}${month}`;
             default:
                 console.error(`Unsupported format: ${format}`);
                 return '';
@@ -261,7 +260,7 @@ class LDatepicker extends LitElement {
         `;
     }
 
-    isValid(value, format = 'yyyy-MM-dd', required) {
+    isValid(value, format = 'yyyy-MM', required) {
         const dateObj = this.datePicker.getDate();        // DatePicker의 현재 값 (Date 객체) 가져오기
 
         if (!dateObj) {
@@ -311,8 +310,8 @@ class LDatepicker extends LitElement {
         this.validate();
     }
 
-    initTodayDate() {
-        const format = this['format'] || 'yyyy-MM-dd';
+    initCurrentMonth() {
+        const format = this['format'] || 'yyyy-MM';
         const today = new Date();
         const todayStr = this._parseDateByFormat(today, format);
         this.value = todayStr;

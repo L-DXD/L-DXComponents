@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index-v0.0.6.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.6.css">
+    <script type="module" crossorigin src="/assets/index-v0.0.7.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.7.css">
   </head>
 
 <!--  <script type="module" src="components/input/test.js"></script>-->
 
-  <l-c-datepicker></l-c-datepicker>
+  <l-c-datepicker id="input01" format="yyyyMMdd" required label="test"></l-c-datepicker>
+  <l-c-datepicker id="input02"></l-c-datepicker>
   <l-c-select label="Choose an option" name="mySelect" id="fruitSelect" default-type="all" required>
   </l-c-select>
 
@@ -45,6 +46,13 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
+      const datepicker  = document.getElementById('input01');
+      datepicker.initTodayDate();
+      console.log(datepicker.getValue());
+
+      const datepicker2  = document.getElementById('input02');
+      datepicker2.initTodayDate();
+
       const selectComponent = document.querySelector('l-c-select');
       console.log(selectComponent);
       selectComponent.options = [
