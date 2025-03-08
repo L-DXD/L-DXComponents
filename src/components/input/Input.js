@@ -27,7 +27,33 @@ class LInput extends LabelAndFeedContainer {
                 background-position: 0.5rem center; /* 아이콘 위치 */
                 background-size: 16px 16px; /* 아이콘 크기 (적절히 조절) */
             }
-            
+
+            .search-input-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+
+            .search-input-right {
+                padding-right: 2rem;
+                background-color: #fff;
+            }
+
+            .search-icon-right {
+                position: absolute;
+                right: 0.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 16px;
+                height: 16px;
+                background-image: url('../../assets/svg/search-svgrepo-com.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: contain;
+                cursor: pointer;
+                pointer-events: auto;
+            }
+
 
             input::-webkit-search-cancel-button {
                 -webkit-appearance: none;
@@ -46,13 +72,50 @@ class LInput extends LabelAndFeedContainer {
         `
     ];
 
+    setKeydownEventListener() {
+        const inputElement = this.shadowRoot.querySelector(super.getSelector);
+
+        if (inputElement) {
+            // 기존 키다운 이벤트 핸들러가 이미 등록되어 있으면 제거
+            if (this._keydownHandler) {
+                inputElement.removeEventListener('keydown', this._keydownHandler);
+            }
+
+            // 새로운 키다운 이벤트 핸들러를 생성하고 저장
+            this._keydownHandler = (event) => this._handleKeydown(event);
+            inputElement.addEventListener('keydown', this._keydownHandler);
+        }
+    }
+
+    _handleSearchClick(event) {
+        this.triggerPop();
+    }
+
+
+    /**
+     * 키다운 이벤트 핸들러
+     * @param {KeyboardEvent} event
+     */
+    _handleKeydown(event) {
+        const {key} = event;
+
+        // type이 'pop'이고 Enter 키가 눌렸을 경우
+        if (this['type'] === 'pop' && key === 'Enter') {
+            this.triggerPop();
+        }
+    }
+
+    triggerPop() {
+        const inputElement = this.shadowRoot.querySelector(super.getSelector);
+
+    }
+
 
     disconnectedCallback() {
         super.disconnectedCallback();
         // MutationObserver 연결 해제
         this.observer.disconnect();
     }
-
 
 
     static get properties() {
@@ -76,6 +139,11 @@ class LInput extends LabelAndFeedContainer {
     render() {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
         let isSearchLeft = (this['type'] === 'search' && !this['disabled'] && !this['readonly']);
+        let isSearchRight = (this['type'] === 'pop' && !this['disabled'] && !this['readonly']);
+
+        if (this['type'] === 'pop') {
+            this.setKeydownEventListener();
+        }
 
         return html`
             <l-label-feed-container
@@ -99,8 +167,9 @@ class LInput extends LabelAndFeedContainer {
                                 'form-control-plaintext': this['type'] === 'planText',
                                 'form-control-lg': this['size'] === 'large',
                                 'form-control-sm': this['size'] === 'small',
-                                'search-input-left' : isSearchLeft,
-                                'has-icon' : isSearchLeft
+                                'search-input-left': isSearchLeft,
+                                'search-input-right': isSearchRight,
+                                'has-icon': isSearchLeft
                             })}"
                             id="${ifDefined(this['id'])}"
                             name="${ifDefined(this['name'])}"
@@ -117,8 +186,13 @@ class LInput extends LabelAndFeedContainer {
                             }}"
                             @blur="${super.validate}"
                             @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
-                            
                     >
+                    ${isSearchRight ? html
+                            `
+                                <div @click="${this._handleSearchClick}"
+                                     class="search-icon-right ${this.value ? '' : 'hidden'}"
+                                     id="rightIcon"></div>` : nothing
+                    }
                 </div>
 
             </l-label-feed-container>

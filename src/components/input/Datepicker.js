@@ -65,6 +65,10 @@ class LDatepicker extends LitElement {
         });
 
         this.setValue(this['value']);
+
+        this.datePicker.on('change', (selectedDate) => {
+            this.validate();
+        });
     }
 
     getValue() {
@@ -218,7 +222,7 @@ class LDatepicker extends LitElement {
                                         : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
                                 : this['label']}
                     </label>
-                    <div class="search-input-container">
+                    <div class="datepicker-container">
                         <!-- Wrapper 영역 -->
                         <div class="tui-has-focus">
                             <input type="text"
@@ -240,7 +244,8 @@ class LDatepicker extends LitElement {
                         <div id="${wrapperId}" style="margin-top: -1px;"></div>
 
                         <div @click="${this._handleSearchClick}"
-                             class="search-icon-right" id="rightIcon"></div>
+                             class="search-icon-right" id="rightIcon">📅
+                        </div>
                     </div>
                 </div>
 
@@ -272,7 +277,7 @@ class LDatepicker extends LitElement {
         }
 
         const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
-        if (!dateFormatRegex || !dateFormatRegex.test(value)) {
+        if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
             console.error(`Invalid date format: ${value}. Expected format is ${format}.`);
             return false; // 유효하지 않은 경우 처리 중단
         }
@@ -285,9 +290,12 @@ class LDatepicker extends LitElement {
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
 
-        console.log('format', this['format']);
+
 
         const value = this.getValue().trim();
+
+        console.log('format', this['format']);
+        console.log('value', value);
         const $feedbackElement = this.querySelector(`#${feedbackId}`);
         const $inputElement = this.querySelector(`#${inputId}`);
         const isFlag = this.isValid(value, this['format'], this['required']);

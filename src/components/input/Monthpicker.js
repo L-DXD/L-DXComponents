@@ -66,6 +66,10 @@ class LDatepicker extends LitElement {
         });
 
         this.setValue(this['value']);
+
+        this.datePicker.on('change', (selectedDate) => {
+            this.validate();
+        });
     }
 
     getValue() {
@@ -271,7 +275,7 @@ class LDatepicker extends LitElement {
         }
 
         const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
-        if (!dateFormatRegex || !dateFormatRegex.test(value)) {
+        if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
             console.error(`Invalid date format: ${value}. Expected format is ${format}.`);
             return false; // 유효하지 않은 경우 처리 중단
         }

@@ -10,11 +10,19 @@ export default {
     argTypes: {
         type: {
             control: {type: 'select'},
-            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file', 'search', 'email', 'url'],
+            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file', 'search','pop', 'email', 'url'],
             table: {
                 category: "attributes",
                 defaultValue: {summary: 'text'}
             }
+        },
+        'pop-function': {
+            control: 'function'
+            , description: 'Function to run when type is pop'
+            , table: {
+                category: "attributes",
+            }
+            , if: {arg: 'type', eq: 'pop'},
         },
         size: {
             control: {type: 'select'},
