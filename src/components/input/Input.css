@@ -277,17 +277,17 @@ textarea.form-control-lg {
     width: auto
 }
 
-.search-input-left {
-    padding-left: 2rem; /* 아이콘 자리 확보 */
-    background-color: #fff;
-}
+/*.search-input-left {*/
+/*    padding-left: 2rem; !* 아이콘 자리 확보 *!*/
+/*    background-color: #fff;*/
+/*}*/
 
-.search-input-left.has-icon {
-    background-image: url('../../assets/svg/search-svgrepo-com.svg'); /* 아이콘 경로 */
-    background-repeat: no-repeat;
-    background-position: 0.5rem center; /* 아이콘 위치 */
-    background-size: 16px 16px; /* 아이콘 크기 (적절히 조절) */
-}
+/*.search-input-left.has-icon {*/
+/*    background-image: url('../../assets/svg/search-svgrepo-com.svg'); !* 아이콘 경로 *!*/
+/*    background-repeat: no-repeat;*/
+/*    background-position: 0.5rem center; !* 아이콘 위치 *!*/
+/*    background-size: 16px 16px; !* 아이콘 크기 (적절히 조절) *!*/
+/*}*/
 
 .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
     margin-left: calc(var(--bs-border-width) * -1);
@@ -296,7 +296,6 @@ textarea.form-control-lg {
 }
 
 .valid-feedback {
-//display: none;
     width: 100%;
     margin-top: .25rem;
     font-size: .875em;
@@ -316,7 +315,6 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-//display: none;
     width: 100%;
     margin-top: .25rem;
     font-size: .875em;
@@ -490,5 +488,29 @@ label {
     z-index: 4
 }
 
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
 
+.input-right {
+    padding-right: 2rem;
+    background-color: #fff;
+}
+
+.icon-right {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background-image: url('../../assets/svg/calendar-lines-svgrepo-com.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+    pointer-events: auto;
+}
 

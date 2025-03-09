@@ -1,24 +1,16 @@
-import '/src/components/input/Input.js'
+import '/src/components/input/RDatepicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Input',
+    title: 'Container Components/Rangedatepicker',
     tags: ['autodocs'],
-    component: 'l-c-input',
+    component: 'l-c-rdatepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        type: {
-            control: {type: 'select'},
-            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file', 'search', 'email', 'url'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'text'}
-            }
-        },
         size: {
             control: {type: 'select'},
-            options: ['default', 'large', 'small'],
+            options: ['default','large','small'],
             table: {
                 category: "attributes",
                 defaultValue: {summary: 'default'}
@@ -105,45 +97,14 @@ export default {
                 subcategory: "text",
             }
         },
-        // 'valid-trigger-type': {
-        //     control: {type: 'select'},
-        //     options: ['blur', 'change', 'focus'],
-        //     table: {
-        //         category: "attributes",
-        //         subcategory: "validate",
-        //         defaultValue: {summary: 'blur'},
-        //     }
-        // },
-        'valid-length-type': {
+        'format': {
             control: {type: 'select'},
-            options: ['length', 'byte'],
+            options: ['yyyy-MM-dd', 'yyyy/MM/dd', 'yyyyMMdd'],
             table: {
                 category: "attributes",
                 subcategory: "validate",
-                defaultValue: {summary: 'length'},
+                defaultValue: {summary: 'yyyy-MM-dd'},
             }
-        },
-        maxlength: {
-            control: {type: 'number'},
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-            }
-        },
-        minlength: {
-            control: {type: 'number'},
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-            }
-        },
-        pattern: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-            },
-            description: "ex) [0-9]{3}-[0-9]{4}-[0-9]{4}",
         },
 
         required: {
@@ -181,7 +142,7 @@ export default {
                 type: {summary: "(()=> return new String)"},
 
             },
-            description: "input값을 가져옵니다.",
+            description: "Rangedatepicker값을 가져옵니다.",
         },
         setValue: {
             control: {
@@ -193,7 +154,19 @@ export default {
                 subcategory: "value",
                 type: {summary: "function(value)"},
             },
-            description: "input값을 설정합니다.",
+            description: "Rangedatepicker값을 설정합니다.",
+        },
+        initTodayDate: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "value",
+                type: {summary: "function()"},
+            },
+            description: "설정된 format의 오늘 날짜값을 설정합니다.",
         },
         isValid: {
             control: {
@@ -226,36 +199,35 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-c-input
-                type=${ifDefined(args.type)}
+        <l-c-rdatepicker
+                id=${ifDefined(args.id)}
+                name=${ifDefined(args.name)}
                 size=${ifDefined(args.size)}
+                format=${ifDefined(args.format)}
+                
+                
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
                 label-width=${ifDefined(args['label-width'])}
                 label-text-align=${ifDefined(args['label-text-align'])}
-                valid-length-type=${ifDefined(args['valid-length-type'])}
                 feedback=${ifDefined(args.feedback)}
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
-                id=${ifDefined(args.id)}
-                name=${ifDefined(args.name)}
+                
                 width=${ifDefined(args.width)}
-                maxlength=${ifDefined(args.maxlength)}
-                minlength=${ifDefined(args.minlength)}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
-                placeholder="${ifDefined(args.placeholder)}"
-                pattern="${ifDefined(args.pattern)}"
                 value="${ifDefined(args.value)}"
         >
-        </l-c-input>`
+        </l-c-rdatepicker>
+
+    `
 }
 
-export const InputWithTopLabelAndFeedback = Template.bind({});
-InputWithTopLabelAndFeedback.args = {
-    type: 'text',
-    id: 'input01',
+export const RangedatepickerWithTopLabelAndFeedback = Template.bind({});
+RangedatepickerWithTopLabelAndFeedback.args = {
+    id: 'input02',
     name: 'name',
     width: '100%',
     label: 'label',
@@ -270,10 +242,10 @@ InputWithTopLabelAndFeedback.args = {
     readonly: false,
 };
 
-export const InputWithLeftLabelAndFeedback = Template.bind({});
-InputWithLeftLabelAndFeedback.args = {
+export const RangedatepickerWithLeftLabelAndFeedback = Template.bind({});
+RangedatepickerWithLeftLabelAndFeedback.args = {
     type: 'text',
-    id: 'input01',
+    id: 'input03',
     name: 'name',
     width: 'auto',
     label: 'label : ',
@@ -283,91 +255,44 @@ InputWithLeftLabelAndFeedback.args = {
     feedback: 'feedback',
     'feedback-type': 'normal',
     'feedback-visible-type': 'visible',
-    required: false,
+    required: true,
     disabled: false,
     readonly: false,
 };
 
-
-export const SimpleInput = Template.bind({});
-SimpleInput.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    'label-align': 'top',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputRequireValidity = Template.bind({});
-InputRequireValidity.args = {
-    type: 'text',
-    id: 'input01',
+export const RangedatepickerFormatCheck = Template.bind({});
+RangedatepickerFormatCheck.args = {
+    id: 'input04',
     name: 'name',
     width: '100%',
+    format: 'yyyyMMdd',
+    value: '2024-12-31',
     label: 'label',
     'label-align': 'top',
     'label-width': 'auto',
     'label-text-align': 'left',
-    feedback: '필수 값 입니다.',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    required: true,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternValidity = Template.bind({});
-InputPatternValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid pattern',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
+    feedback: 'feedback',
+    'feedback-type': 'normal',
+    'feedback-visible-type': 'visible',
     required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternAndRequireValidity = Template.bind({});
-InputPatternAndRequireValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid value',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: true,
     disabled: false,
     readonly: false,
 };
 
 const sizeTemplate = (args) => {
     return html`
-        <l-c-input label="default size" value="default"></l-c-input>
+        <l-c-rdatepicker label="default size" id="default"></l-c-rdatepicker>
 
         <div style="margin: 16px"></div>
 
-        <l-c-input size='large' label="large size" value="large"></l-c-input>
+        <l-c-rdatepicker size='large' label="large size" id="largeDefault"></l-c-rdatepicker>
         <div style="margin: 16px"></div>
 
-        <l-c-input size='small' label="small size" value="small"></l-c-input>
+        <l-c-rdatepicker size='small' label="small size" id="smallDefault"></l-c-rdatepicker>
     `
 }
 
 export const size = sizeTemplate.bind({});
-size.args = {};
+size.args = {
+
+};

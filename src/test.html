@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vite App</title>
 </head>
-<!--<script src="../dist/assets/index-v0.0.4.js"></script>-->
-<!--<link href="../dist/assets/index-v0.0.4.css" rel="stylesheet"/>-->
-<link href="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.0.5.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.0.5.js"></script>
+<script src="../dist/assets/index-v0.0.8.js"></script>
+<link href="../dist/assets/index-v0.0.8.css" rel="stylesheet"/>
+<!--<link href="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.0.5.css" rel="stylesheet"/>-->
+<!--<script src="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.0.5.js"></script>-->
 
 <!--  <script type="module" src="components/input/test.js"></script>-->
+
+<script type="application/javascript">
+    const log = (value) => {
+        console.log(value);
+    };
+</script>
+
+<l-c-input type="pop" label="Pop" label-align="top" id="input01" name="name" width="100%"
+           .popfunction=log>
+</l-c-input>
+
+<l-c-datepicker id="dateinput01" format="yyyyMMdd" required label="test"></l-c-datepicker>
+<l-c-datepicker id="dateinput02"></l-c-datepicker>
+
+<l-c-monthpicker id="monthinput02" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">
+</l-c-monthpicker>
+
+<l-c-yearpicker id="yearinput03" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">
+</l-c-yearpicker>
 
 <h3>전체 선택 옵션이 있는 select box</h3>
 <l-c-select label="select box" name="mySelect" id="fruitSelect" default-type="all">

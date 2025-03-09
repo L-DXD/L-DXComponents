@@ -4,16 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index-v0.0.7.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-v0.0.7.css">
+    <script type="module" crossorigin src="/assets/index-v0.1.0.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v0.1.0.css">
   </head>
+<script type="application/javascript">
+  const log = (value) => {
+    console.log(value);
+  };
+</script>
+  <l-c-monthpicker id="input02" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">
+  </l-c-monthpicker>
+
+  <l-c-yearpicker id="input03" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">
+  </l-c-yearpicker>
+
+
 
 <!--  <script type="module" src="components/input/test.js"></script>-->
 
-  <l-c-datepicker id="input01" format="yyyyMMdd" required label="test"></l-c-datepicker>
-  <l-c-datepicker id="input02"></l-c-datepicker>
-  <l-c-select label="Choose an option" name="mySelect" id="fruitSelect" default-type="all" required>
-  </l-c-select>
+<!--  <l-c-datepicker id="input01" format="yyyyMMdd" required label="test"></l-c-datepicker>-->
+<!--  <l-c-datepicker id="input02"></l-c-datepicker>-->
+<!--  <l-c-select label="Choose an option" name="mySelect" id="fruitSelect" default-type="all" required>-->
+<!--  </l-c-select>-->
 
 <!--  <l-c-select label="Choose an option" name="mySelect" id="animalSelect" default-type="select" required>-->
 <!--  </l-c-select>-->
@@ -46,20 +58,20 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-      const datepicker  = document.getElementById('input01');
-      datepicker.initTodayDate();
-      console.log(datepicker.getValue());
-
-      const datepicker2  = document.getElementById('input02');
-      datepicker2.initTodayDate();
-
-      const selectComponent = document.querySelector('l-c-select');
-      console.log(selectComponent);
-      selectComponent.options = [
-        { value: '1', label: 'Option 1' },
-        { value: '2', label: 'Option 2' },
-        { value: '3', label: 'Option 3' }
-      ];
+      // const datepicker  = document.getElementById('input01');
+      // datepicker.initTodayDate();
+      // console.log(datepicker.getValue());
+      //
+      // const datepicker2  = document.getElementById('input02');
+      // datepicker2.initTodayDate();
+      //
+      // const selectComponent = document.querySelector('l-c-select');
+      // console.log(selectComponent);
+      // selectComponent.options = [
+      //   { value: '1', label: 'Option 1' },
+      //   { value: '2', label: 'Option 2' },
+      //   { value: '3', label: 'Option 3' }
+      // ];
 
       // const selectComponent = document.getElementById('fruitSelect');
       // selectComponent.options = [

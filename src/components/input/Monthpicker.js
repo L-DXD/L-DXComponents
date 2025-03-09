@@ -12,6 +12,7 @@ class LDatepicker extends LitElement {
 
     constructor() {
         super();
+        this._isOpen = false;
     }
 
     // Shadow DOM을 사용하지 않거나, 외부 DOM 요소에 접근할 수 있도록 설정
@@ -67,8 +68,14 @@ class LDatepicker extends LitElement {
 
         this.setValue(this['value']);
 
-        this.datePicker.on('change', (selectedDate) => {
+        this.datePicker.on('change', (_) => {
             this.validate();
+        });
+        this.datePicker.on('open', (_) => {
+            this._isOpen = true;
+        });
+        this.datePicker.on('close', (_) => {
+            this._isOpen = false;
         });
     }
 
@@ -155,25 +162,11 @@ class LDatepicker extends LitElement {
     }
 
 
-    _handleSearchClick(event) {
-        // const inputElement = this.shadowRoot.querySelector('input');
-        //
-        // // inputClear가 true이거나 type이 search가 아닐 경우 검색 초기화 기능 활성화
-        // if (this.inputClear === true) {
-        //     if (inputElement && inputElement.value !== '') {
-        //         inputElement.value = ''; // 입력값 초기화
-        //         inputElement.dispatchEvent(new Event('input')); // input 이벤트 트리거
-        //     }
-        //
-        //     this.dispatchEvent(new CustomEvent('search-click', {
-        //         detail: {
-        //             name: this.name,
-        //             value: inputElement?.value || '',
-        //         },
-        //     }));
-        // } else {
-        //     console.log('Clear button 기능이 비활성화되었습니다.');
-        // }
+    _handleClick = (_) => {
+        if(this._isOpen)
+            this.datePicker.close();
+        else
+            this.datePicker.open();
     }
 
     render() {
@@ -182,8 +175,6 @@ class LDatepicker extends LitElement {
         const feedbackId = `${this['id']}-feedback`;
 
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
-
-        console.log(this['format']);
 
         const feedbackHtml = {
                 'normal': html`
@@ -223,13 +214,14 @@ class LDatepicker extends LitElement {
                     </label>
                     <div class="search-input-container">
                         <!-- Wrapper 영역 -->
-                        <div class="tui-has-focus">
+                        <div class="input-container">
                             <input type="text"
                                    class="${classMap({
                                        'form-control': true,
                                        'form-left-control': isLabelLeft,
                                        'form-control-lg': this['size'] === 'large',
                                        'form-control-sm': this['size'] === 'small',
+                                       'input-right' : true
                                    })}"
                                    id="${inputId}"
                                    aria-label="Date-Time"
@@ -238,12 +230,11 @@ class LDatepicker extends LitElement {
                                    ?readonly=${this['readonly']}
                                    @blur="${this.validate}"
                             >
-                            <!--                        <span class="tui-ico-date"></span>-->
+                            <div @click="${this._handleClick}"
+                                 class="icon-right ${this.value ? '' : 'hidden'}"
+                                 id="rightIcon"></div>
                         </div>
-                        <div id="${wrapperId}" style="margin-top: -1px;"></div>
-
-                        <div @click="${this._handleSearchClick}"
-                             class="search-icon-right" id="rightIcon"></div>
+                        <div id="${wrapperId}" style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
                     </div>
                 </div>
 
@@ -287,16 +278,12 @@ class LDatepicker extends LitElement {
     validate() {
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
-
-        console.log('format', this['format']);
-
         const value = this.getValue().trim();
         const $feedbackElement = this.querySelector(`#${feedbackId}`);
         const $inputElement = this.querySelector(`#${inputId}`);
         const isFlag = this.isValid(value, this['format'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
-        console.log("isFlag", isFlag);
 
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
 
@@ -323,7 +310,6 @@ class LDatepicker extends LitElement {
         if (this.datePicker) {
             this.datePicker.setDate(today);
         }
-        console.log("Initialized today date:", todayStr);
     }
 
 }

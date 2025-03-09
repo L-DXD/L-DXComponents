@@ -1,12 +1,12 @@
 {
   "name": "webcomponents",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "version": "echo $npm_package_version",
-    "build": "vite build",
+    "build": "rm -rf node_modules/.vite dist && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

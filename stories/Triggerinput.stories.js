@@ -1,20 +1,19 @@
-import '/src/components/input/Input.js'
+import '/src/components/input/TriggerInput.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Input',
+    title: 'Container Components/TriggerInput',
     tags: ['autodocs'],
-    component: 'l-c-input',
-    // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
+    component: 'l-c-triggerinput',
     argTypes: {
-        type: {
-            control: {type: 'select'},
-            options: ['text', 'planText', 'number', 'password', 'tel', 'hidden', 'file', 'search', 'email', 'url'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'text'}
+        handleTrigger: {
+            control: 'function'
+            , table: {
+                category: "instance",
+                subcategory: "property",
             }
+            ,description: "사용자 입력(예: 엔터키 입력, 돋보기 아이콘 클릭) 시 실행되는 트리거 함수를 지정하는 인스턴스 속성입니다.",
         },
         size: {
             control: {type: 'select'},
@@ -223,11 +222,9 @@ export default {
     },
 };
 
-
 const Template = (args) => {
     return html`
-        <l-c-input
-                type=${ifDefined(args.type)}
+        <l-c-triggerinput
                 size=${ifDefined(args.size)}
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
@@ -249,125 +246,33 @@ const Template = (args) => {
                 pattern="${ifDefined(args.pattern)}"
                 value="${ifDefined(args.value)}"
         >
-        </l-c-input>`
-}
+</l-c-triggerinput>
+<script type="application/javascript">
+    const log = (value) => {
+        console.log(value);
+    };
 
-export const InputWithTopLabelAndFeedback = Template.bind({});
-InputWithTopLabelAndFeedback.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'label',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'feedback',
-    'feedback-type': 'normal',
-    'feedback-visible-type': 'visible',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputWithLeftLabelAndFeedback = Template.bind({});
-InputWithLeftLabelAndFeedback.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: 'auto',
-    label: 'label : ',
-    'label-align': 'left',
-    'label-width': '50px',
-    'label-text-align': 'left',
-    feedback: 'feedback',
-    'feedback-type': 'normal',
-    'feedback-visible-type': 'visible',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-
-export const SimpleInput = Template.bind({});
-SimpleInput.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    'label-align': 'top',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputRequireValidity = Template.bind({});
-InputRequireValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'label',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: '필수 값 입니다.',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    required: true,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternValidity = Template.bind({});
-InputPatternValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid pattern',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: false,
-    disabled: false,
-    readonly: false,
-};
-
-export const InputPatternAndRequireValidity = Template.bind({});
-InputPatternAndRequireValidity.args = {
-    type: 'text',
-    id: 'input01',
-    name: 'name',
-    width: '100%',
-    label: 'Phone',
-    'label-align': 'top',
-    'label-width': 'auto',
-    'label-text-align': 'left',
-    feedback: 'invalid value',
-    'feedback-type': 'error',
-    'feedback-visible-type': 'invalid',
-    pattern: '[0-9]{3}-[0-9]{4}-[0-9]{4}',
-    required: true,
-    disabled: false,
-    readonly: false,
-};
-
-const sizeTemplate = (args) => {
-    return html`
-        <l-c-input label="default size" value="default"></l-c-input>
-
-        <div style="margin: 16px"></div>
-
-        <l-c-input size='large' label="large size" value="large"></l-c-input>
-        <div style="margin: 16px"></div>
-
-        <l-c-input size='small' label="small size" value="small"></l-c-input>
+    const triggerComponent = document.getElementById('input01');
+    triggerComponent.handleTrigger = log;
+</script>
     `
 }
 
-export const size = sizeTemplate.bind({});
-size.args = {};
+
+
+export const TriggerInputWithTopLabelAndFeedback = Template.bind({});
+TriggerInputWithTopLabelAndFeedback.args = {
+    id: 'input01',
+    name: 'name',
+    width: '100%',
+    label: 'label',
+    'label-align': 'top',
+    'label-width': 'auto',
+    'label-text-align': 'left',
+    feedback: 'feedback',
+    'feedback-type': 'normal',
+    'feedback-visible-type': 'visible',
+    required: false,
+    disabled: false,
+    readonly: false,
+};

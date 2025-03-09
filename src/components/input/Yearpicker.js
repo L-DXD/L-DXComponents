@@ -12,6 +12,7 @@ class LDatepicker extends LitElement {
 
     constructor() {
         super();
+        this._isOpen = false;
     }
 
     // Shadow DOM을 사용하지 않거나, 외부 DOM 요소에 접근할 수 있도록 설정
@@ -69,6 +70,12 @@ class LDatepicker extends LitElement {
 
         this.datePicker.on('change', (selectedDate) => {
             this.validate();
+        });
+        this.datePicker.on('open', (_) => {
+            this._isOpen = true;
+        });
+        this.datePicker.on('close', (_) => {
+            this._isOpen = false;
         });
     }
 
@@ -137,26 +144,11 @@ class LDatepicker extends LitElement {
         }
     }
 
-
-    _handleSearchClick(event) {
-        // const inputElement = this.shadowRoot.querySelector('input');
-        //
-        // // inputClear가 true이거나 type이 search가 아닐 경우 검색 초기화 기능 활성화
-        // if (this.inputClear === true) {
-        //     if (inputElement && inputElement.value !== '') {
-        //         inputElement.value = ''; // 입력값 초기화
-        //         inputElement.dispatchEvent(new Event('input')); // input 이벤트 트리거
-        //     }
-        //
-        //     this.dispatchEvent(new CustomEvent('search-click', {
-        //         detail: {
-        //             name: this.name,
-        //             value: inputElement?.value || '',
-        //         },
-        //     }));
-        // } else {
-        //     console.log('Clear button 기능이 비활성화되었습니다.');
-        // }
+    _handleClick = (_) => {
+        if(this._isOpen)
+            this.datePicker.close();
+        else
+            this.datePicker.open();
     }
 
     render() {
@@ -206,7 +198,7 @@ class LDatepicker extends LitElement {
                     </label>
                     <div class="search-input-container">
                         <!-- Wrapper 영역 -->
-                        <div class="tui-has-focus">
+                        <div class="input-container">
                             <input type="text"
                                    class="${classMap({
                                        'form-control': true,
@@ -221,12 +213,11 @@ class LDatepicker extends LitElement {
                                    ?readonly=${this['readonly']}
                                    @blur="${this.validate}"
                             >
-                            <!--                        <span class="tui-ico-date"></span>-->
+                            <div @click="${this._handleClick}"
+                                 class="icon-right ${this.value ? '' : 'hidden'}"
+                                 id="rightIcon"></div>
                         </div>
-                        <div id="${wrapperId}" style="margin-top: -1px;"></div>
-
-                        <div @click="${this._handleSearchClick}"
-                             class="search-icon-right" id="rightIcon"></div>
+                        <div id="${wrapperId}" style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
                     </div>
                 </div>
 

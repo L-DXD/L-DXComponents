@@ -8,6 +8,14 @@ export default {
     component: 'l-c-select',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
+        options: {
+            control: 'Array',
+            table: {
+                category: "instance",
+                subcategory: "property",
+            },
+            description: "Select 컴포넌트에 표시될 옵션 목록을 배열 형태로 제공하는 인스턴스 프로퍼티입니다. 각 옵션 객체는 반드시 value와 label 프로퍼티를 포함하며, 그 외 추가적인 값들도 객체 형태로 반환됩니다.",
+        },
         'default-type': {
             control: {type: 'select'},
             options: ['default', 'select', 'all'],

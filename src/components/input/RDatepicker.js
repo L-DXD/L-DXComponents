@@ -7,8 +7,8 @@ import DatePicker from "tui-date-picker";
 import './Input.css';
 import {classMap} from "lit/directives/class-map.js";
 
-@customElement('l-c-datepicker')
-class LDatepicker extends LitElement {
+@customElement('l-c-rdatepicker')
+class LRangedatepicker extends LitElement {
 
     constructor() {
         super();

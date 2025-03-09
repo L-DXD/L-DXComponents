@@ -19,7 +19,6 @@ export class LFeedback extends LitElement {
                 }
 
                 .valid-feedback {
-                    //display: none;
                     width: 100%;
                     margin-top: .25rem;
                     font-size: .875em;
@@ -39,7 +38,6 @@ export class LFeedback extends LitElement {
                 }
 
                 .invalid-feedback {
-                    //display: none;
                     width: 100%;
                     margin-top: .25rem;
                     font-size: .875em;
