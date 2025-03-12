@@ -12,6 +12,14 @@
     console.log(value);
   };
 </script>
+  <l-c-range-datepicker >
+
+  </l-c-range-datepicker>
+
+  <l-c-triggerinput id="trigger" label="Pop">
+
+  </l-c-triggerinput>
+
   <l-c-monthpicker id="input02" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">
   </l-c-monthpicker>
 
@@ -58,6 +66,13 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
+      const log = (value) => {
+        console.log(value);
+      };
+
+      const triggerComponent = document.getElementById('trigger');
+      triggerComponent.handleTrigger = log;
+
       // const datepicker  = document.getElementById('input01');
       // datepicker.initTodayDate();
       // console.log(datepicker.getValue());

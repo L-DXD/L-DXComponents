@@ -6,9 +6,10 @@ import './tui-date-picker.css';
 import DatePicker from "tui-date-picker";
 import './Input.css';
 import {classMap} from "lit/directives/class-map.js";
+import {ifDefined} from "lit/directives/if-defined.js";
 
 @customElement('l-c-yearpicker')
-class LDatepicker extends LitElement {
+class LYearpicker extends LitElement {
 
     constructor() {
         super();
@@ -207,6 +208,7 @@ class LDatepicker extends LitElement {
                                        'form-control-sm': this['size'] === 'small',
                                    })}"
                                    id="${inputId}"
+                                   name="${ifDefined(this['name'])}"
                                    aria-label="Date-Time"
                                    ?required=${this['required']}
                                    ?disabled=${this['disabled']}

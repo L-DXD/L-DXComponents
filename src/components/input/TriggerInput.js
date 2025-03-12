@@ -6,7 +6,7 @@ import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 
 @customElement('l-c-triggerinput')
-class LInput extends LabelAndFeedContainer {
+class TriggerInput extends LabelAndFeedContainer {
 
     constructor() {
         super();

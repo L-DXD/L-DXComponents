@@ -7,12 +7,11 @@ import DatePicker from "tui-date-picker";
 import './Input.css';
 import {classMap} from "lit/directives/class-map.js";
 
-@customElement('l-c-rdatepicker')
+@customElement('l-c-range-datepicker')
 class LRangedatepicker extends LitElement {
 
     constructor() {
         super();
-        this._isOpen = false;
     }
 
     // Shadow DOM을 사용하지 않거나, 외부 DOM 요소에 접근할 수 있도록 설정
@@ -55,46 +54,51 @@ class LRangedatepicker extends LitElement {
         const inputId = `${this['id']}-input`;
         const format = this['format'] || 'yyyy-MM-dd';
 
+        const today = new Date();
+        this.datePicker = DatePicker.createRangePicker({
+            startpicker: {
 
-        // TOAST UI DatePicker 초기화
-        // datePicker를 인스턴스 변수로 저장 가능 (필요 시 접근)
-        this.datePicker = new DatePicker(`#${wrapperId}`, {
-            // date: new Date(),
-            input: {
-                element: `#${inputId}`,
-                format: format,
-            }
+                input: `#${inputId}-from`,
+                container: `#${wrapperId}-from`
+            },
+            endpicker: {
+                date: today,
+                input: `#${inputId}-to`,
+                container: `#${wrapperId}-to`
+            },
+            selectableRanges: [
+                [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]
+            ],
+            format: format
         });
 
-        this.setValue(this['value']);
-
-        this.datePicker.on('change', (_) => {
+        this.datePicker.on('change:end', () => {
             this.validate();
-        });
-        this.datePicker.on('open', (_) => {
-            this._isOpen = true;
-        });
-        this.datePicker.on('close', (_) => {
-            this._isOpen = false;
-        });
-
+        })
     }
 
 
-
-    getValue() {
-        const inputId = `${this['id']}-input`;
+    getValue(type) {
+        const inputId = `${this['id']}-input-${type}`;
 
         const inputElement = this.querySelector(`#${inputId}`);
         return inputElement ? inputElement.value : null;
     }
 
-    setValue(value) {
+    getFromValue() {
+        return this.getValue('from');
+    }
+
+    getToValue() {
+        return this.getValue('to');
+    }
+
+    setDate(type, value) {
         if (this.datePicker && value) {
             const format = this['format'] || 'yyyy-MM-dd'; // 포맷 확인 및 기본값
 
             // 날짜 형식 검사
-            const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
+            const dateFormatRegex = this._getDateFormatRegex(format);
             if (!dateFormatRegex || !dateFormatRegex.test(value)) {
                 console.error(`id : ${this['id']} >> Invalid date format: ${value}. Expected format is ${format}.`);
                 return; // 유효하지 않은 경우 처리 중단
@@ -102,14 +106,28 @@ class LRangedatepicker extends LitElement {
 
             // Date 객체 변환
             const newDate = this._parseDateStrByFormat(value, format);
-            if (!newDate || isNaN(newDate)) { // 날짜 변환 실패 시
+            if (!newDate || isNaN(newDate)) {
                 console.error(`id : ${this['id']} >> Invalid date value: ${value}.`);
                 return; // 유효하지 않은 경우 처리 중단
             }
 
             // 유효한 경우 DatePicker에 값 설정
-            this.datePicker.setDate(newDate);
+            if (type === 'end') {
+                this.datePicker.setEndDate(newDate);
+            } else if (type === 'start') {
+                this.datePicker.setStartDate(newDate);
+            } else {
+                console.error(`id : ${this['id']} >> Unknown date type: ${type}`);
+            }
         }
+    }
+
+    setEndDate(value) {
+        this.setDate('end', value);
+    }
+
+    setFromValue(value) {
+        this.setDate('start', value);
     }
 
     _getDateFormatRegex(format) {
@@ -166,13 +184,6 @@ class LRangedatepicker extends LitElement {
         }
     }
 
-    _handleClick = (_) => {
-        if(this._isOpen)
-            this.datePicker.close();
-        else
-            this.datePicker.open();
-    }
-
     render() {
         const wrapperId = `${this['id']}-wrapper`;
         const inputId = `${this['id']}-input`;
@@ -218,27 +229,55 @@ class LRangedatepicker extends LitElement {
                     </label>
                     <div class="">
                         <!-- Wrapper 영역 -->
-                        <div class="input-container">
-                            <input type="text"
-                                   class="${classMap({
-                                       'form-control': true,
-                                       'form-left-control': isLabelLeft,
-                                       'form-control-lg': this['size'] === 'large',
-                                       'form-control-sm': this['size'] === 'small',
-                                       'input-right' : true
-                                   })}"
-                                   id="${inputId}"
-                                   aria-label="Date-Time"
-                                   ?required=${this['required']}
-                                   ?disabled=${this['disabled']}
-                                   ?readonly=${this['readonly']}
-                                   @blur="${this.validate}"
-                            >
-                            <div @click="${this._handleClick}"
-                                 class="icon-right ${this.value ? '' : 'hidden'}"
-                                 id="rightIcon"></div>
+                        <div class="input-group input-daterange" id="datepicker-range">
+                            <div class="input-container">
+                                <input type="text"
+                                       class="${classMap({
+                                           'form-control': true,
+                                           'right-border' : true,
+                                           'form-control-lg': this['size'] === 'large',
+                                           'form-control-sm': this['size'] === 'small',
+                                       })}"
+                                       name="${inputId}-from"
+                                       id="${inputId}-from"
+                                       ?required=${this['required']}
+                                       ?disabled=${this['disabled']}
+                                       ?readonly=${this['readonly']}
+                                       placeholder="start date"
+                                       @blur="${this.validate}"
+                                >
+                                <div id="${wrapperId}-from"
+                                     style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
+                            </div>
+                            <span 
+                                  class="${classMap({
+                                      'input-group-text': true,
+                                      'right-border' : true,
+                                      'left-border' : true,
+                                      'form-control-lg': this['size'] === 'large',
+                                      'form-control-sm': this['size'] === 'small',
+                                  })}"
+                            >to</span>
+                            <div class="input-container">
+                                <input type="text"
+                                       class="${classMap({
+                                           'form-control': true,
+                                           'left-border' : true,
+                                           'form-control-lg': this['size'] === 'large',
+                                           'form-control-sm': this['size'] === 'small',
+                                       })}"
+                                       name="${inputId}-to"
+                                       id="${inputId}-to"
+                                       ?required=${this['required']}
+                                       ?disabled=${this['disabled']}
+                                       ?readonly=${this['readonly']}
+                                       placeholder="end date"
+                                       @blur="${this.validate}"
+                                >
+                                <div id="${wrapperId}-to"
+                                     style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
+                            </div>
                         </div>
-                        <div id="${wrapperId}" style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
                     </div>
                 </div>
 
@@ -260,44 +299,44 @@ class LRangedatepicker extends LitElement {
     }
 
     isValid(value, format = 'yyyy-MM-dd', required) {
-        const dateObj = this.datePicker.getDate();        // DatePicker의 현재 값 (Date 객체) 가져오기
-
-        if (!dateObj) {
-            if (required) {
-                console.error("Validation failed: Value is required but missing.");
-                return false;
-            }
-        }
-
-        const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
-        if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
-            console.error(`Invalid date format: ${value}. Expected format is ${format}.`);
-            return false; // 유효하지 않은 경우 처리 중단
-        }
+        // const dateObj = this.datePicker.getDate();        // DatePicker의 현재 값 (Date 객체) 가져오기
+        //
+        // if (!dateObj) {
+        //     if (required) {
+        //         console.error("Validation failed: Value is required but missing.");
+        //         return false;
+        //     }
+        // }
+        //
+        // const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
+        // if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
+        //     console.error(`Invalid date format: ${value}. Expected format is ${format}.`);
+        //     return false; // 유효하지 않은 경우 처리 중단
+        // }
 
         // 모든 조건 충족
         return true;
     }
 
     validate() {
-        const inputId = `${this['id']}-input`;
-        const feedbackId = `${this['id']}-feedback`;
-        const value = this.getValue().trim();
-        const $feedbackElement = this.querySelector(`#${feedbackId}`);
-        const $inputElement = this.querySelector(`#${inputId}`);
-        const isFlag = this.isValid(value, this['format'], this['required']);
-        const feedbackVisibleType = this['feedback-visible-type'];
-
-        $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
-
-        if (feedbackVisibleType == 'visible') {
-            return;
-        }
-
-        $feedbackElement.setAttribute('hidden', true); // Assume hidden first
-        if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
-            $feedbackElement.removeAttribute('hidden');
-        }
+        // const inputId = `${this['id']}-input`;
+        // const feedbackId = `${this['id']}-feedback`;
+        // const value = this.getValue().trim();
+        // const $feedbackElement = this.querySelector(`#${feedbackId}`);
+        // const $inputElement = this.querySelector(`#${inputId}`);
+        // const isFlag = this.isValid(value, this['format'], this['required']);
+        // const feedbackVisibleType = this['feedback-visible-type'];
+        //
+        // $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
+        //
+        // if (feedbackVisibleType == 'visible') {
+        //     return;
+        // }
+        //
+        // $feedbackElement.setAttribute('hidden', true); // Assume hidden first
+        // if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
+        //     $feedbackElement.removeAttribute('hidden');
+        // }
     }
 
     checkValidity() {

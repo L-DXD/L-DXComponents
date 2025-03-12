@@ -5,7 +5,7 @@ import {ifDefined} from 'lit/directives/if-defined.js';
 export default {
     title: 'Container Components/Rangedatepicker',
     tags: ['autodocs'],
-    component: 'l-c-rdatepicker',
+    component: 'l-c-range-datepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
         size: {
@@ -131,7 +131,7 @@ export default {
             }
         },
 
-        getValue: {
+        getFromValue: {
             control: {
                 type: {},
                 disable: true
@@ -142,9 +142,9 @@ export default {
                 type: {summary: "(()=> return new String)"},
 
             },
-            description: "Rangedatepicker값을 가져옵니다.",
+            description: "Rangedatepicker값중 From Date값을 가져옵니다.",
         },
-        setValue: {
+        setFromValue: {
             control: {
                 type: {},
                 disable: true
@@ -154,8 +154,35 @@ export default {
                 subcategory: "value",
                 type: {summary: "function(value)"},
             },
-            description: "Rangedatepicker값을 설정합니다.",
+            description: "Rangedatepicker값중 From Date값을 설정합니다.",
         },
+
+        getToValue: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "value",
+                type: {summary: "(()=> return new String)"},
+
+            },
+            description: "Rangedatepicker값중 To Date값을 가져옵니다.",
+        },
+        setToValue: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "value",
+                type: {summary: "function(value)"},
+            },
+            description: "Rangedatepicker값중 To Date값을 설정합니다.",
+        },
+
         initTodayDate: {
             control: {
                 type: {},
@@ -199,7 +226,7 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-c-rdatepicker
+        <l-c-range-datepicker
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 size=${ifDefined(args.size)}
@@ -220,7 +247,7 @@ const Template = (args) => {
                 ?readonly=${args.readonly}
                 value="${ifDefined(args.value)}"
         >
-        </l-c-rdatepicker>
+        </l-c-range-datepicker>
 
     `
 }
@@ -281,14 +308,14 @@ RangedatepickerFormatCheck.args = {
 
 const sizeTemplate = (args) => {
     return html`
-        <l-c-rdatepicker label="default size" id="default"></l-c-rdatepicker>
+        <l-c-range-datepicker label="default size" id="default"></l-c-range-datepicker>
 
         <div style="margin: 16px"></div>
 
-        <l-c-rdatepicker size='large' label="large size" id="largeDefault"></l-c-rdatepicker>
+        <l-c-range-datepicker size='large' label="large size" id="largeDefault"></l-c-range-datepicker>
         <div style="margin: 16px"></div>
 
-        <l-c-rdatepicker size='small' label="small size" id="smallDefault"></l-c-rdatepicker>
+        <l-c-range-datepicker size='small' label="small size" id="smallDefault"></l-c-range-datepicker>
     `
 }
 
