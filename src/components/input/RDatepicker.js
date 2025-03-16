@@ -230,7 +230,7 @@ class LRangedatepicker extends LitElement {
                     <div class="">
                         <!-- Wrapper 영역 -->
                         <div class="input-group input-daterange" id="datepicker-range">
-                            <div class="input-container">
+                            <div class="input-container is-flex">
                                 <input type="text"
                                        class="${classMap({
                                            'form-control': true,
@@ -258,7 +258,7 @@ class LRangedatepicker extends LitElement {
                                       'form-control-sm': this['size'] === 'small',
                                   })}"
                             >to</span>
-                            <div class="input-container">
+                            <div class="input-container is-flex">
                                 <input type="text"
                                        class="${classMap({
                                            'form-control': true,

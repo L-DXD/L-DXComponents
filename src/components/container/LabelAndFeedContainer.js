@@ -1,7 +1,6 @@
 import {css, html, LitElement} from 'lit';
 import {LLabel} from '../text/Label.js';
 import {LFeedback} from "../text/Feedback.js";
-import {SharedStyles} from "@/components/commons/SharedStyles.js";
 import {classMap} from "lit/directives/class-map.js";
 import {customElement} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";

@@ -471,3 +471,10 @@ label {
     pointer-events: auto;
 }
 
+.is-flex {
+    flex: 1;
+}
+
+.hidden {
+    display: none;
+}
