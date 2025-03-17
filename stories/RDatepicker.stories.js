@@ -183,7 +183,7 @@ export default {
             description: "Rangedatepicker값중 To Date값을 설정합니다.",
         },
 
-        initTodayDate: {
+        initFromTodayDate: {
             control: {
                 type: {},
                 disable: true

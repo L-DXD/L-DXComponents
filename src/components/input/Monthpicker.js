@@ -46,6 +46,8 @@ class LMonthpicker extends LitElement {
             disabled: {type: Boolean},
             readonly: {type: Boolean},
             value: {type: String},
+            showAlways: {type: Boolean},
+            invisible: {type: Boolean},
         };
     }
 
@@ -64,7 +66,8 @@ class LMonthpicker extends LitElement {
             input: {
                 element: `#${inputId}`,
                 format: format,
-            }
+            },
+            showAlways: this['showAlways']
         });
 
         this.setValue(this['value']);
@@ -200,7 +203,13 @@ class LMonthpicker extends LitElement {
                         }"
                 >
                     <label
-                            class="${(isLabelLeft && this['label']) ? 'form-left-label' : 'form-label'}"
+                            class="${
+                                    classMap({
+                                        'form-left-label': (isLabelLeft && this['label']),
+                                        'form-label': !(isLabelLeft && this['label']),
+                                        'hidden' : this['invisible']
+                                    })
+                            }"
                             for="${this['id']}"
                             style="
                         width: ${this['label-width'] || 'auto'};
@@ -222,7 +231,8 @@ class LMonthpicker extends LitElement {
                                        'form-left-control': isLabelLeft,
                                        'form-control-lg': this['size'] === 'large',
                                        'form-control-sm': this['size'] === 'small',
-                                       'input-right' : true
+                                       'input-right' : true,
+                                       'hidden' : this['invisible']
                                    })}"
                                    id="${inputId}"
                                    name="${ifDefined(this['name'])}"

@@ -46,6 +46,8 @@ class LYearpicker extends LitElement {
             disabled: {type: Boolean},
             readonly: {type: Boolean},
             value: {type: String},
+            showAlways: {type: Boolean},
+            invisible: {type: Boolean},
         };
     }
 
@@ -64,7 +66,8 @@ class LYearpicker extends LitElement {
             input: {
                 element: `#${inputId}`,
                 format: format,
-            }
+            },
+            showAlways: this['showAlways']
         });
 
         this.setValue(this['value']);
@@ -159,8 +162,6 @@ class LYearpicker extends LitElement {
 
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
-        console.log(this['format']);
-
         const feedbackHtml = {
                 'normal': html`
                     <div class="valid-feedback">${this['feedback']}</div>`,
@@ -184,7 +185,13 @@ class LYearpicker extends LitElement {
                         }"
                 >
                     <label
-                            class="${(isLabelLeft && this['label']) ? 'form-left-label' : 'form-label'}"
+                            class="${
+                                    classMap({
+                                        'form-left-label': (isLabelLeft && this['label']),
+                                        'form-label': !(isLabelLeft && this['label']),
+                                        'hidden' : this['invisible']
+                                    })
+                            }"
                             for="${this['id']}"
                             style="
                         width: ${this['label-width'] || 'auto'};
@@ -206,6 +213,8 @@ class LYearpicker extends LitElement {
                                        'form-left-control': isLabelLeft,
                                        'form-control-lg': this['size'] === 'large',
                                        'form-control-sm': this['size'] === 'small',
+                                       'input-right' : true,
+                                       'hidden' : this['invisible']
                                    })}"
                                    id="${inputId}"
                                    name="${ifDefined(this['name'])}"
@@ -263,16 +272,12 @@ class LYearpicker extends LitElement {
     validate() {
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
-
-        console.log('format', this['format']);
-
         const value = this.getValue().trim();
         const $feedbackElement = this.querySelector(`#${feedbackId}`);
         const $inputElement = this.querySelector(`#${inputId}`);
         const isFlag = this.isValid(value, this['format'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
-        console.log("isFlag", isFlag);
 
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
 
@@ -299,7 +304,6 @@ class LYearpicker extends LitElement {
         if (this.datePicker) {
             this.datePicker.setDate(today);
         }
-        console.log("Initialized today date:", todayStr);
     }
 
 }

@@ -130,6 +130,20 @@ export default {
                 defaultValue: {summary: false}
             }
         },
+        showAlways: {
+            control: 'boolean',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false}
+            }
+        },
+        invisible: {
+            control: 'boolean',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false}
+            }
+        },
 
         getValue: {
             control: {
@@ -218,6 +232,8 @@ const Template = (args) => {
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
+                ?showAlways=${args.showAlways}
+                ?invisible=${args.invisible}
                 value="${ifDefined(args.value)}"
         >
         </l-c-monthpicker>
@@ -258,6 +274,15 @@ MonthpickerWithLeftLabelAndFeedback.args = {
     required: true,
     disabled: false,
     readonly: false,
+};
+
+export const MonthpickerDisplayAlways = Template.bind({});
+MonthpickerDisplayAlways.args = {
+    type: 'text',
+    id: 'input06',
+    name: 'name',
+    invisible: true,
+    showAlways: true,
 };
 
 export const MonthpickerFormatCheck = Template.bind({});

@@ -1,11 +1,11 @@
-import '/src/components/input/Yearpicker.js'
+import '/src/components/input/RMonthpicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Yearpicker',
+    title: 'Container Components/Rangemonthpicker',
     tags: ['autodocs'],
-    component: 'l-c-yearpicker',
+    component: 'l-c-range-monthpicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
         size: {
@@ -99,11 +99,11 @@ export default {
         },
         'format': {
             control: {type: 'select'},
-            options: ['yyyy'],
+            options: ['yyyy-MM-dd', 'yyyy/MM/dd', 'yyyyMMdd'],
             table: {
                 category: "attributes",
                 subcategory: "validate",
-                defaultValue: {summary: 'yyyy'},
+                defaultValue: {summary: 'yyyy-MM-dd'},
             }
         },
 
@@ -130,22 +130,8 @@ export default {
                 defaultValue: {summary: false}
             }
         },
-        showAlways: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        invisible: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
 
-        getValue: {
+        getFromValue: {
             control: {
                 type: {},
                 disable: true
@@ -156,9 +142,9 @@ export default {
                 type: {summary: "(()=> return new String)"},
 
             },
-            description: "Yearpicker값을 가져옵니다.",
+            description: "Rangedatepicker값중 From Date값을 가져옵니다.",
         },
-        setValue: {
+        setFromValue: {
             control: {
                 type: {},
                 disable: true
@@ -168,9 +154,36 @@ export default {
                 subcategory: "value",
                 type: {summary: "function(value)"},
             },
-            description: "Yearpicker값을 설정합니다.",
+            description: "Rangedatepicker값중 From Date값을 설정합니다.",
         },
-        initCurrentYear: {
+
+        getToValue: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "value",
+                type: {summary: "(()=> return new String)"},
+
+            },
+            description: "Rangedatepicker값중 To Date값을 가져옵니다.",
+        },
+        setToValue: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "value",
+                type: {summary: "function(value)"},
+            },
+            description: "Rangedatepicker값중 To Date값을 설정합니다.",
+        },
+
+        initFromCurrentMonth: {
             control: {
                 type: {},
                 disable: true
@@ -213,7 +226,7 @@ export default {
 
 const Template = (args) => {
     return html`
-        <l-c-yearpicker
+        <l-c-range-monthpicker
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 size=${ifDefined(args.size)}
@@ -232,17 +245,15 @@ const Template = (args) => {
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
-                ?showAlways=${args.showAlways}
-                ?invisible=${args.invisible}
                 value="${ifDefined(args.value)}"
         >
-        </l-c-yearpicker>
+        </l-c-range-monthpicker>
 
     `
 }
 
-export const YearpickerWithTopLabelAndFeedback = Template.bind({});
-YearpickerWithTopLabelAndFeedback.args = {
+export const RangedatepickerWithTopLabelAndFeedback = Template.bind({});
+RangedatepickerWithTopLabelAndFeedback.args = {
     id: 'input02',
     name: 'name',
     width: '100%',
@@ -258,8 +269,8 @@ YearpickerWithTopLabelAndFeedback.args = {
     readonly: false,
 };
 
-export const YearpickerWithLeftLabelAndFeedback = Template.bind({});
-YearpickerWithLeftLabelAndFeedback.args = {
+export const RangedatepickerWithLeftLabelAndFeedback = Template.bind({});
+RangedatepickerWithLeftLabelAndFeedback.args = {
     type: 'text',
     id: 'input03',
     name: 'name',
@@ -276,22 +287,13 @@ YearpickerWithLeftLabelAndFeedback.args = {
     readonly: false,
 };
 
-export const YearpickerDisplayAlways = Template.bind({});
-YearpickerDisplayAlways.args = {
-    type: 'text',
-    id: 'input06',
-    name: 'name',
-    invisible: true,
-    showAlways: true,
-};
-
-export const YearpickerFormatCheck = Template.bind({});
-YearpickerFormatCheck.args = {
+export const RangedatepickerFormatCheck = Template.bind({});
+RangedatepickerFormatCheck.args = {
     id: 'input04',
     name: 'name',
     width: '100%',
-    format: 'yyyy',
-    value: '2024-12',
+    format: 'yyyyMMdd',
+    value: '2024-12-31',
     label: 'label',
     'label-align': 'top',
     'label-width': 'auto',
@@ -306,14 +308,14 @@ YearpickerFormatCheck.args = {
 
 const sizeTemplate = (args) => {
     return html`
-        <l-c-yearpicker label="default size" id="default"></l-c-yearpicker>
+        <l-c-range-monthpicker label="default size" id="default"></l-c-range-monthpicker>
 
         <div style="margin: 16px"></div>
 
-        <l-c-yearpicker size='large' label="large size" id="largeDefault"></l-c-yearpicker>
+        <l-c-range-monthpicker size='large' label="large size" id="largeDefault"></l-c-range-monthpicker>
         <div style="margin: 16px"></div>
 
-        <l-c-yearpicker size='small' label="small size" id="smallDefault"></l-c-yearpicker>
+        <l-c-range-monthpicker size='small' label="small size" id="smallDefault"></l-c-range-monthpicker>
     `
 }
 

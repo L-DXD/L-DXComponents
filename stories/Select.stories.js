@@ -234,8 +234,7 @@ const Template = (args) => {
 >
 </l-c-select>
 <script type="application/javascript">
-    const selectComponent = document.getElementById('select01');
-    selectComponent.options = [
+    document.getElementById('select01').options = [
         { value: '1', label: 'Apple' },
         { value: '2', label: 'Banana' },
         { value: '3', label: 'Orange' }

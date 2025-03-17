@@ -463,7 +463,7 @@ label {
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background-image: url('../../assets/svg/calendar-lines-svgrepo-com.svg');
+    background-image: url('assets/svg/calendar-lines-svgrepo-com.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;

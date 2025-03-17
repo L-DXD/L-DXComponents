@@ -7,8 +7,8 @@ import DatePicker from "tui-date-picker";
 import './Input.css';
 import {classMap} from "lit/directives/class-map.js";
 
-@customElement('l-c-range-datepicker')
-class LRangedatepicker extends LitElement {
+@customElement('l-c-range-monthpicker')
+class LRangemonthpicker extends LitElement {
 
     constructor() {
         super();
@@ -52,10 +52,11 @@ class LRangedatepicker extends LitElement {
     firstUpdated() {
         const wrapperId = `${this['id']}-wrapper`;
         const inputId = `${this['id']}-input`;
-        const format = this['format'] || 'yyyy-MM-dd';
+        const format = this['format'] || 'yyyy-MM';
 
         const today = new Date();
         this.datePicker = DatePicker.createRangePicker({
+            type: 'month',
             startpicker: {
                 input: `#${inputId}-from`,
                 container: `#${wrapperId}-from`
@@ -94,7 +95,7 @@ class LRangedatepicker extends LitElement {
 
     setDate(type, value) {
         if (this.datePicker && value) {
-            const format = this['format'] || 'yyyy-MM-dd'; // 포맷 확인 및 기본값
+            const format = this['format'] || 'yyyy-MM'; // 포맷 확인 및 기본값
 
             // 날짜 형식 검사
             const dateFormatRegex = this._getDateFormatRegex(format);
@@ -131,12 +132,12 @@ class LRangedatepicker extends LitElement {
 
     _getDateFormatRegex(format) {
         switch (format) {
-            case 'yyyy-MM-dd':
-                return /^\d{4}-\d{2}-\d{2}$/;
-            case 'yyyy/MM/dd':
-                return /^\d{4}\/\d{2}\/\d{2}$/;
-            case 'yyyyMMdd':
-                return /^\d{8}$/;
+            case 'yyyy-MM':
+                return /^\d{4}-\d{2}$/;
+            case 'yyyy/MM':
+                return /^\d{4}\/\d{2}$/;
+            case 'yyyyMM':
+                return /^\d{6}$/;
             default:
                 console.error(`Unsupported format: ${format}`);
                 return null;
@@ -147,17 +148,16 @@ class LRangedatepicker extends LitElement {
         let parts = null;
 
         switch (format) {
-            case 'yyyy-MM-dd': // '-' 구분자로 처리
+            case 'yyyy-MM': // '-' 구분자로 처리
                 parts = value.split('-');
-                return new Date(parts[0], parts[1] - 1, parts[2]);
-            case 'yyyy/MM/dd': // '/' 구분자로 처리
+                return new Date(parts[0], parts[1] - 1);
+            case 'yyyy/MM': // '/' 구분자로 처리
                 parts = value.split('/');
-                return new Date(parts[0], parts[1] - 1, parts[2]);
-            case 'yyyyMMdd': // 연속 문자열 처리
+                return new Date(parts[0], parts[1] - 1);
+            case 'yyyyMM': // 연속 문자열 처리
                 return new Date(
                     value.substring(0, 4),
-                    value.substring(4, 6) - 1,
-                    value.substring(6, 8)
+                    value.substring(4, 6) - 1
                 );
             default:
                 console.error(`Unsupported format: ${format}`);
@@ -168,15 +168,14 @@ class LRangedatepicker extends LitElement {
     _parseDateByFormat(date, format) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
 
         switch (format) {
-            case 'yyyy-MM-dd':
-                return `${year}-${month}-${day}`;
-            case 'yyyy/MM/dd':
-                return `${year}/${month}/${day}`;
-            case 'yyyyMMdd':
-                return `${year}${month}${day}`;
+            case 'yyyy-MM':
+                return `${year}-${month}`;
+            case 'yyyy/MM':
+                return `${year}/${month}`;
+            case 'yyyyMM':
+                return `${year}${month}`;
             default:
                 console.error(`Unsupported format: ${format}`);
                 return '';
@@ -297,7 +296,7 @@ class LRangedatepicker extends LitElement {
         `;
     }
 
-    isValid(value, format = 'yyyy-MM-dd', required) {
+    isValid(value, format = 'yyyy-MM', required) {
         if (!value) {
             if (required) {
                 console.error("Validation failed: Value is required but missing.");
@@ -348,8 +347,8 @@ class LRangedatepicker extends LitElement {
         this.validate();
     }
 
-    initFromTodayDate() {
-        const format = this['format'] || 'yyyy-MM-dd';
+    initFromCurrentMonth() {
+        const format = this['format'] || 'yyyy-MM';
         const today = new Date();
         const todayStr = this._parseDateByFormat(today, format);
         this.value = todayStr;
