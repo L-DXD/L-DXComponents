@@ -57,6 +57,7 @@ class LRangedatepicker extends LitElement {
         const today = new Date();
         this.datePicker = DatePicker.createRangePicker({
             startpicker: {
+                date: today,
                 input: `#${inputId}-from`,
                 container: `#${wrapperId}-from`
             },
@@ -244,6 +245,7 @@ class LRangedatepicker extends LitElement {
                                        ?readonly=${this['readonly']}
                                        placeholder="from date"
                                        @blur="${this.validate}"
+                                       autocomplete="off"
                                 >
                                 <div id="${wrapperId}-from"
                                      style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
@@ -272,6 +274,7 @@ class LRangedatepicker extends LitElement {
                                        ?readonly=${this['readonly']}
                                        placeholder="to date"
                                        @blur="${this.validate}"
+                                       autocomplete="off"
                                 >
                                 <div id="${wrapperId}-to"
                                      style="margin-top: -1px;position: absolute; z-index: 9999;"></div>

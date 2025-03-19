@@ -1,7 +1,7 @@
 import '/src/components/input/RMonthpicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-
+//todo max-date attribute
 export default {
     title: 'Container Components/Rangemonthpicker',
     tags: ['autodocs'],
@@ -104,6 +104,23 @@ export default {
                 category: "attributes",
                 subcategory: "validate",
                 defaultValue: {summary: 'yyyy-MM-dd'},
+            }
+        },
+
+        'rel-year': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+        'rel-month': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
             }
         },
 
@@ -232,6 +249,8 @@ const Template = (args) => {
                 size=${ifDefined(args.size)}
                 format=${ifDefined(args.format)}
                 
+                rel-year=${ifDefined(args['rel-year'])}
+                rel-month=${ifDefined(args['rel-month'])}
                 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
@@ -301,6 +320,24 @@ RangedatepickerFormatCheck.args = {
     feedback: 'feedback',
     'feedback-type': 'normal',
     'feedback-visible-type': 'visible',
+    required: false,
+    disabled: false,
+    readonly: false,
+};
+
+export const RangedatepickerRelMonth = Template.bind({});
+RangedatepickerRelMonth.args = {
+    id: 'input06',
+    name: 'name',
+    width: '100%',
+    label: 'label',
+    'label-align': 'top',
+    'label-width': 'auto',
+    'label-text-align': 'left',
+    feedback: 'feedback',
+    'feedback-type': 'normal',
+    'feedback-visible-type': 'visible',
+    'rel-month': 3,
     required: false,
     disabled: false,
     readonly: false,

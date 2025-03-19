@@ -241,6 +241,7 @@ class LMonthpicker extends LitElement {
                                    ?disabled=${this['disabled']}
                                    ?readonly=${this['readonly']}
                                    @blur="${this.validate}"
+                                   autocomplete="off"
                             >
                             <div @click="${this._handleClick}"
                                  class="icon-right ${this.value ? '' : 'hidden'}"

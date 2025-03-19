@@ -44,6 +44,9 @@ class LRangemonthpicker extends LitElement {
             disabled: {type: Boolean},
             readonly: {type: Boolean},
             value: {type: String},
+
+            'rel-year': {type: Number},
+            'rel-month': {type: Number},
         };
     }
 
@@ -53,11 +56,29 @@ class LRangemonthpicker extends LitElement {
         const wrapperId = `${this['id']}-wrapper`;
         const inputId = `${this['id']}-input`;
         const format = this['format'] || 'yyyy-MM';
-
+        const relYear = this['rel-year'];
+        const relMonth = this['rel-month'];
         const today = new Date();
+
+        const calculateRange = (baseDate) => {
+            if (relYear === null && relMonth === null) return [];
+
+            return [
+                [
+                    baseDate,
+                    new Date(
+                        baseDate.getFullYear() + (relYear || 0),
+                        baseDate.getMonth() + (relMonth || 0),
+                        baseDate.getDate()
+                    )
+                ]
+            ];
+        };
+
         this.datePicker = DatePicker.createRangePicker({
             type: 'month',
             startpicker: {
+                date: today,
                 input: `#${inputId}-from`,
                 container: `#${wrapperId}-from`
             },
@@ -66,11 +87,27 @@ class LRangemonthpicker extends LitElement {
                 input: `#${inputId}-to`,
                 container: `#${wrapperId}-to`
             },
-            // selectableRanges: [
-            //     [today, new Date(today.getFullYear() + 1, today.getMonth(), today.getDate())]
-            // ],
+            selectableRanges: calculateRange(today),
             format: format
         });
+
+        this.datePicker.on('change:start', () => {
+            const selectedDate = this.getFromValue();
+            const newDate = this._parseDateStrByFormat(selectedDate, this['format']);
+            if (newDate) {
+                const newRanges = calculateRange(newDate);
+                if (newRanges) {
+                    this.datePicker.setRanges(newRanges);
+
+                    // endpicker의 날짜가 새로운 범위를 벗어나면 초기화
+                    const endDate = this.datePicker.getEndDate();
+                    if (endDate && endDate > newRanges[1]) {
+                        this.datePicker.setEndDate(null);
+                    }
+                }
+            }
+        });
+
 
         this.datePicker.on('change:end', () => {
             this.validate();
@@ -144,7 +181,7 @@ class LRangemonthpicker extends LitElement {
         }
     }
 
-    _parseDateStrByFormat(value, format) {
+    _parseDateStrByFormat(value, format = 'yyyy-MM') {
         let parts = null;
 
         switch (format) {
@@ -243,6 +280,7 @@ class LRangemonthpicker extends LitElement {
                                        ?readonly=${this['readonly']}
                                        placeholder="from date"
                                        @blur="${this.validate}"
+                                       autocomplete="off"
                                 >
                                 <div id="${wrapperId}-from"
                                      style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
@@ -271,6 +309,7 @@ class LRangemonthpicker extends LitElement {
                                        ?readonly=${this['readonly']}
                                        placeholder="to date"
                                        @blur="${this.validate}"
+                                       autocomplete="off"
                                 >
                                 <div id="${wrapperId}-to"
                                      style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
