@@ -124,6 +124,33 @@ export default {
             }
         },
 
+        'rel-mode': {
+            control: {type: 'select'},
+            options: ['fixed','dynamic'],
+            table: {
+                category: "attributes",
+                defaultValue: {summary: 'fixed'},
+                subcategory: "validate"
+            }
+        },
+
+        'start-year-offset': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "value"
+            }
+        },
+        'start-month-offset': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "value"
+            }
+        },
+
         required: {
             control: 'boolean',
             table: {
@@ -251,6 +278,10 @@ const Template = (args) => {
                 
                 rel-year=${ifDefined(args['rel-year'])}
                 rel-month=${ifDefined(args['rel-month'])}
+                rel-mode=${ifDefined(args['rel-mode'])}
+
+                start-year-offset=${ifDefined(args['start-year-offset'])}
+                start-month-offset=${ifDefined(args['start-month-offset'])}
                 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
@@ -337,7 +368,9 @@ RangedatepickerRelMonth.args = {
     feedback: 'feedback',
     'feedback-type': 'normal',
     'feedback-visible-type': 'visible',
+    'rel-mode': 'fixed',
     'rel-month': 3,
+    'start-month-offset': -36,
     required: false,
     disabled: false,
     readonly: false,

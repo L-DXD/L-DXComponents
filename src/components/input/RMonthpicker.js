@@ -47,6 +47,9 @@ class LRangemonthpicker extends LitElement {
 
             'rel-year': {type: Number},
             'rel-month': {type: Number},
+            'rel-mode': {type: String},
+            'start-year-offset': {type: Number},
+            'start-month-offset': {type: Number},
         };
     }
 
@@ -58,7 +61,19 @@ class LRangemonthpicker extends LitElement {
         const format = this['format'] || 'yyyy-MM';
         const relYear = this['rel-year'];
         const relMonth = this['rel-month'];
+
+        const startYearOffset = this['start-year-offset'];
+        const startMonthOffset = this['start-month-offset'];
+        const relMode = this['rel-mode'];
+
         const today = new Date();
+        if(startYearOffset) {
+            today.setFullYear(today.getFullYear() + startYearOffset);
+        }
+        console.log("startMonthOffset", startMonthOffset);
+        if(startMonthOffset) {
+            today.setMonth(today.getMonth() + startMonthOffset);
+        }
 
         const calculateRange = (baseDate) => {
             if (relYear === null && relMonth === null) return [];
@@ -91,27 +106,29 @@ class LRangemonthpicker extends LitElement {
             format: format
         });
 
-        this.datePicker.on('change:start', () => {
-            const selectedDate = this.getFromValue();
-            const newDate = this._parseDateStrByFormat(selectedDate, this['format']);
-            if (newDate) {
-                const newRanges = calculateRange(newDate);
-                if (newRanges) {
-                    this.datePicker.setRanges(newRanges);
-
-                    // endpicker의 날짜가 새로운 범위를 벗어나면 초기화
-                    const endDate = this.datePicker.getEndDate();
-                    if (endDate && endDate > newRanges[1]) {
-                        this.datePicker.setEndDate(null);
-                    }
-                }
-            }
-        });
-
-
         this.datePicker.on('change:end', () => {
             this.validate();
-        })
+        });
+
+        if(relMode == 'dynamic') {
+            this.datePicker.on('change:start', () => {
+                const selectedDate = this.getFromValue();
+                const newDate = this._parseDateStrByFormat(selectedDate, this['format']);
+                if (newDate) {
+                    const newRanges = calculateRange(newDate);
+                    if (newRanges) {
+                        this.datePicker.setRanges(newRanges);
+
+                        // endpicker의 날짜가 새로운 범위를 벗어나면 초기화
+                        const endDate = this.datePicker.getEndDate();
+                        if (endDate && endDate > newRanges[1]) {
+                            this.datePicker.setEndDate(null);
+                        }
+                    }
+                }
+            });
+        }
+
     }
 
 
