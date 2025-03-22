@@ -9,6 +9,11 @@
 <link href="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.1.2.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.1.2.js"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<input id="test"/>
+
 <l-c-range-monthpicker id="monthpicker" rel-month="3">
 
 </l-c-range-monthpicker>
@@ -74,6 +79,7 @@
 <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
 
+        flatpickr("#test", {});
         const log = (value) => {
             console.log(value);
         };

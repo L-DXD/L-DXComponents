@@ -2,9 +2,7 @@ import {html, LitElement} from 'lit';
 import '../commons/common.css';
 import {customElement} from 'lit/decorators.js';
 
-import './tui-date-picker.css';
-import DatePicker from "tui-date-picker";
-import './Input.css';
+import '/assets/css/Input.css';
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 

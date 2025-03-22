@@ -4,7 +4,7 @@ import '../commons/common.css';
 import {LitParents} from "../commons/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
-import './Radio.css';
+import '/assets/css/Radio.css';
 import '../commons/common.css';
 
 @customElement('l-radio')
