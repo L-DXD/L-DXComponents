@@ -1,18 +1,27 @@
 import {html, LitElement} from 'lit';
 import '../commons/common.css';
 import {customElement} from 'lit/decorators.js';
-
 import '../../../assets/css/Input.css';
-import '../../../assets/css/flatpickr.min.css'
+import 'flatpickr/dist/flatpickr.min.css'
+import DateUtils from '../commons/Date.js'
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
+import flatpickr from "flatpickr";
+import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
+import 'flatpickr/dist/plugins/monthSelect/style.css'
 
-@customElement('l-c-yearpicker')
-class LYearpicker extends LitElement {
+class LitDatepickerParents extends LitElement {
 
     constructor() {
         super();
-        this._isOpen = false;
+    }
+
+    setDateType(dateType) {
+        this._dateType = dateType;
+    }
+
+    get getDateType() {
+        return this._dateType;
     }
 
     // Shadow DOM을 사용하지 않거나, 외부 DOM 요소에 접근할 수 있도록 설정
@@ -47,115 +56,85 @@ class LYearpicker extends LitElement {
             value: {type: String},
             showAlways: {type: Boolean},
             invisible: {type: Boolean},
+
+            'start-year-offset': {type: Number},
+            'start-month-offset': {type: Number},
+            'start-day-offset': {type: Number},
         };
     }
 
+    get getSelector() {
+        const inputId = `${this['id']}-input`;
+        return document.querySelector(`#${inputId}`);
+    }
+
+    initDatePicker() {
+        const format = this['format'] || DateUtils.getDefaultFormat(this.getDateType);
+        const plugins = [];
+        if (this.getDateType === DateUtils.DATE_TYPE.MONTH) {
+            plugins.push(
+                new monthSelectPlugin({
+                    shorthand: true, //defaults to false
+                    dateFormat: format, //defaults to "F Y"
+                    altFormat: format
+                })
+            );
+        }
+        this._datepicker = flatpickr(this.getSelector, {
+            dateFormat: format,
+            onChange: (_) => {
+                this.validate();
+            },
+            inline: this['showAlways'],
+            plugins: plugins
+        });
+
+        const value = this['value'];
+        this.setValue(value);
+    }
 
     firstUpdated() {
-        const wrapperId = `${this['id']}-wrapper`;
-        const inputId = `${this['id']}-input`;
-        const format = this['format'] || 'yyyy';
-
-
-        // TOAST UI DatePicker 초기화
-        // datePicker를 인스턴스 변수로 저장 가능 (필요 시 접근)
-        this.datePicker = new DatePicker(`#${wrapperId}`, {
-            // date: new Date(),
-            type: 'year',
-            input: {
-                element: `#${inputId}`,
-                format: format,
-            },
-            showAlways: this['showAlways']
-        });
-
-        this.setValue(this['value']);
-
-        this.datePicker.on('change', (selectedDate) => {
-            this.validate();
-        });
-        this.datePicker.on('open', (_) => {
-            this._isOpen = true;
-        });
-        this.datePicker.on('close', (_) => {
-            this._isOpen = false;
-        });
+        this.initDatePicker();
     }
 
     getValue() {
-        const inputId = `${this['id']}-input`;
-
-        const inputElement = this.querySelector(`#${inputId}`);
-        return inputElement ? inputElement.value : null;
+        if (this._datepicker) {
+            return this._datepicker.input.value;
+        }
+        return null;
     }
 
+    isValidDateFormat(value, format) {
+        const dateFormatRegex = DateUtils.getDateFormatRegex(format); // 포맷별 정규식
+        if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
+            console.error(`id : ${this['id']} >> Invalid date format: ${value}. Expected format is ${format}.`);
+            return false; // 유효하지 않은 경우 처리 중단
+        }
+        return true;
+    }
+
+
     setValue(value) {
-        if (this.datePicker && value) {
-            const format = this['format'] || 'yyyy'; // 포맷 확인 및 기본값
+        if (this._datepicker && value) {
+            const format = this['format'] || DateUtils.getDefaultFormat(this.getDateType); // 포맷 확인 및 기본값
 
             // 날짜 형식 검사
-            const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
-            if (!dateFormatRegex || !dateFormatRegex.test(value)) {
-                console.error(`id : ${this['id']} >> Invalid date format: ${value}. Expected format is ${format}.`);
-                return; // 유효하지 않은 경우 처리 중단
-            }
+            if (!this.isValidDateFormat(value, format)) return;
 
             // Date 객체 변환
-            const newDate = this._parseDateStrByFormat(value, format);
+            const newDate = DateUtils.parseDateStrByFormat(value, format);
             if (!newDate || isNaN(newDate)) { // 날짜 변환 실패 시
                 console.error(`id : ${this['id']} >> Invalid date value: ${value}.`);
                 return; // 유효하지 않은 경우 처리 중단
             }
 
             // 유효한 경우 DatePicker에 값 설정
-            this.datePicker.setDate(newDate);
+            this._datepicker.setDate(newDate);
         }
     }
 
-    _getDateFormatRegex(format) {
-        switch (format) {
-            case 'yyyy':
-                return /^\d{4}$/;
-            default:
-                console.error(`Unsupported format: ${format}`);
-                return null;
-        }
-    }
-
-    _parseDateStrByFormat(value, format) {
-
-        switch (format) {
-            case 'yyyy': // 연속 문자열 처리
-                return new Date(
-                    value
-                );
-            default:
-                console.error(`Unsupported format: ${format}`);
-                return null;
-        }
-    }
-
-    _parseDateByFormat(date, format) {
-        const year = date.getFullYear();
-
-        switch (format) {
-            case 'yyyy':
-                return `${year}`;
-            default:
-                console.error(`Unsupported format: ${format}`);
-                return '';
-        }
-    }
-
-    _handleClick = (_) => {
-        if(this._isOpen)
-            this.datePicker.close();
-        else
-            this.datePicker.open();
-    }
 
     render() {
-        const wrapperId = `${this['id']}-wrapper`;
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
 
@@ -178,19 +157,19 @@ class LYearpicker extends LitElement {
             >
                 <div
                         class="${
-                                classMap({
-                                    'container': isLabelLeft
-                                })
-                        }"
+            classMap({
+                'container': isLabelLeft
+            })
+        }"
                 >
                     <label
                             class="${
-                                    classMap({
-                                        'form-left-label': (isLabelLeft && this['label']),
-                                        'form-label': !(isLabelLeft && this['label']),
-                                        'hidden' : this['invisible']
-                                    })
-                            }"
+            classMap({
+                'form-left-label': (isLabelLeft && this['label']),
+                'form-label': !(isLabelLeft && this['label']),
+                'hidden': this['invisible']
+            })
+        }"
                             for="${this['id']}"
                             style="
                         width: ${this['label-width'] || 'auto'};
@@ -198,23 +177,23 @@ class LYearpicker extends LitElement {
                     "
                     >
                         ${this['required']
-                                ? (isLabelLeft
-                                        ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this['label']}`
-                                        : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
-                                : this['label']}
+            ? (isLabelLeft
+                ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this['label']}`
+                : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
+            : this['label']}
                     </label>
-                    <div class="search-input-container">
+                    <div class="">
                         <!-- Wrapper 영역 -->
                         <div class="input-container">
                             <input type="text"
                                    class="${classMap({
-                                       'form-control': true,
-                                       'form-left-control': isLabelLeft,
-                                       'form-control-lg': this['size'] === 'large',
-                                       'form-control-sm': this['size'] === 'small',
-                                       'input-right' : true,
-                                       'hidden' : this['invisible']
-                                   })}"
+            'form-control': true,
+            'form-left-control': isLabelLeft,
+            'form-control-lg': this['size'] === 'large',
+            'form-control-sm': this['size'] === 'small',
+            'input-right': true,
+            'hidden': this['invisible'],
+        })}"
                                    id="${inputId}"
                                    name="${ifDefined(this['name'])}"
                                    aria-label="Date-Time"
@@ -225,10 +204,12 @@ class LYearpicker extends LitElement {
                                    autocomplete="off"
                             >
                             <div @click="${this._handleClick}"
-                                 class="icon-right ${this.value ? '' : 'hidden'}"
+                                 class="${classMap({
+            'icon-right': true,
+            'hidden': this['disabled']
+        })}"
                                  id="rightIcon"></div>
                         </div>
-                        <div id="${wrapperId}" style="margin-top: -1px;position: absolute; z-index: 9999;"></div>
                     </div>
                 </div>
 
@@ -249,21 +230,14 @@ class LYearpicker extends LitElement {
         `;
     }
 
-    isValid(value, format = 'yyyy', required) {
-        const dateObj = this.datePicker.getDate();        // DatePicker의 현재 값 (Date 객체) 가져오기
+    isValid(value, format = DateUtils.getDefaultFormat(this.getDateType), required) {
 
-        if (!dateObj) {
-            if (required) {
-                console.error("Validation failed: Value is required but missing.");
-                return false;
-            }
+        if (!value && required) {
+            console.error("Validation failed: Value is required but missing.");
+            return false;
         }
 
-        const dateFormatRegex = this._getDateFormatRegex(format); // 포맷별 정규식
-        if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
-            console.error(`Invalid date format: ${value}. Expected format is ${format}.`);
-            return false; // 유효하지 않은 경우 처리 중단
-        }
+        if (!this.isValidDateFormat(value, format)) return false;
 
         // 모든 조건 충족
         return true;
@@ -272,12 +246,11 @@ class LYearpicker extends LitElement {
     validate() {
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
-        const value = this.getValue().trim();
+        const value = this.getValue();
         const $feedbackElement = this.querySelector(`#${feedbackId}`);
         const $inputElement = this.querySelector(`#${inputId}`);
         const isFlag = this.isValid(value, this['format'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
-
 
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
 
@@ -295,15 +268,24 @@ class LYearpicker extends LitElement {
         this.validate();
     }
 
-    initCurrentYear() {
-        const format = this['format'] || 'yyyy';
-        const today = new Date();
-        const todayStr = this._parseDateByFormat(today, format);
-        this.value = todayStr;
-        this.text = todayStr;
-        if (this.datePicker) {
-            this.datePicker.setDate(today);
-        }
+    initCurrentMonth = () => {
+        this.initTodayDate();
     }
 
+    initTodayDate = () => {
+        const startYearOffset = this['start-year-offset'] || 0;
+        const startMonthOffset = this['start-month-offset'] || 0;
+        const startDayOffset = this['start-day-offset'] || 0;
+
+        const startDate = new Date();
+        startDate.setFullYear(startDate.getFullYear() + startYearOffset);
+        startDate.setMonth(startDate.getMonth() + startMonthOffset);
+        startDate.setDate(startDate.getDate() + startDayOffset);
+
+        this._datepicker.setDate(startDate);
+    }
+
+    _handleClick = (_) => this._datepicker.open();
 }
+
+export {LitDatepickerParents};

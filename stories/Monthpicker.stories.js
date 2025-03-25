@@ -90,23 +90,42 @@ export default {
                 subcategory: "text",
             }
         },
+
+        'format': {
+            control: {type: 'select'},
+            options: ['Y-m', 'Y/m', 'Ym', 'Ym'],
+            table: {
+                category: "attributes",
+                subcategory: "validate",
+                defaultValue: {summary: 'Y-m'},
+            }
+        },
+
         value: {
             control: {type: 'text'},
             table: {
                 category: "attributes",
-                subcategory: "text",
+                subcategory: "value",
             }
         },
-        'format': {
-            control: {type: 'select'},
-            options: ['yyyy-MM', 'yyyy/MM', 'yyyyMM'],
+        'start-year-offset': {
+            control: 'number',
             table: {
                 category: "attributes",
-                subcategory: "validate",
-                defaultValue: {summary: 'yyyy-MM'},
-            }
+                defaultValue: {summary: 0},
+                subcategory: "value"
+            },
+            description: "Calculates the base date by adding or subtracting against the 'year' of the value. If value is not set, it is based on 'today'."
         },
-
+        'start-month-offset': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: 0},
+                subcategory: "value"
+            },
+            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
+        },
         required: {
             control: 'boolean',
             table: {
@@ -218,7 +237,11 @@ const Template = (args) => {
                 name=${ifDefined(args.name)}
                 size=${ifDefined(args.size)}
                 format=${ifDefined(args.format)}
-                
+
+                value="${ifDefined(args.value)}"
+                start-year-offset=${ifDefined(args['start-year-offset'])}
+                start-month-offset=${ifDefined(args['start-month-offset'])}
+                start-day-offset=${ifDefined(args['start-day-offset'])}
                 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
@@ -234,7 +257,7 @@ const Template = (args) => {
                 ?readonly=${args.readonly}
                 ?showAlways=${args.showAlways}
                 ?invisible=${args.invisible}
-                value="${ifDefined(args.value)}"
+                
         >
         </l-c-monthpicker>
 

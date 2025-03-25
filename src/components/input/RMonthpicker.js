@@ -3,7 +3,8 @@ import '../commons/common.css';
 import {customElement} from 'lit/decorators.js';
 
 
-import '/assets/css/Input.css';
+import '../../../assets/css/Input.css';
+import '../../../assets/css/flatpickr.min.css'
 import {classMap} from "lit/directives/class-map.js";
 
 @customElement('l-c-range-monthpicker')

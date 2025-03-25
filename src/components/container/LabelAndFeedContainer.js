@@ -78,12 +78,10 @@ export class LabelAndFeedContainer extends LitParents {
         const value = this.getValue().trim();
         const $container = this.shadowRoot.querySelector('l-label-feed-container');
         const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
-        const $inputElement = this.shadowRoot.querySelector(this.selector);
         const isFlag = this.isValid(value, this['pattern'], this['required']);
         const feedbackVisibleType = this['feedback-visible-type'];
 
-
-        $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
+        this.setSelectorValid(!isFlag);
 
         if (feedbackVisibleType == 'visible') {
             return;
@@ -95,6 +93,17 @@ export class LabelAndFeedContainer extends LitParents {
         }
     }
 
+    setSelectorValid(flag) {
+        const $inputElement = this.shadowRoot.querySelector(this.selector);
+        $inputElement.classList.toggle('is-invalid', flag);
+    }
+
+    setValid() {
+        this.setSelectorValid(false);
+    }
+    inValid() {
+        this.setSelectorValid(true);
+    }
     checkValidity() {
         this.validate();
     }

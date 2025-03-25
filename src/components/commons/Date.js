@@ -1,11 +1,22 @@
 // Date.js
 const DateUtils = {
+
+    getDefaultFormat(type = this.DATE_TYPE.DATE) {
+        switch (type) {
+            case this.DATE_TYPE.DATE:
+                return 'Y-m-d';
+            case this.DATE_TYPE.MONTH:
+                return 'Y-m';
+            case this.DATE_TYPE.YEAR:
+                return 'Y';
+        }
+    },
+
     DATE_TYPE: {
         DATE: 'date',
         MONTH: 'month',
         YEAR: 'year'
     },
-
     getDateFormatRegex(format) {
         switch (format) {
             case 'Y-m-d':
@@ -20,6 +31,10 @@ const DateUtils = {
                 return /^\d{4}-\d{2}$/;
             case 'Y/m':
                 return /^\d{4}\/\d{2}$/;
+            case 'Y.m':
+                return /^\d{4}\.\d{2}$/;
+            case 'Y.m.d':
+                return /^\d{4}\.\d{2}\.\d{2}$/;
             case 'Y':
                 return /^\d{4}$/;
             default:
@@ -39,6 +54,9 @@ const DateUtils = {
             case 'Y/m/d':
             case 'Y/m':
                 parts = value.split('/');
+            case 'Y.m.d':
+            case 'Y.m':
+                parts = value.split('.');
                 break;
             case 'Ymd':
                 parts = [
@@ -85,6 +103,10 @@ const DateUtils = {
                         return `${year}-${month}-${day}`;
                     case 'Y/m/d':
                         return `${year}/${month}/${day}`;
+                    case 'Y.m.d':
+                        return `${year}.${month}.${day}`;
+                    case 'Y.m':
+                        return `${year}.${month}`;
                     case 'Ymd':
                         return `${year}${month}${day}`;
                     default:
@@ -97,6 +119,8 @@ const DateUtils = {
                         return `${year}-${month}`;
                     case 'Y/m':
                         return `${year}/${month}`;
+                    case 'Y.m':
+                        return `${year}.${month}`;
                     case 'Ym':
                         return `${year}${month}`;
                     default:

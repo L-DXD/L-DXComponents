@@ -4,27 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
-    <script type="module" crossorigin src="/assets/index-v0.1.2.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-v0.1.2.css">
+    <script type="module" crossorigin src="/assets/index-v0.1.3.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-v0.1.3.css">
   </head>
 <script type="application/javascript">
   const log = (value) => {
     console.log(value);
   };
 </script>
-  <l-c-range-datepicker required>
 
-  </l-c-range-datepicker>
+  <l-c-datepicker id="input01" format="Y-m-d" required label="test" start-year-offset="-1" start-month-offset="-1"></l-c-datepicker>
 
-  <l-c-triggerinput id="trigger" label="Pop">
+  <l-c-input id="input02" label="test" required/>
+<!--  <l-c-range-datepicker required>-->
 
-  </l-c-triggerinput>
+<!--  </l-c-range-datepicker>-->
 
-  <l-c-monthpicker id="input02" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%" required>
-  </l-c-monthpicker>
+<!--  <l-c-triggerinput id="trigger" label="Pop">-->
 
-  <l-c-yearpicker id="input03" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">
-  </l-c-yearpicker>
+<!--  </l-c-triggerinput>-->
+
+<!--  <l-c-monthpicker id="input02" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%" required>-->
+<!--  </l-c-monthpicker>-->
+
+<!--  <l-c-yearpicker id="input03" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%">-->
+<!--  </l-c-yearpicker>-->
 
 
 
@@ -67,13 +71,15 @@
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
 
+      document.querySelector('#input01').initTodayDate();
+      console.log(document.querySelector('#input01').getValue());
 
       const log = (value) => {
         console.log(value);
       };
 
-      const triggerComponent = document.getElementById('trigger');
-      triggerComponent.handleTrigger = log;
+      // const triggerComponent = document.getElementById('trigger');
+      // triggerComponent.handleTrigger = log;
 
       // const datepicker  = document.getElementById('input01');
       // datepicker.initTodayDate();

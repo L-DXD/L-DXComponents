@@ -93,11 +93,11 @@ export default {
 
         'format': {
             control: {type: 'select'},
-            options: ['Ymd', 'Y/m/d', 'Ymd'],
+            options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'],
             table: {
                 category: "attributes",
                 subcategory: "validate",
-                defaultValue: {summary: 'Ymd'},
+                defaultValue: {summary: 'Y-m-d'},
             }
         },
 
