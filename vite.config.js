@@ -27,6 +27,10 @@ export default defineConfig({
                     if (name.endsWith('.css')) {
                         return `assets/[name]-v${process.env.npm_package_version}.css`;
                     }
+                    if (name.endsWith('.svg')) {
+                        return 'assets/svg/[name]';  // SVG 파일을 assets/svg 폴더에 저장
+                    }
+
                     return 'assets/[name]';
                 },
             },

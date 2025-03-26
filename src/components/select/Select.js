@@ -25,6 +25,7 @@ class LSelect extends LabelAndFeedContainer {
 
     static get properties() {
         return {
+            placeholder: {type: String},
             name: {type: String},
             size: {type: String},
             disabled: {type: Boolean},
@@ -36,10 +37,8 @@ class LSelect extends LabelAndFeedContainer {
     }
 
     render() {
-
-
-
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
+        const options = this.options;
 
         return html`
             <l-label-feed-container
@@ -72,7 +71,7 @@ class LSelect extends LabelAndFeedContainer {
                             @change="${this._handleChange}"
                             @blur="${super.validate}"
                     >
-                        ${this.options?.map(
+                        ${options?.map(
                                 (option) =>
                                         html`
                                             <option value="${option.value}" ?selected=${option.value === this.value} ?disabled=${option?.disabled}>
@@ -153,20 +152,25 @@ class LSelect extends LabelAndFeedContainer {
     }
 
     updated(changedProperties) {
+
         if ((changedProperties.has('options') || changedProperties.has('default-type')) && this.options && this.options.length > 0) {
             if (this['default-type'] === 'select') {
-                if (this.options[0].label !== "Choose an option") {
-                    this.options = [{ value: '', label: "Choose an option", disabled: true }, ...this.options];
+                const defaultValue = this['placeholder'] || "Choose an option";
+
+                if (this.options[0].label !== defaultValue) {
+                    this.options = [{ value: '', label: defaultValue, disabled: true }, ...this.options];
                 }
                 // 기본 옵션의 값과 텍스트로 초기화
                 this.value = '';
-                this.text = "Choose an option";
+                this.text = defaultValue;
             } else if (this['default-type'] === 'all') {
-                if (this.options[0].label !== "All options") {
-                    this.options = [{ value: "all", label: "All options" }, ...this.options];
+                const defaultValue = this['placeholder'] || "All options";
+
+                if (this.options[0].label !== defaultValue) {
+                    this.options = [{ value: "all", label: defaultValue }, ...this.options];
                 }
                 this.value = "all";
-                this.text = "All options";
+                this.text = defaultValue;
             }
         }
     }

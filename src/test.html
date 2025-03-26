@@ -6,16 +6,24 @@
     <title>Vite App</title>
 </head>
 
-<link href="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.1.2.css" rel="stylesheet"/>
-<script src="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.1.2.js"></script>
+<link href="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.1.4.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/gh/L-DXD/L-DXComponents@main/dist/assets/index-v0.1.4.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">-->
+<!--<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>-->
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/style.css"">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/index.js"></script>
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/style.css">-->
+<!--<script src="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/index.js"></script>-->
 
-<input id="test"/>
+<l-c-range-datepicker id="input03"  format="Y-m-d" required label="test" start-month-offset="-36"
+                      rel-month="36"
+></l-c-range-datepicker>
+
+<l-c-range-monthpicker id="input04"  format="Y-m-d" required label="test" start-month-offset="-36"
+                       rel-month="36"
+></l-c-range-monthpicker>
+
+
 
 <!--<l-c-range-monthpicker id="monthpicker" rel-month="3">-->
 
@@ -83,49 +91,49 @@
 
     document.addEventListener('DOMContentLoaded', () => {
 
-        flatpickr("#test", {
-
-            minDate: "today",
-            dateFormat: "Y-m-d",
-            disable: [
-                function(date) {
-                    // disable every multiple of 8
-                    return !(date.getDate() % 8);
-                }
-            ],
-            plugins:new monthSelectPlugin({
-                shorthand: true, //defaults to false
-                dateFormat: format, //defaults to "F Y"
-                altFormat: format
-            })
-        });
-        const log = (value) => {
-            console.log(value);
-        };
-
-        const triggerComponent = document.getElementById('trigger');
-        triggerComponent.handleTrigger = log;
-
-        const selectComponent = document.getElementById('fruitSelect');
-        selectComponent.options = [
-            { value: '1', label: 'Apple' },
-            { value: '2', label: 'Banana' },
-            { value: '3', label: 'Orange' }
-        ];
-
-        // 체크박스 함수
-        console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedTextsByNameGroup());
-        console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedValuesByNameGroup());
-        console.log(document.querySelector('l-checkbox[name="chk2"]').getTextsByNameGroup());
-        console.log(document.querySelector('l-checkbox[name="chk2"]').getValuesByNameGroup());
-        console.log(document.querySelector('l-checkbox').getValue());
-        console.log(document.querySelector('l-checkbox').getText());
-        console.log(document.querySelector('l-checkbox').setText('test'));
-
-        console.log(document.querySelector('l-Radio[id="radio01"]').getText());
-        console.log(document.querySelector('l-Radio[id="radio01"]').setText('test2'));
-        console.log(document.querySelector('l-Radio[id="radio01"]').setValue('2'));
-        console.log(document.querySelector('l-Radio[id="radio01"]').getValue());
+        // flatpickr("#test", {
+        //
+        //     minDate: "today",
+        //     dateFormat: "Y-m-d",
+        //     disable: [
+        //         function(date) {
+        //             // disable every multiple of 8
+        //             return !(date.getDate() % 8);
+        //         }
+        //     ],
+        //     plugins:new monthSelectPlugin({
+        //         shorthand: true, //defaults to false
+        //         dateFormat: format, //defaults to "F Y"
+        //         altFormat: format
+        //     })
+        // });
+        // const log = (value) => {
+        //     console.log(value);
+        // };
+        //
+        // const triggerComponent = document.getElementById('trigger');
+        // triggerComponent.handleTrigger = log;
+        //
+        // const selectComponent = document.getElementById('fruitSelect');
+        // selectComponent.options = [
+        //     { value: '1', label: 'Apple' },
+        //     { value: '2', label: 'Banana' },
+        //     { value: '3', label: 'Orange' }
+        // ];
+        //
+        // // 체크박스 함수
+        // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedTextsByNameGroup());
+        // console.log(document.querySelector('l-checkbox[name="chk2"]').getCheckedValuesByNameGroup());
+        // console.log(document.querySelector('l-checkbox[name="chk2"]').getTextsByNameGroup());
+        // console.log(document.querySelector('l-checkbox[name="chk2"]').getValuesByNameGroup());
+        // console.log(document.querySelector('l-checkbox').getValue());
+        // console.log(document.querySelector('l-checkbox').getText());
+        // console.log(document.querySelector('l-checkbox').setText('test'));
+        //
+        // console.log(document.querySelector('l-Radio[id="radio01"]').getText());
+        // console.log(document.querySelector('l-Radio[id="radio01"]').setText('test2'));
+        // console.log(document.querySelector('l-Radio[id="radio01"]').setValue('2'));
+        // console.log(document.querySelector('l-Radio[id="radio01"]').getValue());
 
 
     })

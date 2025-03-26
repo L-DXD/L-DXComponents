@@ -39,6 +39,14 @@ export default {
         name: {table: {category: "attributes",}},
         width: {table: {category: "attributes",}},
 
+        placeholder: {
+            control: {type: 'text'},
+            table: {
+                category: "attributes",
+                subcategory: "text",
+            }
+        },
+
         label: {
             table: {
                 category: "attributes",
@@ -248,6 +256,8 @@ const Template = (args) => {
         feedback=${ifDefined(args.feedback)}
         feedback-type=${ifDefined(args['feedback-type'])}
         feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
+
+        placeholder=${ifDefined(args.placeholder)}
         id=${ifDefined(args.id)}
         name=${ifDefined(args.name)}
         width=${ifDefined(args.width)}
