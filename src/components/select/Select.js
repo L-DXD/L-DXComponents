@@ -20,7 +20,7 @@ class LSelect extends LabelAndFeedContainer {
     disconnectedCallback() {
         super.disconnectedCallback();
         // MutationObserver 연결 해제
-        this.observer.disconnect();
+        // this.observer.disconnect();
     }
 
     static get properties() {
@@ -98,7 +98,6 @@ class LSelect extends LabelAndFeedContainer {
      * @returns {string}
      */
     getValue() {
-        console.log('this getValue called : ' + this.value);
         if (this.value) return this.value;
         if (this.options && this.options.length > 0) {
             return this.options[0].value;

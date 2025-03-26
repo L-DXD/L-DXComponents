@@ -193,7 +193,31 @@ export default {
                 type: {summary: "function()"},
             },
             description: "입력값의 유효성을 체크합니다.",
-        }
+        },
+        setValid: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "validate",
+                type: {summary: "(()=> return false) "},
+            },
+            description: "유효한 상태로 표시합니다.",
+        },
+        inValid: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "validate",
+                type: {summary: "(()=> return false) "},
+            },
+            description: "유효하지 않은 상태로 표시합니다.",
+        },
 
     },
 };

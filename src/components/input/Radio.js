@@ -66,17 +66,19 @@ class LRadio extends LitParents {
         this.requestUpdate();
     }
 
-    isValid(value, required) {
+    isValid() {
+        const value = this.getValue().trim();
+        const required = this['required'];
+
         if (!value && required) {
             return false;
         }
     }
 
     validate() {
-        console.log('validate')
-        const value = this.getValue().trim();
+
         const $inputElement = this.querySelector(this.selector);
-        const isFlag = this.isValid(value, this['required']);
+        const isFlag = this.isValid();
 
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
     }

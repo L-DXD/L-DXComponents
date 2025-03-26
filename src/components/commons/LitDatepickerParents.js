@@ -97,18 +97,13 @@ class LitDatepickerParents extends LitElement {
         this.initDatePicker();
     }
 
-    getValue() {
-        if (this._datepicker) {
-            return this._datepicker.input.value;
-        }
-        return null;
-    }
+    getValue = () => this._datepicker ? this._datepicker.input.value : null;
 
     isValidDateFormat(value, format) {
         const dateFormatRegex = DateUtils.getDateFormatRegex(format); // 포맷별 정규식
         if (value && (!dateFormatRegex || !dateFormatRegex.test(value))) {
             console.error(`id : ${this['id']} >> Invalid date format: ${value}. Expected format is ${format}.`);
-            return false; // 유효하지 않은 경우 처리 중단
+            return false;
         }
         return true;
     }
@@ -140,6 +135,7 @@ class LitDatepickerParents extends LitElement {
 
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
+
         const feedbackHtml = {
                 'normal': html`
                     <div class="valid-feedback">${this['feedback']}</div>`,
@@ -157,19 +153,19 @@ class LitDatepickerParents extends LitElement {
             >
                 <div
                         class="${
-            classMap({
-                'container': isLabelLeft
-            })
-        }"
+                                classMap({
+                                    'container': isLabelLeft
+                                })
+                        }"
                 >
                     <label
                             class="${
-            classMap({
-                'form-left-label': (isLabelLeft && this['label']),
-                'form-label': !(isLabelLeft && this['label']),
-                'hidden': this['invisible']
-            })
-        }"
+                                    classMap({
+                                        'form-left-label': (isLabelLeft && this['label']),
+                                        'form-label': !(isLabelLeft && this['label']),
+                                        'hidden': this['invisible']
+                                    })
+                            }"
                             for="${this['id']}"
                             style="
                         width: ${this['label-width'] || 'auto'};
@@ -177,23 +173,23 @@ class LitDatepickerParents extends LitElement {
                     "
                     >
                         ${this['required']
-            ? (isLabelLeft
-                ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this['label']}`
-                : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
-            : this['label']}
+                                ? (isLabelLeft
+                                        ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this['label']}`
+                                        : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
+                                : this['label']}
                     </label>
                     <div class="">
                         <!-- Wrapper 영역 -->
                         <div class="input-container">
                             <input type="text"
                                    class="${classMap({
-            'form-control': true,
-            'form-left-control': isLabelLeft,
-            'form-control-lg': this['size'] === 'large',
-            'form-control-sm': this['size'] === 'small',
-            'input-right': true,
-            'hidden': this['invisible'],
-        })}"
+                                       'form-control': true,
+                                       'form-left-control': isLabelLeft,
+                                       'form-control-lg': this['size'] === 'large',
+                                       'form-control-sm': this['size'] === 'small',
+                                       'input-right': true,
+                                       'hidden': this['invisible'],
+                                   })}"
                                    id="${inputId}"
                                    name="${ifDefined(this['name'])}"
                                    aria-label="Date-Time"
@@ -205,9 +201,9 @@ class LitDatepickerParents extends LitElement {
                             >
                             <div @click="${this._handleClick}"
                                  class="${classMap({
-            'icon-right': true,
-            'hidden': this['disabled']
-        })}"
+                                     'icon-right': true,
+                                     'hidden': this['invisible']
+                                 })}"
                                  id="rightIcon"></div>
                         </div>
                     </div>
@@ -230,7 +226,10 @@ class LitDatepickerParents extends LitElement {
         `;
     }
 
-    isValid(value, format = DateUtils.getDefaultFormat(this.getDateType), required) {
+    isValid() {
+        const value = this.getValue();
+        const format = this['format'] || DateUtils.getDefaultFormat(this.getDateType);
+        const required = this['required'];
 
         if (!value && required) {
             console.error("Validation failed: Value is required but missing.");
@@ -243,26 +242,6 @@ class LitDatepickerParents extends LitElement {
         return true;
     }
 
-    validate() {
-        const inputId = `${this['id']}-input`;
-        const feedbackId = `${this['id']}-feedback`;
-        const value = this.getValue();
-        const $feedbackElement = this.querySelector(`#${feedbackId}`);
-        const $inputElement = this.querySelector(`#${inputId}`);
-        const isFlag = this.isValid(value, this['format'], this['required']);
-        const feedbackVisibleType = this['feedback-visible-type'];
-
-        $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
-
-        if (feedbackVisibleType == 'visible') {
-            return;
-        }
-
-        $feedbackElement.setAttribute('hidden', true); // Assume hidden first
-        if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
-            $feedbackElement.removeAttribute('hidden');
-        }
-    }
 
     checkValidity() {
         this.validate();
@@ -286,6 +265,37 @@ class LitDatepickerParents extends LitElement {
     }
 
     _handleClick = (_) => this._datepicker.open();
+
+
+    validate() {
+        const isFlag = this.isValid();
+        this.setSelectorValid(!isFlag);
+
+        const feedbackVisibleType = this['feedback-visible-type'];
+        if (feedbackVisibleType == 'visible') {
+            return;
+        }
+
+        const feedbackId = `${this['id']}-feedback`;
+        const $feedbackElement = this.querySelector(`#${feedbackId}`);
+        $feedbackElement.setAttribute('hidden', true); // Assume hidden first
+        if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
+            $feedbackElement.removeAttribute('hidden');
+        }
+    }
+
+    setSelectorValid(flag) {
+        const inputId = `${this['id']}-input`;
+        const $inputElement = this.querySelector(`#${inputId}`);
+        $inputElement.classList.toggle('is-invalid', flag);
+    }
+
+    setValid() {
+        this.setSelectorValid(false);
+    }
+    inValid() {
+        this.setSelectorValid(true);
+    }
 }
 
 export {LitDatepickerParents};

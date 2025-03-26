@@ -90,20 +90,84 @@ export default {
                 subcategory: "text",
             }
         },
+
+        'format': {
+            control: {type: 'select'},
+            options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'],
+            table: {
+                category: "attributes",
+                subcategory: "validate",
+                defaultValue: {summary: 'Y-m-d'},
+            }
+        },
+
         value: {
             control: {type: 'text'},
             table: {
                 category: "attributes",
-                subcategory: "text",
+                subcategory: "value",
             }
         },
-        'format': {
-            control: {type: 'select'},
-            options: ['yyyy-MM-dd', 'yyyy/MM/dd', 'yyyyMMdd'],
+        'start-year-offset': {
+            control: 'number',
             table: {
                 category: "attributes",
-                subcategory: "validate",
-                defaultValue: {summary: 'yyyy-MM-dd'},
+                defaultValue: {summary: 0},
+                subcategory: "value"
+            },
+            description: "Calculates the base date by adding or subtracting against the 'year' of the value. If value is not set, it is based on 'today'."
+        },
+        'start-month-offset': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: 0},
+                subcategory: "value"
+            },
+            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
+        },
+        'start-day-offset': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: 0},
+                subcategory: "value"
+            },
+            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
+        },
+
+        'rel-year': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+        'rel-month': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+        'rel-day': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+
+        'rel-mode': {
+            control: {type: 'select'},
+            options: ['fixed','dynamic'],
+            table: {
+                category: "attributes",
+                defaultValue: {summary: 'fixed'},
+                subcategory: "validate"
             }
         },
 
@@ -124,6 +188,20 @@ export default {
             }
         },
         readonly: {
+            control: 'boolean',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false}
+            }
+        },
+        showAlways: {
+            control: 'boolean',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false}
+            }
+        },
+        invisible: {
             control: 'boolean',
             table: {
                 category: "attributes",
@@ -218,7 +296,31 @@ export default {
                 type: {summary: "function()"},
             },
             description: "입력값의 유효성을 체크합니다.",
-        }
+        },
+        setValid: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "validate",
+                type: {summary: "(()=> return false) "},
+            },
+            description: "유효한 상태로 표시합니다.",
+        },
+        inValid: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "validate",
+                type: {summary: "(()=> return false) "},
+            },
+            description: "유효하지 않은 상태로 표시합니다.",
+        },
 
     },
 };
@@ -231,7 +333,14 @@ const Template = (args) => {
                 name=${ifDefined(args.name)}
                 size=${ifDefined(args.size)}
                 format=${ifDefined(args.format)}
-                
+
+                value="${ifDefined(args.value)}"
+                start-year-offset=${ifDefined(args['start-year-offset'])}
+                start-month-offset=${ifDefined(args['start-month-offset'])}
+                start-day-offset=${ifDefined(args['start-day-offset'])}
+                rel-year=${ifDefined(args['rel-year'])}
+                rel-month=${ifDefined(args['rel-month'])}
+                rel-day=${ifDefined(args['rel-day'])}
                 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
@@ -245,7 +354,8 @@ const Template = (args) => {
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
-                value="${ifDefined(args.value)}"
+                ?showAlways=${args.showAlways}
+                ?invisible=${args.invisible}
         >
         </l-c-range-datepicker>
 
@@ -287,12 +397,21 @@ RangedatepickerWithLeftLabelAndFeedback.args = {
     readonly: false,
 };
 
+export const DatepickerDisplayAlways = Template.bind({});
+DatepickerDisplayAlways.args = {
+    type: 'text',
+    id: 'input06',
+    name: 'name',
+    invisible: true,
+    showAlways: true,
+};
+
 export const RangedatepickerFormatCheck = Template.bind({});
 RangedatepickerFormatCheck.args = {
     id: 'input04',
     name: 'name',
     width: '100%',
-    format: 'yyyyMMdd',
+    format: 'Ymd',
     value: '2024-12-31',
     label: 'label',
     'label-align': 'top',

@@ -44,7 +44,11 @@ export class LabelAndFeedContainer extends LitParents {
         return int_char_count;
     }
 
-    isValid(value, pattern, required) {
+    isValid() {
+        const value = this.getValue().trim();
+        const pattern = this['pattern'];
+        const required = this['required'];
+
         const regex = new RegExp(pattern);
 
         if (!value && required) {
@@ -76,17 +80,17 @@ export class LabelAndFeedContainer extends LitParents {
 
     validate() {
         const value = this.getValue().trim();
-        const $container = this.shadowRoot.querySelector('l-label-feed-container');
-        const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
-        const isFlag = this.isValid(value, this['pattern'], this['required']);
-        const feedbackVisibleType = this['feedback-visible-type'];
 
+        const isFlag = this.isValid();
         this.setSelectorValid(!isFlag);
 
+        const feedbackVisibleType = this['feedback-visible-type'];
         if (feedbackVisibleType == 'visible') {
             return;
         }
 
+        const $container = this.shadowRoot.querySelector('l-label-feed-container');
+        const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
         $feedbackElement.setAttribute('hidden', true); // Assume hidden first
         if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
             $feedbackElement.removeAttribute('hidden');
@@ -104,6 +108,7 @@ export class LabelAndFeedContainer extends LitParents {
     inValid() {
         this.setSelectorValid(true);
     }
+
     checkValidity() {
         this.validate();
     }

@@ -1,6 +1,8 @@
 // Date.js
 const DateUtils = {
 
+    RANGE_INFIX : 'to',
+
     getDefaultFormat(type = this.DATE_TYPE.DATE) {
         switch (type) {
             case this.DATE_TYPE.DATE:

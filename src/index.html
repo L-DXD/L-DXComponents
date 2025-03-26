@@ -11,9 +11,9 @@
   <script type="module" src="components/input/Radio.js"></script>
   <script type="module" src="components/input/Datepicker.js"></script>
   <script type="module" src="components/input/Monthpicker.js"></script>
-  <script type="module" src="components/input/Yearpicker.js"></script>
   <script type="module" src="components/input/TriggerInput.js"></script>
   <script type="module" src="components/input/RDatepicker.js"></script>
+  <script type="module" src="components/input/Textarea.js"></script>
   <script type="module" src="components/input/RMonthpicker.js"></script>
   <script type="module" src="components/select/Select.js"></script>
 <script type="application/javascript">
@@ -22,16 +22,24 @@
   };
 </script>
 
-  <l-c-datepicker id="input01" format="Y-m-d" required label="test" start-year-offset="-1" start-month-offset="-1"></l-c-datepicker>
+  <l-c-range-datepicker id="input03"  format="Y-m-d" required label="test" start-month-offset="-36"
+                        rel-month="36"
+  ></l-c-range-datepicker>
 
-  <l-c-input id="input02" label="test" required/>
+  <l-c-range-monthpicker id="input04"  format="Y-m-d" required label="test" start-month-offset="-36"
+                        rel-month="36"
+  ></l-c-range-monthpicker>
+
+<!--  <l-c-datepicker id="input01" format="Y-m-d" required label="test" start-year-offset="-1" start-month-offset="-1"></l-c-datepicker>-->
+
+<!--  <l-c-input id="input02" label="test" required/>-->
 <!--  <l-c-range-datepicker required>-->
 
 <!--  </l-c-range-datepicker>-->
 
-<!--  <l-c-triggerinput id="trigger" label="Pop">-->
+  <l-c-triggerinput id="trigger" label="Pop">
 
-<!--  </l-c-triggerinput>-->
+  </l-c-triggerinput>
 
 <!--  <l-c-monthpicker id="input02" name="name" label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" width="100%" required>-->
 <!--  </l-c-monthpicker>-->
@@ -45,11 +53,12 @@
 
 <!--  <l-c-datepicker id="input01" format="yyyyMMdd" required label="test"></l-c-datepicker>-->
 <!--  <l-c-datepicker id="input02"></l-c-datepicker>-->
-<!--  <l-c-select label="Choose an option" name="mySelect" id="fruitSelect" default-type="all" required>-->
-<!--  </l-c-select>-->
+  <l-c-select label="Choose an option" id="mySelect" id="fruitSelect" default-type="all" required>
+  </l-c-select>
 
-<!--  <l-c-select label="Choose an option" name="mySelect" id="animalSelect" default-type="select" required>-->
-<!--  </l-c-select>-->
+
+  <l-c-textarea label="label" label-align="top" feedback="feedback" feedback-type="normal" feedback-visible-type="visible" id="input08" name="name" width="100%">
+  </l-c-textarea>
 
 <!--  <l-c-select label="Choose an option" name="mySelect" id="humanSelect">-->
 <!--  </l-c-select>-->
@@ -79,13 +88,16 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('#mySelect').inValid();
+      document.querySelector('#input08').inValid();
+      document.querySelector('#trigger').inValid();
 
-      document.querySelector('#input01').initTodayDate();
-      console.log(document.querySelector('#input01').getValue());
-
-      const log = (value) => {
-        console.log(value);
-      };
+      // document.querySelector('#input01').initTodayDate();
+      // console.log(document.querySelector('#input01').getValue());
+      //
+      // const log = (value) => {
+      //   console.log(value);
+      // };
 
       // const triggerComponent = document.getElementById('trigger');
       // triggerComponent.handleTrigger = log;
@@ -97,13 +109,13 @@
       // const datepicker2  = document.getElementById('input02');
       // datepicker2.initTodayDate();
       //
-      // const selectComponent = document.querySelector('l-c-select');
-      // console.log(selectComponent);
-      // selectComponent.options = [
-      //   { value: '1', label: 'Option 1' },
-      //   { value: '2', label: 'Option 2' },
-      //   { value: '3', label: 'Option 3' }
-      // ];
+      const selectComponent = document.querySelector('l-c-select');
+      console.log(selectComponent);
+      selectComponent.options = [
+        { value: '1', label: 'Option 1' },
+        { value: '2', label: 'Option 2' },
+        { value: '3', label: 'Option 3' }
+      ];
 
       // const selectComponent = document.getElementById('fruitSelect');
       // selectComponent.options = [

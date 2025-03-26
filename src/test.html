@@ -12,19 +12,22 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/style.css"">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@latest/dist/plugins/monthSelect/index.js"></script>
+
 <input id="test"/>
 
-<l-c-range-monthpicker id="monthpicker" rel-month="3">
+<!--<l-c-range-monthpicker id="monthpicker" rel-month="3">-->
 
-</l-c-range-monthpicker>
+<!--</l-c-range-monthpicker>-->
 
-<l-c-range-datepicker >
+<!--<l-c-range-datepicker >-->
 
-</l-c-range-datepicker>
+<!--</l-c-range-datepicker>-->
 
-<l-c-triggerinput id="trigger" label="Pop">
+<!--<l-c-triggerinput id="trigger" label="Pop">-->
 
-</l-c-triggerinput>
+<!--</l-c-triggerinput>-->
 
 
 <!--<l-c-datepicker id="dateinput01" format="yyyyMMdd" required label="test"></l-c-datepicker>-->
@@ -77,9 +80,25 @@
 
 
 <script type="application/javascript">
+
     document.addEventListener('DOMContentLoaded', () => {
 
-        flatpickr("#test", {});
+        flatpickr("#test", {
+
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            disable: [
+                function(date) {
+                    // disable every multiple of 8
+                    return !(date.getDate() % 8);
+                }
+            ],
+            plugins:new monthSelectPlugin({
+                shorthand: true, //defaults to false
+                dateFormat: format, //defaults to "F Y"
+                altFormat: format
+            })
+        });
         const log = (value) => {
             console.log(value);
         };

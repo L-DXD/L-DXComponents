@@ -81,7 +81,10 @@ class LCheckbox extends LitParents {
         };
     }
 
-    isValid(value, required) {
+    isValid() {
+        const value = this.getValue().trim();
+        const required = this['required'];
+
         if (!value && required) {
             return false;
         }
@@ -89,9 +92,9 @@ class LCheckbox extends LitParents {
 
     validate() {
         const value = this.getValue().trim();
-        const $inputElement = this.shadowRoot.querySelector(this.selector);
-        const isFlag = this.isValid(value, this['required']);
+        const isFlag = this.isValid();
 
+        const $inputElement = this.shadowRoot.querySelector(this.selector);
         $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
     }
 
