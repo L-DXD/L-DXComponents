@@ -654,8 +654,8 @@ class SharedStyles {
             .form-control:focus {
                 color: var(--bs-body-color);
                 background-color: var(--bs-component-bg);
-                border-color: #80b3ff;
                 outline: 0;
+                border-color: #80b3ff;
                 box-shadow: 0 0 0 .25rem rgba(0, 102, 255, .25)
             }
 

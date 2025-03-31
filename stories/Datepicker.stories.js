@@ -3,7 +3,7 @@ import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Datepicker',
+    title: 'LABEL & FEEDBACK & COMPONENTS/Datepicker',
     tags: ['autodocs'],
     component: 'l-c-datepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
@@ -284,6 +284,7 @@ const Template = (args) => {
                 feedback=${ifDefined(args.feedback)}
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
+                component-style=${ifDefined(args['component-style'])}
                 
                 width=${ifDefined(args.width)}
                 ?required=${args.required}

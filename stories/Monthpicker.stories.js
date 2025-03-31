@@ -3,7 +3,7 @@ import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Monthpicker',
+    title: 'LABEL & FEEDBACK & COMPONENTS/Monthpicker',
     tags: ['autodocs'],
     component: 'l-c-monthpicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
@@ -100,7 +100,14 @@ export default {
                 defaultValue: {summary: 'Y-m'},
             }
         },
-
+        'component-style': {
+            control: {type: 'text'},
+            table: {
+                category: "attributes",
+                subcategory: "style",
+            },
+            description: "main component style"
+        },
         value: {
             control: {type: 'text'},
             table: {
@@ -274,6 +281,7 @@ const Template = (args) => {
                 feedback=${ifDefined(args.feedback)}
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
+                component-style=${ifDefined(args['component-style'])}
                 
                 width=${ifDefined(args.width)}
                 ?required=${args.required}

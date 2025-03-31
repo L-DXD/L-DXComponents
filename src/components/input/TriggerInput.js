@@ -103,6 +103,7 @@ class TriggerInput extends LabelAndFeedContainer {
             minlength: {type: String},
             'valid-length-type': {type: String},
             handleTrigger: { type: Function },
+            'component-style': {type: String},
         };
     }
 
@@ -137,6 +138,7 @@ class TriggerInput extends LabelAndFeedContainer {
                                 'form-control-sm': this['size'] === 'small',
                                 'search-input-right': isSearchRight
                             })}"
+                            style="${this['component-style']}"
                             id="${ifDefined(this['id'])}"
                             name="${ifDefined(this['name'])}"
                             maxlength="${(this['valid-length-type'] != 'byte' ? ifDefined(this['maxlength']) : null) ?? nothing}"

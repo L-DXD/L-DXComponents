@@ -1,4 +1,4 @@
-import {html, LitElement} from 'lit';
+import {css, html, LitElement} from 'lit';
 import '../commons/common.css';
 import {customElement} from 'lit/decorators.js';
 import '../../../assets/css/Input.css';
@@ -9,6 +9,7 @@ import {ifDefined} from "lit/directives/if-defined.js";
 import flatpickr from "flatpickr";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import 'flatpickr/dist/plugins/monthSelect/style.css'
+import '../../../assets/css/Flatpickr.css';
 
 class LitDatepickerParents extends LitElement {
 
@@ -56,6 +57,8 @@ class LitDatepickerParents extends LitElement {
             value: {type: String},
             showAlways: {type: Boolean},
             invisible: {type: Boolean},
+
+            'component-style': {type: String},
 
             'start-year-offset': {type: Number},
             'start-month-offset': {type: Number},
@@ -190,6 +193,7 @@ class LitDatepickerParents extends LitElement {
                                        'input-right': true,
                                        'hidden': this['invisible'],
                                    })}"
+                                   style="${this['component-style']}"
                                    id="${inputId}"
                                    name="${ifDefined(this['name'])}"
                                    aria-label="Date-Time"

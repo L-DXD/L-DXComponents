@@ -3,7 +3,7 @@ import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 //todo max-date attribute
 export default {
-    title: 'Container Components/Rangemonthpicker',
+    title: 'LABEL & FEEDBACK & COMPONENTS/Rangemonthpicker',
     tags: ['autodocs'],
     component: 'l-c-range-monthpicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
@@ -99,6 +99,14 @@ export default {
                 subcategory: "validate",
                 defaultValue: {summary: 'Y-m-d'},
             }
+        },
+        'component-style': {
+            control: {type: 'text'},
+            table: {
+                category: "attributes",
+                subcategory: "style",
+            },
+            description: "main component style"
         },
         value: {
             control: {type: 'text'},
@@ -334,6 +342,7 @@ const Template = (args) => {
                 feedback=${ifDefined(args.feedback)}
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
+                component-style=${ifDefined(args['component-style'])}
 
                 width=${ifDefined(args.width)}
                 ?required=${args.required}

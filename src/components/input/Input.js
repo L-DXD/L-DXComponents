@@ -72,6 +72,7 @@ class LInput extends LabelAndFeedContainer {
             maxlength: {type: String},
             minlength: {type: String},
             'valid-length-type': {type: String},
+            'component-style': {type: String},
         };
     }
 
@@ -96,6 +97,7 @@ class LInput extends LabelAndFeedContainer {
                 <div slot="input" class="search-input-container">
                     <input
                             type="${this['type'] === 'planText' ? 'text' : this['type']}"
+                            style="${this['component-style']}"
                             class="${classMap({
                                 'form-control': true,
                                 'form-left-control': isLabelLeft,

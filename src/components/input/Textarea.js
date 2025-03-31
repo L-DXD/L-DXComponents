@@ -30,6 +30,7 @@ class LTextarea extends LabelAndFeedContainer {
             maxlength: {type: String},
             minlength: {type: String},
             'valid-length-type': {type: String},
+            'component-style': {type: String},
         };
     }
 
@@ -63,6 +64,8 @@ class LTextarea extends LabelAndFeedContainer {
                                     , 'form-control-sm': this['size'] === 'small'
                                 })
                         }"
+                        style="${this['component-style']}"
+                        
                         id="${ifDefined(this['id'])}"
                         name="${ifDefined(this['name'])}"
                         

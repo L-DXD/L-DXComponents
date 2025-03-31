@@ -33,6 +33,7 @@ class LSelect extends LabelAndFeedContainer {
             text: {type: String},
             options: {type: Array},
             'default-type': {type: String},
+            'component-style': {type: String},
         };
     }
 
@@ -62,6 +63,8 @@ class LSelect extends LabelAndFeedContainer {
                                 'form-select-lg': this['size'] === 'large',
                                 'form-select-sm': this['size'] === 'small',
                             })}"
+                            style="${this['component-style']}"
+                            
                             id="${ifDefined(this['id'])}"
                             name="${ifDefined(this['name'])}"
                             value="${ifDefined(this['value'])}"

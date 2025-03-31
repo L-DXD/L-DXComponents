@@ -3,7 +3,7 @@ import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 export default {
-    title: 'Container Components/Input',
+    title: 'LABEL & FEEDBACK & COMPONENTS/Input',
     tags: ['autodocs'],
     component: 'l-c-input',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
@@ -104,6 +104,14 @@ export default {
                 category: "attributes",
                 subcategory: "text",
             }
+        },
+        'component-style': {
+            control: {type: 'text'},
+            table: {
+                category: "attributes",
+                subcategory: "style",
+            },
+            description: "main component style"
         },
         // 'valid-trigger-type': {
         //     control: {type: 'select'},
@@ -261,6 +269,7 @@ const Template = (args) => {
                 feedback=${ifDefined(args.feedback)}
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
+                component-style=${ifDefined(args['component-style'])}
                 id=${ifDefined(args.id)}
                 name=${ifDefined(args.name)}
                 width=${ifDefined(args.width)}
