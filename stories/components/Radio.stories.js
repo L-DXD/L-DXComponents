@@ -1,24 +1,14 @@
 import '/src/components/input/Radio.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-
+import {argsCommons, argsSize} from "../commons/CommonArgs.js";
 
 export default {
     title: 'Components/Radio',
     tags: ['autodocs'],
     component: 'l-radio',
     argTypes: {
-        // size: {
-        //     control: {type: 'select'},
-        //     options: ['default','large','small'],
-        //     table: {
-        //         category: "attributes",
-        //         defaultValue: {summary: 'default'}
-        //     }
-        // },
-        id: {table: {category: "attributes",}},
-        name: {table: {category: "attributes",}},
-        width: {table: {category: "attributes",}},
+        ...argsCommons, ...argsSize,
         label: {
             table: {
                 category: "attributes",
@@ -51,49 +41,6 @@ export default {
                 subcategory: "validate"
             }
         },
-        disabled: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-
-        value: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            },
-            description: "checked일때 불러올 값.",
-        },
-
-        getValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return new String)"},
-
-            },
-            description: "input값을 가져옵니다.",
-        },
-        setValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "function(value)"},
-            },
-            description: "input값을 설정합니다.",
-        },
-
         getText: {
             control: {
                 type: {},

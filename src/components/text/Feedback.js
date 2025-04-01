@@ -1,7 +1,7 @@
 import {css, html, LitElement} from 'lit';
-import '../commons/common.css';
+import '../../styles/common.css';
 import {classMap} from "lit/directives/class-map.js";
-import {SharedStyles as TextStyles} from "@/components/commons/SharedStyles.js";
+import {SharedStyles as TextStyles} from "@/styles/SharedStyles.js";
 import {customElement} from "lit/decorators.js";
 
 @customElement('l-feedback')

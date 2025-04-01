@@ -1,7 +1,7 @@
 import {css, html, nothing} from 'lit';
 import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
-import '../commons/common.css';
+import '../../styles/common.css';
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 
@@ -151,7 +151,19 @@ class LSelect extends LabelAndFeedContainer {
     }
 
     setValue(value) {
-        console.log('not supported');
+        // options 배열에 주어진 value와 일치하는 값이 있는지 확인
+        const matchingOption = this.options?.find(opt => opt.value === value);
+
+        if (matchingOption) {
+            // 일치하는 옵션이 있을 경우 value와 text를 업데이트
+            this.value = matchingOption.value;
+            this.text = matchingOption.label;
+        } else {
+            // 일치하는 옵션이 없을 경우 value와 text를 초기화
+            this.value = '';
+            this.text = '';
+            console.warn(`Value "${value}" does not match any option`);
+        }
     }
 
     updated(changedProperties) {

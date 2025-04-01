@@ -32,7 +32,9 @@
 
 <!--  <l-c-datepicker id="input01" format="Y-m-d" required label="test" start-year-offset="-1" start-month-offset="-1"></l-c-datepicker>-->
 
-  <l-c-input id="input02" label="test" component-style="color: blue;" required />
+  <l-c-input id="input02" label="test" ></l-c-input>
+
+  <l-c-input type="file" id="input03" label="test2" ></l-c-input>
 <!--  <l-c-range-datepicker required>-->
 
 <!--  </l-c-range-datepicker>-->
@@ -88,6 +90,7 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
+
       // document.querySelector('#mySelect').inValid();
       // document.querySelector('#input08').inValid();
       // document.querySelector('#trigger').inValid();
@@ -116,6 +119,8 @@
         { value: '2', label: 'Option 2' },
         { value: '3', label: 'Option 3' }
       ];
+
+      selectComponent.setValue('2');
 
       // const selectComponent = document.getElementById('fruitSelect');
       // selectComponent.options = [

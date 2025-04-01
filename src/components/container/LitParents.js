@@ -1,7 +1,7 @@
 // EventManager.js
 import {css, LitElement} from "lit";
-import {SharedStyles} from "@/components/commons/SharedStyles.js";
-import {TextStyles} from "@/components/commons/TextStyles.js";
+import {SharedStyles} from "@/styles/SharedStyles.js";
+import {TextStyles} from "@/styles/TextStyles.js";
 
 class LitParents extends LitElement {
 
@@ -20,6 +20,10 @@ class LitParents extends LitElement {
 
     get getSelector() {
         return this.selector;
+    }
+
+    getComponent() {
+        return this.shadowRoot.querySelector(this.selector);
     }
 
     getValue() {

@@ -1,12 +1,15 @@
 import '/src/components/input/TriggerInput.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
+import {argsCommons, argsValue, argsSize, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
 
 export default {
     title: 'LABEL & FEEDBACK & COMPONENTS/TriggerInput',
     tags: ['autodocs'],
     component: 'l-c-triggerinput',
     argTypes: {
+        ...argsCommons, ...argsValue, ...argsSize,
+        ...argsLabel, ...argsFeedback,
         handleTrigger: {
             control: 'function'
             , table: {
@@ -15,81 +18,7 @@ export default {
             }
             ,description: "사용자 입력(예: 엔터키 입력, 돋보기 아이콘 클릭) 시 실행되는 트리거 함수를 지정하는 인스턴스 속성입니다.",
         },
-        size: {
-            control: {type: 'select'},
-            options: ['default', 'large', 'small'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'default'}
-            }
-        },
-        id: {table: {category: "attributes",}},
-        name: {table: {category: "attributes",}},
-        width: {table: {category: "attributes",}},
 
-        label: {
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        'label-align': {
-            control: {type: 'select'},
-            options: ['left', 'top'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'top'},
-                subcategory: "text"
-            }
-        },
-        'label-width': {
-            control: 'text'
-            , description: 'Sets the width of the label (only visible when label-align is "left")'
-            , table: {
-                category: "attributes",
-                defaultValue: {summary: 'auto'},
-                subcategory: "text",
-            }
-            , if: {arg: 'label-align', eq: 'left'},
-        },
-        'label-text-align': {
-            control: {type: 'select'},
-            options: ['left', 'right'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'left'},
-                subcategory: "text"
-            }
-            , if: {arg: 'label-align', eq: 'left'},
-        },
-        feedback: {
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        'feedback-type': {
-            control: {type: 'select'},
-            options: ['normal', 'hint', 'error'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'normal'},
-                subcategory: "text"
-            }
-        },
-        'feedback-visible-type': {
-            control: {type: 'select'},
-            options: ['none', 'visible', 'valid', 'invalid'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'none'},
-                subcategory: "text"
-            },
-            description: "none : 항상 숨김<br/>" +
-                "visible : 항상 표시<br/>" +
-                "valid : 유효할때 표시<br/>" +
-                "invalid : 유효하지 않을 때 표시",
-        },
         placeholder: {
             control: {type: 'text'},
             table: {
@@ -97,22 +26,6 @@ export default {
                 subcategory: "text",
             }
         },
-        value: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        // 'valid-trigger-type': {
-        //     control: {type: 'select'},
-        //     options: ['blur', 'change', 'focus'],
-        //     table: {
-        //         category: "attributes",
-        //         subcategory: "validate",
-        //         defaultValue: {summary: 'blur'},
-        //     }
-        // },
         'valid-length-type': {
             control: {type: 'select'},
             options: ['length', 'byte'],
@@ -153,14 +66,6 @@ export default {
                 subcategory: "validate"
             }
         },
-
-        disabled: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
         readonly: {
             control: 'boolean',
             table: {
@@ -175,32 +80,6 @@ export default {
                 subcategory: "style",
             },
             description: "main component style"
-        },
-
-        getValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return new String)"},
-
-            },
-            description: "input값을 가져옵니다.",
-        },
-        setValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "function(value)"},
-            },
-            description: "input값을 설정합니다.",
         },
         isValid: {
             control: {

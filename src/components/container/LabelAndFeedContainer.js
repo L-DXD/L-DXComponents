@@ -4,7 +4,7 @@ import {LFeedback} from "../text/Feedback.js";
 import {classMap} from "lit/directives/class-map.js";
 import {customElement} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {LitParents} from "@/components/commons/LitParents.js";
+import {LitParents} from "@/components/container/LitParents.js";
 
 @customElement('l-label-feed-container')
 export class LabelAndFeedContainer extends LitParents {

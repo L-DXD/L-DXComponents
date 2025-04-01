@@ -2,13 +2,14 @@ import {fn} from '@storybook/test';
 import '/src/components/button/Button.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
-
+import {argsCommons, argsValue, argsSize} from "../commons/CommonArgs.js";
 
 export default {
     title: 'Components/Button',
     tags: ['autodocs'],
     component: 'l-button',
     argTypes: {
+        ...argsCommons, ...argsValue, ...argsSize,
         theme: {
             control: {type: 'select'},
             options: ['default', 'primary', 'secondary', 'light'
@@ -20,38 +21,15 @@ export default {
                 defaultValue: {summary: 'default'}
             }
         },
-        size: {
-            control: {type: 'select'},
-            options: ['default', 'large', 'small'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'default'}
-            }
-        },
-        id: {table: {category: "attributes",}},
-        name: {table: {category: "attributes",}},
-        width: {table: {category: "attributes",}},
+
         label: {
             table: {
                 category: "attributes",
                 subcategory: "text",
             }
         },
-        value: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
+
         outline: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        disabled: {
             control: 'boolean',
             table: {
                 category: "attributes",
@@ -70,32 +48,6 @@ export default {
             , table: {
                 category: "attributes",
             }
-        },
-
-        getValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return new String)"},
-
-            },
-            description: "값을 가져옵니다.",
-        },
-        setValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "function(value)"},
-            },
-            description: "값을 설정합니다.",
         },
         getText: {
             control: {

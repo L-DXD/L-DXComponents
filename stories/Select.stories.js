@@ -1,6 +1,7 @@
 import '/src/components/select/Select.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
+import {argsCommons, argsValue, argsSize, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
 
 export default {
     title: 'LABEL & FEEDBACK & COMPONENTS/Select',
@@ -8,6 +9,8 @@ export default {
     component: 'l-c-select',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
+        ...argsCommons, ...argsValue, ...argsSize,
+        ...argsLabel, ...argsFeedback,
         options: {
             control: 'Array',
             table: {
@@ -27,17 +30,6 @@ export default {
                 "select : 선택<br/>" +
                 "all : 전체"
         },
-        size: {
-            control: {type: 'select'},
-            options: ['default','large','small'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'default'}
-            }
-        },
-        id: {table: {category: "attributes",}},
-        name: {table: {category: "attributes",}},
-        width: {table: {category: "attributes",}},
 
         placeholder: {
             control: {type: 'text'},
@@ -45,70 +37,6 @@ export default {
                 category: "attributes",
                 subcategory: "text",
             }
-        },
-
-        label: {
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        'label-align': {
-            control: {type: 'select'},
-            options: ['left', 'top'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'top'},
-                subcategory: "text"
-            }
-        },
-        'label-width': {
-            control: 'text'
-            , description: 'Sets the width of the label (only visible when label-align is "left")'
-            , table: {
-                category: "attributes",
-                defaultValue: {summary: 'auto'},
-                subcategory: "text",
-            }
-            , if: {arg: 'label-align', eq: 'left'},
-        },
-        'label-text-align': {
-            control: {type: 'select'},
-            options: ['left', 'right'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'left'},
-                subcategory: "text"
-            }
-            , if: {arg: 'label-align', eq: 'left'},
-        },
-        feedback: {
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-        'feedback-type': {
-            control: {type: 'select'},
-            options: ['normal', 'hint', 'error'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'normal'},
-                subcategory: "text"
-            }
-        },
-        'feedback-visible-type': {
-            control: {type: 'select'},
-            options: ['none', 'visible', 'valid', 'invalid'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'none'},
-                subcategory: "text"
-            },
-            description: "none : 항상 숨김<br/>" +
-                "visible : 항상 표시<br/>" +
-                "valid : 유효할때 표시<br/>" +
-                "invalid : 유효하지 않을 때 표시",
         },
         required: {
             control: 'boolean',
@@ -127,26 +55,6 @@ export default {
             description: "main component style"
         },
 
-        disabled: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        getValue: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return new String)"},
-
-            },
-            description: "선택된 값을 가져옵니다.",
-        },
         getText: {
             control: {
                 type: {},

@@ -1,7 +1,7 @@
 import {css, html, nothing} from 'lit';
 import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
-import '../commons/common.css';
+import '../../styles/common.css';
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 

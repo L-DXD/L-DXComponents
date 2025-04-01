@@ -1,5 +1,5 @@
 import {css, html, LitElement} from 'lit';
-import '../commons/common.css';
+import '../../styles/common.css';
 import {customElement} from "lit/decorators.js";
 
 

@@ -1,7 +1,7 @@
 import {html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
-import '../commons/common.css';
-import {LitParents} from "../commons/LitParents.js";
+import '../../styles/common.css';
+import {LitParents} from "../container/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 

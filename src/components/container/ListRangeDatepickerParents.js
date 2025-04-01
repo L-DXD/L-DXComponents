@@ -1,6 +1,6 @@
 import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
-import {LitDatepickerParents} from "@/components/commons/LitDatepickerParents.js";
+import {LitDatepickerParents} from "@/components/container/LitDatepickerParents.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import flatpickr from "flatpickr";
 
@@ -141,6 +141,10 @@ class ListRangeDatepickerParents extends LitDatepickerParents {
         startDate.setDate(startDate.getDate() + startDayOffset);
 
         return startDate;
+    }
+
+    setValue = (value) => {
+        this._datepicker.setDate(value);
     }
 
     getValue = () => this._datepicker ? this._datepicker.input.value : null;
