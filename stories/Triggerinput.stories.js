@@ -1,15 +1,14 @@
 import '/src/components/input/TriggerInput.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {argsCommons, argsValue, argsSize, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
+import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
     title: 'LABEL & FEEDBACK & COMPONENTS/TriggerInput',
     tags: ['autodocs'],
     component: 'l-c-triggerinput',
     argTypes: {
-        ...argsCommons, ...argsValue, ...argsSize,
-        ...argsLabel, ...argsFeedback,
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'required', 'placeholder', 'inputAutocomplete', 'readonly', 'valid'),
         handleTrigger: {
             control: 'function'
             , table: {
@@ -17,14 +16,6 @@ export default {
                 subcategory: "property",
             }
             ,description: "사용자 입력(예: 엔터키 입력, 돋보기 아이콘 클릭) 시 실행되는 트리거 함수를 지정하는 인스턴스 속성입니다.",
-        },
-
-        placeholder: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
         },
         'valid-length-type': {
             control: {type: 'select'},
@@ -57,22 +48,6 @@ export default {
             },
             description: "ex) [0-9]{3}-[0-9]{4}-[0-9]{4}",
         },
-
-        required: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        readonly: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
         'component-style': {
             control: {type: 'text'},
             table: {
@@ -81,55 +56,6 @@ export default {
             },
             description: "main component style"
         },
-        isValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return new Boolean) "},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        checkValidity: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "function()"},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        setValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효한 상태로 표시합니다.",
-        },
-        inValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효하지 않은 상태로 표시합니다.",
-        },
-
     },
 };
 

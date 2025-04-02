@@ -6,7 +6,7 @@ import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 
 @customElement('l-group')
-class LInput extends LabelAndFeedContainer {
+class LGroup extends LabelAndFeedContainer {
 
     constructor() {
         super();

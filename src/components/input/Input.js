@@ -72,14 +72,54 @@ class LInput extends LabelAndFeedContainer {
             readonly: {type: Boolean},
             value: {type: String},
             pattern: {type: String},
+            'pattern-block': {type: Boolean},
             placeholder: {type: String},
             maxlength: {type: String},
             minlength: {type: String},
             'valid-length-type': {type: String},
             'component-style': {type: String},
+            autocomplete: {type: String},
+            step: {type: Number},
         };
     }
 
+    firstUpdated() {
+        if(this['pattern-block']) {
+            const $input = this.shadowRoot.querySelector(super.getSelector);
+
+            $input.addEventListener('compositionend', (e) => {
+                handleInput(e.target);
+            });
+
+            $input.addEventListener('input', (e) => {
+                if (e.isComposing || e.keyCode === 229) return;
+                handleInput(e.target);
+            });
+
+            const handleInput = (input) => {
+                const original = input.value;
+                const pattern = this['pattern'];
+
+                try {
+                    // 패턴에서 '가-힣'을 '가-힣ㄱ-ㅎㅏ-ㅣ'로 확장
+                    const expandedPattern = pattern.replace('가-힣', '가-힣ㄱ-ㅎㅏ-ㅣ');
+                    const charClassMatch = expandedPattern.match(/\[(.*?)\]/);
+
+                    if (charClassMatch) {
+                        const charClass = charClassMatch[1];
+                        const negativePattern = new RegExp(`[^${charClass}]`, 'g');
+
+                        const filtered = original.replace(negativePattern, '');
+                        if (original !== filtered) {
+                            input.value = filtered;
+                        }
+                    }
+                } catch (e) {
+                    console.warn('패턴 처리 중 오류 발생:', e);
+                }
+            };
+        }
+    }
 
     render() {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
@@ -125,7 +165,12 @@ class LInput extends LabelAndFeedContainer {
                                 this.shadowRoot.querySelector('.search-icon-right')?.classList.toggle('hidden', !e.target.value);
                             }}"
                             @blur="${super.validate}"
-                            @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
+                            @keyup="${
+                                (this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing
+                            }"
+                         
+                            autocomplete="${ifDefined(this['autocomplete'])}"
+                            step="${ifDefined(this['step'])}"
                     >
                 </div>
 

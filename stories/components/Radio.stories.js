@@ -1,14 +1,14 @@
 import '/src/components/input/Radio.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {argsCommons, argsSize} from "../commons/CommonArgs.js";
+import {getComponentArgs} from "../commons/CommonArgs.js";
 
 export default {
     title: 'Components/Radio',
     tags: ['autodocs'],
     component: 'l-radio',
     argTypes: {
-        ...argsCommons, ...argsSize,
+        ...getComponentArgs('commons', 'size', 'required'),
         label: {
             table: {
                 category: "attributes",
@@ -23,17 +23,9 @@ export default {
                 defaultValue: {summary: 'right'},
                 subcategory: "text"
             },
-            description: "개발예정.",
+            description: "todo:개발예정.",
         },
         checked: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        required: {
             control: 'boolean',
             table: {
                 category: "attributes",

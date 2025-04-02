@@ -1,22 +1,14 @@
 import '/src/components/input/Textarea.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {argsCommons, argsValue, argsSize, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
+import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
     title: 'LABEL & FEEDBACK & COMPONENTS/Textarea',
     tags: ['autodocs'],
     component: 'l-c-textarea',
     argTypes: {
-        ...argsCommons, ...argsValue, ...argsSize,
-        ...argsLabel, ...argsFeedback,
-        placeholder: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'required', 'placeholder', 'inputAutocomplete', 'readonly', 'valid'),
         'valid-length-type': {
             control: {type: 'select'},
             options: ['length', 'byte'],
@@ -40,22 +32,6 @@ export default {
                 subcategory: "validate",
             }
         },
-
-        required: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        readonly: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
         'component-style': {
             control: {type: 'text'},
             table: {
@@ -64,55 +40,6 @@ export default {
             },
             description: "main component style"
         },
-        isValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return new Boolean) "},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        checkValidity: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "function()"},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        setValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효한 상태로 표시합니다.",
-        },
-        inValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효하지 않은 상태로 표시합니다.",
-        },
-
     },
 };
 

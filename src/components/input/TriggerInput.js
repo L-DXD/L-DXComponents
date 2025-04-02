@@ -104,6 +104,8 @@ class TriggerInput extends LabelAndFeedContainer {
             'valid-length-type': {type: String},
             handleTrigger: { type: Function },
             'component-style': {type: String},
+
+            autocomplete: {type: String},
         };
     }
 
@@ -154,6 +156,7 @@ class TriggerInput extends LabelAndFeedContainer {
                             }}"
                             @blur="${super.validate}"
                             @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
+                            autocomplete="${ifDefined(this['autocomplete'])}"
                     >
                     ${isSearchRight ? html
                             `

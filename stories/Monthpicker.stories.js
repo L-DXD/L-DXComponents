@@ -1,7 +1,7 @@
 import '/src/components/input/Monthpicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {argsCommons, argsValue, argsSize, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
+import {getComponentArgs} from "./commons/CommonArgs.js";
 
 
 export default {
@@ -10,16 +10,7 @@ export default {
     component: 'l-c-monthpicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        ...argsCommons, ...argsValue, ...argsSize,
-        ...argsLabel, ...argsFeedback,
-        placeholder: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'valid', 'calendar'),
         'format': {
             control: {type: 'select'},
             options: ['Y-m', 'Y/m', 'Ym', 'Ym'],
@@ -37,53 +28,6 @@ export default {
             },
             description: "main component style"
         },
-        'start-year-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'year' of the value. If value is not set, it is based on 'today'."
-        },
-        'start-month-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
-        },
-        required: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        readonly: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        showAlways: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        invisible: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
         initCurrentMonth: {
             control: {
                 type: {},
@@ -96,55 +40,6 @@ export default {
             },
             description: "설정된 format의 오늘 날짜값을 설정합니다.",
         },
-        isValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return new Boolean) "},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        checkValidity: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "function()"},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        setValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효한 상태로 표시합니다.",
-        },
-        inValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효하지 않은 상태로 표시합니다.",
-        },
-
     },
 };
 

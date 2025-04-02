@@ -44,16 +44,44 @@ export class LabelAndFeedContainer extends LitParents {
         return int_char_count;
     }
 
+    /**
+     * 패턴 유효성 검사
+     * @param {string} value - 검사할 값
+     * @returns {boolean} - 패턴 일치 여부
+     */
+    isPatternValid(value) {
+        const pattern = this['pattern'];
+        if (!pattern || !value) return true;
+
+        try {
+            const regex = new RegExp(pattern);
+            return regex.test(value);
+        } catch (e) {
+            console.warn('Invalid pattern:', pattern);
+            return true;
+        }
+    }
+
+    /**
+     * required 유효성 검사
+     * @param {string} value - 검사할 값
+     * @returns {boolean} - required 조건 만족 여부
+     */
+    isRequiredValid(value) {
+        const required = this['required'];
+        if (!required) return true;
+
+        return value.trim().length > 0;
+    }
+
+    /**
+     * 전체 유효성 검사
+     * @returns {boolean} - 전체 유효성 검사 결과
+     */
     isValid() {
         const value = this.getValue().trim();
-        const pattern = this['pattern'];
-        const required = this['required'];
 
-        const regex = new RegExp(pattern);
-
-        if (!value && required) {
-            return false;
-        } else return !((regex && value) && !regex.test(value));
+        return this.isRequiredValid(value) && this.isPatternValid(value);
     }
 
 
@@ -76,6 +104,16 @@ export class LabelAndFeedContainer extends LitParents {
                 input.value = value.substring(0, cutIndex);
             }
         };
+    }
+
+    // 입력값 미리보기 생성 함수
+    getNewInputValue(input, key) {
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+        const currentValue = input.value;
+
+        // 선택된 텍스트가 있는 경우 해당 부분을 새로운 키로 대체
+        return currentValue.substring(0, start) + key + currentValue.substring(end);
     }
 
     validate() {

@@ -1,7 +1,7 @@
 import '/src/components/input/Datepicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {argsCommons, argsValue, argsSize, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
+import {getComponentArgs} from "./commons/CommonArgs.js";
 
 
 export default {
@@ -10,16 +10,15 @@ export default {
     component: 'l-c-datepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        ...argsCommons, ...argsValue, ...argsSize,
-        ...argsLabel, ...argsFeedback,
-        placeholder: {
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'valid', 'calendar'),
+        'component-style': {
             control: {type: 'text'},
             table: {
                 category: "attributes",
-                subcategory: "text",
-            }
+                subcategory: "style",
+            },
+            description: "main component style"
         },
-
         'format': {
             control: {type: 'select'},
             options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'],
@@ -29,63 +28,7 @@ export default {
                 defaultValue: {summary: 'Y-m-d'},
             }
         },
-        'start-year-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'year' of the value. If value is not set, it is based on 'today'."
-        },
-        'start-month-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
-        },
-        'start-day-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
-        },
 
-        required: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        readonly: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        showAlways: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        invisible: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
         initTodayDate: {
             control: {
                 type: {},
@@ -98,54 +41,7 @@ export default {
             },
             description: "설정된 format의 오늘 날짜값을 설정합니다.",
         },
-        isValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return new Boolean) "},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        checkValidity: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "function()"},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        setValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효한 상태로 표시합니다.",
-        },
-        inValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효하지 않은 상태로 표시합니다.",
-        },
+
 
     },
 };
@@ -163,7 +59,7 @@ const Template = (args) => {
                 start-year-offset=${ifDefined(args['start-year-offset'])}
                 start-month-offset=${ifDefined(args['start-month-offset'])}
                 start-day-offset=${ifDefined(args['start-day-offset'])}
-                
+
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
                 label-width=${ifDefined(args['label-width'])}
@@ -172,14 +68,14 @@ const Template = (args) => {
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                 component-style=${ifDefined(args['component-style'])}
-                
+
                 width=${ifDefined(args.width)}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
                 ?readonly=${args.readonly}
                 ?showAlways=${args.showAlways}
                 ?invisible=${args.invisible}
-                
+
         >
         </l-c-datepicker>
 
@@ -263,6 +159,4 @@ const sizeTemplate = (args) => {
 }
 
 export const size = sizeTemplate.bind({});
-size.args = {
-
-};
+size.args = {};

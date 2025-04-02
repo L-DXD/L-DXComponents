@@ -1,7 +1,7 @@
 import '/src/components/input/RDatepicker.js'
 import {html} from "lit";
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {argsSize, argsCommons, argsValue, argsLabel, argsFeedback} from "./commons/CommonArgs.js";
+import {getComponentArgs} from "./commons/CommonArgs.js";
 
 
 export default {
@@ -9,239 +9,56 @@ export default {
     tags: ['autodocs'],
     component: 'l-c-range-datepicker',
     argTypes: {
-        ...argsCommons, ...argsValue, ...argsSize,
-        ...argsLabel, ...argsFeedback,
-        placeholder: {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "text",
-            }
-        },
-
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'rel', 'valid', 'calendar'),
         'format': {
-            control: {type: 'select'},
-            options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'],
-            table: {
-                category: "attributes",
-                subcategory: "validate",
-                defaultValue: {summary: 'Y-m-d'},
+            control: {type: 'select'}, options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'], table: {
+                category: "attributes", subcategory: "validate", defaultValue: {summary: 'Y-m-d'},
             }
         },
         'component-style': {
-            control: {type: 'text'},
-            table: {
-                category: "attributes",
-                subcategory: "style",
-            },
-            description: "main component style"
+            control: {type: 'text'}, table: {
+                category: "attributes", subcategory: "style",
+            }, description: "main component style"
         },
-        'start-year-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'year' of the value. If value is not set, it is based on 'today'."
-        },
-        'start-month-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
-        },
-        'start-day-offset': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 0},
-                subcategory: "value"
-            },
-            description: "Calculates the base date by adding or subtracting against the 'month' of the value. If value is not set, it is based on 'today'."
-        },
-
-        'rel-year': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        'rel-month': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        'rel-day': {
-            control: 'number',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-
-        'rel-mode': {
-            control: {type: 'select'},
-            options: ['fixed','dynamic'],
-            table: {
-                category: "attributes",
-                defaultValue: {summary: 'fixed'},
-                subcategory: "validate"
-            }
-        },
-
-        required: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false},
-                subcategory: "validate"
-            }
-        },
-        readonly: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        showAlways: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        invisible: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-
         getFromValue: {
             control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return new String)"},
+                type: {}, disable: true
+            }, table: {
+                category: "function", subcategory: "value", type: {summary: "(()=> return new String)"},
 
-            },
-            description: "Rangedatepicker값중 From Date값을 가져옵니다.",
+            }, description: "Rangedatepicker값중 From Date값을 가져옵니다.",
         },
         setFromValue: {
             control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "function(value)"},
-            },
-            description: "Rangedatepicker값중 From Date값을 설정합니다.",
+                type: {}, disable: true
+            }, table: {
+                category: "function", subcategory: "value", type: {summary: "function(value)"},
+            }, description: "Rangedatepicker값중 From Date값을 설정합니다.",
         },
 
         getToValue: {
             control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "(()=> return new String)"},
+                type: {}, disable: true
+            }, table: {
+                category: "function", subcategory: "value", type: {summary: "(()=> return new String)"},
 
-            },
-            description: "Rangedatepicker값중 To Date값을 가져옵니다.",
+            }, description: "Rangedatepicker값중 To Date값을 가져옵니다.",
         },
         setToValue: {
             control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "function(value)"},
-            },
-            description: "Rangedatepicker값중 To Date값을 설정합니다.",
+                type: {}, disable: true
+            }, table: {
+                category: "function", subcategory: "value", type: {summary: "function(value)"},
+            }, description: "Rangedatepicker값중 To Date값을 설정합니다.",
         },
 
         initFromTodayDate: {
             control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "value",
-                type: {summary: "function()"},
-            },
-            description: "설정된 format의 오늘 날짜값을 설정합니다.",
+                type: {}, disable: true
+            }, table: {
+                category: "function", subcategory: "value", type: {summary: "function()"},
+            }, description: "설정된 format의 오늘 날짜값을 설정합니다.",
         },
-        isValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return new Boolean) "},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        checkValidity: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "function()"},
-            },
-            description: "입력값의 유효성을 체크합니다.",
-        },
-        setValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효한 상태로 표시합니다.",
-        },
-        inValid: {
-            control: {
-                type: {},
-                disable: true
-            },
-            table: {
-                category: "function",
-                subcategory: "validate",
-                type: {summary: "(()=> return false) "},
-            },
-            description: "유효하지 않은 상태로 표시합니다.",
-        },
-
     },
 };
 
@@ -261,7 +78,7 @@ const Template = (args) => {
                 rel-year=${ifDefined(args['rel-year'])}
                 rel-month=${ifDefined(args['rel-month'])}
                 rel-day=${ifDefined(args['rel-day'])}
-                
+
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
                 label-width=${ifDefined(args['label-width'])}
@@ -270,7 +87,7 @@ const Template = (args) => {
                 feedback-type=${ifDefined(args['feedback-type'])}
                 feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                 component-style=${ifDefined(args['component-style'])}
-                
+
                 width=${ifDefined(args.width)}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
@@ -320,11 +137,7 @@ RangedatepickerWithLeftLabelAndFeedback.args = {
 
 export const DatepickerDisplayAlways = Template.bind({});
 DatepickerDisplayAlways.args = {
-    type: 'text',
-    id: 'input06',
-    name: 'name',
-    invisible: true,
-    showAlways: true,
+    type: 'text', id: 'input06', name: 'name', invisible: true, showAlways: true,
 };
 
 export const RangedatepickerFormatCheck = Template.bind({});
@@ -360,6 +173,4 @@ const sizeTemplate = (args) => {
 }
 
 export const size = sizeTemplate.bind({});
-size.args = {
-
-};
+size.args = {};

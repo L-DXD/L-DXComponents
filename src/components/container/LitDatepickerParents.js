@@ -62,6 +62,9 @@ class LitDatepickerParents extends LitElement {
             'start-year-offset': {type: Number},
             'start-month-offset': {type: Number},
             'start-day-offset': {type: Number},
+
+            autocomplete: {type: String},
+            placeholder: {type: String},
         };
     }
 
@@ -200,7 +203,7 @@ class LitDatepickerParents extends LitElement {
                                    ?disabled=${this['disabled']}
                                    ?readonly=${this['readonly']}
                                    @blur="${this.validate}"
-                                   autocomplete="off"
+                                   autocomplete="${ifDefined(this['autocomplete']) || "off"}"
                             >
                             <div @click="${this._handleClick}"
                                  class="${classMap({

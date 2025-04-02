@@ -1,15 +1,14 @@
-import {fn} from '@storybook/test';
 import '/src/components/button/Button.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
-import {argsCommons, argsValue, argsSize} from "../commons/CommonArgs.js";
+import {getComponentArgs} from "../commons/CommonArgs.js";
 
 export default {
     title: 'Components/Button',
     tags: ['autodocs'],
     component: 'l-button',
     argTypes: {
-        ...argsCommons, ...argsValue, ...argsSize,
+        ...getComponentArgs('commons', 'value', 'size', 'readonly'),
         theme: {
             control: {type: 'select'},
             options: ['default', 'primary', 'secondary', 'light'
@@ -30,13 +29,6 @@ export default {
         },
 
         outline: {
-            control: 'boolean',
-            table: {
-                category: "attributes",
-                defaultValue: {summary: false}
-            }
-        },
-        readonly: {
             control: 'boolean',
             table: {
                 category: "attributes",

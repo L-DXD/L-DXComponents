@@ -31,6 +31,8 @@ class LTextarea extends LabelAndFeedContainer {
             minlength: {type: String},
             'valid-length-type': {type: String},
             'component-style': {type: String},
+
+            autocomplete: {type: String},
         };
     }
 
@@ -78,6 +80,7 @@ class LTextarea extends LabelAndFeedContainer {
                         placeholder="${ifDefined(this['placeholder'])}"
                         @blur="${super.validate}"
                         @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
+                        autocomplete="${ifDefined(this['autocomplete'])}"
                 >${ifDefined(this['value'])}</textarea>
                 
             </l-label-feed-container>
