@@ -36,6 +36,7 @@ class LInput extends LabelAndFeedContainer {
                 position: relative;
                 display: flex;
                 align-items: center;
+                flex-grow: 1;
             }
 
             input::-webkit-search-cancel-button {

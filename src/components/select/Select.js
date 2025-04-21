@@ -13,8 +13,17 @@ class LSelect extends LabelAndFeedContainer {
         super.setSelector('select');
     }
 
+
     static styles = [
         ...super.styles
+        , css`
+            .search-input-container {
+                position: relative;
+                display: flex;
+                align-items: center;
+                flex-grow: 1;
+            }
+        `
     ];
 
     disconnectedCallback() {

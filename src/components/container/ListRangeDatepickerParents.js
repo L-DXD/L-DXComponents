@@ -3,6 +3,7 @@ import DateUtils from '../commons/Date.js'
 import {LitDatepickerParents} from "@/components/container/LitDatepickerParents.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import flatpickr from "flatpickr";
+import { Korean } from "flatpickr/dist/l10n/ko.js";
 
 
 class ListRangeDatepickerParents extends LitDatepickerParents {
@@ -29,10 +30,25 @@ class ListRangeDatepickerParents extends LitDatepickerParents {
         let options = {
             mode: 'range',
             dateFormat: format,
+            // weekNumbers: true,
             onChange: (_) => {
                 this.validate();
             },
             inline: this['showAlways'],
+            onDayCreate: function(dObj, dStr, fp, dayElem) {
+                if (dayElem.classList.contains("flatpickr-disabled")
+                ||dayElem.classList.contains("prevMonthDay")
+                ||dayElem.classList.contains("nextMonthDay")) return;
+
+                const day = dayElem.dateObj.getDay(); // 0: 일요일, 6: 토요일
+                if (day === 0) {
+                    // 일요일: 빨간색 텍스트
+                    dayElem.style.color = "#ff4d4d";
+                } else if (day === 6) {
+                    // 토요일: 파란색 텍스트
+                    dayElem.style.color = "#4d79ff";
+                }
+            }
         }
         if (this.getDateType === DateUtils.DATE_TYPE.MONTH) {
             options.plugins = [new monthSelectPlugin({
@@ -58,9 +74,20 @@ class ListRangeDatepickerParents extends LitDatepickerParents {
                 },
             ];
 
+
+
             // console.log('fromdate', DateUtils.parseDateByFormat(fromDate,DateUtils.getDefaultFormat(this.getDateType)));
             // console.log('todate', DateUtils.parseDateByFormat(toDate,DateUtils.getDefaultFormat(this.getDateType)));
         }
+
+        // options.disable = [
+        //     function(date) {
+        //         // return true to disable
+        //         return (date.getDay() === 0 || date.getDay() === 6);
+        //
+        //     }
+        // ];
+
 
         super._datepicker = flatpickr(this.getSelector, options);
 

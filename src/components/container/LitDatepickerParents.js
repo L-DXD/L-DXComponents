@@ -91,6 +91,29 @@ class LitDatepickerParents extends LitElement {
                 this.validate();
             },
             inline: this['showAlways'],
+            onDayCreate: function(dObj, dStr, fp, dayElem) {
+                if (dayElem.classList.contains("flatpickr-disabled")
+                    ||dayElem.classList.contains("prevMonthDay")
+                    ||dayElem.classList.contains("nextMonthDay")) return;
+
+                const day = dayElem.dateObj.getDay(); // 0: 일요일, 6: 토요일
+
+                if (day === 0) {
+                    // 일요일: 빨간색 텍스트
+                    dayElem.style.color = "#ff4d4d";
+                } else if (day === 6) {
+                    // 토요일: 파란색 텍스트
+                    dayElem.style.color = "#4d79ff";
+                }
+            },
+            // weekNumbers: true,
+            // disable: [
+            //     function(date) {
+            //         // return true to disable
+            //         return (date.getDay() === 0 || date.getDay() === 6);
+            //
+            //     }
+            // ],
             plugins: plugins
         });
 

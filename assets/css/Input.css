@@ -127,6 +127,8 @@ button, input, optgroup, select, textarea {
     outline: 0
 }
 
+
+
 .form-control-plaintext.form-control-lg, .form-control-plaintext.form-control-sm {
     padding-right: 0;
     padding-left: 0

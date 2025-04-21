@@ -20,6 +20,7 @@ class TriggerInput extends LabelAndFeedContainer {
                 position: relative;
                 display: flex;
                 align-items: center;
+                flex-grow: 1;
             }
 
             .search-input-right {
