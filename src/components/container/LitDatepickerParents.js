@@ -65,6 +65,9 @@ class LitDatepickerParents extends LitElement {
 
             autocomplete: {type: String},
             placeholder: {type: String},
+
+            'disable-from': {type: String},
+            'disable-to': {type: String},
         };
     }
 
@@ -76,7 +79,8 @@ class LitDatepickerParents extends LitElement {
     initDatePicker() {
         const format = this['format'] || DateUtils.getDefaultFormat(this.getDateType);
         const plugins = [];
-        if (this.getDateType === DateUtils.DATE_TYPE.MONTH) {
+        const dateType = this.getDateType;
+        if (dateType === DateUtils.DATE_TYPE.MONTH) {
             plugins.push(
                 new monthSelectPlugin({
                     shorthand: true, //defaults to false
@@ -85,7 +89,8 @@ class LitDatepickerParents extends LitElement {
                 })
             );
         }
-        this._datepicker = flatpickr(this.getSelector, {
+
+        let options = {
             dateFormat: format,
             onChange: (_) => {
                 this.validate();
@@ -94,7 +99,8 @@ class LitDatepickerParents extends LitElement {
             onDayCreate: function(dObj, dStr, fp, dayElem) {
                 if (dayElem.classList.contains("flatpickr-disabled")
                     ||dayElem.classList.contains("prevMonthDay")
-                    ||dayElem.classList.contains("nextMonthDay")) return;
+                    ||dayElem.classList.contains("nextMonthDay")
+                    ||dateType === DateUtils.DATE_TYPE.MONTH) return;
 
                 const day = dayElem.dateObj.getDay(); // 0: 일요일, 6: 토요일
 
@@ -106,16 +112,19 @@ class LitDatepickerParents extends LitElement {
                     dayElem.style.color = "#4d79ff";
                 }
             },
-            // weekNumbers: true,
-            // disable: [
-            //     function(date) {
-            //         // return true to disable
-            //         return (date.getDay() === 0 || date.getDay() === 6);
-            //
-            //     }
-            // ],
             plugins: plugins
-        });
+        };
+
+        if(this['disable-from'] && this['disable-to']) {
+            options.disable = [
+                {
+                    from: this['disable-from'],
+                    to: this['disable-to'],
+                },
+            ];
+        }
+
+        this._datepicker = flatpickr(this.getSelector, options);
 
         const value = this['value'];
         this.setValue(value);

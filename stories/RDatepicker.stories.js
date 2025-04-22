@@ -79,6 +79,9 @@ const Template = (args) => {
                 rel-month=${ifDefined(args['rel-month'])}
                 rel-day=${ifDefined(args['rel-day'])}
 
+                disable-from=${ifDefined(args['disable-from'])}
+                disable-to=${ifDefined(args['disable-to'])}
+
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}
                 label-width=${ifDefined(args['label-width'])}

@@ -3,7 +3,6 @@ import DateUtils from '../commons/Date.js'
 import {LitDatepickerParents} from "@/components/container/LitDatepickerParents.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import flatpickr from "flatpickr";
-import { Korean } from "flatpickr/dist/l10n/ko.js";
 
 
 class ListRangeDatepickerParents extends LitDatepickerParents {
@@ -65,28 +64,14 @@ class ListRangeDatepickerParents extends LitDatepickerParents {
 
 
         if (relYear || relMonth || relDay) {
-            const fromDate = isRelativeDateFuture ? this._getInitDate() : this._calculateInitDate(relYear, relMonth, relDay);
-            const toDate = isRelativeDateFuture ? this._calculateInitDate(relYear, relMonth, relDay) : this._getInitDate();
             options.enable = [
                 {
                     from: isRelativeDateFuture ? this._getInitDate() : this._calculateInitDate(relYear, relMonth, relDay),
                     to: isRelativeDateFuture ? this._calculateInitDate(relYear, relMonth, relDay) : this._getInitDate(),
                 },
             ];
-
-
-
-            // console.log('fromdate', DateUtils.parseDateByFormat(fromDate,DateUtils.getDefaultFormat(this.getDateType)));
-            // console.log('todate', DateUtils.parseDateByFormat(toDate,DateUtils.getDefaultFormat(this.getDateType)));
         }
 
-        // options.disable = [
-        //     function(date) {
-        //         // return true to disable
-        //         return (date.getDay() === 0 || date.getDay() === 6);
-        //
-        //     }
-        // ];
 
 
         super._datepicker = flatpickr(this.getSelector, options);

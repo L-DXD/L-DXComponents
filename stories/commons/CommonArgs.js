@@ -289,6 +289,22 @@ export const componentArgs = {
                 defaultValue: {summary: false}
             }
         },
+        'disable-from': {
+            control: 'text',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+        'disable-to': {
+            control: 'text',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
     }
 }
 
