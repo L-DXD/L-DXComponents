@@ -66,8 +66,10 @@ class LitDatepickerParents extends LitElement {
             autocomplete: {type: String},
             placeholder: {type: String},
 
-            'disable-from': {type: String},
-            'disable-to': {type: String},
+            'disable-date-from': {type: String},
+            'disable-date-to': {type: String},
+            'disable-day-from': {type: Number}, // 추가
+            'disable-day-to': {type: Number},   // 추가
         };
     }
 
@@ -115,13 +117,35 @@ class LitDatepickerParents extends LitElement {
             plugins: plugins
         };
 
-        if(this['disable-from'] && this['disable-to']) {
-            options.disable = [
-                {
-                    from: this['disable-from'],
-                    to: this['disable-to'],
-                },
-            ];
+        // disable 설정 초기화
+        let disableRules = [];
+
+        // 특정 일자 범위 비활성화 설정
+        const disableDayFrom = this['disable-day-from'];
+        const disableDayTo = this['disable-day-to'];
+        if (disableDayFrom !== undefined && disableDayTo !== undefined
+        && dateType !== DateUtils.DATE_TYPE.MONTH) {
+            disableRules.push(
+                function(date) {
+                    const dayOfMonth = date.getDate();
+                    return dayOfMonth >= disableDayFrom && dayOfMonth <= disableDayTo;
+                }
+            );
+        }
+
+        // 특정 날짜 범위 비활성화 설정
+        const disableDateFrom = this['disable-date-from'];
+        const disableDateTo = this['disable-date-to'];
+        if (disableDateFrom && disableDateTo) {
+            disableRules.push({
+                from: disableDateFrom,
+                to: disableDateTo
+            });
+        }
+
+        // disable 규칙이 있는 경우에만 options에 추가
+        if (disableRules.length > 0) {
+            options.disable = disableRules;
         }
 
         this._datepicker = flatpickr(this.getSelector, options);
@@ -302,7 +326,7 @@ class LitDatepickerParents extends LitElement {
         this._datepicker.setDate(startDate);
     }
 
-    _handleClick = (_) => this._datepicker.open();
+    _handleClick = (_) => this.getSelector.click();
 
 
     validate() {

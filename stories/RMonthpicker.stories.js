@@ -114,8 +114,8 @@ const Template = (args) => {
                 rel-month=${ifDefined(args['rel-month'])}
                 rel-day=${ifDefined(args['rel-day'])}
 
-                disable-from=${ifDefined(args['disable-from'])}
-                disable-to=${ifDefined(args['disable-to'])}
+                disable-date-from=${ifDefined(args['disable-date-from'])}
+                disable-date-to=${ifDefined(args['disable-date-to'])}
                 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}

@@ -9,7 +9,7 @@ export default {
     tags: ['autodocs'],
     component: 'l-c-range-datepicker',
     argTypes: {
-        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'rel', 'valid', 'calendar'),
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'rel', 'valid', 'calendar', 'calendarDisableDay'),
         'format': {
             control: {type: 'select'}, options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'], table: {
                 category: "attributes", subcategory: "validate", defaultValue: {summary: 'Y-m-d'},
@@ -79,8 +79,11 @@ const Template = (args) => {
                 rel-month=${ifDefined(args['rel-month'])}
                 rel-day=${ifDefined(args['rel-day'])}
 
-                disable-from=${ifDefined(args['disable-from'])}
-                disable-to=${ifDefined(args['disable-to'])}
+                disable-date-from=${ifDefined(args['disable-date-from'])}
+                disable-date-to=${ifDefined(args['disable-date-to'])}
+
+                disable-day-from=${ifDefined(args['disable-day-from'])}
+                disable-day-to=${ifDefined(args['disable-day-to'])}
 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}

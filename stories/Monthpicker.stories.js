@@ -57,8 +57,9 @@ const Template = (args) => {
                 start-month-offset=${ifDefined(args['start-month-offset'])}
                 start-day-offset=${ifDefined(args['start-day-offset'])}
 
-                disable-from=${ifDefined(args['disable-from'])}
-                disable-to=${ifDefined(args['disable-to'])}
+                disable-date-from=${ifDefined(args['disable-date-from'])}
+                disable-date-to=${ifDefined(args['disable-date-to'])}
+                
                 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}

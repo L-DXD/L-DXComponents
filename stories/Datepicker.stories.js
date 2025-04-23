@@ -10,7 +10,7 @@ export default {
     component: 'l-c-datepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'valid', 'calendar'),
+        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'valid', 'calendar', 'calendarDisableDay'),
         'component-style': {
             control: {type: 'text'},
             table: {
@@ -60,8 +60,11 @@ const Template = (args) => {
                 start-month-offset=${ifDefined(args['start-month-offset'])}
                 start-day-offset=${ifDefined(args['start-day-offset'])}
 
-                disable-from=${ifDefined(args['disable-from'])}
-                disable-to=${ifDefined(args['disable-to'])}
+                disable-date-from=${ifDefined(args['disable-date-from'])}
+                disable-date-to=${ifDefined(args['disable-date-to'])}
+
+                disable-day-from=${ifDefined(args['disable-day-from'])}
+                disable-day-to=${ifDefined(args['disable-day-to'])}
 
                 label=${ifDefined(args.label)}
                 label-align=${ifDefined(args['label-align'])}

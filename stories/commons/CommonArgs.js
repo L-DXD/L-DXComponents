@@ -289,7 +289,7 @@ export const componentArgs = {
                 defaultValue: {summary: false}
             }
         },
-        'disable-from': {
+        'disable-date-from': {
             control: 'text',
             table: {
                 category: "attributes",
@@ -297,8 +297,26 @@ export const componentArgs = {
                 subcategory: "validate"
             }
         },
-        'disable-to': {
+        'disable-date-to': {
             control: 'text',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+    },
+    calendarDisableDay: {
+        'disable-day-from': {
+            control: 'number',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false},
+                subcategory: "validate"
+            }
+        },
+        'disable-day-to': {
+            control: 'number',
             table: {
                 category: "attributes",
                 defaultValue: {summary: false},

@@ -72,6 +72,35 @@ class ListRangeDatepickerParents extends LitDatepickerParents {
             ];
         }
 
+        // disable 설정 초기화
+        let disableRules = [];
+
+        // 특정 일자 범위 비활성화 설정
+        const disableDayFrom = this['disable-day-from'];
+        const disableDayTo = this['disable-day-to'];
+        if (disableDayFrom !== undefined && disableDayTo !== undefined) {
+            disableRules.push(
+                function(date) {
+                    const dayOfMonth = date.getDate();
+                    return dayOfMonth >= disableDayFrom && dayOfMonth <= disableDayTo;
+                }
+            );
+        }
+
+        // 특정 날짜 범위 비활성화 설정
+        const disableDateFrom = this['disable-date-from'];
+        const disableDateTo = this['disable-date-to'];
+        if (disableDateFrom && disableDateTo) {
+            disableRules.push({
+                from: disableDateFrom,
+                to: disableDateTo
+            });
+        }
+
+        // disable 규칙이 있는 경우에만 options에 추가
+        if (disableRules.length > 0) {
+            options.disable = disableRules;
+        }
 
 
         super._datepicker = flatpickr(this.getSelector, options);
