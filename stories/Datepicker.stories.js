@@ -10,7 +10,20 @@ export default {
     component: 'l-c-datepicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'valid', 'calendar', 'calendarDisableDay'),
+        ...getComponentArgs('commons'
+            , 'value'
+            , 'size'
+            , 'label'
+            , 'feedback'
+            , 'offset'
+            , 'required'
+            , 'placeholder'
+            , 'dateAutocomplete'
+            , 'readonly'
+            , 'valid'
+            , 'calendar'
+            , 'calendarDisableDay'
+            , 'calendarFunction'),
         'component-style': {
             control: {type: 'text'},
             table: {

@@ -9,7 +9,23 @@ export default {
     tags: ['autodocs'],
     component: 'l-c-range-datepicker',
     argTypes: {
-        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'rel', 'valid', 'calendar', 'calendarDisableDay'),
+        ...getComponentArgs(
+            'commons'
+            , 'value'
+            , 'size'
+            , 'label'
+            , 'feedback'
+            , 'offset'
+            , 'required'
+            , 'placeholder'
+            , 'dateAutocomplete'
+            , 'readonly'
+            , 'rel'
+            , 'valid'
+            , 'calendar'
+            , 'calendarDisableDay'
+            , 'calendarFunction'
+        ),
         'format': {
             control: {type: 'select'}, options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'], table: {
                 category: "attributes", subcategory: "validate", defaultValue: {summary: 'Y-m-d'},

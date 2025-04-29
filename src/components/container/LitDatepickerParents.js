@@ -79,76 +79,8 @@ class LitDatepickerParents extends LitElement {
     }
 
     initDatePicker() {
-        const format = this['format'] || DateUtils.getDefaultFormat(this.getDateType);
-        const plugins = [];
-        const dateType = this.getDateType;
-        if (dateType === DateUtils.DATE_TYPE.MONTH) {
-            plugins.push(
-                new monthSelectPlugin({
-                    shorthand: true, //defaults to false
-                    dateFormat: format, //defaults to "F Y"
-                    altFormat: format
-                })
-            );
-        }
 
-        let options = {
-            dateFormat: format,
-            onChange: (_) => {
-                this.validate();
-            },
-            inline: this['showAlways'],
-            onDayCreate: function(dObj, dStr, fp, dayElem) {
-                if (dayElem.classList.contains("flatpickr-disabled")
-                    ||dayElem.classList.contains("prevMonthDay")
-                    ||dayElem.classList.contains("nextMonthDay")
-                    ||dateType === DateUtils.DATE_TYPE.MONTH) return;
-
-                const day = dayElem.dateObj.getDay(); // 0: 일요일, 6: 토요일
-
-                if (day === 0) {
-                    // 일요일: 빨간색 텍스트
-                    dayElem.style.color = "#ff4d4d";
-                } else if (day === 6) {
-                    // 토요일: 파란색 텍스트
-                    dayElem.style.color = "#4d79ff";
-                }
-            },
-            plugins: plugins
-        };
-
-        // disable 설정 초기화
-        let disableRules = [];
-
-        // 특정 일자 범위 비활성화 설정
-        const disableDayFrom = this['disable-day-from'];
-        const disableDayTo = this['disable-day-to'];
-        if (disableDayFrom !== undefined && disableDayTo !== undefined
-        && dateType !== DateUtils.DATE_TYPE.MONTH) {
-            disableRules.push(
-                function(date) {
-                    const dayOfMonth = date.getDate();
-                    return dayOfMonth >= disableDayFrom && dayOfMonth <= disableDayTo;
-                }
-            );
-        }
-
-        // 특정 날짜 범위 비활성화 설정
-        const disableDateFrom = this['disable-date-from'];
-        const disableDateTo = this['disable-date-to'];
-        if (disableDateFrom && disableDateTo) {
-            disableRules.push({
-                from: disableDateFrom,
-                to: disableDateTo
-            });
-        }
-
-        // disable 규칙이 있는 경우에만 options에 추가
-        if (disableRules.length > 0) {
-            options.disable = disableRules;
-        }
-
-        this._datepicker = flatpickr(this.getSelector, options);
+        this._datepicker = flatpickr(this.getSelector, this.getOptions());
 
         const value = this['value'];
         this.setValue(value);
@@ -169,6 +101,89 @@ class LitDatepickerParents extends LitElement {
         return true;
     }
 
+    getOptions() {
+        const format = this['format'] || DateUtils.getDefaultFormat(this.getDateType);
+        const plugins = [];
+        const dateType = this.getDateType;
+        if (dateType === DateUtils.DATE_TYPE.MONTH) {
+            plugins.push(new monthSelectPlugin({
+                shorthand: true, //defaults to false
+                dateFormat: format, //defaults to "F Y"
+                altFormat: format
+            }));
+        }
+
+        let options = {
+            dateFormat: format, onChange: (_) => {
+                this.validate();
+            }, inline: this['showAlways'], onDayCreate: function (dObj, dStr, fp, dayElem) {
+                if (dayElem.classList.contains("flatpickr-disabled") || dayElem.classList.contains("prevMonthDay") || dayElem.classList.contains("nextMonthDay") || dateType === DateUtils.DATE_TYPE.MONTH) return;
+
+                const day = dayElem.dateObj.getDay(); // 0: 일요일, 6: 토요일
+
+                if (day === 0) {
+                    // 일요일: 빨간색 텍스트
+                    dayElem.style.color = "#ff4d4d";
+                } else if (day === 6) {
+                    // 토요일: 파란색 텍스트
+                    dayElem.style.color = "#4d79ff";
+                }
+            }, plugins: plugins
+        };
+
+        // disable 설정 초기화
+        let disableRules = [];
+
+        // 특정 일자 범위 비활성화 설정
+        const disableDayFrom = this['disable-day-from'];
+        const disableDayTo = this['disable-day-to'];
+        if (disableDayFrom !== undefined && disableDayTo !== undefined && dateType !== DateUtils.DATE_TYPE.MONTH) {
+            disableRules.push(function (date) {
+                const dayOfMonth = date.getDate();
+                return dayOfMonth >= disableDayFrom && dayOfMonth <= disableDayTo;
+            });
+        }
+
+        // 특정 날짜 범위 비활성화 설정
+        const disableDateFrom = this['disable-date-from'];
+        const disableDateTo = this['disable-date-to'];
+        if (disableDateFrom && disableDateTo) {
+            disableRules.push({
+                from: disableDateFrom, to: disableDateTo
+            });
+        }
+
+        // disable 규칙이 있는 경우에만 options에 추가
+        if (disableRules.length > 0) {
+            options.disable = disableRules;
+        }
+
+        return options;
+    }
+
+    setEnableFromTo(enableFrom, enableTo) {
+        if (this._datepicker) {
+            // monthSelectPlugin issue로 redraw가 안되는 현상
+            if (this.getDateType === DateUtils.DATE_TYPE.MONTH) {
+                this._datepicker.destroy();
+
+                let options = this.getOptions();
+                options.enable = [{
+                    from: enableFrom,
+                    to: enableTo
+                }];
+
+                this._datepicker = flatpickr(this.getSelector, options);
+            } else {
+                this._datepicker.set('enable', [
+                    {
+                        from: enableFrom,
+                        to: enableTo
+                    }
+                ])
+            }
+        }
+    }
 
     setValue(value) {
         if (this._datepicker && value) {
@@ -186,6 +201,8 @@ class LitDatepickerParents extends LitElement {
 
             // 유효한 경우 DatePicker에 값 설정
             this._datepicker.setDate(newDate);
+
+            this._datepicker.redraw();
         }
     }
 
@@ -198,46 +215,37 @@ class LitDatepickerParents extends LitElement {
 
 
         const feedbackHtml = {
-                'normal': html`
-                    <div class="valid-feedback">${this['feedback']}</div>`,
-                'hint': html`
-                    <div class="form-group"><small class="form-hint form-text text-muted">${this['feedback']}</small>
-                    </div>`,
-                'error': html`
-                    <div class="invalid-feedback">${this['feedback']}</div>`
-            }
-        ;
+            'normal': html`
+                <div class="valid-feedback">${this['feedback']}</div>`, 'hint': html`
+                <div class="form-group"><small class="form-hint form-text text-muted">${this['feedback']}</small>
+                </div>`, 'error': html`
+                <div class="invalid-feedback">${this['feedback']}</div>`
+        };
 
         return html`
             <div
                     style="width: ${this['width'] ? this['width'] : 'auto'}"
             >
                 <div
-                        class="${
-                                classMap({
-                                    'container': isLabelLeft
-                                })
-                        }"
+                        class="${classMap({
+                            'container': isLabelLeft
+                        })}"
                 >
                     <label
-                            class="${
-                                    classMap({
-                                        'form-left-label': (isLabelLeft && this['label']),
-                                        'form-label': !(isLabelLeft && this['label']),
-                                        'hidden': this['invisible']
-                                    })
-                            }"
+                            class="${classMap({
+                                'form-left-label': (isLabelLeft && this['label']),
+                                'form-label': !(isLabelLeft && this['label']),
+                                'hidden': this['invisible']
+                            })}"
                             for="${this['id']}"
                             style="
                         width: ${this['label-width'] || 'auto'};
                         text-align: ${this['label-text-align'] || 'left'}
                     "
                     >
-                        ${this['required']
-                                ? (isLabelLeft
-                                        ? html`<span style="color: #df1414;margin-right: 2px">*</span>${this['label']}`
-                                        : html`${this['label']}<span style="color: #df1414;margin-left: 2px">*</span>`)
-                                : this['label']}
+                        ${this['required'] ? (isLabelLeft ? html`<span
+                                style="color: #df1414;margin-right: 2px">*</span>${this['label']}` : html`${this['label']}
+                        <span style="color: #df1414;margin-left: 2px">*</span>`) : this['label']}
                     </label>
                     <div class="">
                         <!-- Wrapper 영역 -->
@@ -263,8 +271,7 @@ class LitDatepickerParents extends LitElement {
                             >
                             <div @click="${this._handleClick}"
                                  class="${classMap({
-                                     'icon-right': true,
-                                     'hidden': this['invisible']
+                                     'icon-right': true, 'hidden': this['invisible']
                                  })}"
                                  id="rightIcon"></div>
                         </div>
@@ -355,6 +362,7 @@ class LitDatepickerParents extends LitElement {
     setValid() {
         this.setSelectorValid(false);
     }
+
     inValid() {
         this.setSelectorValid(true);
     }

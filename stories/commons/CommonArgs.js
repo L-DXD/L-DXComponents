@@ -323,7 +323,22 @@ export const componentArgs = {
                 subcategory: "validate"
             }
         },
-    }
+    },
+    calendarFunction : {
+        setEnableFromTo: {
+            control: {
+                type: {},
+                disable: true
+            },
+            table: {
+                category: "function",
+                subcategory: "validate",
+                type: {summary: "function(from, to)"},
+            },
+            description: "set available from~to days<br/>ex)<br/>setEnableFromTo('2025-03', '2025-05')<br/>setEnableFromTo('2025-04-05', '2025-04-27')",
+        },
+
+    },
 }
 
 export const getComponentArgs = (...categories) => {

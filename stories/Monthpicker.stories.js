@@ -10,7 +10,21 @@ export default {
     component: 'l-c-monthpicker',
     // decorators: [(story) => html`<div style="margin: 1em">${story()}</div>`],
     argTypes: {
-        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'valid', 'calendar'),
+        ...getComponentArgs(
+            'commons'
+            , 'value'
+            , 'size'
+            , 'label'
+            , 'feedback'
+            , 'offset'
+            , 'required'
+            , 'placeholder'
+            , 'dateAutocomplete'
+            , 'readonly'
+            , 'valid'
+            , 'calendar'
+            , 'calendarFunction'
+        ),
         'format': {
             control: {type: 'select'},
             options: ['Y-m', 'Y/m', 'Ym', 'Ym'],

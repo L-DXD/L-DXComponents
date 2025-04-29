@@ -9,8 +9,21 @@ export default {
     tags: ['autodocs'],
     component: 'l-c-range-monthpicker',
     argTypes: {
-        ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'offset', 'required', 'placeholder', 'dateAutocomplete', 'readonly', 'rel', 'valid'),
-
+        ...getComponentArgs(
+            'commons'
+            , 'value'
+            , 'size'
+            , 'label'
+            , 'feedback'
+            , 'offset'
+            , 'required'
+            , 'placeholder'
+            , 'dateAutocomplete'
+            , 'readonly'
+            , 'rel'
+            , 'valid'
+            , 'calendarFunction'
+        ),
         'format': {
             control: {type: 'select'},
             options: ['Y-m-d', 'Y/m/d', 'Ymd', 'Y.m.d'],
