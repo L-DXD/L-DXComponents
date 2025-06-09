@@ -19,6 +19,7 @@ export default defineConfig({
     },
     build: {
         outDir: '../dist',
+        emptyOutDir: false,
         rollupOptions: {
             output: {
                 entryFileNames: `assets/[name]-v${process.env.npm_package_version}.js`,

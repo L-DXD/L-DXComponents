@@ -56,6 +56,7 @@ const DateUtils = {
             case 'Y/m/d':
             case 'Y/m':
                 parts = value.split('/');
+                break;
             case 'Y.m.d':
             case 'Y.m':
                 parts = value.split('.');

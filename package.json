@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "version": "echo $npm_package_version",
-    "build": "rm -rf node_modules/.vite dist && vite build",
+    "build": "rm -rf node_modules/.vite && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

@@ -1398,8 +1398,7 @@ class SharedStyles {
                 background-color: var(--bs-danger);
                 border-radius: var(--bs-border-radius)
             }
-
-
+            
             .form-control.is-invalid, .was-validated .form-control:invalid {
                 border-color: var(--bs-danger);
                 padding-right: calc(1.5em + .75rem);
@@ -1408,6 +1407,7 @@ class SharedStyles {
                 background-position: right calc(.375em + .1875rem) center;
                 background-size: calc(.75em + .375rem) calc(.75em + .375rem)
             }
+            
 
             .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
                 border-color: var(--bs-danger);

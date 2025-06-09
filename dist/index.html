@@ -21,13 +21,14 @@
           feedback="feedback"
           feedback-type="normal"
           feedback-visible-type="visible"
+          format="Y/m"
           width="100%"
           required
-          value="2025-03">
+          value="2025/03">
   </l-c-monthpicker>
 
   <!-- 오늘부터 -1개월 부터 +1개월까지 -->
-  <l-c-range-datepicker id="input03"  format="Y-m-d" required label="test" start-month-offset="-1" rel-month="1"></l-c-range-datepicker>
+<!--  <l-c-range-datepicker id="input03"  format="Y-m-d" required label="test" start-month-offset="-1" rel-month="1"></l-c-range-datepicker>-->
 
 <!--  <l-c-range-datepicker id="input03"  format="Y-m-d" required label="test" start-month-offset="-36"-->
 <!--                        rel-month="36"-->
@@ -37,7 +38,7 @@
 <!--                        rel-month="36"-->
 <!--  ></l-c-range-monthpicker>-->
 
-  <l-c-datepicker id="input01" format="Y-m-d" required label="-1 start-month-offset" start-month-offset="-1" value="2025-03-28"></l-c-datepicker>
+<!--  <l-c-datepicker id="input01" format="Y-m-d" required label="-1 start-month-offset" start-month-offset="-1" value="2025-03-28"></l-c-datepicker>-->
 
 <!--  <l-c-input type="text" id="input02" label="test" autocomplete="off" pattern="^[A-Za-z0-9]+$" pattern-block></l-c-input>-->
 
@@ -105,8 +106,10 @@
 
   <script type="application/javascript">
     document.addEventListener('DOMContentLoaded', () => {
-      document.querySelector('#input02').setEnableFromTo('2025-03', '2025-05')
-      document.querySelector('#input03').setEnableFromTo('2025-04-05', '2025-04-27');
+      document.getElementById('input02').setValue('2025/04');
+
+      // document.querySelector('#input02').setEnableFromTo('2025-03', '2025-05')
+      // document.querySelector('#input03').setEnableFromTo('2025-04-05', '2025-04-27');
 
       // document.querySelector('#mySelect').inValid();
       // document.querySelector('#input08').inValid();
