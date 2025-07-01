@@ -84,7 +84,7 @@ class TriggerInput extends LabelAndFeedContainer {
     _handleKeydown(event) {
         const {key} = event;
 
-        if (key === 'Enter') {
+        if (key === 'Enter' && !this['trigger-disabled']) {
             this.triggerPop();
         }
     }
@@ -117,6 +117,7 @@ class TriggerInput extends LabelAndFeedContainer {
             'valid-length-type': {type: String},
             handleTrigger: { type: Function },
             'component-style': {type: String},
+            'trigger-disabled': {type: Boolean},
 
             autocomplete: {type: String},
         };
@@ -171,7 +172,7 @@ class TriggerInput extends LabelAndFeedContainer {
                             @keyup="${(this['valid-length-type'] != 'byte' ? null : super.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
                             autocomplete="${ifDefined(this['autocomplete'])}"
                     >
-                    <div @click="${isSearchRight ? this._handleSearchClick : this._nothing}"
+                    <div @click="${!this['trigger-disabled'] ? this._handleSearchClick : this._nothing}"
                          class="search-icon-right ${this.value ? '' : 'hidden'}"
                          id="rightIcon"></div>
                     

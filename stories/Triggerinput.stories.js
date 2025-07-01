@@ -9,6 +9,13 @@ export default {
     component: 'l-c-triggerinput',
     argTypes: {
         ...getComponentArgs('commons', 'value', 'size', 'label', 'feedback', 'required', 'placeholder', 'inputAutocomplete', 'readonly', 'valid'),
+        'trigger-disabled': {
+            control: 'boolean',
+            table: {
+                category: "attributes",
+                defaultValue: {summary: false}
+            }
+        },
         handleTrigger: {
             control: 'function'
             , table: {
@@ -79,6 +86,7 @@ const Template = (args) => {
                 minlength=${ifDefined(args.minlength)}
                 ?required=${args.required}
                 ?disabled=${args.disabled}
+                ?trigger-disabled=${ifDefined(args['trigger-disabled'])}
                 ?readonly=${args.readonly}
                 placeholder="${ifDefined(args.placeholder)}"
                 pattern="${ifDefined(args.pattern)}"
@@ -112,5 +120,6 @@ TriggerInputWithTopLabelAndFeedback.args = {
     'feedback-visible-type': 'visible',
     required: false,
     disabled: false,
+    'trigger-disabled': false,
     readonly: false,
 };
