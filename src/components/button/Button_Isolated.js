@@ -22,6 +22,9 @@ const THEME_CLASSES = {
     'lime': 'btn-lime',
     'teal': 'btn-teal',
     'green': 'btn-green',
+    'success': 'btn-success',
+    'theme': 'btn-theme',
+    'theme-color': 'btn-theme-color',
 };
 
 const OUTLINE_THEME_CLASSES = {
@@ -41,6 +44,9 @@ const OUTLINE_THEME_CLASSES = {
     'lime': 'btn-outline-lime',
     'teal': 'btn-outline-teal',
     'green': 'btn-outline-green',
+    'success': 'btn-outline-success',
+    'theme': 'btn-outline-theme',
+    'theme-color': 'btn-outline-theme-color',
 };
 
 @customElement('l-button-isolated')
