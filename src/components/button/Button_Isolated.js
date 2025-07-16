@@ -63,6 +63,12 @@ class LButtonIsolated extends LitParentsIsolated {
             :host {
                 display: inline-block;
             }
+            
+            .btn-icon {
+                width: 16px;
+                height: 16px;
+                fill: currentColor;
+            }
         `
     ];
 

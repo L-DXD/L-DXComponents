@@ -31,7 +31,7 @@ class LTextarea extends LabelAndFeedContainer {
             minlength: {type: String},
             'valid-length-type': {type: String},
             'component-style': {type: String},
-
+            rows: {type: Number},
             autocomplete: {type: String},
         };
     }

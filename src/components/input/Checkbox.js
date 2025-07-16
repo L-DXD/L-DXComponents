@@ -95,11 +95,12 @@ class LCheckbox extends LitParents {
     }
 
     isValid() {
-        const value = this.getValue().trim();
         const required = this['required'];
-        if (!value && required) {
-            return false;
-        }
+        if (!required) return true;
+        
+        // Checkbox의 경우 checked 상태를 확인해야 함
+        const $inputElement = this.shadowRoot.querySelector(this.selector);
+        return $inputElement ? $inputElement.checked : false;
     }
 
     validate() {
@@ -133,6 +134,8 @@ class LCheckbox extends LitParents {
                        ?required=${this['required']}
                        ?checked=${this['checked']}
                        ?disabled=${this['disabled']}
+                       @change=${this.validate}
+                       @blur=${this.validate}
                 >
                 <label class="form-check-label" for="${ifDefined(this['id'])}">${ifDefined(this['label'])}</label>
             </div>

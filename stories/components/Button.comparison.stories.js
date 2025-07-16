@@ -241,3 +241,166 @@ const IconComparisonTemplate = (args) => {
 
 export const IconComparison = IconComparisonTemplate.bind({});
 IconComparison.args = {};
+
+const FunctionTestingTemplate = (args) => {
+    return html`
+        <div style="display: flex; gap: 2rem; align-items: flex-start;">
+            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
+                <l-button
+                        id="test-button-original"
+                        name="test-button"
+                        theme="primary"
+                        label="Test Button"
+                        value="original-value"
+                >
+                </l-button>
+                
+                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-original');
+                            const result = btn.getValue();
+                            document.querySelector('#original-getValue-result').textContent = result || 'null';
+                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            getValue()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-original');
+                            const newValue = prompt('Enter new value:', 'test-value');
+                            if (newValue !== null) {
+                                btn.setValue(newValue);
+                                document.querySelector('#original-setValue-result').textContent = 'Set to: ' + newValue;
+                            }
+                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            setValue()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-original');
+                            const result = btn.isValid();
+                            document.querySelector('#original-isValid-result').textContent = result ? 'true' : 'false';
+                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            isValid()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-original');
+                            btn.validate();
+                            document.querySelector('#original-validate-result').textContent = 'Validation executed';
+                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
+                            validate()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-original');
+                            btn.checkValidity();
+                            document.querySelector('#original-checkValidity-result').textContent = 'checkValidity executed';
+                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            checkValidity()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-original');
+                            const component = btn.getComponent();
+                            document.querySelector('#original-getComponent-result').textContent = component ? component.tagName : 'null';
+                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            getComponent()
+                        </button>
+                    </div>
+                    
+                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
+                        <div><strong>getValue():</strong> <span id="original-getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="original-setValue-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="original-isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="original-validate-result">-</span></div>
+                        <div><strong>checkValidity():</strong> <span id="original-checkValidity-result">-</span></div>
+                        <div><strong>getComponent():</strong> <span id="original-getComponent-result">-</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <l-button-isolated
+                        id="test-button-isolated"
+                        name="test-button-isolated"
+                        theme="primary"
+                        label="Test Button"
+                        value="isolated-value"
+                >
+                </l-button-isolated>
+                
+                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
+                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-isolated');
+                            const result = btn.getValue();
+                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            getValue()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-isolated');
+                            const newValue = prompt('Enter new value:', 'test-value');
+                            if (newValue !== null) {
+                                btn.setValue(newValue);
+                                document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                            }
+                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            setValue()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-isolated');
+                            const result = btn.isValid();
+                            document.querySelector('#isolated-isValid-result').textContent = result ? 'true' : 'false';
+                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            isValid()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-isolated');
+                            btn.validate();
+                            document.querySelector('#isolated-validate-result').textContent = 'Validation executed';
+                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
+                            validate()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-isolated');
+                            btn.checkValidity();
+                            document.querySelector('#isolated-checkValidity-result').textContent = 'checkValidity executed';
+                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            checkValidity()
+                        </button>
+                        
+                        <button onclick="
+                            const btn = document.querySelector('#test-button-isolated');
+                            const component = btn.getComponent();
+                            document.querySelector('#isolated-getComponent-result').textContent = component ? component.tagName : 'null';
+                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            getComponent()
+                        </button>
+                    </div>
+                    
+                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
+                        <div><strong>getValue():</strong> <span id="isolated-getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="isolated-setValue-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="isolated-isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="isolated-validate-result">-</span></div>
+                        <div><strong>checkValidity():</strong> <span id="isolated-checkValidity-result">-</span></div>
+                        <div><strong>getComponent():</strong> <span id="isolated-getComponent-result">-</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+export const FunctionTesting = FunctionTestingTemplate.bind({});
+FunctionTesting.args = {};

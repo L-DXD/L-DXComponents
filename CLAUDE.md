@@ -67,3 +67,15 @@ The project uses legacy decorators configuration. `@customElement` works but `@p
 ### Lit Directives Used
 - `ifDefined`: Conditionally sets attributes only when values are defined
 - `classMap`: Dynamic CSS class application
+
+## Development Guidelines
+
+### Style Updates
+- **Fundamental Principle**: 기존 기능들을 없애거나 수정하지 말고 스타일 변경만 적용.
+
+## Project Requirements
+
+### Component Development Guidelines
+- 1. 기존 attribute, function은 누락이 없어야 한다. 추가하고자 하는 attribute와 function을 제안할 수는 있다.
+- 2. story comparision으로 비교할수 있게 한다.
+- 3. story에는 생성된 함수를 검사할수 있는 기능도 있어야 한다.

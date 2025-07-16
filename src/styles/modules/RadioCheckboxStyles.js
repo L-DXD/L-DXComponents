@@ -246,6 +246,41 @@ export class RadioCheckboxStyles {
     }
 
     /**
+     * 유효성 검사 스타일
+     */
+    static get validation() {
+        return css`
+            .form-check-input.is-valid {
+                border-color: var(--bs-form-valid-border-color, #198754);
+            }
+
+            .form-check-input.is-valid:checked {
+                background-color: var(--bs-form-valid-border-color, #198754);
+                border-color: var(--bs-form-valid-border-color, #198754);
+            }
+
+            .form-check-input.is-valid:focus {
+                border-color: var(--bs-form-valid-border-color, #198754);
+                box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+            }
+
+            .form-check-input.is-invalid {
+                border-color: var(--bs-danger, #dc3545);
+            }
+
+            .form-check-input.is-invalid:checked {
+                background-color: var(--bs-danger, #dc3545);
+                border-color: var(--bs-danger, #dc3545);
+            }
+
+            .form-check-input.is-invalid:focus {
+                border-color: var(--bs-danger, #dc3545);
+                box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+            }
+        `;
+    }
+
+    /**
      * 다크 테마 지원
      */
     static get darkTheme() {
@@ -282,6 +317,7 @@ export class RadioCheckboxStyles {
             ${this.layout}
             ${this.switch}
             ${this.buttonCheck}
+            ${this.validation}
             ${this.darkTheme}
         `;
     }

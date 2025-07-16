@@ -1,13 +1,10 @@
-import {html, nothing} from 'lit';
+import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
-import '../../styles/common.css';
-import {LitParents} from "../container/LitParents.js";
+import {LitParentsIsolated} from "../container/LitParents_Isolated.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {customElement} from 'lit/decorators.js';
-import '../../../assets/css/Radio.css';
+import {RadioCheckboxStyles} from '../../styles/modules/RadioCheckboxStyles.js';
 
-@customElement('l-radio')
-class LRadio extends LitParents {
+class LRadioIsolated extends LitParentsIsolated {
 
     constructor() {
         super();
@@ -15,12 +12,21 @@ class LRadio extends LitParents {
     }
 
     /**
-     *  Radio가 그룹으로 묶이지 않는 이슈가 있어 shadowroot 사용안함
-     * @returns {LRadio}
+     * Radio가 그룹으로 묶이지 않는 이슈가 있어 shadowroot 사용안함
+     * @returns {LRadioIsolated}
      */
     createRenderRoot() {
         return this;
     }
+
+    static styles = [
+        RadioCheckboxStyles.all,
+        css`
+            :host {
+                display: block;
+            }
+        `
+    ];
 
     static get properties() {
         return {
@@ -73,7 +79,7 @@ class LRadio extends LitParents {
         const name = this.getAttribute('name');
         if (!name) return true;
         
-        const radioGroup = document.querySelectorAll(`l-radio[name="${name}"]`);
+        const radioGroup = document.querySelectorAll(`l-radio-isolated[name="${name}"]`);
         return Array.from(radioGroup).some(radio => {
             const input = radio.querySelector('input[type="radio"]');
             return input && input.checked;
@@ -89,7 +95,7 @@ class LRadio extends LitParents {
         // Radio 그룹의 다른 요소들도 같은 상태로 업데이트
         const name = this.getAttribute('name');
         if (name) {
-            const radioGroup = document.querySelectorAll(`l-radio[name="${name}"]`);
+            const radioGroup = document.querySelectorAll(`l-radio-isolated[name="${name}"]`);
             radioGroup.forEach(radio => {
                 const input = radio.querySelector('input[type="radio"]');
                 if (input) {
@@ -104,9 +110,7 @@ class LRadio extends LitParents {
     }
 
     render() {
-
         let isLabelRight = (this['label-align'] && this['label-align'] === 'right');
-
 
         return html`
             <div
@@ -135,3 +139,5 @@ class LRadio extends LitParents {
         `;
     }
 }
+
+customElements.define('l-radio-isolated', LRadioIsolated);
