@@ -1,9 +1,8 @@
 import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
-import {LitDatepickerParentsIsolated} from "@/components/container/LitDatepickerParents_Isolated.js";
+import {LitDatepickerParentsIsolated} from "./LitDatepickerParents_Isolated.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import flatpickr from "flatpickr";
-
 
 class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
 
@@ -62,7 +61,6 @@ class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
         const relDay = this['rel-day'];
         const isRelativeDateFuture = this.isRelativeDateFuture(relYear, relMonth, relDay);
 
-
         if (relYear || relMonth || relDay) {
             options.enable = [
                 {
@@ -102,9 +100,7 @@ class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
             options.disable = disableRules;
         }
 
-
         super._datepicker = flatpickr(this.getSelector, options);
-
     }
 
     /**
@@ -132,7 +128,6 @@ class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
         calculatedDate.setMonth(calculatedDate.getMonth() + (relMonth || 0));
         calculatedDate.setDate(calculatedDate.getDate() + (relDay || 0));
 
-
         return calculatedDate > today;
     };
 
@@ -157,7 +152,6 @@ class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
         // 모든 조건 충족
         return true;
     }
-
 
     checkValidity() {
         this.validate();
@@ -198,7 +192,5 @@ class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
         return this.getValue().split(DateUtils.RANGE_INFIX)[1]?.trim() || '';
     }
 }
-
-customElements.define('l-list-range-datepicker-parents-isolated', ListRangeDatepickerParentsIsolated);
 
 export {ListRangeDatepickerParentsIsolated};

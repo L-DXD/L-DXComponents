@@ -1,5 +1,6 @@
 import {css, html, LitElement} from 'lit';
-import {DatepickerStyles} from '../../styles/modules/DatepickerStyles.js';
+import '../../styles/common.css';
+import '../../../assets/css/Input.css';
 import 'flatpickr/dist/flatpickr.min.css'
 import DateUtils from '../commons/Date.js'
 import {classMap} from "lit/directives/class-map.js";
@@ -25,17 +26,6 @@ class LitDatepickerParentsIsolated extends LitElement {
     // Shadow DOM을 사용하지 않거나, 외부 DOM 요소에 접근할 수 있도록 설정
     createRenderRoot() {
         return this;
-    }
-
-    static get styles() {
-        return [
-            DatepickerStyles.all,
-            css`
-                :host {
-                    display: block;
-                }
-            `
-        ];
     }
 
     static get properties() {
@@ -88,15 +78,24 @@ class LitDatepickerParentsIsolated extends LitElement {
     }
 
     initDatePicker() {
+        const selector = this.getSelector;
+        if (!selector) {
+            console.warn('DatePicker input element not found, retrying...');
+            setTimeout(() => this.initDatePicker(), 100);
+            return;
+        }
 
-        this._datepicker = flatpickr(this.getSelector, this.getOptions());
+        this._datepicker = flatpickr(selector, this.getOptions());
 
         const value = this['value'];
         this.setValue(value);
     }
 
     firstUpdated() {
-        this.initDatePicker();
+        // DOM이 완전히 렌더링된 후 Flatpickr 초기화
+        requestAnimationFrame(() => {
+            this.initDatePicker();
+        });
     }
 
     getValue = () => this._datepicker ? this._datepicker.input.value : null;
@@ -215,13 +214,11 @@ class LitDatepickerParentsIsolated extends LitElement {
         }
     }
 
-
     render() {
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
 
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
-
 
         const feedbackHtml = {
             'normal': html`
@@ -320,7 +317,6 @@ class LitDatepickerParentsIsolated extends LitElement {
         return true;
     }
 
-
     checkValidity() {
         this.validate();
     }
@@ -343,7 +339,6 @@ class LitDatepickerParentsIsolated extends LitElement {
     }
 
     _handleClick = (_) => this.getSelector.click();
-
 
     validate() {
         const isFlag = this.isValid();

@@ -2,7 +2,7 @@ import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {LitParentsIsolated} from "../container/LitParents_Isolated.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {RadioCheckboxStyles} from '../../styles/modules/RadioCheckboxStyles.js';
+import '../../../assets/css/Radio.css';
 
 class LRadioIsolated extends LitParentsIsolated {
 
@@ -20,7 +20,6 @@ class LRadioIsolated extends LitParentsIsolated {
     }
 
     static styles = [
-        RadioCheckboxStyles.all,
         css`
             :host {
                 display: block;
