@@ -38,23 +38,7 @@ export default {
 const ComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox (SharedStyles.js)</h3>
-                <l-checkbox
-                        size=${ifDefined(args.size)}
-                        label=${ifDefined(args.label)}
-                        label-align=${ifDefined(args['label-align'])}
-                        id=${ifDefined(args.id)}
-                        name=${ifDefined(args.name)}
-                        width=${ifDefined(args.width)}
-                        ?checked=${args.checked}
-                        ?required=${args.required}
-                        ?disabled=${args.disabled}
-                        ?readonly=${args.readonly}
-                        value="${ifDefined(args.value)}"
-                >
-                </l-checkbox>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
                 <l-checkbox-isolated
@@ -96,24 +80,7 @@ const SizeComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${sizes.map(({size, label}, index) => html`
-                        <div>
-                            <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-checkbox
-                                    id="checkbox-original-${index}"
-                                    name="original-size-group"
-                                    size=${ifDefined(size)}
-                                    label="${label} checkbox"
-                                    value="${label.toLowerCase()}"
-                            >
-                            </l-checkbox>
-                        </div>
-                    `)}
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -142,31 +109,7 @@ SizeComparison.args = {};
 const StateComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-checkbox id="checkbox-normal" name="original-state" label="Normal checkbox" value="normal"></l-checkbox>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Checked:</label>
-                        <l-checkbox id="checkbox-checked" name="original-state" label="Checked checkbox" value="checked" checked></l-checkbox>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-checkbox id="checkbox-disabled" name="original-state" label="Disabled checkbox" value="disabled" disabled></l-checkbox>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled & Checked:</label>
-                        <l-checkbox id="checkbox-disabled-checked" name="original-state" label="Disabled & Checked" value="disabled-checked" disabled checked></l-checkbox>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-checkbox id="checkbox-required" name="original-state" label="Required checkbox" value="required" required></l-checkbox>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -209,24 +152,7 @@ const GroupComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox Group (SharedStyles.js)</h3>
-                <div>
-                    <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Select multiple options:</p>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        ${options.map(option => html`
-                            <l-checkbox
-                                    id="checkbox-original-${option.id}"
-                                    name="original-group"
-                                    label="${option.label}"
-                                    value="${option.value}"
-                                    ?checked=${option.id === 'option2'}
-                            >
-                            </l-checkbox>
-                        `)}
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox Group (RadioCheckboxStyles.js)</h3>
                 <div>
@@ -255,18 +181,7 @@ GroupComparison.args = {};
 const InlineComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox (SharedStyles.js)</h3>
-                <div>
-                    <p style="margin-bottom: 12px; font-weight: bold; color: #666;">Inline checkboxes:</p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <l-checkbox id="checkbox-inline-1" name="original-inline" label="Checkbox 1" value="1"></l-checkbox>
-                        <l-checkbox id="checkbox-inline-2" name="original-inline" label="Checkbox 2" value="2" checked></l-checkbox>
-                        <l-checkbox id="checkbox-inline-3" name="original-inline" label="Checkbox 3" value="3"></l-checkbox>
-                        <l-checkbox id="checkbox-inline-4" name="original-inline" label="Checkbox 4" value="4" disabled></l-checkbox>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
                 <div>
@@ -289,34 +204,7 @@ InlineComparison.args = {};
 const RequiredValidationTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Required checkbox (uncheck then blur to see validation):</p>
-                        <l-checkbox
-                                id="checkbox-required-original"
-                                name="original-required"
-                                label="I agree to the terms (Required)"
-                                value="agreement"
-                                required
-                                checked
-                        >
-                        </l-checkbox>
-                        <p style="margin-top: 8px; font-size: 12px; color: #666;">
-                            Try unchecking the box and clicking outside to trigger validation
-                        </p>
-                    </div>
-                    <div>
-                        <button type="button" onclick="
-                            const checkbox = document.querySelector('#checkbox-required-original');
-                            checkbox.checkValidity();
-                        " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Original
-                        </button>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -355,104 +243,7 @@ RequiredValidation.args = {};
 const FunctionTestingTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Checkbox (SharedStyles.js)</h3>
-                <l-checkbox
-                        id="test-checkbox-original"
-                        name="test-checkbox"
-                        label="Test Checkbox"
-                        value="original-value"
-                        checked
-                >
-                </l-checkbox>
-                
-                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
-                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            const result = checkbox.getValue();
-                            document.querySelector('#original-getValue-result').textContent = result || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getValue()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            const newValue = prompt('Enter new value:', 'test-value');
-                            if (newValue !== null) {
-                                checkbox.setValue(newValue);
-                                document.querySelector('#original-setValue-result').textContent = 'Set to: ' + newValue;
-                            }
-                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            setValue()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            const result = checkbox.isValid();
-                            document.querySelector('#original-isValid-result').textContent = result ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isValid()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            checkbox.validate();
-                            document.querySelector('#original-validate-result').textContent = 'Validation executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
-                            validate()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            checkbox.checkValidity();
-                            document.querySelector('#original-checkValidity-result').textContent = 'checkValidity executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            checkValidity()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            const text = checkbox.getText();
-                            document.querySelector('#original-getText-result').textContent = text || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getText()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            const newText = prompt('Enter new text:', 'New Label');
-                            if (newText !== null) {
-                                checkbox.setText(newText);
-                                document.querySelector('#original-setText-result').textContent = 'Set to: ' + newText;
-                            }
-                        " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            setText()
-                        </button>
-                        
-                        <button onclick="
-                            const checkbox = document.querySelector('#test-checkbox-original');
-                            const input = checkbox.querySelector('input');
-                            const isChecked = input ? input.checked : false;
-                            document.querySelector('#original-checked-result').textContent = isChecked ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            Check Status
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="original-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="original-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="original-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="original-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="original-checkValidity-result">-</span></div>
-                        <div><strong>getText():</strong> <span id="original-getText-result">-</span></div>
-                        <div><strong>setText():</strong> <span id="original-setText-result">-</span></div>
-                        <div><strong>Checked:</strong> <span id="original-checked-result">-</span></div>
-                    </div>
-                </div>
-            </div>
+            
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>

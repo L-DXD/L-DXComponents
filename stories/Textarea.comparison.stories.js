@@ -155,25 +155,6 @@ const SizeComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${sizes.map(({size, label}, index) => html`
-                        <div>
-                            <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-c-textarea
-                                    id="textarea-original-${index}"
-                                    name="original-size-group"
-                                    size=${ifDefined(size)}
-                                    placeholder="${label} textarea"
-                                    value="${label} textarea content"
-                                    
-                            >
-                            </l-c-textarea>
-                        </div>
-                    `)}
-                </div>
-            </div>
-            <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}, index) => html`
@@ -202,27 +183,6 @@ SizeComparison.args = {};
 const StateComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-c-textarea placeholder="Normal textarea" value="Normal content" ></l-c-textarea>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-c-textarea placeholder="Disabled textarea" value="Disabled content" disabled ></l-c-textarea>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">ReadOnly:</label>
-                        <l-c-textarea value="ReadOnly content" readonly ></l-c-textarea>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-c-textarea placeholder="Required textarea" required ></l-c-textarea>
-                    </div>
-                </div>
-            </div>
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -254,15 +214,7 @@ StateComparison.args = {};
 const LabelAndFeedbackComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-c-textarea label="Message" placeholder="Enter your message" rows="4"></l-c-textarea>
-                    <l-c-textarea label="Description" label-align="left" placeholder="Enter description" rows="4"></l-c-textarea>
-                    <l-c-textarea label="Comment" feedback="Comment is required" feedback-type="error" rows="4"></l-c-textarea>
-                    <l-c-textarea label="Review" feedback="Great feedback!" feedback-type="success" value="This is a good review..." rows="4"></l-c-textarea>
-                </div>
-            </div>
+           
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -284,22 +236,6 @@ const RowsComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${rowCounts.map(rows => html`
-                        <div>
-                            <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${rows} rows:</label>
-                            <l-c-textarea
-                                    placeholder="${rows} rows textarea"
-                                    value="Content for ${rows} rows textarea"
-                                    rows="${rows}"
-                            >
-                            </l-c-textarea>
-                        </div>
-                    `)}
-                </div>
-            </div>
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -326,42 +262,7 @@ RowsComparison.args = {};
 const ValidationComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
-                        <l-c-textarea
-                                id="textarea-required-original"
-                                placeholder="Required textarea"
-                                required
-                                
-                        >
-                        </l-c-textarea>
-                        <p style="margin-top: 8px; font-size: 12px; color: #666;">
-                            Leave empty and click outside to see validation
-                        </p>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Max/Min Length:</label>
-                        <l-c-textarea
-                                maxlength="50"
-                                minlength="10"
-                                placeholder="10-50 characters"
-                                
-                        >
-                        </l-c-textarea>
-                    </div>
-                    <div>
-                        <button type="button" onclick="
-                            const textarea = document.querySelector('#textarea-required-original');
-                            textarea.checkValidity();
-                        " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Required Original
-                        </button>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -408,104 +309,6 @@ ValidationComparison.args = {};
 const FunctionTestingTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <l-c-textarea
-                        id="test-textarea-original"
-                        name="test-textarea"
-                        label="Test Textarea"
-                        placeholder="Enter test content"
-                        value="Sample textarea content for testing"
-                        rows="3"
-                >
-                </l-c-textarea>
-                
-                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
-                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            const result = textarea.getValue();
-                            document.querySelector('#original-getValue-result').textContent = result || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getValue()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            const newValue = prompt('Enter new value:', 'New textarea content');
-                            if (newValue !== null) {
-                                textarea.setValue(newValue);
-                                document.querySelector('#original-setValue-result').textContent = 'Set to: ' + newValue.substring(0, 20) + (newValue.length > 20 ? '...' : '');
-                            }
-                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            setValue()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            const result = textarea.isValid();
-                            document.querySelector('#original-isValid-result').textContent = result ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isValid()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            textarea.validate();
-                            document.querySelector('#original-validate-result').textContent = 'Validation executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
-                            validate()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            textarea.checkValidity();
-                            document.querySelector('#original-checkValidity-result').textContent = 'checkValidity executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            checkValidity()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            const textareaEl = textarea.querySelector('textarea');
-                            const byteLength = textareaEl ? textarea.getByteLength(textareaEl.value) : 0;
-                            document.querySelector('#original-getByteLength-result').textContent = byteLength + ' bytes';
-                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getByteLength()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            const textareaEl = textarea.querySelector('textarea');
-                            const isPatternValid = textareaEl ? textarea.isPatternValid(textareaEl.value) : true;
-                            document.querySelector('#original-isPatternValid-result').textContent = isPatternValid ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isPatternValid()
-                        </button>
-                        
-                        <button onclick="
-                            const textarea = document.querySelector('#test-textarea-original');
-                            const textareaEl = textarea.querySelector('textarea');
-                            const isRequiredValid = textareaEl ? textarea.isRequiredValid(textareaEl.value) : true;
-                            document.querySelector('#original-isRequiredValid-result').textContent = isRequiredValid ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isRequiredValid()
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="original-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="original-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="original-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="original-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="original-checkValidity-result">-</span></div>
-                        <div><strong>getByteLength():</strong> <span id="original-getByteLength-result">-</span></div>
-                        <div><strong>isPatternValid():</strong> <span id="original-isPatternValid-result">-</span></div>
-                        <div><strong>isRequiredValid():</strong> <span id="original-isRequiredValid-result">-</span></div>
-                    </div>
-                </div>
-            </div>
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>

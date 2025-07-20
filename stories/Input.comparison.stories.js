@@ -86,36 +86,7 @@ export default {
 const ComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <l-c-input
-                        type=${ifDefined(args.type)}
-                        size=${ifDefined(args.size)}
-                        label=${ifDefined(args.label)}
-                        label-align=${ifDefined(args['label-align'])}
-                        label-width=${ifDefined(args['label-width'])}
-                        label-text-align=${ifDefined(args['label-text-align'])}
-                        valid-length-type=${ifDefined(args['valid-length-type'])}
-                        feedback=${ifDefined(args.feedback)}
-                        feedback-type=${ifDefined(args['feedback-type'])}
-                        feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
-                        component-style=${ifDefined(args['component-style'])}
-                        id=${ifDefined(args.id)}
-                        name=${ifDefined(args.name)}
-                        width=${ifDefined(args.width)}
-                        maxlength=${ifDefined(args.maxlength)}
-                        minlength=${ifDefined(args.minlength)}
-                        ?required=${args.required}
-                        ?disabled=${args.disabled}
-                        ?readonly=${args.readonly}
-                        placeholder="${ifDefined(args.placeholder)}"
-                        pattern="${ifDefined(args.pattern)}"
-                        pattern-block="${ifDefined(args['pattern-block'])}"
-                        value="${ifDefined(args.value)}"
-                        step="${ifDefined(args.step)}"
-                >
-                </l-c-input>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <l-input-isolated
@@ -169,22 +140,7 @@ const TypeComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${types.map(type => html`
-                        <div>
-                            <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${type}:</label>
-                            <l-c-input
-                                    type=${type}
-                                    placeholder="${type} input"
-                                    value=${type === 'password' ? 'password123' : type === 'number' ? '123' : type === 'date' ? '2024-01-01' : `sample ${type}`}
-                            >
-                            </l-c-input>
-                        </div>
-                    `)}
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -217,23 +173,7 @@ const SizeComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${sizes.map(({size, label}) => html`
-                        <div>
-                            <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-c-input
-                                    type="text"
-                                    size=${ifDefined(size)}
-                                    placeholder="${label} input"
-                                    value="${label} text"
-                            >
-                            </l-c-input>
-                        </div>
-                    `)}
-                </div>
-            </div>
+           
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -261,27 +201,7 @@ SizeComparison.args = {};
 const StateComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-c-input type="text" placeholder="Normal input" value="Normal text"></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-c-input type="text" placeholder="Disabled input" value="Disabled text" disabled></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">ReadOnly:</label>
-                        <l-c-input type="text" value="ReadOnly text" readonly></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-c-input type="text" placeholder="Required input" required></l-c-input>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -313,15 +233,7 @@ StateComparison.args = {};
 const LabelAndFeedbackComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-c-input type="text" label="Username" placeholder="Enter username"></l-c-input>
-                    <l-c-input type="text" label="Email" label-align="left" placeholder="Enter email"></l-c-input>
-                    <l-c-input type="text" label="Password" feedback="Password is required" feedback-type="error"></l-c-input>
-                    <l-c-input type="text" label="Phone" feedback="Valid phone number" feedback-type="success" value="010-1234-5678"></l-c-input>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -341,23 +253,7 @@ LabelAndFeedbackComparison.args = {};
 const SearchFeaturesComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search with Icon:</label>
-                        <l-c-input type="search" placeholder="Search with icon..."></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search Disabled:</label>
-                        <l-c-input type="search" placeholder="Search disabled..." disabled></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search ReadOnly:</label>
-                        <l-c-input type="search" value="readonly search" readonly></l-c-input>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -385,23 +281,7 @@ SearchFeaturesComparison.args = {};
 const ValidationComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Validation (Phone):</label>
-                        <l-c-input type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="000-0000-0000"></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Block (Korean/English/Numbers):</label>
-                        <l-c-input type="text" pattern="^[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]+$" pattern-block="true" placeholder="한글/영문/숫자만 입력"></l-c-input>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Max/Min Length:</label>
-                        <l-c-input type="text" maxlength="10" minlength="3" placeholder="3-10 characters"></l-c-input>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -429,22 +309,7 @@ ValidationComparison.args = {};
 const TopLabelFeedbackComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <l-c-input
-                        type="text"
-                        id="input01"
-                        name="name"
-                        width="100%"
-                        label="label"
-                        label-align="top"
-                        label-width="auto"
-                        label-text-align="left"
-                        feedback="feedback"
-                        feedback-type="normal"
-                        feedback-visible-type="visible"
-                ></l-c-input>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <l-input-isolated
@@ -471,22 +336,7 @@ TopLabelFeedbackComparison.args = {};
 const LeftLabelFeedbackComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <l-c-input
-                        type="text"
-                        id="input02"
-                        name="name"
-                        width="auto"
-                        label="label : "
-                        label-align="left"
-                        label-width="50px"
-                        label-text-align="left"
-                        feedback="feedback"
-                        feedback-type="normal"
-                        feedback-visible-type="visible"
-                ></l-c-input>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <l-input-isolated
@@ -513,23 +363,7 @@ LeftLabelFeedbackComparison.args = {};
 const RequiredValidityComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <l-c-input
-                        type="text"
-                        id="input03"
-                        name="name"
-                        width="100%"
-                        label="label"
-                        label-align="top"
-                        label-width="auto"
-                        label-text-align="left"
-                        feedback="필수 값 입니다."
-                        feedback-type="error"
-                        feedback-visible-type="invalid"
-                        required
-                ></l-c-input>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <l-input-isolated
@@ -602,107 +436,7 @@ SimpleInputTest.args = {};
 const FunctionTestingTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Input (SharedStyles.js)</h3>
-                <l-c-input
-                        id="test-input-original"
-                        type="text"
-                        name="test-input"
-                        label="Test Input"
-                        placeholder="Enter test value"
-                        value="Sample input value"
-                        pattern="^[A-Za-z0-9]+$"
-                        maxlength="20"
-                        minlength="3"
-                >
-                </l-c-input>
-                
-                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
-                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            const result = input.getValue();
-                            document.querySelector('#original-getValue-result').textContent = result || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getValue()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            const newValue = prompt('Enter new value:', 'TestValue123');
-                            if (newValue !== null) {
-                                input.setValue(newValue);
-                                document.querySelector('#original-setValue-result').textContent = 'Set to: ' + newValue;
-                            }
-                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            setValue()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            const result = input.isValid();
-                            document.querySelector('#original-isValid-result').textContent = result ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isValid()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            input.validate();
-                            document.querySelector('#original-validate-result').textContent = 'Validation executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
-                            validate()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            input.checkValidity();
-                            document.querySelector('#original-checkValidity-result').textContent = 'checkValidity executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            checkValidity()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            const inputEl = input.querySelector('input');
-                            const byteLength = inputEl ? input.getByteLength(inputEl.value) : 0;
-                            document.querySelector('#original-getByteLength-result').textContent = byteLength + ' bytes';
-                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getByteLength()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            const inputEl = input.querySelector('input');
-                            const isPatternValid = inputEl ? input.isPatternValid(inputEl.value) : true;
-                            document.querySelector('#original-isPatternValid-result').textContent = isPatternValid ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isPatternValid()
-                        </button>
-                        
-                        <button onclick="
-                            const input = document.querySelector('#test-input-original');
-                            const inputEl = input.querySelector('input');
-                            const isRequiredValid = inputEl ? input.isRequiredValid(inputEl.value) : true;
-                            document.querySelector('#original-isRequiredValid-result').textContent = isRequiredValid ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isRequiredValid()
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="original-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="original-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="original-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="original-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="original-checkValidity-result">-</span></div>
-                        <div><strong>getByteLength():</strong> <span id="original-getByteLength-result">-</span></div>
-                        <div><strong>isPatternValid():</strong> <span id="original-isPatternValid-result">-</span></div>
-                        <div><strong>isRequiredValid():</strong> <span id="original-isRequiredValid-result">-</span></div>
-                    </div>
-                </div>
-            </div>
+            
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>

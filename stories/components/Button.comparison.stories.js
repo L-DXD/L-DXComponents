@@ -55,23 +55,7 @@ export default {
 const ComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
-                <l-button
-                        theme=${ifDefined(args.theme)}
-                        size=${ifDefined(args.size)}
-                        id=${ifDefined(args.id)}
-                        name=${ifDefined(args.name)}
-                        width=${ifDefined(args.width)}
-                        label=${ifDefined(args.label)}
-                        value="${ifDefined(args.value)}"
-                        icon-path="${ifDefined(args['icon-path'])}"
-                        ?outline=${args.outline}
-                        ?disabled=${args.disabled}
-                        ?readonly=${args.readonly}
-                >
-                </l-button>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <l-button-isolated
@@ -110,19 +94,7 @@ const AllThemesComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                    ${themes.map(theme => html`
-                        <l-button
-                                theme=${theme}
-                                label=${theme}
-                                ?outline=${args.outline}
-                        >
-                        </l-button>
-                    `)}
-                </div>
-            </div>
+           
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
@@ -159,19 +131,7 @@ const SizeComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
-                    ${sizes.map(({size, label}) => html`
-                        <l-button
-                                theme="primary"
-                                size=${ifDefined(size)}
-                                label="${label} Button"
-                        >
-                        </l-button>
-                    `)}
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
@@ -195,14 +155,7 @@ SizeComparison.args = {};
 const StateComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
-                    <l-button theme="primary" label="Normal Button"></l-button>
-                    <l-button theme="primary" label="Disabled Button" disabled></l-button>
-                    <l-button theme="primary" label="ReadOnly Button" readonly></l-button>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
@@ -221,13 +174,7 @@ StateComparison.args = {};
 const IconComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
-                    <l-button theme="primary" label="No Icon"></l-button>
-                    <l-button theme="primary" label="With Icon" icon-path="/src/search-svgrepo-com.svg"></l-button>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
@@ -245,82 +192,6 @@ IconComparison.args = {};
 const FunctionTestingTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Button (SharedStyles.js)</h3>
-                <l-button
-                        id="test-button-original"
-                        name="test-button"
-                        theme="primary"
-                        label="Test Button"
-                        value="original-value"
-                >
-                </l-button>
-                
-                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
-                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-                        <button onclick="
-                            const btn = document.querySelector('#test-button-original');
-                            const result = btn.getValue();
-                            document.querySelector('#original-getValue-result').textContent = result || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getValue()
-                        </button>
-                        
-                        <button onclick="
-                            const btn = document.querySelector('#test-button-original');
-                            const newValue = prompt('Enter new value:', 'test-value');
-                            if (newValue !== null) {
-                                btn.setValue(newValue);
-                                document.querySelector('#original-setValue-result').textContent = 'Set to: ' + newValue;
-                            }
-                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            setValue()
-                        </button>
-                        
-                        <button onclick="
-                            const btn = document.querySelector('#test-button-original');
-                            const result = btn.isValid();
-                            document.querySelector('#original-isValid-result').textContent = result ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isValid()
-                        </button>
-                        
-                        <button onclick="
-                            const btn = document.querySelector('#test-button-original');
-                            btn.validate();
-                            document.querySelector('#original-validate-result').textContent = 'Validation executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
-                            validate()
-                        </button>
-                        
-                        <button onclick="
-                            const btn = document.querySelector('#test-button-original');
-                            btn.checkValidity();
-                            document.querySelector('#original-checkValidity-result').textContent = 'checkValidity executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            checkValidity()
-                        </button>
-                        
-                        <button onclick="
-                            const btn = document.querySelector('#test-button-original');
-                            const component = btn.getComponent();
-                            document.querySelector('#original-getComponent-result').textContent = component ? component.tagName : 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getComponent()
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="original-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="original-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="original-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="original-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="original-checkValidity-result">-</span></div>
-                        <div><strong>getComponent():</strong> <span id="original-getComponent-result">-</span></div>
-                    </div>
-                </div>
-            </div>
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>

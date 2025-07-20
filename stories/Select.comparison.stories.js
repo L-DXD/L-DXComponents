@@ -55,31 +55,7 @@ export default {
 const ComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <l-c-select
-                        size=${ifDefined(args.size)}
-                        label=${ifDefined(args.label)}
-                        label-align=${ifDefined(args['label-align'])}
-                        label-width=${ifDefined(args['label-width'])}
-                        label-text-align=${ifDefined(args['label-text-align'])}
-                        feedback=${ifDefined(args.feedback)}
-                        feedback-type=${ifDefined(args['feedback-type'])}
-                        feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
-                        component-style=${ifDefined(args['component-style'])}
-                        default-type=${ifDefined(args['default-type'])}
-                        id=${ifDefined(args.id)}
-                        name=${ifDefined(args.name)}
-                        width=${ifDefined(args.width)}
-                        ?required=${args.required}
-                        ?disabled=${args.disabled}
-                        placeholder="${ifDefined(args.placeholder)}"
-                        value="${ifDefined(args.value)}"
-                        text="${ifDefined(args.text)}"
-                        .options=${args.options || []}
-                >
-                </l-c-select>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <l-select-isolated
@@ -142,24 +118,7 @@ const SizeComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${sizes.map(({size, label}, index) => html`
-                        <div>
-                            <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-c-select
-                                    id="select-original-${index}"
-                                    name="original-size-group"
-                                    size=${ifDefined(size)}
-                                    value="apple"
-                                    .options=${options}
-                            >
-                            </l-c-select>
-                        </div>
-                    `)}
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -194,23 +153,7 @@ const StateComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-c-select value="normal" .options=${options}></l-c-select>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-c-select value="normal" .options=${options} disabled></l-c-select>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-c-select value="" .options=${options} required></l-c-select>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -244,23 +187,7 @@ const DefaultTypeComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">No Default:</label>
-                        <l-c-select .options=${options}></l-c-select>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Select Type:</label>
-                        <l-c-select .options=${options} default-type="select" placeholder="Choose a color"></l-c-select>
-                    </div>
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">All Type:</label>
-                        <l-c-select .options=${options} default-type="all" placeholder="All colors"></l-c-select>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -294,15 +221,7 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-c-select label="Category" .options=${options} value="option1"></l-c-select>
-                    <l-c-select label="Type" label-align="left" .options=${options} value="option2"></l-c-select>
-                    <l-c-select label="Priority" feedback="Priority is required" feedback-type="error" .options=${options}></l-c-select>
-                    <l-c-select label="Status" feedback="Valid selection" feedback-type="success" .options=${options} value="option3"></l-c-select>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -329,32 +248,7 @@ const ValidationComparisonTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem;">
-            <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div>
-                        <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
-                        <l-c-select
-                                id="select-required-original"
-                                .options=${options}
-                                value=""
-                                required
-                        >
-                        </l-c-select>
-                        <p style="margin-top: 8px; font-size: 12px; color: #666;">
-                            Leave empty and click outside to see validation
-                        </p>
-                    </div>
-                    <div>
-                        <button type="button" onclick="
-                            const select = document.querySelector('#select-required-original');
-                            select.checkValidity();
-                        " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Required Original
-                        </button>
-                    </div>
-                </div>
-            </div>
+            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -398,100 +292,7 @@ const FunctionTestingTemplate = (args) => {
     
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
-            <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Select (SharedStyles.js)</h3>
-                <l-c-select
-                        id="test-select-original"
-                        name="test-select"
-                        label="Test Select"
-                        value="banana"
-                        .options=${testOptions}
-                >
-                </l-c-select>
-                
-                <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
-                    <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const result = select.getValue();
-                            document.querySelector('#original-getValue-result').textContent = result || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getValue()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const newValue = prompt('Enter new value (apple, banana, cherry, date):', 'cherry');
-                            if (newValue !== null) {
-                                select.setValue(newValue);
-                                document.querySelector('#original-setValue-result').textContent = 'Set to: ' + newValue;
-                            }
-                        " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            setValue()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const result = select.getText();
-                            document.querySelector('#original-getText-result').textContent = result || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getText()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const result = select.getSelectedIndex();
-                            document.querySelector('#original-getSelectedIndex-result').textContent = result;
-                        " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
-                            getSelectedIndex()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const result = select.getSelectedOption();
-                            document.querySelector('#original-getSelectedOption-result').textContent = result ? JSON.stringify(result) : 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getSelectedOption()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const result = select.getOptions();
-                            document.querySelector('#original-getOptions-result').textContent = result ? result.length + ' options' : 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            getOptions()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            const result = select.isValid();
-                            document.querySelector('#original-isValid-result').textContent = result ? 'true' : 'false';
-                        " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            isValid()
-                        </button>
-                        
-                        <button onclick="
-                            const select = document.querySelector('#test-select-original');
-                            select.validate();
-                            document.querySelector('#original-validate-result').textContent = 'Validation executed';
-                        " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            validate()
-                        </button>
-                    </div>
-                    
-                    <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="original-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="original-setValue-result">-</span></div>
-                        <div><strong>getText():</strong> <span id="original-getText-result">-</span></div>
-                        <div><strong>getSelectedIndex():</strong> <span id="original-getSelectedIndex-result">-</span></div>
-                        <div><strong>getSelectedOption():</strong> <span id="original-getSelectedOption-result">-</span></div>
-                        <div><strong>getOptions():</strong> <span id="original-getOptions-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="original-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="original-validate-result">-</span></div>
-                    </div>
-                </div>
-            </div>
+            
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
