@@ -68,36 +68,6 @@ const ComparisonTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Original Textarea (SharedStyles.js)</h3>
-                <l-c-textarea
-                        size=${ifDefined(args.size)}
-                        label=${ifDefined(args.label)}
-                        label-align=${ifDefined(args['label-align'])}
-                        label-width=${ifDefined(args['label-width'])}
-                        label-text-align=${ifDefined(args['label-text-align'])}
-                        valid-length-type=${ifDefined(args['valid-length-type'])}
-                        feedback=${ifDefined(args.feedback)}
-                        feedback-type=${ifDefined(args['feedback-type'])}
-                        feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
-                        component-style=${ifDefined(args['component-style'])}
-                        id=${ifDefined(args.id)}
-                        name=${ifDefined(args.name)}
-                        width=${ifDefined(args.width)}
-                        maxlength=${ifDefined(args.maxlength)}
-                        minlength=${ifDefined(args.minlength)}
-                        rows=${ifDefined(args.rows)}
-                        cols=${ifDefined(args.cols)}
-                        wrap=${ifDefined(args.wrap)}
-                        ?required=${args.required}
-                        ?disabled=${args.disabled}
-                        ?readonly=${args.readonly}
-                        placeholder="${ifDefined(args.placeholder)}"
-                        value="${ifDefined(args.value)}"
-                        autocomplete="${ifDefined(args.autocomplete)}"
-                >
-                </l-c-textarea>
-            </div>
-            <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <l-textarea-isolated
                         size=${ifDefined(args.size)}
