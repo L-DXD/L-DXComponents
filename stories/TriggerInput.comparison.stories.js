@@ -1,4 +1,3 @@
-import '/src/components/input/TriggerInput.js'
 import '/src/components/input/TriggerInput_Isolated.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";

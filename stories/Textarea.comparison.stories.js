@@ -1,4 +1,3 @@
-import '/src/components/input/Textarea.js'
 import '/src/components/input/Textarea_Isolated.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";

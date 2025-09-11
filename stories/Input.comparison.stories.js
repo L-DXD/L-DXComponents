@@ -1,6 +1,4 @@
-import '/src/components/input/Input.js'
 import '/src/components/input/Input_Isolated.js'
-import '/src/components/input/Input_Simple.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";

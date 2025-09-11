@@ -1,8 +1,8 @@
-import '/src/components/button/Button.js'
+
 import '/src/components/button/Button_Isolated.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
-import {getComponentArgs} from "../commons/CommonArgs.js";
+import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
     title: 'Components/Button Comparison',

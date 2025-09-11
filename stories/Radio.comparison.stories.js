@@ -1,5 +1,5 @@
 import '/src/components/input/Radio.js'
-import '/src/components/input/Radio_Isolated.js'
+
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
@@ -41,7 +41,7 @@ const ComparisonTemplate = (args) => {
            
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Radio (RadioCheckboxStyles.js)</h3>
-                <l-radio-isolated
+                <l-radio
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -54,7 +54,7 @@ const ComparisonTemplate = (args) => {
                         ?readonly=${args.readonly}
                         value="${ifDefined(args.value)}"
                 >
-                </l-radio-isolated>
+                </l-radio>
             </div>
         </div>
     `
@@ -87,7 +87,7 @@ const SizeComparisonTemplate = (args) => {
                     ${sizes.map(({size, label}, index) => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-radio-isolated
+                            <l-radio
                                     id="radio-isolated-${index}"
                                     name="isolated-size-group"
                                     size=${ifDefined(size)}
@@ -95,7 +95,7 @@ const SizeComparisonTemplate = (args) => {
                                     value="${label.toLowerCase()}"
                                     ?checked=${index === 0}
                             >
-                            </l-radio-isolated>
+                            </l-radio>
                         </div>
                     `)}
                 </div>
@@ -116,19 +116,19 @@ const StateComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-radio-isolated id="radio-isolated-normal" name="isolated-state" label="Normal radio" value="normal"></l-radio-isolated>
+                        <l-radio id="radio-isolated-normal" name="isolated-state" label="Normal radio" value="normal"></l-radio>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Checked:</label>
-                        <l-radio-isolated id="radio-isolated-checked" name="isolated-state" label="Checked radio" value="checked" checked></l-radio-isolated>
+                        <l-radio id="radio-isolated-checked" name="isolated-state" label="Checked radio" value="checked" checked></l-radio>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-radio-isolated id="radio-isolated-disabled" name="isolated-disabled-state" label="Disabled radio" value="disabled" disabled></l-radio-isolated>
+                        <l-radio id="radio-isolated-disabled" name="isolated-disabled-state" label="Disabled radio" value="disabled" disabled></l-radio>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled & Checked:</label>
-                        <l-radio-isolated id="radio-isolated-disabled-checked" name="isolated-disabled-state" label="Disabled & Checked" value="disabled-checked" disabled checked></l-radio-isolated>
+                        <l-radio id="radio-isolated-disabled-checked" name="isolated-disabled-state" label="Disabled & Checked" value="disabled-checked" disabled checked></l-radio>
                     </div>
                 </div>
             </div>
@@ -156,14 +156,14 @@ const GroupComparisonTemplate = (args) => {
                     <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Select one option:</p>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
                         ${options.map((option, index) => html`
-                            <l-radio-isolated
+                            <l-radio
                                     id="radio-isolated-${option.id}"
                                     name="isolated-group"
                                     label="${option.label}"
                                     value="${option.value}"
                                     ?checked=${index === 1}
                             >
-                            </l-radio-isolated>
+                            </l-radio>
                         `)}
                     </div>
                 </div>
@@ -184,10 +184,10 @@ const InlineComparisonTemplate = (args) => {
                 <div>
                     <p style="margin-bottom: 12px; font-weight: bold; color: #666;">Inline radios:</p>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <l-radio-isolated id="radio-isolated-inline-1" name="isolated-inline" label="Radio 1" value="1"></l-radio-isolated>
-                        <l-radio-isolated id="radio-isolated-inline-2" name="isolated-inline" label="Radio 2" value="2" checked></l-radio-isolated>
-                        <l-radio-isolated id="radio-isolated-inline-3" name="isolated-inline" label="Radio 3" value="3"></l-radio-isolated>
-                        <l-radio-isolated id="radio-isolated-inline-4" name="isolated-inline-disabled" label="Radio 4" value="4" disabled></l-radio-isolated>
+                        <l-radio id="radio-isolated-inline-1" name="isolated-inline" label="Radio 1" value="1"></l-radio>
+                        <l-radio id="radio-isolated-inline-2" name="isolated-inline" label="Radio 2" value="2" checked></l-radio>
+                        <l-radio id="radio-isolated-inline-3" name="isolated-inline" label="Radio 3" value="3"></l-radio>
+                        <l-radio id="radio-isolated-inline-4" name="isolated-inline-disabled" label="Radio 4" value="4" disabled></l-radio>
                     </div>
                 </div>
             </div>
@@ -208,30 +208,30 @@ const RequiredValidationTemplate = (args) => {
                     <div>
                         <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Required radio group (none selected initially):</p>
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <l-radio-isolated
+                            <l-radio
                                     id="radio-required-isolated-1"
                                     name="isolated-required"
                                     label="Option A (Required)"
                                     value="a"
                                     required
                             >
-                            </l-radio-isolated>
-                            <l-radio-isolated
+                            </l-radio>
+                            <l-radio
                                     id="radio-required-isolated-2"
                                     name="isolated-required"
                                     label="Option B (Required)"
                                     value="b"
                                     required
                             >
-                            </l-radio-isolated>
-                            <l-radio-isolated
+                            </l-radio>
+                            <l-radio
                                     id="radio-required-isolated-3"
                                     name="isolated-required"
                                     label="Option C (Required)"
                                     value="c"
                                     required
                             >
-                            </l-radio-isolated>
+                            </l-radio>
                         </div>
                         <p style="margin-top: 8px; font-size: 12px; color: #666;">
                             Click "Validate" to see required validation, then select a radio to see valid state
@@ -245,7 +245,7 @@ const RequiredValidationTemplate = (args) => {
                             Validate Isolated
                         </button>
                         <button type="button" onclick="
-                            const radios = document.querySelectorAll('l-radio-isolated[name=&quot;isolated-required&quot;]');
+                            const radios = document.querySelectorAll('l-radio[name=&quot;isolated-required&quot;]');
                             radios.forEach(r => {
                                 const input = r.querySelector('input');
                                 if (input) input.checked = false;
@@ -271,28 +271,28 @@ const FunctionTestingTemplate = (args) => {
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Radio (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
-                    <l-radio-isolated
+                    <l-radio
                             id="test-radio-isolated-1"
                             name="test-radio-isolated"
                             label="Option 1"
                             value="option1"
                     >
-                    </l-radio-isolated>
-                    <l-radio-isolated
+                    </l-radio>
+                    <l-radio
                             id="test-radio-isolated-2"
                             name="test-radio-isolated"
                             label="Option 2"
                             value="option2"
                             checked
                     >
-                    </l-radio-isolated>
-                    <l-radio-isolated
+                    </l-radio>
+                    <l-radio
                             id="test-radio-isolated-3"
                             name="test-radio-isolated"
                             label="Option 3"
                             value="option3"
                     >
-                    </l-radio-isolated>
+                    </l-radio>
                 </div>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
@@ -361,7 +361,7 @@ const FunctionTestingTemplate = (args) => {
                         </button>
                         
                         <button onclick="
-                            const radios = document.querySelectorAll('l-radio-isolated[name=&quot;test-radio-isolated&quot;]');
+                            const radios = document.querySelectorAll('l-radio[name=&quot;test-radio-isolated&quot;]');
                             let selectedValue = null;
                             radios.forEach(r => {
                                 const input = r.querySelector('input');

@@ -1,4 +1,3 @@
-import '/src/components/select/Select.js'
 import '/src/components/select/Select_Isolated.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";

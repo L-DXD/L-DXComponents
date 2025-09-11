@@ -1,4 +1,3 @@
-import '/src/components/input/Checkbox.js'
 import '/src/components/input/Checkbox_Isolated.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
