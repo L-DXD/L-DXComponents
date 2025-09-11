@@ -5,9 +5,10 @@ import {LitParents} from "../container/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 import '../../../assets/css/Radio.css';
+import {LitParentsIsolated} from "@/components/container/LitParents_Isolated.js";
 
 @customElement('l-radio')
-class LRadio extends LitParents {
+class LRadio extends LitParentsIsolated {
 
     constructor() {
         super();

@@ -58,7 +58,7 @@ const ComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
-                <l-button-isolated
+                <l-button
                         theme=${ifDefined(args.theme)}
                         size=${ifDefined(args.size)}
                         id=${ifDefined(args.id ? args.id + '-isolated' : undefined)}
@@ -71,7 +71,7 @@ const ComparisonTemplate = (args) => {
                         ?disabled=${args.disabled}
                         ?readonly=${args.readonly}
                 >
-                </l-button-isolated>
+                </l-button>
             </div>
         </div>
     `
@@ -99,12 +99,12 @@ const AllThemesComparisonTemplate = (args) => {
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                     ${themes.map(theme => html`
-                        <l-button-isolated
+                        <l-button
                                 theme=${theme}
                                 label=${theme}
                                 ?outline=${args.outline}
                         >
-                        </l-button-isolated>
+                        </l-button>
                     `)}
                 </div>
             </div>
@@ -136,12 +136,12 @@ const SizeComparisonTemplate = (args) => {
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
                     ${sizes.map(({size, label}) => html`
-                        <l-button-isolated
+                        <l-button
                                 theme="primary"
                                 size=${ifDefined(size)}
                                 label="${label} Button"
                         >
-                        </l-button-isolated>
+                        </l-button>
                     `)}
                 </div>
             </div>
@@ -159,9 +159,9 @@ const StateComparisonTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
-                    <l-button-isolated theme="primary" label="Normal Button"></l-button-isolated>
-                    <l-button-isolated theme="primary" label="Disabled Button" disabled></l-button-isolated>
-                    <l-button-isolated theme="primary" label="ReadOnly Button" readonly></l-button-isolated>
+                    <l-button theme="primary" label="Normal Button"></l-button>
+                    <l-button theme="primary" label="Disabled Button" disabled></l-button>
+                    <l-button theme="primary" label="ReadOnly Button" readonly></l-button>
                 </div>
             </div>
         </div>
@@ -178,8 +178,8 @@ const IconComparisonTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
-                    <l-button-isolated theme="primary" label="No Icon"></l-button-isolated>
-                    <l-button-isolated theme="primary" label="With Icon" icon-path="/src/search-svgrepo-com.svg"></l-button-isolated>
+                    <l-button theme="primary" label="No Icon"></l-button>
+                    <l-button theme="primary" label="With Icon" icon-path="/src/search-svgrepo-com.svg"></l-button>
                 </div>
             </div>
         </div>
@@ -195,14 +195,14 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
-                <l-button-isolated
+                <l-button
                         id="test-button-isolated"
                         name="test-button-isolated"
                         theme="primary"
                         label="Test Button"
                         value="isolated-value"
                 >
-                </l-button-isolated>
+                </l-button>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

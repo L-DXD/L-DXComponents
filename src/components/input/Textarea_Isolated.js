@@ -146,4 +146,4 @@ class LTextareaIsolated extends LabelAndFeedContainerIsolated {
     }
 }
 
-customElements.define('l-textarea-isolated', LTextareaIsolated);
+customElements.define('l-textarea', LTextareaIsolated);

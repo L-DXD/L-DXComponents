@@ -150,4 +150,4 @@ class TriggerInputIsolated extends LabelAndFeedContainerIsolated {
     }
 }
 
-customElements.define('l-triggerinput-isolated', TriggerInputIsolated);
+customElements.define('l-triggerinput', TriggerInputIsolated);

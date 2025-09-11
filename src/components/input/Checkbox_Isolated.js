@@ -53,7 +53,7 @@ class LCheckboxIsolated extends LitParentsIsolated {
             return [];
         }
 
-        return Array.from(document.querySelectorAll(`l-checkbox-isolated[name="${name}"]`))
+        return Array.from(document.querySelectorAll(`l-checkbox[name="${name}"]`))
             .map(lCheckbox => {
                 const checkbox = lCheckbox.shadowRoot
                     ? lCheckbox.shadowRoot.querySelector('input[type="checkbox"]')
@@ -147,4 +147,4 @@ class LCheckboxIsolated extends LitParentsIsolated {
     }
 }
 
-customElements.define('l-checkbox-isolated', LCheckboxIsolated);
+customElements.define('l-checkbox', LCheckboxIsolated);

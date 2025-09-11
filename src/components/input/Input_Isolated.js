@@ -188,4 +188,4 @@ class LInputIsolated extends LabelAndFeedContainerIsolated {
     }
 }
 
-customElements.define('l-input-isolated', LInputIsolated);
+customElements.define('l-input', LInputIsolated);

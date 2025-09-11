@@ -6,7 +6,7 @@ import {getComponentArgs} from "./commons/CommonArgs.js";
 export default {
     title: 'Components/RangeMonthpicker Isolated Comparison',
     tags: ['autodocs'],
-    component: 'l-c-range-monthpicker-isolated',
+    component: 'l-c-range-monthpicker',
     argTypes: {
         id: {
             control: {type: 'text'},
@@ -168,7 +168,7 @@ const ComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Range Monthpicker (DatepickerStyles.js)</h3>
-                <l-c-range-monthpicker-isolated
+                <l-c-range-monthpicker
                         id=${ifDefined(args.id + '-isolated')}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -187,7 +187,7 @@ const ComparisonTemplate = (args) => {
                         ?showAlways=${args.showAlways}
                         ?invisible=${args.invisible}
                 >
-                </l-c-range-monthpicker-isolated>
+                </l-c-range-monthpicker>
             </div>
         </div>
     `
@@ -232,7 +232,7 @@ const FormatComparisonTemplate = (args) => {
                         <div>
                             <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${label}:</h4>
                             <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                                <l-c-range-monthpicker-isolated
+                                <l-c-range-monthpicker
                                         id="test-range-monthpicker-isolated-format-${id}"
                                         label="Month Range"
                                         label-align="top"
@@ -240,7 +240,7 @@ const FormatComparisonTemplate = (args) => {
                                         width="100%"
                                         format="${format}"
                                 >
-                                </l-c-range-monthpicker-isolated>
+                                </l-c-range-monthpicker>
                             </div>
                         </div>
                     `)}
@@ -263,7 +263,7 @@ const InlineComparisonTemplate = (args) => {
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Popup Month Range Selector:</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                            <l-c-range-monthpicker-isolated
+                            <l-c-range-monthpicker
                                     id="test-range-monthpicker-isolated-popup"
                                     label="Month Range"
                                     label-align="top"
@@ -272,13 +272,13 @@ const InlineComparisonTemplate = (args) => {
                                     format="Y-m"
                                     showAlways="false"
                             >
-                            </l-c-range-monthpicker-isolated>
+                            </l-c-range-monthpicker>
                         </div>
                     </div>
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Inline Month Range Selector:</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                            <l-c-range-monthpicker-isolated
+                            <l-c-range-monthpicker
                                     id="test-range-monthpicker-isolated-inline"
                                     label="Month Range"
                                     label-align="top"
@@ -287,7 +287,7 @@ const InlineComparisonTemplate = (args) => {
                                     format="Y-m"
                                     showAlways="true"
                             >
-                            </l-c-range-monthpicker-isolated>
+                            </l-c-range-monthpicker>
                         </div>
                     </div>
                 </div>
@@ -306,7 +306,7 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Range Monthpicker (DatepickerStyles.js)</h3>
-                <l-c-range-monthpicker-isolated
+                <l-c-range-monthpicker
                         id="test-range-monthpicker-function-isolated"
                         label="Test Range Monthpicker"
                         label-align="top"
@@ -315,7 +315,7 @@ const FunctionTestingTemplate = (args) => {
                         format="Y-m"
                         required="false"
                 >
-                </l-c-range-monthpicker-isolated>
+                </l-c-range-monthpicker>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

@@ -49,7 +49,7 @@ const OUTLINE_THEME_CLASSES = {
     'theme-color': 'btn-outline-theme-color',
 };
 
-@customElement('l-button-isolated')
+@customElement('l-button')
 class LButtonIsolated extends LitParentsIsolated {
 
     constructor() {

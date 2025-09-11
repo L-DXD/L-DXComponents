@@ -68,7 +68,7 @@ const ComparisonTemplate = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
-                <l-textarea-isolated
+                <l-textarea
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -94,7 +94,7 @@ const ComparisonTemplate = (args) => {
                         value="${ifDefined(args.value)}"
                         autocomplete="${ifDefined(args.autocomplete)}"
                 >
-                </l-textarea-isolated>
+                </l-textarea>
             </div>
         </div>
     `
@@ -129,7 +129,7 @@ const SizeComparisonTemplate = (args) => {
                     ${sizes.map(({size, label}, index) => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-textarea-isolated
+                            <l-textarea
                                     id="textarea-isolated-${index}"
                                     name="isolated-size-group"
                                     size=${ifDefined(size)}
@@ -137,7 +137,7 @@ const SizeComparisonTemplate = (args) => {
                                     value="${label} textarea content"
                                     
                             >
-                            </l-textarea-isolated>
+                            </l-textarea>
                         </div>
                     `)}
                 </div>
@@ -157,19 +157,19 @@ const StateComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-textarea-isolated placeholder="Normal textarea" value="Normal content" ></l-textarea-isolated>
+                        <l-textarea placeholder="Normal textarea" value="Normal content" ></l-textarea>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-textarea-isolated placeholder="Disabled textarea" value="Disabled content" disabled ></l-textarea-isolated>
+                        <l-textarea placeholder="Disabled textarea" value="Disabled content" disabled ></l-textarea>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">ReadOnly:</label>
-                        <l-textarea-isolated value="ReadOnly content" readonly ></l-textarea-isolated>
+                        <l-textarea value="ReadOnly content" readonly ></l-textarea>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-textarea-isolated placeholder="Required textarea" required ></l-textarea-isolated>
+                        <l-textarea placeholder="Required textarea" required ></l-textarea>
                     </div>
                 </div>
             </div>
@@ -187,10 +187,10 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-textarea-isolated label="Message" placeholder="Enter your message" rows="4"></l-textarea-isolated>
-                    <l-textarea-isolated label="Description" label-align="left" placeholder="Enter description" rows="4"></l-textarea-isolated>
-                    <l-textarea-isolated label="Comment" feedback="Comment is required" feedback-type="error" rows="4"></l-textarea-isolated>
-                    <l-textarea-isolated label="Review" feedback="Great feedback!" feedback-type="success" value="This is a good review..." rows="4"></l-textarea-isolated>
+                    <l-textarea label="Message" placeholder="Enter your message" rows="4"></l-textarea>
+                    <l-textarea label="Description" label-align="left" placeholder="Enter description" rows="4"></l-textarea>
+                    <l-textarea label="Comment" feedback="Comment is required" feedback-type="error" rows="4"></l-textarea>
+                    <l-textarea label="Review" feedback="Great feedback!" feedback-type="success" value="This is a good review..." rows="4"></l-textarea>
                 </div>
             </div>
         </div>
@@ -211,12 +211,12 @@ const RowsComparisonTemplate = (args) => {
                     ${rowCounts.map(rows => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${rows} rows:</label>
-                            <l-textarea-isolated
+                            <l-textarea
                                     placeholder="${rows} rows textarea"
                                     value="Content for ${rows} rows textarea"
                                     rows="${rows}"
                             >
-                            </l-textarea-isolated>
+                            </l-textarea>
                         </div>
                     `)}
                 </div>
@@ -237,26 +237,26 @@ const ValidationComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
-                        <l-textarea-isolated
+                        <l-textarea
                                 id="textarea-required-isolated"
                                 placeholder="Required textarea"
                                 required
                                 
                         >
-                        </l-textarea-isolated>
+                        </l-textarea>
                         <p style="margin-top: 8px; font-size: 12px; color: #666;">
                             Leave empty and click outside to see validation
                         </p>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Max/Min Length:</label>
-                        <l-textarea-isolated
+                        <l-textarea
                                 maxlength="50"
                                 minlength="10"
                                 placeholder="10-50 characters"
                                 
                         >
-                        </l-textarea-isolated>
+                        </l-textarea>
                     </div>
                     <div>
                         <button type="button" onclick="
@@ -281,7 +281,7 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
-                <l-textarea-isolated
+                <l-textarea
                         id="test-textarea-isolated"
                         name="test-textarea-isolated"
                         label="Test Textarea"
@@ -289,7 +289,7 @@ const FunctionTestingTemplate = (args) => {
                         value="Sample textarea content for testing"
                         rows="3"
                 >
-                </l-textarea-isolated>
+                </l-textarea>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

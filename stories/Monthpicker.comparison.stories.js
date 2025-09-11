@@ -1,5 +1,4 @@
 import '/src/components/input/Monthpicker.js'
-// import '/src/components/input/Monthpicker_Isolated.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";

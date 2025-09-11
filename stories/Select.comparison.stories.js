@@ -57,7 +57,7 @@ const ComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
-                <l-select-isolated
+                <l-select
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -78,7 +78,7 @@ const ComparisonTemplate = (args) => {
                         text="${ifDefined(args.text)}"
                         .options=${args.options || []}
                 >
-                </l-select-isolated>
+                </l-select>
             </div>
         </div>
     `
@@ -124,14 +124,14 @@ const SizeComparisonTemplate = (args) => {
                     ${sizes.map(({size, label}, index) => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-select-isolated
+                            <l-select
                                     id="select-isolated-${index}"
                                     name="isolated-size-group"
                                     size=${ifDefined(size)}
                                     value="apple"
                                     .options=${options}
                             >
-                            </l-select-isolated>
+                            </l-select>
                         </div>
                     `)}
                 </div>
@@ -158,15 +158,15 @@ const StateComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-select-isolated value="normal" .options=${options}></l-select-isolated>
+                        <l-select value="normal" .options=${options}></l-select>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-select-isolated value="normal" .options=${options} disabled></l-select-isolated>
+                        <l-select value="normal" .options=${options} disabled></l-select>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-select-isolated value="" .options=${options} required></l-select-isolated>
+                        <l-select value="" .options=${options} required></l-select>
                     </div>
                 </div>
             </div>
@@ -192,15 +192,15 @@ const DefaultTypeComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">No Default:</label>
-                        <l-select-isolated .options=${options}></l-select-isolated>
+                        <l-select .options=${options}></l-select>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Select Type:</label>
-                        <l-select-isolated .options=${options} default-type="select" placeholder="Choose a color"></l-select-isolated>
+                        <l-select .options=${options} default-type="select" placeholder="Choose a color"></l-select>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">All Type:</label>
-                        <l-select-isolated .options=${options} default-type="all" placeholder="All colors"></l-select-isolated>
+                        <l-select .options=${options} default-type="all" placeholder="All colors"></l-select>
                     </div>
                 </div>
             </div>
@@ -224,10 +224,10 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-select-isolated label="Category" .options=${options} value="option1"></l-select-isolated>
-                    <l-select-isolated label="Type" label-align="left" .options=${options} value="option2"></l-select-isolated>
-                    <l-select-isolated label="Priority" feedback="Priority is required" feedback-type="error" .options=${options}></l-select-isolated>
-                    <l-select-isolated label="Status" feedback="Valid selection" feedback-type="success" .options=${options} value="option3"></l-select-isolated>
+                    <l-select label="Category" .options=${options} value="option1"></l-select>
+                    <l-select label="Type" label-align="left" .options=${options} value="option2"></l-select>
+                    <l-select label="Priority" feedback="Priority is required" feedback-type="error" .options=${options}></l-select>
+                    <l-select label="Status" feedback="Valid selection" feedback-type="success" .options=${options} value="option3"></l-select>
                 </div>
             </div>
         </div>
@@ -253,13 +253,13 @@ const ValidationComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
-                        <l-select-isolated
+                        <l-select
                                 id="select-required-isolated"
                                 .options=${options}
                                 value=""
                                 required
                         >
-                        </l-select-isolated>
+                        </l-select>
                         <p style="margin-top: 8px; font-size: 12px; color: #666;">
                             Leave empty and click outside to see validation
                         </p>
@@ -295,14 +295,14 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
-                <l-select-isolated
+                <l-select
                         id="test-select-isolated"
                         name="test-select-isolated"
                         label="Test Select"
                         value="banana"
                         .options=${testOptions}
                 >
-                </l-select-isolated>
+                </l-select>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

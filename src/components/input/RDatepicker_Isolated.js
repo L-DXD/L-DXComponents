@@ -11,6 +11,6 @@ class LRangedatepickerIsolated extends ListRangeDatepickerParentsIsolated {
 
 }
 
-customElements.define('l-c-range-datepicker-isolated', LRangedatepickerIsolated);
+customElements.define('l-c-range-datepicker', LRangedatepickerIsolated);
 
 export {LRangedatepickerIsolated};

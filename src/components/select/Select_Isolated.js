@@ -202,4 +202,4 @@ class LSelectIsolated extends LabelAndFeedContainerIsolated {
     }
 }
 
-customElements.define('l-select-isolated', LSelectIsolated);
+customElements.define('l-select', LSelectIsolated);

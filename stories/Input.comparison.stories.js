@@ -87,7 +87,7 @@ const ComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
-                <l-input-isolated
+                <l-input
                         type=${ifDefined(args.type)}
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
@@ -113,7 +113,7 @@ const ComparisonTemplate = (args) => {
                         value="${ifDefined(args.value)}"
                         step="${ifDefined(args.step)}"
                 >
-                </l-input-isolated>
+                </l-input>
             </div>
         </div>
     `
@@ -145,12 +145,12 @@ const TypeComparisonTemplate = (args) => {
                     ${types.map(type => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${type}:</label>
-                            <l-input-isolated
+                            <l-input
                                     type=${type}
                                     placeholder="${type} input"
                                     value=${type === 'password' ? 'password123' : type === 'number' ? '123' : type === 'date' ? '2024-01-01' : `sample ${type}`}
                             >
-                            </l-input-isolated>
+                            </l-input>
                         </div>
                     `)}
                 </div>
@@ -178,13 +178,13 @@ const SizeComparisonTemplate = (args) => {
                     ${sizes.map(({size, label}) => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-input-isolated
+                            <l-input
                                     type="text"
                                     size=${ifDefined(size)}
                                     placeholder="${label} input"
                                     value="${label} text"
                             >
-                            </l-input-isolated>
+                            </l-input>
                         </div>
                     `)}
                 </div>
@@ -205,19 +205,19 @@ const StateComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-input-isolated type="text" placeholder="Normal input" value="Normal text"></l-input-isolated>
+                        <l-input type="text" placeholder="Normal input" value="Normal text"></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-input-isolated type="text" placeholder="Disabled input" value="Disabled text" disabled></l-input-isolated>
+                        <l-input type="text" placeholder="Disabled input" value="Disabled text" disabled></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">ReadOnly:</label>
-                        <l-input-isolated type="text" value="ReadOnly text" readonly></l-input-isolated>
+                        <l-input type="text" value="ReadOnly text" readonly></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-input-isolated type="text" placeholder="Required input" required></l-input-isolated>
+                        <l-input type="text" placeholder="Required input" required></l-input>
                     </div>
                 </div>
             </div>
@@ -235,10 +235,10 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-input-isolated type="text" label="Username" placeholder="Enter username"></l-input-isolated>
-                    <l-input-isolated type="text" label="Email" label-align="left" placeholder="Enter email"></l-input-isolated>
-                    <l-input-isolated type="text" label="Password" feedback="Password is required" feedback-type="error"></l-input-isolated>
-                    <l-input-isolated type="text" label="Phone" feedback="Valid phone number" feedback-type="success" value="010-1234-5678"></l-input-isolated>
+                    <l-input type="text" label="Username" placeholder="Enter username"></l-input>
+                    <l-input type="text" label="Email" label-align="left" placeholder="Enter email"></l-input>
+                    <l-input type="text" label="Password" feedback="Password is required" feedback-type="error"></l-input>
+                    <l-input type="text" label="Phone" feedback="Valid phone number" feedback-type="success" value="010-1234-5678"></l-input>
                 </div>
             </div>
         </div>
@@ -257,15 +257,15 @@ const SearchFeaturesComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search with Icon:</label>
-                        <l-input-isolated type="search" placeholder="Search with icon..."></l-input-isolated>
+                        <l-input type="search" placeholder="Search with icon..."></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search Disabled:</label>
-                        <l-input-isolated type="search" placeholder="Search disabled..." disabled></l-input-isolated>
+                        <l-input type="search" placeholder="Search disabled..." disabled></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search ReadOnly:</label>
-                        <l-input-isolated type="search" value="readonly search" readonly></l-input-isolated>
+                        <l-input type="search" value="readonly search" readonly></l-input>
                     </div>
                 </div>
             </div>
@@ -285,15 +285,15 @@ const ValidationComparisonTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Validation (Phone):</label>
-                        <l-input-isolated type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="000-0000-0000"></l-input-isolated>
+                        <l-input type="text" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="000-0000-0000"></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Block (Korean/English/Numbers):</label>
-                        <l-input-isolated type="text" pattern="^[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]+$" pattern-block="true" placeholder="한글/영문/숫자만 입력"></l-input-isolated>
+                        <l-input type="text" pattern="^[가-힣ㄱ-ㅎㅏ-ㅣA-Za-z0-9]+$" pattern-block="true" placeholder="한글/영문/숫자만 입력"></l-input>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Max/Min Length:</label>
-                        <l-input-isolated type="text" maxlength="10" minlength="3" placeholder="3-10 characters"></l-input-isolated>
+                        <l-input type="text" maxlength="10" minlength="3" placeholder="3-10 characters"></l-input>
                     </div>
                 </div>
             </div>
@@ -310,7 +310,7 @@ const TopLabelFeedbackComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
-                <l-input-isolated
+                <l-input
                         type="text"
                         id="input01-isolated"
                         name="name"
@@ -322,7 +322,7 @@ const TopLabelFeedbackComparisonTemplate = (args) => {
                         feedback="feedback"
                         feedback-type="normal"
                         feedback-visible-type="visible"
-                ></l-input-isolated>
+                ></l-input>
             </div>
         </div>
     `
@@ -337,7 +337,7 @@ const LeftLabelFeedbackComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
-                <l-input-isolated
+                <l-input
                         type="text"
                         id="input02-isolated"
                         name="name"
@@ -349,7 +349,7 @@ const LeftLabelFeedbackComparisonTemplate = (args) => {
                         feedback="feedback"
                         feedback-type="normal"
                         feedback-visible-type="visible"
-                ></l-input-isolated>
+                ></l-input>
             </div>
         </div>
     `
@@ -364,7 +364,7 @@ const RequiredValidityComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
-                <l-input-isolated
+                <l-input
                         type="text"
                         id="input03-isolated"
                         name="name"
@@ -377,7 +377,7 @@ const RequiredValidityComparisonTemplate = (args) => {
                         feedback-type="error"
                         feedback-visible-type="invalid"
                         required
-                ></l-input-isolated>
+                ></l-input>
             </div>
         </div>
     `
@@ -438,7 +438,7 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
-                <l-input-isolated
+                <l-input
                         id="test-input-isolated"
                         type="text"
                         name="test-input-isolated"
@@ -449,7 +449,7 @@ const FunctionTestingTemplate = (args) => {
                         maxlength="20"
                         minlength="3"
                 >
-                </l-input-isolated>
+                </l-input>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

@@ -6,7 +6,7 @@ import {getComponentArgs} from "./commons/CommonArgs.js";
 export default {
     title: 'Components/RangeDatepicker Isolated Comparison',
     tags: ['autodocs'],
-    component: 'l-c-range-datepicker-isolated',
+    component: 'l-c-range-datepicker',
     argTypes: {
         id: {
             control: {type: 'text'},
@@ -184,7 +184,7 @@ const ComparisonTemplate = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Range Datepicker (DatepickerStyles.js)</h3>
-                <l-c-range-datepicker-isolated
+                <l-c-range-datepicker
                         id=${ifDefined(args.id + '-isolated')}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -205,7 +205,7 @@ const ComparisonTemplate = (args) => {
                         disable-date-from=${ifDefined(args['disable-date-from'])}
                         disable-date-to=${ifDefined(args['disable-date-to'])}
                 >
-                </l-c-range-datepicker-isolated>
+                </l-c-range-datepicker>
             </div>
         </div>
     `
@@ -252,7 +252,7 @@ const FormatComparisonTemplate = (args) => {
                         <div>
                             <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${label}:</h4>
                             <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                                <l-c-range-datepicker-isolated
+                                <l-c-range-datepicker
                                         id="test-range-datepicker-isolated-format-${id}"
                                         label="Date Range"
                                         label-align="top"
@@ -260,7 +260,7 @@ const FormatComparisonTemplate = (args) => {
                                         width="100%"
                                         format="${format}"
                                 >
-                                </l-c-range-datepicker-isolated>
+                                </l-c-range-datepicker>
                             </div>
                         </div>
                     `)}
@@ -290,7 +290,7 @@ const SizeComparisonTemplate = (args) => {
                         <div>
                             <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${label}:</h4>
                             <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                                <l-c-range-datepicker-isolated
+                                <l-c-range-datepicker
                                         id="test-range-datepicker-isolated-size-${size}"
                                         label="Date Range"
                                         label-align="top"
@@ -298,7 +298,7 @@ const SizeComparisonTemplate = (args) => {
                                         width="100%"
                                         format="Y-m-d"
                                 >
-                                </l-c-range-datepicker-isolated>
+                                </l-c-range-datepicker>
                             </div>
                         </div>
                     `)}
@@ -321,7 +321,7 @@ const InlineComparisonTemplate = (args) => {
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Popup Calendar:</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                            <l-c-range-datepicker-isolated
+                            <l-c-range-datepicker
                                     id="test-range-datepicker-isolated-popup"
                                     label="Date Range"
                                     label-align="top"
@@ -330,13 +330,13 @@ const InlineComparisonTemplate = (args) => {
                                     format="Y-m-d"
                                     showAlways="false"
                             >
-                            </l-c-range-datepicker-isolated>
+                            </l-c-range-datepicker>
                         </div>
                     </div>
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Display Always (Inline Calendar):</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                            <l-c-range-datepicker-isolated
+                            <l-c-range-datepicker
                                     id="test-range-datepicker-isolated-inline"
                                     label="Date Range"
                                     label-align="top"
@@ -345,7 +345,7 @@ const InlineComparisonTemplate = (args) => {
                                     format="Y-m-d"
                                     showAlways="true"
                             >
-                            </l-c-range-datepicker-isolated>
+                            </l-c-range-datepicker>
                         </div>
                     </div>
                 </div>
@@ -364,7 +364,7 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Range Datepicker (DatepickerStyles.js)</h3>
-                <l-c-range-datepicker-isolated
+                <l-c-range-datepicker
                         id="test-range-datepicker-function-isolated"
                         label="Test Range Datepicker"
                         label-align="top"
@@ -373,7 +373,7 @@ const FunctionTestingTemplate = (args) => {
                         format="Y-m-d"
                         required="false"
                 >
-                </l-c-range-datepicker-isolated>
+                </l-c-range-datepicker>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
