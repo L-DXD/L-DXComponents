@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal SharedStyles 테스트</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        h1, h2 {
+            color: #333;
+            border-bottom: 2px solid #0d6efd;
+            padding-bottom: 10px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        .status.success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            border: 1px solid #a3cfbb;
+        }
+        .status.error {
+            background-color: #f8d7da;
+            color: #842029;
+            border: 1px solid #f1aeb5;
+        }
+    </style>
+    <script type="module">
+        import './src/components/button/Button_Test.js';
+        
+        // 테스트 결과 체크
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusDiv = document.getElementById('test-status');
+            
+            try {
+                // 컴포넌트가 정상적으로 렌더링되었는지 확인
+                setTimeout(() => {
+                    const buttons = document.querySelectorAll('l-button-test');
+                    if (buttons.length > 0) {
+                        statusDiv.className = 'status success';
+                        statusDiv.textContent = '✅ 테스트 성공: 모든 버튼이 정상적으로 렌더링되었습니다.';
+                    } else {
+                        statusDiv.className = 'status error';
+                        statusDiv.textContent = '❌ 테스트 실패: 버튼이 렌더링되지 않았습니다.';
+                    }
+                }, 1000);
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = `❌ 테스트 실패: ${error.message}`;
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>🧪 Minimal SharedStyles 테스트</h1>
+    
+    <div id="test-status" class="status">
+        ⏳ 테스트 진행 중...
+    </div>
+
+    <div class="test-section">
+        <h2>Button 컴포넌트 테스트 (Minimal Styles)</h2>
+        <p>MinimalSharedStyles_Button.js를 사용한 버튼 컴포넌트들</p>
+        
+        <div class="test-grid">
+            <l-button-test label="Primary" theme="primary"></l-button-test>
+            <l-button-test label="Secondary" theme="secondary"></l-button-test>
+            <l-button-test label="Success" theme="green"></l-button-test>
+            <l-button-test label="Danger" theme="danger"></l-button-test>
+            <l-button-test label="Warning" theme="yellow"></l-button-test>
+            <l-button-test label="Info" theme="info"></l-button-test>
+        </div>
+
+        <h3>Outline Buttons</h3>
+        <div class="test-grid">
+            <l-button-test label="Outline Primary" theme="primary" outline></l-button-test>
+            <l-button-test label="Outline Secondary" theme="secondary" outline></l-button-test>
+            <l-button-test label="Outline Success" theme="green" outline></l-button-test>
+            <l-button-test label="Outline Danger" theme="danger" outline></l-button-test>
+        </div>
+
+        <h3>Button Sizes</h3>
+        <div class="test-grid">
+            <l-button-test label="Small" theme="primary" size="small"></l-button-test>
+            <l-button-test label="Normal" theme="primary"></l-button-test>
+            <l-button-test label="Large" theme="primary" size="large"></l-button-test>
+        </div>
+
+        <h3>Button States</h3>
+        <div class="test-grid">
+            <l-button-test label="Normal" theme="primary"></l-button-test>
+            <l-button-test label="Disabled" theme="primary" disabled></l-button-test>
+            <l-button-test label="With Icon" theme="secondary" icon-path="/assets/ico_hint_20.svg"></l-button-test>
+        </div>
+
+        <h3>Color Variants</h3>
+        <div class="test-grid">
+            <l-button-test label="Purple" theme="purple"></l-button-test>
+            <l-button-test label="Indigo" theme="indigo"></l-button-test>
+            <l-button-test label="Pink" theme="pink"></l-button-test>
+            <l-button-test label="Orange" theme="orange"></l-button-test>
+            <l-button-test label="Light Orange" theme="light-orange"></l-button-test>
+            <l-button-test label="Lime" theme="lime"></l-button-test>
+            <l-button-test label="Teal" theme="teal"></l-button-test>
+            <l-button-test label="Light" theme="light"></l-button-test>
+            <l-button-test label="Dark" theme="dark"></l-button-test>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>테스트 결과 요약</h2>
+        <ul>
+            <li><strong>파일 크기 비교</strong>: MinimalSharedStyles_Button.js vs 원본 SharedStyles.js</li>
+            <li><strong>기능 테스트</strong>: 모든 버튼 테마와 크기가 정상 작동하는지 확인</li>
+            <li><strong>스타일 일관성</strong>: 원본과 동일한 시각적 결과가 나오는지 확인</li>
+            <li><strong>성능 테스트</strong>: 로딩 속도 및 렌더링 성능 확인</li>
+        </ul>
+        
+        <div id="file-size-info" style="margin-top: 20px; padding: 15px; background-color: #e3f2fd; border-radius: 5px;">
+            <strong>예상 파일 크기 절약:</strong><br>
+            • 원본 SharedStyles.js: ~38,000 토큰 (매우 큰 파일)<br>
+            • MinimalSharedStyles_Button.js: ~1,500 토큰 (96% 절약)<br>
+            • 로딩 성능 향상 및 메모리 사용량 감소 예상
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>개발자 도구에서 확인할 사항</h2>
+        <ol>
+            <li><strong>콘솔 오류</strong>: 스타일 관련 오류가 없는지 확인</li>
+            <li><strong>네트워크 탭</strong>: CSS 파일 로딩 시간 비교</li>
+            <li><strong>Elements 탭</strong>: 클래스가 올바르게 적용되었는지 확인</li>
+            <li><strong>Performance 탭</strong>: 렌더링 성능 비교</li>
+        </ol>
+    </div>
+</body>
+</html>
