@@ -1,10 +1,9 @@
 import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
-import '../../styles/common.css';
-import {LitParents} from "../container/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
-import {MinimalSharedStyles_Button} from '../../styles/MinimalSharedStyles_Button.js';
+import {LitParentsIsolated} from '../container/LitParents.js';
+import {ButtonStyles} from '../../styles/modules/ButtonStyles.js';
 
 const THEME_CLASSES = {
     'primary': 'btn-primary',
@@ -23,6 +22,9 @@ const THEME_CLASSES = {
     'lime': 'btn-lime',
     'teal': 'btn-teal',
     'green': 'btn-green',
+    'success': 'btn-success',
+    'theme': 'btn-theme',
+    'theme-color': 'btn-theme-color',
 };
 
 const OUTLINE_THEME_CLASSES = {
@@ -42,10 +44,13 @@ const OUTLINE_THEME_CLASSES = {
     'lime': 'btn-outline-lime',
     'teal': 'btn-outline-teal',
     'green': 'btn-outline-green',
+    'success': 'btn-outline-success',
+    'theme': 'btn-outline-theme',
+    'theme-color': 'btn-outline-theme-color',
 };
 
-@customElement('l-button-test')
-class LButtonTest extends LitParents {
+@customElement('l-button')
+class LButtonIsolated extends LitParentsIsolated {
 
     constructor() {
         super();
@@ -53,8 +58,12 @@ class LButtonTest extends LitParents {
     }
 
     static styles = [
-        MinimalSharedStyles_Button.styles,
+        ButtonStyles.all,
         css`
+            :host {
+                display: inline-block;
+            }
+            
             .btn-icon {
                 width: 16px;
                 height: 16px;
@@ -65,7 +74,7 @@ class LButtonTest extends LitParents {
 
     static get properties() {
         return {
-            // input properties
+            // button properties
             theme: {type: String},
             size: {type: String},
             id: {type: String},
@@ -76,34 +85,38 @@ class LButtonTest extends LitParents {
             'icon-path': {type: String},
             outline: {type: Boolean},
             disabled: {type: Boolean},
-            readonly: {type: Boolean}
+            readonly: {type: Boolean},
+            required: {type: Boolean}
         };
     }
 
+    // 검증 메서드들 (LitParents와 동일한 API 유지)
     isValid() {
-        const value = this.getValue().trim();
+        const value = this.getValue();
         const required = this['required'];
 
         if (!value && required) {
             return false;
         }
+        
+        return true;
     }
 
     validate() {
-        const value = this.getValue().trim();
         const isFlag = this.isValid();
-
-        const $inputElement = this.shadowRoot.querySelector(this.selector);
-        $inputElement.classList.toggle('is-invalid', !isFlag); // Toggle 'is-invalid' based on validity
+        
+        const $buttonElement = this.shadowRoot.querySelector(this.selector);
+        $buttonElement.classList.toggle('is-invalid', !isFlag);
+        
+        return isFlag;
     }
 
     checkValidity() {
-        this.validate();
+        return this.validate();
     }
 
     render() {
-        const { outline, theme, size,
-            'icon-path': iconPath, label } = this;
+        const { outline, theme, size, 'icon-path': iconPath, label } = this;
         const baseClass = 'btn';
         const themeClass = outline ? OUTLINE_THEME_CLASSES[theme] : THEME_CLASSES[theme];
         const sizeClass = size === 'large' ? 'btn-lg' : size === 'small' ? 'btn-sm' : '';

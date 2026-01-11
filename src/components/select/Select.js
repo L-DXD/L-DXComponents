@@ -1,5 +1,5 @@
 import {css, html, nothing} from 'lit';
-import {LabelAndFeedContainerIsolated} from "../container/LabelAndFeedContainer_Isolated.js";
+import {LabelAndFeedContainerIsolated} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {SelectStyles} from '../../styles/modules/SelectStyles.js';

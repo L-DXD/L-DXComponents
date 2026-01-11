@@ -1,11 +1,10 @@
 import {html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import '../../styles/common.css';
-import {LitParents} from "../container/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
 import '../../../assets/css/Radio.css';
-import {LitParentsIsolated} from "@/components/container/LitParents_Isolated.js";
+import {LitParentsIsolated} from "@/components/container/LitParents.js";
 
 @customElement('l-radio')
 class LRadio extends LitParentsIsolated {

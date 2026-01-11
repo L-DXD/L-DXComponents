@@ -1,7 +1,7 @@
 import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {LabelAndFeedContainerIsolated} from '../container/LabelAndFeedContainer_Isolated.js';
+import {LabelAndFeedContainerIsolated} from '../container/LabelAndFeedContainer.js';
 import {InputStyles} from '../../styles/modules/InputStyles.js';
 import '../../styles/common.css';
 

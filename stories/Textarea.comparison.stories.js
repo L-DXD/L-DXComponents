@@ -1,10 +1,10 @@
-import '/src/components/input/Textarea_Isolated.js'
+import '/src/components/input/Textarea.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Textarea Comparison',
+    title: 'Components/Textarea',
     tags: ['autodocs'],
     component: 'l-c-textarea',
     argTypes: {
@@ -63,7 +63,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             <div style="flex: 1;">
@@ -100,10 +100,10 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
-    id: 'textarea-comparison',
-    name: 'comparison-textarea',
+export const Default = Template.bind({});
+Default.args = {
+    id: 'textarea',
+    name: 'textarea',
     width: '100%',
     label: 'Compare Textarea',
     placeholder: 'Enter your text here...',
@@ -114,7 +114,7 @@ DefaultComparison.args = {
     required: false
 };
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -146,10 +146,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             <div style="flex: 1;">
@@ -177,10 +177,10 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const LabelAndFeedbackComparisonTemplate = (args) => {
+const LabelAndFeedbackTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
            
@@ -197,10 +197,10 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
     `
 }
 
-export const LabelAndFeedbackComparison = LabelAndFeedbackComparisonTemplate.bind({});
-LabelAndFeedbackComparison.args = {};
+export const LabelAndFeedback = LabelAndFeedbackTemplate.bind({});
+LabelAndFeedback.args = {};
 
-const RowsComparisonTemplate = (args) => {
+const RowsTemplate = (args) => {
     const rowCounts = [2, 4, 6, 8];
     
     return html`
@@ -225,10 +225,10 @@ const RowsComparisonTemplate = (args) => {
     `
 }
 
-export const RowsComparison = RowsComparisonTemplate.bind({});
-RowsComparison.args = {};
+export const Rows = RowsTemplate.bind({});
+Rows.args = {};
 
-const ValidationComparisonTemplate = (args) => {
+const ValidationTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -263,7 +263,7 @@ const ValidationComparisonTemplate = (args) => {
                             const textarea = document.querySelector('#textarea-required-isolated');
                             textarea.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Required Isolated
+                            Validate Required
                         </button>
                     </div>
                 </div>
@@ -272,8 +272,8 @@ const ValidationComparisonTemplate = (args) => {
     `
 }
 
-export const ValidationComparison = ValidationComparisonTemplate.bind({});
-ValidationComparison.args = {};
+export const Validation = ValidationTemplate.bind({});
+Validation.args = {};
 
 const FunctionTestingTemplate = (args) => {
     return html`

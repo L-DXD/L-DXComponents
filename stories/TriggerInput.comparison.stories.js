@@ -1,10 +1,10 @@
-import '/src/components/input/TriggerInput_Isolated.js'
+import '/src/components/input/TriggerInput.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/TriggerInput Comparison',
+    title: 'Components/TriggerInput',
     tags: ['autodocs'],
     component: 'l-c-triggerinput',
     argTypes: {
@@ -78,7 +78,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     const handleTrigger = (value) => {
         console.log('Trigger clicked with value:', value);
         alert(`Trigger activated with value: "${value}"`);
@@ -121,10 +121,10 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
-    id: 'triggerinput-comparison',
-    name: 'comparison-triggerinput',
+export const Default = Template.bind({});
+Default.args = {
+    id: 'triggerinput',
+    name: 'triggerinput',
     width: '100%',
     label: 'Compare TriggerInput',
     placeholder: 'Enter text and click search icon...',
@@ -135,7 +135,7 @@ DefaultComparison.args = {
     'trigger-disabled': false
 };
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -143,7 +143,7 @@ const SizeComparisonTemplate = (args) => {
     ];
     
     const handleTrigger = (value) => {
-        console.log('Size comparison trigger:', value);
+        console.log('Size trigger:', value);
     };
     
     return html`
@@ -171,12 +171,12 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     const handleTrigger = (value) => {
-        console.log('State comparison trigger:', value);
+        console.log('State trigger:', value);
     };
     
     return html`
@@ -211,12 +211,12 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const LabelAndFeedbackComparisonTemplate = (args) => {
+const LabelAndFeedbackTemplate = (args) => {
     const handleTrigger = (value) => {
-        console.log('Label/Feedback comparison trigger:', value);
+        console.log('Label/Feedback trigger:', value);
     };
     
     return html`
@@ -235,12 +235,12 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
     `
 }
 
-export const LabelAndFeedbackComparison = LabelAndFeedbackComparisonTemplate.bind({});
-LabelAndFeedbackComparison.args = {};
+export const LabelAndFeedback = LabelAndFeedbackTemplate.bind({});
+LabelAndFeedback.args = {};
 
-const ValidationComparisonTemplate = (args) => {
+const ValidationTemplate = (args) => {
     const handleTrigger = (value) => {
-        console.log('Validation comparison trigger:', value);
+        console.log('Validation trigger:', value);
     };
     
     return html`
@@ -275,7 +275,7 @@ const ValidationComparisonTemplate = (args) => {
                             const triggerInput = document.querySelector('#triggerinput-required-isolated');
                             triggerInput.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Required Isolated
+                            Validate Required
                         </button>
                     </div>
                 </div>
@@ -284,8 +284,8 @@ const ValidationComparisonTemplate = (args) => {
     `
 }
 
-export const ValidationComparison = ValidationComparisonTemplate.bind({});
-ValidationComparison.args = {};
+export const Validation = ValidationTemplate.bind({});
+Validation.args = {};
 
 const FunctionTestingTemplate = (args) => {
     const handleTrigger = (value) => {

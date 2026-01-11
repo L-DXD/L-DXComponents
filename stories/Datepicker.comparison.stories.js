@@ -4,7 +4,7 @@ import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Datepicker Comparison',
+    title: 'Components/Datepicker',
     tags: ['autodocs'],
     component: 'l-c-datepicker',
     argTypes: {
@@ -186,7 +186,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -220,8 +220,8 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
+export const Default = Template.bind({});
+Default.args = {
     id: 'test-datepicker',
     label: 'Select Date',
     'label-align': 'top',
@@ -244,7 +244,7 @@ DefaultComparison.args = {
     'disable-date-to': ''
 };
 
-const FormatComparisonTemplate = (args) => {
+const FormatTemplate = (args) => {
     const formats = [
         { format: 'Y-m-d', label: 'Y-m-d (2024-01-15)' },
         { format: 'Y/m/d', label: 'Y/m/d (2024/01/15)' },
@@ -282,10 +282,10 @@ const FormatComparisonTemplate = (args) => {
     `
 }
 
-export const FormatComparison = FormatComparisonTemplate.bind({});
-FormatComparison.args = {};
+export const Format = FormatTemplate.bind({});
+Format.args = {};
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: 'small', label: 'Small' },
         { size: 'medium', label: 'Medium' },
@@ -321,10 +321,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const InlineComparisonTemplate = (args) => {
+const InlineTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -369,10 +369,10 @@ const InlineComparisonTemplate = (args) => {
     `
 }
 
-export const InlineComparison = InlineComparisonTemplate.bind({});
-InlineComparison.args = {};
+export const Inline = InlineTemplate.bind({});
+Inline.args = {};
 
-const DisplayAlwaysComparisonTemplate = (args) => {
+const DisplayAlwaysTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -418,10 +418,10 @@ const DisplayAlwaysComparisonTemplate = (args) => {
     `
 }
 
-export const DisplayAlwaysComparison = DisplayAlwaysComparisonTemplate.bind({});
-DisplayAlwaysComparison.args = {};
+export const DisplayAlways = DisplayAlwaysTemplate.bind({});
+DisplayAlways.args = {};
 
-const VisibilityComparisonTemplate = (args) => {
+const VisibilityTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -485,8 +485,8 @@ const VisibilityComparisonTemplate = (args) => {
     `
 }
 
-export const VisibilityComparison = VisibilityComparisonTemplate.bind({});
-VisibilityComparison.args = {};
+export const Visibility = VisibilityTemplate.bind({});
+Visibility.args = {};
 
 const FunctionTestingTemplate = (args) => {
     return html`

@@ -4,7 +4,7 @@ import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Monthpicker Comparison',
+    title: 'Components/Monthpicker',
     tags: ['autodocs'],
     component: 'l-c-monthpicker',
     argTypes: {
@@ -170,7 +170,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -202,8 +202,8 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
+export const Default = Template.bind({});
+Default.args = {
     id: 'test-monthpicker',
     label: 'Select Month',
     'label-align': 'top',
@@ -224,7 +224,7 @@ DefaultComparison.args = {
     placeholder: 'Select month...'
 };
 
-const FormatComparisonTemplate = (args) => {
+const FormatTemplate = (args) => {
     const formats = [
         { format: 'Y-m', label: 'Y-m (2024-01)' },
         { format: 'Y/m', label: 'Y/m (2024/01)' },
@@ -262,10 +262,10 @@ const FormatComparisonTemplate = (args) => {
     `
 }
 
-export const FormatComparison = FormatComparisonTemplate.bind({});
-FormatComparison.args = {};
+export const Format = FormatTemplate.bind({});
+Format.args = {};
 
-const InlineComparisonTemplate = (args) => {
+const InlineTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -310,8 +310,8 @@ const InlineComparisonTemplate = (args) => {
     `
 }
 
-export const InlineComparison = InlineComparisonTemplate.bind({});
-InlineComparison.args = {};
+export const Inline = InlineTemplate.bind({});
+Inline.args = {};
 
 const FunctionTestingTemplate = (args) => {
     return html`

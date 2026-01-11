@@ -5,7 +5,7 @@ import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Radio Comparison',
+    title: 'Components/Radio',
     tags: ['autodocs'],
     component: 'l-radio',
     argTypes: {
@@ -35,7 +35,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
            
@@ -60,10 +60,10 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
-    id: 'radio-comparison',
-    name: 'comparison-radio',
+export const Default = Template.bind({});
+Default.args = {
+    id: 'radio',
+    name: 'radio',
     label: 'Compare Radio',
     value: 'radio-value',
     checked: false,
@@ -71,7 +71,7 @@ DefaultComparison.args = {
     required: false
 };
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -104,10 +104,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -136,10 +136,10 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const GroupComparisonTemplate = (args) => {
+const GroupTemplate = (args) => {
     const options = [
         {id: 'option1', label: 'Option 1', value: 'opt1'},
         {id: 'option2', label: 'Option 2', value: 'opt2'},
@@ -172,10 +172,10 @@ const GroupComparisonTemplate = (args) => {
     `
 }
 
-export const GroupComparison = GroupComparisonTemplate.bind({});
-GroupComparison.args = {};
+export const Group = GroupTemplate.bind({});
+Group.args = {};
 
-const InlineComparisonTemplate = (args) => {
+const InlineTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -195,8 +195,8 @@ const InlineComparisonTemplate = (args) => {
     `
 }
 
-export const InlineComparison = InlineComparisonTemplate.bind({});
-InlineComparison.args = {};
+export const Inline = InlineTemplate.bind({});
+Inline.args = {};
 
 const RequiredValidationTemplate = (args) => {
     return html`
@@ -242,7 +242,7 @@ const RequiredValidationTemplate = (args) => {
                             const radio = document.querySelector('#radio-required-isolated-1');
                             radio.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Isolated
+                            Validate
                         </button>
                         <button type="button" onclick="
                             const radios = document.querySelectorAll('l-radio[name=&quot;isolated-required&quot;]');

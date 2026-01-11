@@ -1,11 +1,11 @@
 
-import '/src/components/button/Button_Isolated.js'
+import '/src/components/button/Button.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Button Comparison',
+    title: 'Components/Button',
     tags: ['autodocs'],
     component: 'l-button',
     argTypes: {
@@ -52,7 +52,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -77,10 +77,10 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
-    id: 'button-comparison',
-    name: 'comparison-button',
+export const Default = Template.bind({});
+Default.args = {
+    id: 'button',
+    name: 'button',
     width: '120px',
     label: 'Compare Button',
     theme: 'primary',
@@ -89,7 +89,7 @@ DefaultComparison.args = {
     outline: false
 };
 
-const AllThemesComparisonTemplate = (args) => {
+const AllThemesTemplate = (args) => {
     const themes = ['default', 'primary', 'secondary', 'light', 'dark', 'info', 'purple', 'indigo', 'link', 'danger', 'pink', 'orange', 'light-orange', 'yellow', 'lime', 'teal', 'green'];
     
     return html`
@@ -112,17 +112,17 @@ const AllThemesComparisonTemplate = (args) => {
     `
 }
 
-export const AllThemesComparison = AllThemesComparisonTemplate.bind({});
-AllThemesComparison.args = {
+export const AllThemes = AllThemesTemplate.bind({});
+AllThemes.args = {
     outline: false
 };
 
-export const AllOutlineThemesComparison = AllThemesComparisonTemplate.bind({});
-AllOutlineThemesComparison.args = {
+export const AllOutlineThemes = AllThemesTemplate.bind({});
+AllOutlineThemes.args = {
     outline: true
 };
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -149,10 +149,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -168,10 +168,10 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const IconComparisonTemplate = (args) => {
+const IconTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -186,8 +186,8 @@ const IconComparisonTemplate = (args) => {
     `
 }
 
-export const IconComparison = IconComparisonTemplate.bind({});
-IconComparison.args = {};
+export const Icon = IconTemplate.bind({});
+Icon.args = {};
 
 const FunctionTestingTemplate = (args) => {
     return html`

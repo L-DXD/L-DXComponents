@@ -1,10 +1,10 @@
-import '/src/components/input/Checkbox_Isolated.js'
+import '/src/components/input/Checkbox.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Checkbox Comparison',
+    title: 'Components/Checkbox',
     tags: ['autodocs'],
     component: 'l-checkbox',
     argTypes: {
@@ -34,7 +34,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -59,10 +59,10 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
-    id: 'checkbox-comparison',
-    name: 'comparison-checkbox',
+export const Default = Template.bind({});
+Default.args = {
+    id: 'checkbox',
+    name: 'checkbox',
     label: 'Compare Checkbox',
     value: 'checkbox-value',
     checked: false,
@@ -70,7 +70,7 @@ DefaultComparison.args = {
     required: false
 };
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -102,10 +102,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -138,10 +138,10 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const GroupComparisonTemplate = (args) => {
+const GroupTemplate = (args) => {
     const options = [
         {id: 'option1', label: 'Option 1', value: 'opt1'},
         {id: 'option2', label: 'Option 2', value: 'opt2'},
@@ -174,10 +174,10 @@ const GroupComparisonTemplate = (args) => {
     `
 }
 
-export const GroupComparison = GroupComparisonTemplate.bind({});
-GroupComparison.args = {};
+export const Group = GroupTemplate.bind({});
+Group.args = {};
 
-const InlineComparisonTemplate = (args) => {
+const InlineTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -197,8 +197,8 @@ const InlineComparisonTemplate = (args) => {
     `
 }
 
-export const InlineComparison = InlineComparisonTemplate.bind({});
-InlineComparison.args = {};
+export const Inline = InlineTemplate.bind({});
+Inline.args = {};
 
 const RequiredValidationTemplate = (args) => {
     return html`
@@ -227,7 +227,7 @@ const RequiredValidationTemplate = (args) => {
                             const checkbox = document.querySelector('#checkbox-required-isolated');
                             checkbox.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Isolated
+                            Validate
                         </button>
                     </div>
                 </div>

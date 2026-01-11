@@ -1,6 +1,6 @@
 import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
-import {LitDatepickerParentsIsolated} from "@/components/container/LitDatepickerParents_Isolated.js";
+import {LitDatepickerParentsIsolated} from "@/components/container/LitDatepickerParents.js";
 
 @customElement('l-c-datepicker')
 class LDatepicker extends LitDatepickerParentsIsolated {

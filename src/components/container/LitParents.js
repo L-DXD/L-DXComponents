@@ -1,17 +1,21 @@
-// EventManager.js
-import {css, LitElement} from "lit";
-import {SharedStyles} from "@/styles/SharedStyles.js";
-import {TextStyles} from "@/styles/TextStyles.js";
 
-class LitParents extends LitElement {
+// SharedStyles.js 의존성을 제거한 LitParents 버전
+import {css, LitElement} from "lit";
+
+class LitParentsIsolated extends LitElement {
 
     constructor() {
         super();
     }
 
+    // 스타일 의존성 제거 - 각 컴포넌트에서 필요한 스타일을 직접 정의
     static styles = [
-        SharedStyles.styles
-        , TextStyles.styles
+        css`
+            /* 기본 스타일만 포함 - 각 컴포넌트에서 필요한 스타일을 추가해야 함 */
+            :host {
+                display: block;
+            }
+        `
     ];
 
     setSelector(selector) {
@@ -38,7 +42,6 @@ class LitParents extends LitElement {
         }
     }
 
-
     addEventListener(type, listener, options) {
         this.shadowRoot.querySelector(this.selector).addEventListener(type, listener, options);
     }
@@ -56,9 +59,8 @@ class LitParents extends LitElement {
     }
 
     attributeChangedCallback(name, oldVal, newVal) {
-
         super.attributeChangedCallback(name, oldVal, newVal);
     }
 }
 
-export {LitParents};
+export {LitParentsIsolated};

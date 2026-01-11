@@ -1,10 +1,10 @@
-import '/src/components/input/RMonthpicker_Isolated.js'
+import '/src/components/input/RMonthpicker.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/RangeMonthpicker Isolated Comparison',
+    title: 'Components/RangeMonthpicker',
     tags: ['autodocs'],
     component: 'l-c-range-monthpicker',
     argTypes: {
@@ -162,7 +162,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -193,8 +193,8 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
+export const Default = Template.bind({});
+Default.args = {
     id: 'test-range-monthpicker',
     label: 'Select Month Range',
     'label-align': 'top',
@@ -214,7 +214,7 @@ DefaultComparison.args = {
     invisible: false
 };
 
-const FormatComparisonTemplate = (args) => {
+const FormatTemplate = (args) => {
     const formats = [
         { format: 'Y-m', label: 'Y-m (2024-01)', id: 'Ym' },
         { format: 'Y/m', label: 'Y/m (2024/01)', id: 'Yslashm' },
@@ -250,10 +250,10 @@ const FormatComparisonTemplate = (args) => {
     `
 }
 
-export const FormatComparison = FormatComparisonTemplate.bind({});
-FormatComparison.args = {};
+export const Format = FormatTemplate.bind({});
+Format.args = {};
 
-const InlineComparisonTemplate = (args) => {
+const InlineTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -296,8 +296,8 @@ const InlineComparisonTemplate = (args) => {
     `
 }
 
-export const InlineComparison = InlineComparisonTemplate.bind({});
-InlineComparison.args = {};
+export const Inline = InlineTemplate.bind({});
+Inline.args = {};
 
 const FunctionTestingTemplate = (args) => {
     return html`

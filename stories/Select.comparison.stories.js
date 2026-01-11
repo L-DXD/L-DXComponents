@@ -1,10 +1,10 @@
-import '/src/components/select/Select_Isolated.js'
+import '/src/components/select/Select.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Select Comparison',
+    title: 'Components/Select',
     tags: ['autodocs'],
     component: 'l-c-select',
     argTypes: {
@@ -51,7 +51,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -84,10 +84,10 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
-    id: 'select-comparison',
-    name: 'comparison-select',
+export const Default = Template.bind({});
+Default.args = {
+    id: 'select',
+    name: 'select',
     width: '100%',
     label: 'Compare Select',
     value: 'option2',
@@ -102,7 +102,7 @@ DefaultComparison.args = {
     ]
 };
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -140,10 +140,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     const options = [
         {value: 'enabled', label: 'Enabled Option'},
         {value: 'normal', label: 'Normal Option'},
@@ -174,10 +174,10 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const DefaultTypeComparisonTemplate = (args) => {
+const DefaultTypeTemplate = (args) => {
     const options = [
         {value: 'red', label: 'Red'},
         {value: 'green', label: 'Green'},
@@ -208,10 +208,10 @@ const DefaultTypeComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultTypeComparison = DefaultTypeComparisonTemplate.bind({});
-DefaultTypeComparison.args = {};
+export const DefaultType = DefaultTypeTemplate.bind({});
+DefaultType.args = {};
 
-const LabelAndFeedbackComparisonTemplate = (args) => {
+const LabelAndFeedbackTemplate = (args) => {
     const options = [
         {value: 'option1', label: 'Option 1'},
         {value: 'option2', label: 'Option 2'},
@@ -234,10 +234,10 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
     `
 }
 
-export const LabelAndFeedbackComparison = LabelAndFeedbackComparisonTemplate.bind({});
-LabelAndFeedbackComparison.args = {};
+export const LabelAndFeedback = LabelAndFeedbackTemplate.bind({});
+LabelAndFeedback.args = {};
 
-const ValidationComparisonTemplate = (args) => {
+const ValidationTemplate = (args) => {
     const options = [
         {value: '', label: 'Choose an option', disabled: true},
         {value: 'valid1', label: 'Valid Option 1'},
@@ -269,7 +269,7 @@ const ValidationComparisonTemplate = (args) => {
                             const select = document.querySelector('#select-required-isolated');
                             select.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                            Validate Required Isolated
+                            Validate Required
                         </button>
                     </div>
                 </div>
@@ -278,8 +278,8 @@ const ValidationComparisonTemplate = (args) => {
     `
 }
 
-export const ValidationComparison = ValidationComparisonTemplate.bind({});
-ValidationComparison.args = {};
+export const Validation = ValidationTemplate.bind({});
+Validation.args = {};
 
 const FunctionTestingTemplate = (args) => {
     const testOptions = [

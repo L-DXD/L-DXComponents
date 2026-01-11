@@ -1,6 +1,6 @@
 import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
-import {LitParentsIsolated} from "../container/LitParents_Isolated.js";
+import {LitParentsIsolated} from "../container/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {RadioCheckboxStyles} from '../../styles/modules/RadioCheckboxStyles.js';
 

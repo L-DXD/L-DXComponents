@@ -1,13 +1,9 @@
 import {css, html, LitElement} from 'lit';
-import {LLabel} from '../text/Label.js';
-import {LFeedback} from "../text/Feedback.js";
 import {classMap} from "lit/directives/class-map.js";
-import {customElement} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {LitParents} from "@/components/container/LitParents.js";
+import {LitParentsIsolated} from "./LitParents.js";
 
-@customElement('l-label-feed-container')
-export class LabelAndFeedContainer extends LitParents {
+export class LabelAndFeedContainerIsolated extends LitParentsIsolated {
 
     constructor() {
         super();
@@ -15,14 +11,16 @@ export class LabelAndFeedContainer extends LitParents {
 
     static styles =
         [
-            ...super.styles,
-            // component css
+            // LitParentsIsolated의 기본 스타일만 포함 (SharedStyles 제외)
             css`
-              .container {
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-              }
+                :host {
+                    display: block;
+                }
+                .container {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
             `
         ];
 
@@ -127,7 +125,7 @@ export class LabelAndFeedContainer extends LitParents {
             return;
         }
 
-        const $container = this.shadowRoot.querySelector('l-label-feed-container');
+        const $container = this.shadowRoot.querySelector('l-label-feed-container-isolated');
         const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
         $feedbackElement.setAttribute('hidden', true); // Assume hidden first
         if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
@@ -214,3 +212,5 @@ export class LabelAndFeedContainer extends LitParents {
         `
     }
 }
+
+customElements.define('l-label-feed-container-isolated', LabelAndFeedContainerIsolated);

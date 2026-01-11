@@ -1,54 +1,15 @@
 import {css, html, LitElement} from 'lit';
-import '../../styles/common.css';
-import {customElement} from "lit/decorators.js";
+import {LabelStyles} from '../../styles/modules/LabelStyles.js';
 
-
-@customElement('l-label')
-export class LLabel extends LitElement {
-    static styles =
-        [
-            // component css
-            css`
-                label {
-                    display: inline-block;
-                }
-
-                .form-label {
-                    margin-bottom: .5rem
-                }
-
-                .col-form-label {
-                    padding-top: calc(.375rem + var(--bs-border-width));
-                    padding-bottom: calc(.375rem + var(--bs-border-width));
-                    margin-bottom: 0;
-                    font-size: inherit;
-                    line-height: 1.5
-                }
-
-                .col-form-label-lg {
-                    padding-top: calc(.5rem + var(--bs-border-width));
-                    padding-bottom: calc(.5rem + var(--bs-border-width));
-                    font-size: 1.09375rem
-                }
-
-                .col-form-label-sm {
-                    padding-top: calc(.25rem + var(--bs-border-width));
-                    padding-bottom: calc(.25rem + var(--bs-border-width));
-                    font-size: .765625rem
-                }
-
-                .l-label {
-                    margin-bottom: .5rem;
-                }
-
-                .form-left-label {
-                    margin-right: 10px;
-                    white-space: nowrap; /* Prevents label text from wrapping */
-                }
-            `
-        ]
-    ;
-
+class LLabelIsolated extends LitElement {
+    static styles = [
+        ...LabelStyles.all,
+        css`
+            :host {
+                display: block;
+            }
+        `
+    ];
 
     static get properties() {
         return {
@@ -84,3 +45,5 @@ export class LLabel extends LitElement {
         `
     }
 }
+
+customElements.define('l-label-isolated', LLabelIsolated);

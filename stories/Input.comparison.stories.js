@@ -1,10 +1,10 @@
-import '/src/components/input/Input_Isolated.js'
+import '/src/components/input/Input.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/Input Comparison',
+    title: 'Components/Input',
     tags: ['autodocs'],
     component: 'l-c-input',
     argTypes: {
@@ -81,7 +81,7 @@ export default {
     }
 };
 
-const ComparisonTemplate = (args) => {
+const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
@@ -119,11 +119,11 @@ const ComparisonTemplate = (args) => {
     `
 }
 
-export const DefaultComparison = ComparisonTemplate.bind({});
-DefaultComparison.args = {
+export const Default = Template.bind({});
+Default.args = {
     type: 'text',
-    id: 'input-comparison',
-    name: 'comparison-input',
+    id: 'input',
+    name: 'input',
     width: '100%',
     label: 'Compare Input',
     placeholder: 'Enter text...',
@@ -133,7 +133,7 @@ DefaultComparison.args = {
     required: false
 };
 
-const TypeComparisonTemplate = (args) => {
+const TypeTemplate = (args) => {
     const types = ['text', 'email', 'password', 'number', 'search', 'date', 'file'];
     
     return html`
@@ -159,10 +159,10 @@ const TypeComparisonTemplate = (args) => {
     `
 }
 
-export const TypeComparison = TypeComparisonTemplate.bind({});
-TypeComparison.args = {};
+export const Type = TypeTemplate.bind({});
+Type.args = {};
 
-const SizeComparisonTemplate = (args) => {
+const SizeTemplate = (args) => {
     const sizes = [
         { size: undefined, label: 'Default' },
         { size: 'small', label: 'Small' },
@@ -193,10 +193,10 @@ const SizeComparisonTemplate = (args) => {
     `
 }
 
-export const SizeComparison = SizeComparisonTemplate.bind({});
-SizeComparison.args = {};
+export const Size = SizeTemplate.bind({});
+Size.args = {};
 
-const StateComparisonTemplate = (args) => {
+const StateTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -225,10 +225,10 @@ const StateComparisonTemplate = (args) => {
     `
 }
 
-export const StateComparison = StateComparisonTemplate.bind({});
-StateComparison.args = {};
+export const State = StateTemplate.bind({});
+State.args = {};
 
-const LabelAndFeedbackComparisonTemplate = (args) => {
+const LabelAndFeedbackTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -245,10 +245,10 @@ const LabelAndFeedbackComparisonTemplate = (args) => {
     `
 }
 
-export const LabelAndFeedbackComparison = LabelAndFeedbackComparisonTemplate.bind({});
-LabelAndFeedbackComparison.args = {};
+export const LabelAndFeedback = LabelAndFeedbackTemplate.bind({});
+LabelAndFeedback.args = {};
 
-const SearchFeaturesComparisonTemplate = (args) => {
+const SearchFeaturesTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -273,10 +273,10 @@ const SearchFeaturesComparisonTemplate = (args) => {
     `
 }
 
-export const SearchFeaturesComparison = SearchFeaturesComparisonTemplate.bind({});
-SearchFeaturesComparison.args = {};
+export const SearchFeatures = SearchFeaturesTemplate.bind({});
+SearchFeatures.args = {};
 
-const ValidationComparisonTemplate = (args) => {
+const ValidationTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -301,10 +301,10 @@ const ValidationComparisonTemplate = (args) => {
     `
 }
 
-export const ValidationComparison = ValidationComparisonTemplate.bind({});
-ValidationComparison.args = {};
+export const Validation = ValidationTemplate.bind({});
+Validation.args = {};
 
-const TopLabelFeedbackComparisonTemplate = (args) => {
+const TopLabelFeedbackTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -328,10 +328,10 @@ const TopLabelFeedbackComparisonTemplate = (args) => {
     `
 }
 
-export const TopLabelFeedbackComparison = TopLabelFeedbackComparisonTemplate.bind({});
-TopLabelFeedbackComparison.args = {};
+export const TopLabelFeedback = TopLabelFeedbackTemplate.bind({});
+TopLabelFeedback.args = {};
 
-const LeftLabelFeedbackComparisonTemplate = (args) => {
+const LeftLabelFeedbackTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -355,10 +355,10 @@ const LeftLabelFeedbackComparisonTemplate = (args) => {
     `
 }
 
-export const LeftLabelFeedbackComparison = LeftLabelFeedbackComparisonTemplate.bind({});
-LeftLabelFeedbackComparison.args = {};
+export const LeftLabelFeedback = LeftLabelFeedbackTemplate.bind({});
+LeftLabelFeedback.args = {};
 
-const RequiredValidityComparisonTemplate = (args) => {
+const RequiredValidityTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             
@@ -383,8 +383,8 @@ const RequiredValidityComparisonTemplate = (args) => {
     `
 }
 
-export const RequiredValidityComparison = RequiredValidityComparisonTemplate.bind({});
-RequiredValidityComparison.args = {};
+export const RequiredValidity = RequiredValidityTemplate.bind({});
+RequiredValidity.args = {};
 
 const SimpleInputTestTemplate = (args) => {
     return html`
