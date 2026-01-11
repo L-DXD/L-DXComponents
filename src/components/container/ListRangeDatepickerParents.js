@@ -1,4 +1,3 @@
-import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
 import {LitDatepickerParents} from "./LitDatepickerParents.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";

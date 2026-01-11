@@ -1,7 +1,6 @@
 import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {customElement} from 'lit/decorators.js';
 import {LitParents} from '../container/LitParents.js';
 import {ButtonStyles} from '../../styles/modules/ButtonStyles.js';
 
@@ -49,7 +48,6 @@ const OUTLINE_THEME_CLASSES = {
     'theme-color': 'btn-outline-theme-color',
 };
 
-@customElement('l-button')
 class LButton extends LitParents {
 
     constructor() {
@@ -146,3 +144,5 @@ class LButton extends LitParents {
         `;
     }
 }
+
+customElements.define('l-button', LButton);

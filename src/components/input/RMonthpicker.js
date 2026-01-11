@@ -1,4 +1,3 @@
-import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
 import {ListRangeDatepickerParents} from "../container/ListRangeDatepickerParents.js";
 

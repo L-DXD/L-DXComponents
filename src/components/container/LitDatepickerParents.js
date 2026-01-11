@@ -8,11 +8,27 @@ import {ifDefined} from "lit/directives/if-defined.js";
 import flatpickr from "flatpickr";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import 'flatpickr/dist/plugins/monthSelect/style.css'
+import {setupAttributeValidation} from "../commons/attributeValidation.js";
 
 class LitDatepickerParents extends LitElement {
 
     constructor() {
         super();
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        if (!this._attributeValidationCleanup) {
+            this._attributeValidationCleanup = setupAttributeValidation(this);
+        }
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        if (this._attributeValidationCleanup) {
+            this._attributeValidationCleanup();
+            this._attributeValidationCleanup = null;
+        }
     }
 
     setDateType(dateType) {

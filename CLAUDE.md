@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Web Components library built with LitElement (Lit 3.x) that provides form controls and UI components. The project uses modern web standards and decorators for component definition.
+This is a Web Components library built with LitElement (Lit 3.x) that provides form controls and UI components. The project uses modern web standards for component definition.
 
 ## Common Commands
 
@@ -37,21 +37,19 @@ The component architecture follows a three-tier inheritance pattern:
 
 ### Key Technologies
 - **LitElement 3.x**: Base web component framework
-- **Decorators**: Uses `@customElement` decorator (babel configured with legacy decorators)
 - **Vite**: Build tool with custom configuration for component library
 - **Storybook**: Component documentation and testing
 
 ### Component Naming Convention
 - Components use `l-c-` prefix (e.g., `l-c-input`)
 - File names use PascalCase (e.g., `Input.js`)
-- Component classes extend base classes and use decorators
+- Component classes extend base classes and register with `customElements.define`
 
 ### Build Configuration
 - Source root: `src/`
 - Output: `dist/`
 - Dev server: Port 7600
 - Versioned asset output with package version
-- Babel transformation for decorators support
 
 ### Special Features
 - Pattern-based input validation with Korean character support
@@ -60,9 +58,6 @@ The component architecture follows a three-tier inheritance pattern:
 - Responsive label positioning (left/top alignment)
 
 ## Development Notes
-
-### Decorator Configuration
-The project uses legacy decorators configuration. `@customElement` works but `@property` requires static properties declaration instead.
 
 ### Lit Directives Used
 - `ifDefined`: Conditionally sets attributes only when values are defined

@@ -138,7 +138,8 @@ class LTextarea extends LabelAndFeedContainer {
                         @blur="${this.validate}"
                         @keyup="${(this['valid-length-type'] != 'byte' ? null : this.createChangeHandler(ifDefined(this['maxlength']))) ?? nothing}"
                         autocomplete="${ifDefined(this['autocomplete'])}"
-                >${ifDefined(this['value'])}</textarea>
+                        .value=${this['value'] ?? ''}
+                ></textarea>
                 
             </l-label-feed-container>
 

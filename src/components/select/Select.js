@@ -177,26 +177,30 @@ class LSelect extends LabelAndFeedContainer {
         }
     }
 
-    updated(changedProperties) {
-
+    willUpdate(changedProperties) {
         if ((changedProperties.has('options') || changedProperties.has('default-type')) && this.options && this.options.length > 0) {
             if (this['default-type'] === 'select') {
                 const defaultValue = this['placeholder'] || "Choose an option";
+                const hasDefault = this.options[0]?.label === defaultValue;
 
-                if (this.options[0].label !== defaultValue) {
+                if (!hasDefault) {
                     this.options = [{ value: '', label: defaultValue, disabled: true }, ...this.options];
                 }
-                // 기본 옵션의 값과 텍스트로 초기화
-                this.value = '';
-                this.text = defaultValue;
+                if (this.value !== '' || this.text !== defaultValue) {
+                    this.value = '';
+                    this.text = defaultValue;
+                }
             } else if (this['default-type'] === 'all') {
                 const defaultValue = this['placeholder'] || "All options";
+                const hasDefault = this.options[0]?.label === defaultValue;
 
-                if (this.options[0].label !== defaultValue) {
+                if (!hasDefault) {
                     this.options = [{ value: "all", label: defaultValue }, ...this.options];
                 }
-                this.value = "all";
-                this.text = defaultValue;
+                if (this.value !== "all" || this.text !== defaultValue) {
+                    this.value = "all";
+                    this.text = defaultValue;
+                }
             }
         }
     }

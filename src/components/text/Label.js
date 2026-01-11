@@ -1,7 +1,23 @@
 import {css, html, LitElement} from 'lit';
+import {setupAttributeValidation} from "../commons/attributeValidation.js";
 import {LabelStyles} from '../../styles/modules/LabelStyles.js';
 
 class LLabel extends LitElement {
+    connectedCallback() {
+        super.connectedCallback();
+        if (!this._attributeValidationCleanup) {
+            this._attributeValidationCleanup = setupAttributeValidation(this);
+        }
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        if (this._attributeValidationCleanup) {
+            this._attributeValidationCleanup();
+            this._attributeValidationCleanup = null;
+        }
+    }
+
     static styles = [
         ...LabelStyles.all,
         css`

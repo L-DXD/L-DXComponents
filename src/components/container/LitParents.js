@@ -1,6 +1,7 @@
 
 // SharedStyles.js 의존성을 제거한 LitParents 버전
 import {css, LitElement} from "lit";
+import {setupAttributeValidation} from "../commons/attributeValidation.js";
 
 class LitParents extends LitElement {
 
@@ -52,10 +53,17 @@ class LitParents extends LitElement {
 
     connectedCallback() {
         super.connectedCallback();
+        if (!this._attributeValidationCleanup) {
+            this._attributeValidationCleanup = setupAttributeValidation(this);
+        }
     }
 
     disconnectedCallback() {
         super.disconnectedCallback();
+        if (this._attributeValidationCleanup) {
+            this._attributeValidationCleanup();
+            this._attributeValidationCleanup = null;
+        }
     }
 
     attributeChangedCallback(name, oldVal, newVal) {

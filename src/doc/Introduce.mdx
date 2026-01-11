@@ -1,4 +1,5 @@
 import Prism from 'prismjs';
+import {useEffect} from 'react';
 import 'prismjs/themes/prism.css';  // 또는 원하는 테마 파일 경로
 import Styling from "/assets/styling.png";
 import Context from "/assets/context.png";
@@ -25,11 +26,13 @@ export const RightArrow = () => <svg
 
 export function CodeHighlight({children, language}) {
 
-    Prism.highlightAll();
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [children, language]);
 
     return (
         <pre className="sbdocs sbdocs-pre">
-            <code class={`sbdocs sbdocs-code language-${language}`}>
+            <code className={`sbdocs sbdocs-code language-${language}`}>
                 {children}
             </code>
         </pre>

@@ -1,8 +1,24 @@
 import {css, html, LitElement} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
+import {setupAttributeValidation} from "../commons/attributeValidation.js";
 import {FeedbackStyles} from '../../styles/modules/FeedbackStyles.js';
 
 class LFeedback extends LitElement {
+    connectedCallback() {
+        super.connectedCallback();
+        if (!this._attributeValidationCleanup) {
+            this._attributeValidationCleanup = setupAttributeValidation(this);
+        }
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        if (this._attributeValidationCleanup) {
+            this._attributeValidationCleanup();
+            this._attributeValidationCleanup = null;
+        }
+    }
+
     static styles = [
         ...FeedbackStyles.all,
         css`

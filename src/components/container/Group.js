@@ -2,7 +2,6 @@ import {css, html, nothing} from 'lit';
 import {LabelAndFeedContainer} from "./LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {customElement} from 'lit/decorators.js';
 
 class LGroup extends LabelAndFeedContainer {
 

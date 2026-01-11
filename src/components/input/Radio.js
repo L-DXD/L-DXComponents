@@ -2,11 +2,9 @@ import {html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import '../../styles/common.css';
 import {ifDefined} from "lit/directives/if-defined.js";
-import {customElement} from 'lit/decorators.js';
 import '../../../assets/css/Radio.css';
 import {LitParents} from "@/components/container/LitParents.js";
 
-@customElement('l-radio')
 class LRadio extends LitParents {
 
     constructor() {
@@ -135,3 +133,5 @@ class LRadio extends LitParents {
         `;
     }
 }
+
+customElements.define('l-radio', LRadio);
