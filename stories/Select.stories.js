@@ -92,6 +92,7 @@ Default.args = {
     label: 'Compare Select',
     value: 'option2',
     text: 'Option 2',
+    feedback: '',
     disabled: false,
     required: false,
     options: [

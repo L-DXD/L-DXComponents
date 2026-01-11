@@ -127,6 +127,7 @@ Default.args = {
     name: 'triggerinput',
     width: '100%',
     label: 'Compare TriggerInput',
+    feedback: '',
     placeholder: 'Enter text and click search icon...',
     value: 'Sample trigger text',
     disabled: false,

@@ -126,6 +126,7 @@ Default.args = {
     name: 'input',
     width: '100%',
     label: 'Compare Input',
+    feedback: '',
     placeholder: 'Enter text...',
     value: 'Sample text',
     disabled: false,

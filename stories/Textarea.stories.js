@@ -106,6 +106,7 @@ Default.args = {
     name: 'textarea',
     width: '100%',
     label: 'Compare Textarea',
+    feedback: '',
     placeholder: 'Enter your text here...',
     value: 'Sample textarea content\nMultiple lines supported',
     rows: 2,
