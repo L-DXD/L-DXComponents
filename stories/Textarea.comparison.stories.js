@@ -67,7 +67,7 @@ const Template = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <l-textarea
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
@@ -124,7 +124,7 @@ const SizeTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}, index) => html`
                         <div>
@@ -153,7 +153,7 @@ const StateTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
@@ -185,7 +185,7 @@ const LabelAndFeedbackTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
            
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <l-textarea label="Message" placeholder="Enter your message" rows="4"></l-textarea>
                     <l-textarea label="Description" label-align="left" placeholder="Enter description" rows="4"></l-textarea>
@@ -206,7 +206,7 @@ const RowsTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${rowCounts.map(rows => html`
                         <div>
@@ -233,7 +233,7 @@ const ValidationTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
@@ -280,7 +280,7 @@ const FunctionTestingTemplate = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Textarea (FormControlStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <l-textarea
                         id="test-textarea-isolated"
                         name="test-textarea-isolated"

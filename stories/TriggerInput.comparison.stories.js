@@ -88,7 +88,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated TriggerInput (TriggerInputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <l-triggerinput
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
@@ -149,7 +149,7 @@ const SizeTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem;">
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated TriggerInput (TriggerInputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}, index) => html`
                         <div>
@@ -183,7 +183,7 @@ const StateTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated TriggerInput (TriggerInputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
@@ -223,7 +223,7 @@ const LabelAndFeedbackTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated TriggerInput (TriggerInputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <l-triggerinput label="Search Term" placeholder="Enter search term" .handleTrigger=${handleTrigger}></l-triggerinput>
                     <l-triggerinput label="Query" label-align="left" placeholder="Enter query" .handleTrigger=${handleTrigger}></l-triggerinput>
@@ -247,7 +247,7 @@ const ValidationTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated TriggerInput (TriggerInputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Validation (Phone):</label>
@@ -298,7 +298,7 @@ const FunctionTestingTemplate = (args) => {
             
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated TriggerInput (TriggerInputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <l-triggerinput
                         id="test-triggerinput-isolated"
                         name="test-triggerinput-isolated"

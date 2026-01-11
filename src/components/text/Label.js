@@ -1,7 +1,7 @@
 import {css, html, LitElement} from 'lit';
 import {LabelStyles} from '../../styles/modules/LabelStyles.js';
 
-class LLabelIsolated extends LitElement {
+class LLabel extends LitElement {
     static styles = [
         ...LabelStyles.all,
         css`
@@ -46,4 +46,4 @@ class LLabelIsolated extends LitElement {
     }
 }
 
-customElements.define('l-label-isolated', LLabelIsolated);
+customElements.define('l-label', LLabel);

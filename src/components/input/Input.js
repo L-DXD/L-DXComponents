@@ -1,11 +1,11 @@
 import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {LabelAndFeedContainerIsolated} from '../container/LabelAndFeedContainer.js';
+import {LabelAndFeedContainer} from '../container/LabelAndFeedContainer.js';
 import {InputStyles} from '../../styles/modules/InputStyles.js';
 import '../../styles/common.css';
 
-class LInputIsolated extends LabelAndFeedContainerIsolated {
+class LInput extends LabelAndFeedContainer {
 
     constructor() {
         super();
@@ -134,7 +134,7 @@ class LInputIsolated extends LabelAndFeedContainerIsolated {
         let isSearchLeft = (this['type'] === 'search' && !this['disabled'] && !this['readonly']);
 
         return html`
-            <l-label-feed-container-isolated
+            <l-label-feed-container
                     width="${ifDefined(this['width'])}"
                     id="${this['id']}"
                     label="${ifDefined(this['label'])}"
@@ -182,10 +182,10 @@ class LInputIsolated extends LabelAndFeedContainerIsolated {
                     >
                 </div>
 
-            </l-label-feed-container-isolated>
+            </l-label-feed-container>
 
         `;
     }
 }
 
-customElements.define('l-input', LInputIsolated);
+customElements.define('l-input', LInput);

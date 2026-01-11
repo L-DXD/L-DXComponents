@@ -1,11 +1,11 @@
 import {css, html, nothing} from 'lit';
-import {LabelAndFeedContainerIsolated} from "../container/LabelAndFeedContainer.js";
+import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {FormControlStyles} from '../../styles/modules/FormControlStyles.js';
 import {ValidationStyles} from '../../styles/modules/ValidationStyles.js';
 
-class LTextareaIsolated extends LabelAndFeedContainerIsolated {
+class LTextarea extends LabelAndFeedContainer {
 
     constructor() {
         super();
@@ -98,7 +98,7 @@ class LTextareaIsolated extends LabelAndFeedContainerIsolated {
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
 
         return html`
-            <l-label-feed-container-isolated
+            <l-label-feed-container
                     width="${ifDefined(this['width'])}"
                     id="${this['id']}"
                     label="${ifDefined(this['label'])}"
@@ -140,10 +140,10 @@ class LTextareaIsolated extends LabelAndFeedContainerIsolated {
                         autocomplete="${ifDefined(this['autocomplete'])}"
                 >${ifDefined(this['value'])}</textarea>
                 
-            </l-label-feed-container-isolated>
+            </l-label-feed-container>
 
         `;
     }
 }
 
-customElements.define('l-textarea', LTextareaIsolated);
+customElements.define('l-textarea', LTextarea);

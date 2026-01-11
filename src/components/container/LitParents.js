@@ -2,7 +2,7 @@
 // SharedStyles.js 의존성을 제거한 LitParents 버전
 import {css, LitElement} from "lit";
 
-class LitParentsIsolated extends LitElement {
+class LitParents extends LitElement {
 
     constructor() {
         super();
@@ -63,4 +63,4 @@ class LitParentsIsolated extends LitElement {
     }
 }
 
-export {LitParentsIsolated};
+export {LitParents};

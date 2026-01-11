@@ -2,7 +2,7 @@ import {css, html, LitElement} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {FeedbackStyles} from '../../styles/modules/FeedbackStyles.js';
 
-class LFeedbackIsolated extends LitElement {
+class LFeedback extends LitElement {
     static styles = [
         ...FeedbackStyles.all,
         css`
@@ -49,4 +49,4 @@ class LFeedbackIsolated extends LitElement {
     }
 }
 
-customElements.define('l-feedback-isolated', LFeedbackIsolated);
+customElements.define('l-feedback', LFeedback);

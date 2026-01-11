@@ -1,8 +1,8 @@
 import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
-import {ListRangeDatepickerParentsIsolated} from "../container/ListRangeDatepickerParents.js";
+import {ListRangeDatepickerParents} from "../container/ListRangeDatepickerParents.js";
 
-class LRangedatepickerIsolated extends ListRangeDatepickerParentsIsolated {
+class LRangedatepicker extends ListRangeDatepickerParents {
 
     constructor() {
         super();
@@ -11,6 +11,6 @@ class LRangedatepickerIsolated extends ListRangeDatepickerParentsIsolated {
 
 }
 
-customElements.define('l-c-range-datepicker', LRangedatepickerIsolated);
+customElements.define('l-c-range-datepicker', LRangedatepicker);
 
-export {LRangedatepickerIsolated};
+export {LRangedatepicker};

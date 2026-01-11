@@ -1,9 +1,11 @@
 import {css, html, LitElement} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {LitParentsIsolated} from "./LitParents.js";
+import {LitParents} from "./LitParents.js";
+import "../text/Label.js";
+import "../text/Feedback.js";
 
-export class LabelAndFeedContainerIsolated extends LitParentsIsolated {
+export class LabelAndFeedContainer extends LitParents {
 
     constructor() {
         super();
@@ -11,7 +13,7 @@ export class LabelAndFeedContainerIsolated extends LitParentsIsolated {
 
     static styles =
         [
-            // LitParentsIsolated의 기본 스타일만 포함 (SharedStyles 제외)
+            // LitParents의 기본 스타일만 포함 (SharedStyles 제외)
             css`
                 :host {
                     display: block;
@@ -125,7 +127,7 @@ export class LabelAndFeedContainerIsolated extends LitParentsIsolated {
             return;
         }
 
-        const $container = this.shadowRoot.querySelector('l-label-feed-container-isolated');
+        const $container = this.shadowRoot.querySelector('l-label-feed-container');
         const $feedbackElement = $container.shadowRoot.querySelector('l-feedback');
         $feedbackElement.setAttribute('hidden', true); // Assume hidden first
         if ((isFlag && feedbackVisibleType == 'valid') || (!isFlag && feedbackVisibleType == 'invalid')) {
@@ -213,4 +215,4 @@ export class LabelAndFeedContainerIsolated extends LitParentsIsolated {
     }
 }
 
-customElements.define('l-label-feed-container-isolated', LabelAndFeedContainerIsolated);
+customElements.define('l-label-feed-container', LabelAndFeedContainer);

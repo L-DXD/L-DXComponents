@@ -56,7 +56,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <l-select
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
@@ -119,7 +119,7 @@ const SizeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}, index) => html`
                         <div>
@@ -154,7 +154,7 @@ const StateTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
@@ -188,7 +188,7 @@ const DefaultTypeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">No Default:</label>
@@ -222,7 +222,7 @@ const LabelAndFeedbackTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <l-select label="Category" .options=${options} value="option1"></l-select>
                     <l-select label="Type" label-align="left" .options=${options} value="option2"></l-select>
@@ -249,7 +249,7 @@ const ValidationTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
@@ -294,7 +294,7 @@ const FunctionTestingTemplate = (args) => {
             
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Select (SelectStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <l-select
                         id="test-select-isolated"
                         name="test-select-isolated"

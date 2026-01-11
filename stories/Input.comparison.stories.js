@@ -86,7 +86,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type=${ifDefined(args.type)}
                         size=${ifDefined(args.size)}
@@ -140,7 +140,7 @@ const TypeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${types.map(type => html`
                         <div>
@@ -173,7 +173,7 @@ const SizeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
            
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}) => html`
                         <div>
@@ -201,7 +201,7 @@ const StateTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
@@ -233,7 +233,7 @@ const LabelAndFeedbackTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <l-input type="text" label="Username" placeholder="Enter username"></l-input>
                     <l-input type="text" label="Email" label-align="left" placeholder="Enter email"></l-input>
@@ -253,7 +253,7 @@ const SearchFeaturesTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Search with Icon:</label>
@@ -281,7 +281,7 @@ const ValidationTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Validation (Phone):</label>
@@ -309,7 +309,7 @@ const TopLabelFeedbackTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type="text"
                         id="input01-isolated"
@@ -336,7 +336,7 @@ const LeftLabelFeedbackTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type="text"
                         id="input02-isolated"
@@ -363,7 +363,7 @@ const RequiredValidityTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type="text"
                         id="input03-isolated"
@@ -437,7 +437,7 @@ const FunctionTestingTemplate = (args) => {
             
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Input (InputStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         id="test-input-isolated"
                         type="text"

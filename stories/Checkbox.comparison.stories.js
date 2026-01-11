@@ -39,7 +39,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox (RadioCheckboxStyles.js)</h3>
                 <l-checkbox
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
@@ -81,7 +81,7 @@ const SizeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}, index) => html`
                         <div>
@@ -110,7 +110,7 @@ const StateTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
@@ -153,7 +153,7 @@ const GroupTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox Group (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox Group (RadioCheckboxStyles.js)</h3>
                 <div>
                     <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Select multiple options:</p>
                     <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -182,7 +182,7 @@ const InlineTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox (RadioCheckboxStyles.js)</h3>
                 <div>
                     <p style="margin-bottom: 12px; font-weight: bold; color: #666;">Inline checkboxes:</p>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
@@ -205,7 +205,7 @@ const RequiredValidationTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Required checkbox (uncheck then blur to see validation):</p>
@@ -245,7 +245,7 @@ const FunctionTestingTemplate = (args) => {
             
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Checkbox (RadioCheckboxStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Checkbox (RadioCheckboxStyles.js)</h3>
                 <l-checkbox
                         id="test-checkbox-isolated"
                         name="test-checkbox-isolated"

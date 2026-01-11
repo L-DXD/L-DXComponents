@@ -9,7 +9,7 @@ import flatpickr from "flatpickr";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import 'flatpickr/dist/plugins/monthSelect/style.css'
 
-class LitDatepickerParentsIsolated extends LitElement {
+class LitDatepickerParents extends LitElement {
 
     constructor() {
         super();
@@ -372,6 +372,6 @@ class LitDatepickerParentsIsolated extends LitElement {
     }
 }
 
-customElements.define('l-datepicker-parents-isolated', LitDatepickerParentsIsolated);
+customElements.define('l-datepicker-parents', LitDatepickerParents);
 
-export {LitDatepickerParentsIsolated};
+export {LitDatepickerParents};

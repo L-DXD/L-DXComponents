@@ -1,10 +1,10 @@
 import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
-import {LitParentsIsolated} from "../container/LitParents.js";
+import {LitParents} from "../container/LitParents.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {RadioCheckboxStyles} from '../../styles/modules/RadioCheckboxStyles.js';
 
-class LCheckboxIsolated extends LitParentsIsolated {
+class LCheckbox extends LitParents {
 
     constructor() {
         super();
@@ -147,4 +147,4 @@ class LCheckboxIsolated extends LitParentsIsolated {
     }
 }
 
-customElements.define('l-checkbox', LCheckboxIsolated);
+customElements.define('l-checkbox', LCheckbox);

@@ -1,10 +1,10 @@
 import {css, html, nothing} from 'lit';
-import {LabelAndFeedContainerIsolated} from "../container/LabelAndFeedContainer.js";
+import {LabelAndFeedContainer} from "../container/LabelAndFeedContainer.js";
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {SelectStyles} from '../../styles/modules/SelectStyles.js';
 
-class LSelectIsolated extends LabelAndFeedContainerIsolated {
+class LSelect extends LabelAndFeedContainer {
 
     constructor() {
         super();
@@ -53,7 +53,7 @@ class LSelectIsolated extends LabelAndFeedContainerIsolated {
         const options = this.options;
 
         return html`
-            <l-label-feed-container-isolated
+            <l-label-feed-container
                     width="${ifDefined(this['width'])}"
                     id="${this['id']}"
                     label="${ifDefined(this['label'])}"
@@ -94,7 +94,7 @@ class LSelectIsolated extends LabelAndFeedContainerIsolated {
                         )}
                     </select>
                 </div>
-            </l-label-feed-container-isolated>
+            </l-label-feed-container>
         `;
     }
 
@@ -202,4 +202,4 @@ class LSelectIsolated extends LabelAndFeedContainerIsolated {
     }
 }
 
-customElements.define('l-select', LSelectIsolated);
+customElements.define('l-select', LSelect);

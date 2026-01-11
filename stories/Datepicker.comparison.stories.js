@@ -191,7 +191,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <l-c-datepicker
                         id=${ifDefined(args.id + '-isolated')}
                         label=${ifDefined(args.label)}
@@ -257,7 +257,7 @@ const FormatTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${formats.map(({format, label}) => html`
                         <div>
@@ -296,7 +296,7 @@ const SizeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}) => html`
                         <div>
@@ -329,7 +329,7 @@ const InlineTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Popup Calendar:</h4>
@@ -377,7 +377,7 @@ const DisplayAlwaysTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Display Always - Date Selection:</h4>
@@ -426,7 +426,7 @@ const VisibilityTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Visible:</h4>
@@ -494,7 +494,7 @@ const FunctionTestingTemplate = (args) => {
             
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <l-c-datepicker
                         id="test-datepicker-function-isolated"
                         label="Test Datepicker"

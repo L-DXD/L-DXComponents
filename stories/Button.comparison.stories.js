@@ -57,7 +57,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Button (ButtonStyles.js)</h3>
                 <l-button
                         theme=${ifDefined(args.theme)}
                         size=${ifDefined(args.size)}
@@ -96,7 +96,7 @@ const AllThemesTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
            
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                     ${themes.map(theme => html`
                         <l-button
@@ -133,7 +133,7 @@ const SizeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
                     ${sizes.map(({size, label}) => html`
                         <l-button
@@ -157,7 +157,7 @@ const StateTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
                     <l-button theme="primary" label="Normal Button"></l-button>
                     <l-button theme="primary" label="Disabled Button" disabled></l-button>
@@ -176,7 +176,7 @@ const IconTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Button (ButtonStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
                     <l-button theme="primary" label="No Icon"></l-button>
                     <l-button theme="primary" label="With Icon" icon-path="/src/search-svgrepo-com.svg"></l-button>
@@ -194,7 +194,7 @@ const FunctionTestingTemplate = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Isolated Button (ButtonStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Button (ButtonStyles.js)</h3>
                 <l-button
                         id="test-button-isolated"
                         name="test-button-isolated"

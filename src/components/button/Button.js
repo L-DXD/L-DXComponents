@@ -2,7 +2,7 @@ import {css, html, nothing} from 'lit';
 import {classMap} from "lit/directives/class-map.js";
 import {ifDefined} from "lit/directives/if-defined.js";
 import {customElement} from 'lit/decorators.js';
-import {LitParentsIsolated} from '../container/LitParents.js';
+import {LitParents} from '../container/LitParents.js';
 import {ButtonStyles} from '../../styles/modules/ButtonStyles.js';
 
 const THEME_CLASSES = {
@@ -50,7 +50,7 @@ const OUTLINE_THEME_CLASSES = {
 };
 
 @customElement('l-button')
-class LButtonIsolated extends LitParentsIsolated {
+class LButton extends LitParents {
 
     constructor() {
         super();

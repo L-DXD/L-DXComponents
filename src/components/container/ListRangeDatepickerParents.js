@@ -1,10 +1,10 @@
 import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
-import {LitDatepickerParentsIsolated} from "./LitDatepickerParents.js";
+import {LitDatepickerParents} from "./LitDatepickerParents.js";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import flatpickr from "flatpickr";
 
-class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
+class ListRangeDatepickerParents extends LitDatepickerParents {
 
     constructor() {
         super();
@@ -193,4 +193,4 @@ class ListRangeDatepickerParentsIsolated extends LitDatepickerParentsIsolated {
     }
 }
 
-export {ListRangeDatepickerParentsIsolated};
+export {ListRangeDatepickerParents};
