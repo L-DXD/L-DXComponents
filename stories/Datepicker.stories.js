@@ -1,20 +1,20 @@
-import '/src/components/input/RDatepicker.js'
+import '/src/components/input/Datepicker.js'
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {html} from "lit";
 import {getComponentArgs} from "./commons/CommonArgs.js";
 
 export default {
-    title: 'Components/RangeDatepicker',
+    title: 'Components/Datepicker',
     tags: ['autodocs'],
-    component: 'l-c-range-datepicker',
+    component: 'l-c-datepicker',
     argTypes: {
         id: {
             control: {type: 'text'},
             table: {
                 category: "attributes",
-                defaultValue: {summary: 'range-datepicker'}
+                defaultValue: {summary: 'datepicker'}
             },
-            description: "Unique identifier for the range datepicker"
+            description: "Unique identifier for the datepicker"
         },
         label: {
             control: {type: 'text'},
@@ -22,7 +22,7 @@ export default {
                 category: "attributes",
                 defaultValue: {summary: ''}
             },
-            description: "Label text for the range datepicker"
+            description: "Label text for the datepicker"
         },
         'label-align': {
             control: {type: 'select'},
@@ -59,7 +59,7 @@ export default {
                 category: "attributes",
                 defaultValue: {summary: 'medium'}
             },
-            description: "Size of the range datepicker input"
+            description: "Size of the datepicker input"
         },
         width: {
             control: {type: 'text'},
@@ -68,7 +68,7 @@ export default {
                 subcategory: "style",
                 defaultValue: {summary: 'auto'}
             },
-            description: "Width of the range datepicker container"
+            description: "Width of the datepicker container"
         },
         format: {
             control: {type: 'text'},
@@ -84,7 +84,7 @@ export default {
                 category: "attributes",
                 defaultValue: {summary: ''}
             },
-            description: "Initial value of the range datepicker"
+            description: "Initial value of the datepicker"
         },
         required: {
             control: {type: 'boolean'},
@@ -100,7 +100,7 @@ export default {
                 category: "attributes",
                 defaultValue: {summary: false}
             },
-            description: "Whether the range datepicker is disabled"
+            description: "Whether the datepicker is disabled"
         },
         readonly: {
             control: {type: 'boolean'},
@@ -108,7 +108,7 @@ export default {
                 category: "attributes",
                 defaultValue: {summary: false}
             },
-            description: "Whether the range datepicker is readonly"
+            description: "Whether the datepicker is readonly"
         },
         feedback: {
             control: {type: 'text'},
@@ -150,7 +150,15 @@ export default {
                 category: "attributes",
                 defaultValue: {summary: false}
             },
-            description: "Whether the range datepicker is invisible"
+            description: "Whether the datepicker is invisible"
+        },
+        placeholder: {
+            control: {type: 'text'},
+            table: {
+                category: "attributes",
+                defaultValue: {summary: ''}
+            },
+            description: "Placeholder text for the input"
         },
         'disable-date-from': {
             control: {type: 'text'},
@@ -172,7 +180,7 @@ export default {
     parameters: {
         docs: {
             description: {
-                component: 'CSS 의존성 제거 검증을 위한 Range Datepicker 컴포넌트 비교 스토리'
+                component: 'CSS 의존성 제거 검증을 위한 Datepicker 컴포넌트 비교 스토리'
             }
         }
     }
@@ -183,9 +191,9 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Range Datepicker (DatepickerStyles.js)</h3>
-                <l-c-range-datepicker
-                        id=${ifDefined(args.id + '-isolated')}
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
+                <l-c-datepicker
+                        id=${ifDefined(args.id + '')}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
                         label-width=${ifDefined(args['label-width'])}
@@ -202,10 +210,11 @@ const Template = (args) => {
                         feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                         ?showAlways=${args.showAlways}
                         ?invisible=${args.invisible}
+                        placeholder=${ifDefined(args.placeholder)}
                         disable-date-from=${ifDefined(args['disable-date-from'])}
                         disable-date-to=${ifDefined(args['disable-date-to'])}
                 >
-                </l-c-range-datepicker>
+                </l-c-datepicker>
             </div>
         </div>
     `
@@ -213,8 +222,8 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-    id: 'test-range-datepicker',
-    label: 'Select Date Range',
+    id: 'test-datepicker',
+    label: 'Select Date',
     'label-align': 'top',
     'label-width': 'auto',
     'label-text-align': 'left',
@@ -230,37 +239,40 @@ Default.args = {
     'feedback-visible-type': 'visible',
     showAlways: false,
     invisible: false,
+    placeholder: 'Select date...',
     'disable-date-from': '',
     'disable-date-to': ''
 };
 
 const FormatTemplate = (args) => {
     const formats = [
-        { format: 'Y-m-d', label: 'Y-m-d (2024-01-15)', id: 'Ymd' },
-        { format: 'Y/m/d', label: 'Y/m/d (2024/01/15)', id: 'Yslashmd' },
-        { format: 'Ymd', label: 'Ymd (20240115)', id: 'YmdCompact' },
-        { format: 'Y.m.d', label: 'Y.m.d (2024.01.15)', id: 'Ydotmd' }
+        { format: 'Y-m-d', label: 'Y-m-d (2024-01-15)' },
+        { format: 'Y/m/d', label: 'Y/m/d (2024/01/15)' },
+        { format: 'd-m-Y', label: 'd-m-Y (15-01-2024)' },
+        { format: 'M d, Y', label: 'M d, Y (Jan 15, 2024)' },
+        { format: 'F j, Y', label: 'F j, Y (January 15, 2024)' }
     ];
     
     return html`
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Range Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                    ${formats.map(({format, label, id}) => html`
+                    ${formats.map(({format, label}) => html`
                         <div>
                             <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${label}:</h4>
                             <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                                <l-c-range-datepicker
-                                        id="test-range-datepicker-isolated-format-${id}"
-                                        label="Date Range"
+                                <l-c-datepicker
+                                        id="test-datepicker-format-${format.replace(/[^a-zA-Z0-9]/g, '')}"
+                                        label="Date"
                                         label-align="top"
                                         size="medium"
                                         width="100%"
                                         format="${format}"
+                                        placeholder="Select date..."
                                 >
-                                </l-c-range-datepicker>
+                                </l-c-datepicker>
                             </div>
                         </div>
                     `)}
@@ -284,21 +296,22 @@ const SizeTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Range Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     ${sizes.map(({size, label}) => html`
                         <div>
                             <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${label}:</h4>
                             <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                                <l-c-range-datepicker
-                                        id="test-range-datepicker-isolated-size-${size}"
-                                        label="Date Range"
+                                <l-c-datepicker
+                                        id="test-datepicker-size-${size}"
+                                        label="Date"
                                         label-align="top"
                                         size="${size}"
                                         width="100%"
                                         format="Y-m-d"
+                                        placeholder="Select date..."
                                 >
-                                </l-c-range-datepicker>
+                                </l-c-datepicker>
                             </div>
                         </div>
                     `)}
@@ -316,36 +329,38 @@ const InlineTemplate = (args) => {
         <div style="display: flex; gap: 2rem;">
             
             <div style="flex: 1;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Range Datepicker (DatepickerStyles.js)</h3>
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Popup Calendar:</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                            <l-c-range-datepicker
-                                    id="test-range-datepicker-isolated-popup"
-                                    label="Date Range"
+                            <l-c-datepicker
+                                    id="test-datepicker-popup"
+                                    label="Date"
                                     label-align="top"
                                     size="medium"
                                     width="100%"
                                     format="Y-m-d"
+                                    placeholder="Select date..."
                                     showAlways="false"
                             >
-                            </l-c-range-datepicker>
+                            </l-c-datepicker>
                         </div>
                     </div>
                     <div>
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Display Always (Inline Calendar):</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
-                            <l-c-range-datepicker
-                                    id="test-range-datepicker-isolated-inline"
-                                    label="Date Range"
+                            <l-c-datepicker
+                                    id="test-datepicker-inline"
+                                    label="Date"
                                     label-align="top"
                                     size="medium"
                                     width="100%"
                                     format="Y-m-d"
+                                    placeholder="Select date..."
                                     showAlways="true"
                             >
-                            </l-c-range-datepicker>
+                            </l-c-datepicker>
                         </div>
                     </div>
                 </div>
@@ -357,102 +372,192 @@ const InlineTemplate = (args) => {
 export const Inline = InlineTemplate.bind({});
 Inline.args = {};
 
+const DisplayAlwaysTemplate = (args) => {
+    return html`
+        <div style="display: flex; gap: 2rem;">
+            
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Display Always - Date Selection:</h4>
+                        <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
+                            <l-c-datepicker
+                                    id="test-datepicker-display-always-1"
+                                    label="Always Visible Date Picker"
+                                    label-align="top"
+                                    size="medium"
+                                    width="100%"
+                                    format="Y-m-d"
+                                    placeholder="Select date..."
+                                    showAlways="true"
+                            >
+                            </l-c-datepicker>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Display Always - With Value:</h4>
+                        <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
+                            <l-c-datepicker
+                                    id="test-datepicker-display-always-2"
+                                    label="Pre-selected Date"
+                                    label-align="top"
+                                    size="medium"
+                                    width="100%"
+                                    format="Y-m-d"
+                                    value="2024-01-15"
+                                    placeholder="Select date..."
+                                    showAlways="true"
+                            >
+                            </l-c-datepicker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+export const DisplayAlways = DisplayAlwaysTemplate.bind({});
+DisplayAlways.args = {};
+
+const VisibilityTemplate = (args) => {
+    return html`
+        <div style="display: flex; gap: 2rem;">
+            
+            <div style="flex: 1;">
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Visible:</h4>
+                        <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
+                            <l-c-datepicker
+                                    id="test-datepicker-visible"
+                                    label="Visible Datepicker"
+                                    label-align="top"
+                                    size="medium"
+                                    width="100%"
+                                    format="Y-m-d"
+                                    placeholder="Select date..."
+                                    invisible="false"
+                            >
+                            </l-c-datepicker>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Invisible:</h4>
+                        <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa; min-height: 80px;">
+                            <p style="margin: 0 0 8px 0; font-size: 12px; color: #666;">Datepicker is invisible but still present in DOM:</p>
+                            <l-c-datepicker
+                                    id="test-datepicker-invisible"
+                                    label="Invisible Datepicker"
+                                    label-align="top"
+                                    size="medium"
+                                    width="100%"
+                                    format="Y-m-d"
+                                    placeholder="Select date..."
+                                    invisible="true"
+                            >
+                            </l-c-datepicker>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Invisible with showAlways:</h4>
+                        <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa; min-height: 80px;">
+                            <p style="margin: 0 0 8px 0; font-size: 12px; color: #666;">Even with showAlways=true, invisible hides everything:</p>
+                            <l-c-datepicker
+                                    id="test-datepicker-invisible-always"
+                                    label="Invisible Always Datepicker"
+                                    label-align="top"
+                                    size="medium"
+                                    width="100%"
+                                    format="Y-m-d"
+                                    placeholder="Select date..."
+                                    invisible="true"
+                                    showAlways="true"
+                            >
+                            </l-c-datepicker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+export const Visibility = VisibilityTemplate.bind({});
+Visibility.args = {};
+
 const FunctionTestingTemplate = (args) => {
     return html`
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
-                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Range Datepicker (DatepickerStyles.js)</h3>
-                <l-c-range-datepicker
-                        id="test-range-datepicker-function-isolated"
-                        label="Test Range Datepicker"
+                <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Datepicker (DatepickerStyles.js)</h3>
+                <l-c-datepicker
+                        id="test-datepicker-function"
+                        label="Test Datepicker"
                         label-align="top"
                         size="medium"
                         width="100%"
                         format="Y-m-d"
+                        placeholder="Select date..."
                         required="false"
                 >
-                </l-c-range-datepicker>
+                </l-c-datepicker>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
+                            const datepicker = document.querySelector('#test-datepicker-function');
                             const result = datepicker.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Get Value
                         </button>
                         
                         <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            const newValue = '2024-01-15,2024-12-31';
+                            const datepicker = document.querySelector('#test-datepicker-function');
+                            const newValue = '2024-01-15';
                             datepicker.setValue(newValue);
-                            document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                            document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue;
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Set Value
                         </button>
                         
                         <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            const fromValue = datepicker.getFromValue();
-                            document.querySelector('#isolated-getFromValue-result').textContent = fromValue || 'null';
+                            const datepicker = document.querySelector('#test-datepicker-function');
+                            const result = datepicker.isValid();
+                            document.querySelector('#isValid-result').textContent = result ? 'Valid' : 'Invalid';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            Get From Value
+                            Check Valid
                         </button>
                         
                         <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            const toValue = datepicker.getToValue();
-                            document.querySelector('#isolated-getToValue-result').textContent = toValue || 'null';
-                        " style="padding: 4px 8px; font-size: 12px; background: #6f42c1; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            Get To Value
-                        </button>
-                        
-                        <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            datepicker.setFromValue('2024-01-15');
-                            document.querySelector('#isolated-setFromValue-result').textContent = 'Set from to: 2024-01-15';
-                        " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            Set From Value
-                        </button>
-                        
-                        <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            datepicker.setToValue('2024-12-31');
-                            document.querySelector('#isolated-setToValue-result').textContent = 'Set to to: 2024-12-31';
-                        " style="padding: 4px 8px; font-size: 12px; background: #198754; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            Set To Value
-                        </button>
-                        
-                        <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            datepicker.initFromTodayDate();
-                            document.querySelector('#isolated-today-result').textContent = 'Set to today';
+                            const datepicker = document.querySelector('#test-datepicker-function');
+                            datepicker.initTodayDate();
+                            document.querySelector('#today-result').textContent = 'Set to today';
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             Set Today
                         </button>
                         
                         <button onclick="
-                            const datepicker = document.querySelector('#test-range-datepicker-function-isolated');
-                            const result = datepicker.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'Valid' : 'Invalid';
-                        " style="padding: 4px 8px; font-size: 12px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer;">
-                            Check Valid
+                            const datepicker = document.querySelector('#test-datepicker-function');
+                            datepicker.validate();
+                            document.querySelector('#validate-result').textContent = 'Validation triggered';
+                        " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                            Validate
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue:</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue:</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>getFromValue:</strong> <span id="isolated-getFromValue-result">-</span></div>
-                        <div><strong>getToValue:</strong> <span id="isolated-getToValue-result">-</span></div>
-                        <div><strong>setFromValue:</strong> <span id="isolated-setFromValue-result">-</span></div>
-                        <div><strong>setToValue:</strong> <span id="isolated-setToValue-result">-</span></div>
-                        <div><strong>setToday:</strong> <span id="isolated-today-result">-</span></div>
-                        <div><strong>isValid:</strong> <span id="isolated-isValid-result">-</span></div>
+                        <div><strong>getValue:</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue:</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>isValid:</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>setToday:</strong> <span id="today-result">-</span></div>
+                        <div><strong>validate:</strong> <span id="validate-result">-</span></div>
                     </div>
                 </div>
             </div>

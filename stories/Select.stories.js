@@ -68,7 +68,7 @@ const Template = (args) => {
                         feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                         component-style=${ifDefined(args['component-style'])}
                         default-type=${ifDefined(args['default-type'])}
-                        id=${ifDefined(args.id ? args.id + '-isolated' : undefined)}
+                        id=${ifDefined(args.id ? args.id + '' : undefined)}
                         name=${ifDefined(args.name)}
                         width=${ifDefined(args.width)}
                         ?required=${args.required}
@@ -125,8 +125,8 @@ const SizeTemplate = (args) => {
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
                             <l-select
-                                    id="select-isolated-${index}"
-                                    name="isolated-size-group"
+                                    id="select-${index}"
+                                    name="size-group"
                                     size=${ifDefined(size)}
                                     value="apple"
                                     .options=${options}
@@ -254,7 +254,7 @@ const ValidationTemplate = (args) => {
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
                         <l-select
-                                id="select-required-isolated"
+                                id="select-required"
                                 .options=${options}
                                 value=""
                                 required
@@ -266,7 +266,7 @@ const ValidationTemplate = (args) => {
                     </div>
                     <div>
                         <button type="button" onclick="
-                            const select = document.querySelector('#select-required-isolated');
+                            const select = document.querySelector('#select-required');
                             select.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
                             Validate Required
@@ -296,8 +296,8 @@ const FunctionTestingTemplate = (args) => {
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Select (SelectStyles.js)</h3>
                 <l-select
-                        id="test-select-isolated"
-                        name="test-select-isolated"
+                        id="test-select"
+                        name="test-select"
                         label="Test Select"
                         value="banana"
                         .options=${testOptions}
@@ -308,82 +308,82 @@ const FunctionTestingTemplate = (args) => {
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const result = select.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getValue()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const newValue = prompt('Enter new value (apple, banana, cherry, date):', 'cherry');
                             if (newValue !== null) {
                                 select.setValue(newValue);
-                                document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                                document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue;
                             }
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             setValue()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const result = select.getText();
-                            document.querySelector('#isolated-getText-result').textContent = result || 'null';
+                            document.querySelector('#getText-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getText()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const result = select.getSelectedIndex();
-                            document.querySelector('#isolated-getSelectedIndex-result').textContent = result;
+                            document.querySelector('#getSelectedIndex-result').textContent = result;
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             getSelectedIndex()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const result = select.getSelectedOption();
-                            document.querySelector('#isolated-getSelectedOption-result').textContent = result ? JSON.stringify(result) : 'null';
+                            document.querySelector('#getSelectedOption-result').textContent = result ? JSON.stringify(result) : 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getSelectedOption()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const result = select.getOptions();
-                            document.querySelector('#isolated-getOptions-result').textContent = result ? result.length + ' options' : 'null';
+                            document.querySelector('#getOptions-result').textContent = result ? result.length + ' options' : 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getOptions()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             const result = select.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'true' : 'false';
+                            document.querySelector('#isValid-result').textContent = result ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isValid()
                         </button>
                         
                         <button onclick="
-                            const select = document.querySelector('#test-select-isolated');
+                            const select = document.querySelector('#test-select');
                             select.validate();
-                            document.querySelector('#isolated-validate-result').textContent = 'Validation executed';
+                            document.querySelector('#validate-result').textContent = 'Validation executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             validate()
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>getText():</strong> <span id="isolated-getText-result">-</span></div>
-                        <div><strong>getSelectedIndex():</strong> <span id="isolated-getSelectedIndex-result">-</span></div>
-                        <div><strong>getSelectedOption():</strong> <span id="isolated-getSelectedOption-result">-</span></div>
-                        <div><strong>getOptions():</strong> <span id="isolated-getOptions-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="isolated-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="isolated-validate-result">-</span></div>
+                        <div><strong>getValue():</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>getText():</strong> <span id="getText-result">-</span></div>
+                        <div><strong>getSelectedIndex():</strong> <span id="getSelectedIndex-result">-</span></div>
+                        <div><strong>getSelectedOption():</strong> <span id="getSelectedOption-result">-</span></div>
+                        <div><strong>getOptions():</strong> <span id="getOptions-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="validate-result">-</span></div>
                     </div>
                 </div>
             </div>

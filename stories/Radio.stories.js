@@ -45,8 +45,8 @@ const Template = (args) => {
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
-                        id=${ifDefined(args.id ? args.id + '-isolated' : undefined)}
-                        name=${ifDefined(args.name ? args.name + '-isolated' : undefined)}
+                        id=${ifDefined(args.id ? args.id + '' : undefined)}
+                        name=${ifDefined(args.name ? args.name + '' : undefined)}
                         width=${ifDefined(args.width)}
                         ?checked=${args.checked}
                         ?required=${args.required}
@@ -88,8 +88,8 @@ const SizeTemplate = (args) => {
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
                             <l-radio
-                                    id="radio-isolated-${index}"
-                                    name="isolated-size-group"
+                                    id="radio-${index}"
+                                    name="size-group"
                                     size=${ifDefined(size)}
                                     label="${label} radio"
                                     value="${label.toLowerCase()}"
@@ -116,19 +116,19 @@ const StateTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-radio id="radio-isolated-normal" name="isolated-state" label="Normal radio" value="normal"></l-radio>
+                        <l-radio id="radio-normal" name="state" label="Normal radio" value="normal"></l-radio>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Checked:</label>
-                        <l-radio id="radio-isolated-checked" name="isolated-state" label="Checked radio" value="checked" checked></l-radio>
+                        <l-radio id="radio-checked" name="state" label="Checked radio" value="checked" checked></l-radio>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-radio id="radio-isolated-disabled" name="isolated-disabled-state" label="Disabled radio" value="disabled" disabled></l-radio>
+                        <l-radio id="radio-disabled" name="disabled-state" label="Disabled radio" value="disabled" disabled></l-radio>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled & Checked:</label>
-                        <l-radio id="radio-isolated-disabled-checked" name="isolated-disabled-state" label="Disabled & Checked" value="disabled-checked" disabled checked></l-radio>
+                        <l-radio id="radio-disabled-checked" name="disabled-state" label="Disabled & Checked" value="disabled-checked" disabled checked></l-radio>
                     </div>
                 </div>
             </div>
@@ -157,8 +157,8 @@ const GroupTemplate = (args) => {
                     <div style="display: flex; flex-direction: column; gap: 8px;">
                         ${options.map((option, index) => html`
                             <l-radio
-                                    id="radio-isolated-${option.id}"
-                                    name="isolated-group"
+                                    id="radio-${option.id}"
+                                    name="group"
                                     label="${option.label}"
                                     value="${option.value}"
                                     ?checked=${index === 1}
@@ -184,10 +184,10 @@ const InlineTemplate = (args) => {
                 <div>
                     <p style="margin-bottom: 12px; font-weight: bold; color: #666;">Inline radios:</p>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                        <l-radio id="radio-isolated-inline-1" name="isolated-inline" label="Radio 1" value="1"></l-radio>
-                        <l-radio id="radio-isolated-inline-2" name="isolated-inline" label="Radio 2" value="2" checked></l-radio>
-                        <l-radio id="radio-isolated-inline-3" name="isolated-inline" label="Radio 3" value="3"></l-radio>
-                        <l-radio id="radio-isolated-inline-4" name="isolated-inline-disabled" label="Radio 4" value="4" disabled></l-radio>
+                        <l-radio id="radio-inline-1" name="inline" label="Radio 1" value="1"></l-radio>
+                        <l-radio id="radio-inline-2" name="inline" label="Radio 2" value="2" checked></l-radio>
+                        <l-radio id="radio-inline-3" name="inline" label="Radio 3" value="3"></l-radio>
+                        <l-radio id="radio-inline-4" name="inline-disabled" label="Radio 4" value="4" disabled></l-radio>
                     </div>
                 </div>
             </div>
@@ -209,24 +209,24 @@ const RequiredValidationTemplate = (args) => {
                         <p style="margin-bottom: 8px; font-weight: bold; color: #666;">Required radio group (none selected initially):</p>
                         <div style="display: flex; flex-direction: column; gap: 8px;">
                             <l-radio
-                                    id="radio-required-isolated-1"
-                                    name="isolated-required"
+                                    id="radio-required-1"
+                                    name="required"
                                     label="Option A (Required)"
                                     value="a"
                                     required
                             >
                             </l-radio>
                             <l-radio
-                                    id="radio-required-isolated-2"
-                                    name="isolated-required"
+                                    id="radio-required-2"
+                                    name="required"
                                     label="Option B (Required)"
                                     value="b"
                                     required
                             >
                             </l-radio>
                             <l-radio
-                                    id="radio-required-isolated-3"
-                                    name="isolated-required"
+                                    id="radio-required-3"
+                                    name="required"
                                     label="Option C (Required)"
                                     value="c"
                                     required
@@ -239,13 +239,13 @@ const RequiredValidationTemplate = (args) => {
                     </div>
                     <div style="display: flex; gap: 8px;">
                         <button type="button" onclick="
-                            const radio = document.querySelector('#radio-required-isolated-1');
+                            const radio = document.querySelector('#radio-required-1');
                             radio.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
                             Validate
                         </button>
                         <button type="button" onclick="
-                            const radios = document.querySelectorAll('l-radio[name=&quot;isolated-required&quot;]');
+                            const radios = document.querySelectorAll('l-radio[name=&quot;required&quot;]');
                             radios.forEach(r => {
                                 const input = r.querySelector('input');
                                 if (input) input.checked = false;
@@ -272,23 +272,23 @@ const FunctionTestingTemplate = (args) => {
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Radio (RadioCheckboxStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px;">
                     <l-radio
-                            id="test-radio-isolated-1"
-                            name="test-radio-isolated"
+                            id="test-radio-1"
+                            name="test-radio"
                             label="Option 1"
                             value="option1"
                     >
                     </l-radio>
                     <l-radio
-                            id="test-radio-isolated-2"
-                            name="test-radio-isolated"
+                            id="test-radio-2"
+                            name="test-radio"
                             label="Option 2"
                             value="option2"
                             checked
                     >
                     </l-radio>
                     <l-radio
-                            id="test-radio-isolated-3"
-                            name="test-radio-isolated"
+                            id="test-radio-3"
+                            name="test-radio"
                             label="Option 3"
                             value="option3"
                     >
@@ -299,89 +299,89 @@ const FunctionTestingTemplate = (args) => {
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             const result = radio.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getValue()
                         </button>
                         
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             const newValue = prompt('Enter new value:', 'test-value');
                             if (newValue !== null) {
                                 radio.setValue(newValue);
-                                document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                                document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue;
                             }
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             setValue()
                         </button>
                         
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             const result = radio.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'true' : 'false';
+                            document.querySelector('#isValid-result').textContent = result ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isValid()
                         </button>
                         
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             radio.validate();
-                            document.querySelector('#isolated-validate-result').textContent = 'Validation executed';
+                            document.querySelector('#validate-result').textContent = 'Validation executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             validate()
                         </button>
                         
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             radio.checkValidity();
-                            document.querySelector('#isolated-checkValidity-result').textContent = 'checkValidity executed';
+                            document.querySelector('#checkValidity-result').textContent = 'checkValidity executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             checkValidity()
                         </button>
                         
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             const text = radio.getText();
-                            document.querySelector('#isolated-getText-result').textContent = text || 'null';
+                            document.querySelector('#getText-result').textContent = text || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getText()
                         </button>
                         
                         <button onclick="
-                            const radio = document.querySelector('#test-radio-isolated-2');
+                            const radio = document.querySelector('#test-radio-2');
                             const newText = prompt('Enter new text:', 'New Label');
                             if (newText !== null) {
                                 radio.setText(newText);
-                                document.querySelector('#isolated-setText-result').textContent = 'Set to: ' + newText;
+                                document.querySelector('#setText-result').textContent = 'Set to: ' + newText;
                             }
                         " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             setText()
                         </button>
                         
                         <button onclick="
-                            const radios = document.querySelectorAll('l-radio[name=&quot;test-radio-isolated&quot;]');
+                            const radios = document.querySelectorAll('l-radio[name=&quot;test-radio&quot;]');
                             let selectedValue = null;
                             radios.forEach(r => {
                                 const input = r.querySelector('input');
                                 if (input && input.checked) selectedValue = input.value;
                             });
-                            document.querySelector('#isolated-groupValue-result').textContent = selectedValue || 'none';
+                            document.querySelector('#groupValue-result').textContent = selectedValue || 'none';
                         " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Group Value
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="isolated-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="isolated-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="isolated-checkValidity-result">-</span></div>
-                        <div><strong>getText():</strong> <span id="isolated-getText-result">-</span></div>
-                        <div><strong>setText():</strong> <span id="isolated-setText-result">-</span></div>
-                        <div><strong>Group Value:</strong> <span id="isolated-groupValue-result">-</span></div>
+                        <div><strong>getValue():</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="validate-result">-</span></div>
+                        <div><strong>checkValidity():</strong> <span id="checkValidity-result">-</span></div>
+                        <div><strong>getText():</strong> <span id="getText-result">-</span></div>
+                        <div><strong>setText():</strong> <span id="setText-result">-</span></div>
+                        <div><strong>Group Value:</strong> <span id="groupValue-result">-</span></div>
                     </div>
                 </div>
             </div>

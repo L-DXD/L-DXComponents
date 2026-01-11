@@ -99,7 +99,7 @@ const Template = (args) => {
                         feedback-type=${ifDefined(args['feedback-type'])}
                         feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                         component-style=${ifDefined(args['component-style'])}
-                        id=${ifDefined(args.id ? args.id + '-isolated' : undefined)}
+                        id=${ifDefined(args.id ? args.id + '' : undefined)}
                         name=${ifDefined(args.name)}
                         width=${ifDefined(args.width)}
                         maxlength=${ifDefined(args.maxlength)}
@@ -312,7 +312,7 @@ const TopLabelFeedbackTemplate = (args) => {
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type="text"
-                        id="input01-isolated"
+                        id="input01"
                         name="name"
                         width="100%"
                         label="label"
@@ -339,7 +339,7 @@ const LeftLabelFeedbackTemplate = (args) => {
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type="text"
-                        id="input02-isolated"
+                        id="input02"
                         name="name"
                         width="auto"
                         label="label : "
@@ -366,7 +366,7 @@ const RequiredValidityTemplate = (args) => {
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
                         type="text"
-                        id="input03-isolated"
+                        id="input03"
                         name="name"
                         width="100%"
                         label="label"
@@ -439,9 +439,9 @@ const FunctionTestingTemplate = (args) => {
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Input (InputStyles.js)</h3>
                 <l-input
-                        id="test-input-isolated"
+                        id="test-input"
                         type="text"
-                        name="test-input-isolated"
+                        name="test-input"
                         label="Test Input"
                         placeholder="Enter test value"
                         value="Sample input value"
@@ -455,85 +455,85 @@ const FunctionTestingTemplate = (args) => {
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             const result = input.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getValue()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             const newValue = prompt('Enter new value:', 'TestValue123');
                             if (newValue !== null) {
                                 input.setValue(newValue);
-                                document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                                document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue;
                             }
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             setValue()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             const result = input.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'true' : 'false';
+                            document.querySelector('#isValid-result').textContent = result ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isValid()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             input.validate();
-                            document.querySelector('#isolated-validate-result').textContent = 'Validation executed';
+                            document.querySelector('#validate-result').textContent = 'Validation executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             validate()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             input.checkValidity();
-                            document.querySelector('#isolated-checkValidity-result').textContent = 'checkValidity executed';
+                            document.querySelector('#checkValidity-result').textContent = 'checkValidity executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             checkValidity()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             const inputEl = input.querySelector('input');
                             const byteLength = inputEl ? input.getByteLength(inputEl.value) : 0;
-                            document.querySelector('#isolated-getByteLength-result').textContent = byteLength + ' bytes';
+                            document.querySelector('#getByteLength-result').textContent = byteLength + ' bytes';
                         " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getByteLength()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             const inputEl = input.querySelector('input');
                             const isPatternValid = inputEl ? input.isPatternValid(inputEl.value) : true;
-                            document.querySelector('#isolated-isPatternValid-result').textContent = isPatternValid ? 'true' : 'false';
+                            document.querySelector('#isPatternValid-result').textContent = isPatternValid ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isPatternValid()
                         </button>
                         
                         <button onclick="
-                            const input = document.querySelector('#test-input-isolated');
+                            const input = document.querySelector('#test-input');
                             const inputEl = input.querySelector('input');
                             const isRequiredValid = inputEl ? input.isRequiredValid(inputEl.value) : true;
-                            document.querySelector('#isolated-isRequiredValid-result').textContent = isRequiredValid ? 'true' : 'false';
+                            document.querySelector('#isRequiredValid-result').textContent = isRequiredValid ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isRequiredValid()
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="isolated-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="isolated-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="isolated-checkValidity-result">-</span></div>
-                        <div><strong>getByteLength():</strong> <span id="isolated-getByteLength-result">-</span></div>
-                        <div><strong>isPatternValid():</strong> <span id="isolated-isPatternValid-result">-</span></div>
-                        <div><strong>isRequiredValid():</strong> <span id="isolated-isRequiredValid-result">-</span></div>
+                        <div><strong>getValue():</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="validate-result">-</span></div>
+                        <div><strong>checkValidity():</strong> <span id="checkValidity-result">-</span></div>
+                        <div><strong>getByteLength():</strong> <span id="getByteLength-result">-</span></div>
+                        <div><strong>isPatternValid():</strong> <span id="isPatternValid-result">-</span></div>
+                        <div><strong>isRequiredValid():</strong> <span id="isRequiredValid-result">-</span></div>
                     </div>
                 </div>
             </div>

@@ -79,7 +79,7 @@ const Template = (args) => {
                         feedback-type=${ifDefined(args['feedback-type'])}
                         feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                         component-style=${ifDefined(args['component-style'])}
-                        id=${ifDefined(args.id ? args.id + '-isolated' : undefined)}
+                        id=${ifDefined(args.id ? args.id + '' : undefined)}
                         name=${ifDefined(args.name)}
                         width=${ifDefined(args.width)}
                         maxlength=${ifDefined(args.maxlength)}
@@ -130,8 +130,8 @@ const SizeTemplate = (args) => {
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
                             <l-textarea
-                                    id="textarea-isolated-${index}"
-                                    name="isolated-size-group"
+                                    id="textarea-${index}"
+                                    name="size-group"
                                     size=${ifDefined(size)}
                                     placeholder="${label} textarea"
                                     value="${label} textarea content"
@@ -238,7 +238,7 @@ const ValidationTemplate = (args) => {
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
                         <l-textarea
-                                id="textarea-required-isolated"
+                                id="textarea-required"
                                 placeholder="Required textarea"
                                 required
                                 
@@ -260,7 +260,7 @@ const ValidationTemplate = (args) => {
                     </div>
                     <div>
                         <button type="button" onclick="
-                            const textarea = document.querySelector('#textarea-required-isolated');
+                            const textarea = document.querySelector('#textarea-required');
                             textarea.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
                             Validate Required
@@ -282,8 +282,8 @@ const FunctionTestingTemplate = (args) => {
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <l-textarea
-                        id="test-textarea-isolated"
-                        name="test-textarea-isolated"
+                        id="test-textarea"
+                        name="test-textarea"
                         label="Test Textarea"
                         placeholder="Enter test content"
                         value="Sample textarea content for testing"
@@ -295,85 +295,85 @@ const FunctionTestingTemplate = (args) => {
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             const result = textarea.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getValue()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             const newValue = prompt('Enter new value:', 'New textarea content');
                             if (newValue !== null) {
                                 textarea.setValue(newValue);
-                                document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue.substring(0, 20) + (newValue.length > 20 ? '...' : '');
+                                document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue.substring(0, 20) + (newValue.length > 20 ? '...' : '');
                             }
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             setValue()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             const result = textarea.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'true' : 'false';
+                            document.querySelector('#isValid-result').textContent = result ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isValid()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             textarea.validate();
-                            document.querySelector('#isolated-validate-result').textContent = 'Validation executed';
+                            document.querySelector('#validate-result').textContent = 'Validation executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             validate()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             textarea.checkValidity();
-                            document.querySelector('#isolated-checkValidity-result').textContent = 'checkValidity executed';
+                            document.querySelector('#checkValidity-result').textContent = 'checkValidity executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             checkValidity()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             const textareaEl = textarea.querySelector('textarea');
                             const byteLength = textareaEl ? textarea.getByteLength(textareaEl.value) : 0;
-                            document.querySelector('#isolated-getByteLength-result').textContent = byteLength + ' bytes';
+                            document.querySelector('#getByteLength-result').textContent = byteLength + ' bytes';
                         " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getByteLength()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             const textareaEl = textarea.querySelector('textarea');
                             const isPatternValid = textareaEl ? textarea.isPatternValid(textareaEl.value) : true;
-                            document.querySelector('#isolated-isPatternValid-result').textContent = isPatternValid ? 'true' : 'false';
+                            document.querySelector('#isPatternValid-result').textContent = isPatternValid ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isPatternValid()
                         </button>
                         
                         <button onclick="
-                            const textarea = document.querySelector('#test-textarea-isolated');
+                            const textarea = document.querySelector('#test-textarea');
                             const textareaEl = textarea.querySelector('textarea');
                             const isRequiredValid = textareaEl ? textarea.isRequiredValid(textareaEl.value) : true;
-                            document.querySelector('#isolated-isRequiredValid-result').textContent = isRequiredValid ? 'true' : 'false';
+                            document.querySelector('#isRequiredValid-result').textContent = isRequiredValid ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #20c997; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isRequiredValid()
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="isolated-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="isolated-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="isolated-checkValidity-result">-</span></div>
-                        <div><strong>getByteLength():</strong> <span id="isolated-getByteLength-result">-</span></div>
-                        <div><strong>isPatternValid():</strong> <span id="isolated-isPatternValid-result">-</span></div>
-                        <div><strong>isRequiredValid():</strong> <span id="isolated-isRequiredValid-result">-</span></div>
+                        <div><strong>getValue():</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="validate-result">-</span></div>
+                        <div><strong>checkValidity():</strong> <span id="checkValidity-result">-</span></div>
+                        <div><strong>getByteLength():</strong> <span id="getByteLength-result">-</span></div>
+                        <div><strong>isPatternValid():</strong> <span id="isPatternValid-result">-</span></div>
+                        <div><strong>isRequiredValid():</strong> <span id="isRequiredValid-result">-</span></div>
                     </div>
                 </div>
             </div>

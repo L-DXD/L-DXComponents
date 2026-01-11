@@ -177,7 +177,7 @@ const Template = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Monthpicker (DatepickerStyles.js)</h3>
                 <l-c-monthpicker
-                        id=${ifDefined(args.id + '-isolated')}
+                        id=${ifDefined(args.id + '')}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
                         label-width=${ifDefined(args['label-width'])}
@@ -244,7 +244,7 @@ const FormatTemplate = (args) => {
                             <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">${label}:</h4>
                             <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
                                 <l-c-monthpicker
-                                        id="test-monthpicker-isolated-format-${format.replace(/[^a-zA-Z0-9]/g, '')}"
+                                        id="test-monthpicker-format-${format.replace(/[^a-zA-Z0-9]/g, '')}"
                                         label="Month"
                                         label-align="top"
                                         size="medium"
@@ -276,7 +276,7 @@ const InlineTemplate = (args) => {
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Popup Month Selector:</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
                             <l-c-monthpicker
-                                    id="test-monthpicker-isolated-popup"
+                                    id="test-monthpicker-popup"
                                     label="Month"
                                     label-align="top"
                                     size="medium"
@@ -292,7 +292,7 @@ const InlineTemplate = (args) => {
                         <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Inline Month Selector:</h4>
                         <div style="border: 1px solid #ddd; padding: 8px; background: #f8f9fa;">
                             <l-c-monthpicker
-                                    id="test-monthpicker-isolated-inline"
+                                    id="test-monthpicker-inline"
                                     label="Month"
                                     label-align="top"
                                     size="medium"
@@ -321,7 +321,7 @@ const FunctionTestingTemplate = (args) => {
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Monthpicker (DatepickerStyles.js)</h3>
                 <l-c-monthpicker
-                        id="test-monthpicker-function-isolated"
+                        id="test-monthpicker-function"
                         label="Test Monthpicker"
                         label-align="top"
                         size="medium"
@@ -336,53 +336,53 @@ const FunctionTestingTemplate = (args) => {
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const monthpicker = document.querySelector('#test-monthpicker-function-isolated');
+                            const monthpicker = document.querySelector('#test-monthpicker-function');
                             const result = monthpicker.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Get Value
                         </button>
                         
                         <button onclick="
-                            const monthpicker = document.querySelector('#test-monthpicker-function-isolated');
+                            const monthpicker = document.querySelector('#test-monthpicker-function');
                             const newValue = '2024-01';
                             monthpicker.setValue(newValue);
-                            document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                            document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue;
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Set Value
                         </button>
                         
                         <button onclick="
-                            const monthpicker = document.querySelector('#test-monthpicker-function-isolated');
+                            const monthpicker = document.querySelector('#test-monthpicker-function');
                             const result = monthpicker.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'Valid' : 'Invalid';
+                            document.querySelector('#isValid-result').textContent = result ? 'Valid' : 'Invalid';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Check Valid
                         </button>
                         
                         <button onclick="
-                            const monthpicker = document.querySelector('#test-monthpicker-function-isolated');
+                            const monthpicker = document.querySelector('#test-monthpicker-function');
                             monthpicker.initCurrentMonth();
-                            document.querySelector('#isolated-currentMonth-result').textContent = 'Set to current month';
+                            document.querySelector('#currentMonth-result').textContent = 'Set to current month';
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             Set Current Month
                         </button>
                         
                         <button onclick="
-                            const monthpicker = document.querySelector('#test-monthpicker-function-isolated');
+                            const monthpicker = document.querySelector('#test-monthpicker-function');
                             monthpicker.validate();
-                            document.querySelector('#isolated-validate-result').textContent = 'Validation triggered';
+                            document.querySelector('#validate-result').textContent = 'Validation triggered';
                         " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             Validate
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue:</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue:</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>isValid:</strong> <span id="isolated-isValid-result">-</span></div>
-                        <div><strong>currentMonth:</strong> <span id="isolated-currentMonth-result">-</span></div>
-                        <div><strong>validate:</strong> <span id="isolated-validate-result">-</span></div>
+                        <div><strong>getValue:</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue:</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>isValid:</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>currentMonth:</strong> <span id="currentMonth-result">-</span></div>
+                        <div><strong>validate:</strong> <span id="validate-result">-</span></div>
                     </div>
                 </div>
             </div>

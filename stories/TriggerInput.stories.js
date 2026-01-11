@@ -100,7 +100,7 @@ const Template = (args) => {
                         feedback-type=${ifDefined(args['feedback-type'])}
                         feedback-visible-type=${ifDefined(args['feedback-visible-type'])}
                         component-style=${ifDefined(args['component-style'])}
-                        id=${ifDefined(args.id ? args.id + '-isolated' : undefined)}
+                        id=${ifDefined(args.id ? args.id + '' : undefined)}
                         name=${ifDefined(args.name)}
                         width=${ifDefined(args.width)}
                         maxlength=${ifDefined(args.maxlength)}
@@ -155,8 +155,8 @@ const SizeTemplate = (args) => {
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
                             <l-triggerinput
-                                    id="triggerinput-isolated-${index}"
-                                    name="isolated-size-group"
+                                    id="triggerinput-${index}"
+                                    name="size-group"
                                     size=${ifDefined(size)}
                                     placeholder="${label} trigger input"
                                     value="${label} text"
@@ -260,7 +260,7 @@ const ValidationTemplate = (args) => {
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
                         <l-triggerinput
-                                id="triggerinput-required-isolated"
+                                id="triggerinput-required"
                                 placeholder="Required trigger input"
                                 required
                                 .handleTrigger=${handleTrigger}
@@ -272,7 +272,7 @@ const ValidationTemplate = (args) => {
                     </div>
                     <div>
                         <button type="button" onclick="
-                            const triggerInput = document.querySelector('#triggerinput-required-isolated');
+                            const triggerInput = document.querySelector('#triggerinput-required');
                             triggerInput.checkValidity();
                         " style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
                             Validate Required
@@ -300,8 +300,8 @@ const FunctionTestingTemplate = (args) => {
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <l-triggerinput
-                        id="test-triggerinput-isolated"
-                        name="test-triggerinput-isolated"
+                        id="test-triggerinput"
+                        name="test-triggerinput"
                         label="Test TriggerInput"
                         placeholder="Type text and click search icon"
                         value="Sample trigger text"
@@ -316,74 +316,74 @@ const FunctionTestingTemplate = (args) => {
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             const result = triggerInput.getValue();
-                            document.querySelector('#isolated-getValue-result').textContent = result || 'null';
+                            document.querySelector('#getValue-result').textContent = result || 'null';
                         " style="padding: 4px 8px; font-size: 12px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getValue()
                         </button>
                         
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             const newValue = prompt('Enter new value:', 'New trigger text');
                             if (newValue !== null) {
                                 triggerInput.setValue(newValue);
-                                document.querySelector('#isolated-setValue-result').textContent = 'Set to: ' + newValue;
+                                document.querySelector('#setValue-result').textContent = 'Set to: ' + newValue;
                             }
                         " style="padding: 4px 8px; font-size: 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             setValue()
                         </button>
                         
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             const result = triggerInput.isValid();
-                            document.querySelector('#isolated-isValid-result').textContent = result ? 'true' : 'false';
+                            document.querySelector('#isValid-result').textContent = result ? 'true' : 'false';
                         " style="padding: 4px 8px; font-size: 12px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             isValid()
                         </button>
                         
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             triggerInput.validate();
-                            document.querySelector('#isolated-validate-result').textContent = 'Validation executed';
+                            document.querySelector('#validate-result').textContent = 'Validation executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #ffc107; color: black; border: none; border-radius: 3px; cursor: pointer;">
                             validate()
                         </button>
                         
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             triggerInput.checkValidity();
-                            document.querySelector('#isolated-checkValidity-result').textContent = 'checkValidity executed';
+                            document.querySelector('#checkValidity-result').textContent = 'checkValidity executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             checkValidity()
                         </button>
                         
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             triggerInput.triggerPop();
-                            document.querySelector('#isolated-triggerPop-result').textContent = 'triggerPop() executed';
+                            document.querySelector('#triggerPop-result').textContent = 'triggerPop() executed';
                         " style="padding: 4px 8px; font-size: 12px; background: #e83e8c; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             triggerPop()
                         </button>
                         
                         <button onclick="
-                            const triggerInput = document.querySelector('#test-triggerinput-isolated');
+                            const triggerInput = document.querySelector('#test-triggerinput');
                             const inputEl = triggerInput.querySelector('input');
                             const byteLength = inputEl ? triggerInput.getByteLength(inputEl.value) : 0;
-                            document.querySelector('#isolated-getByteLength-result').textContent = byteLength + ' bytes';
+                            document.querySelector('#getByteLength-result').textContent = byteLength + ' bytes';
                         " style="padding: 4px 8px; font-size: 12px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
                             getByteLength()
                         </button>
                     </div>
                     
                     <div style="font-size: 12px; line-height: 1.4; color: #666;">
-                        <div><strong>getValue():</strong> <span id="isolated-getValue-result">-</span></div>
-                        <div><strong>setValue():</strong> <span id="isolated-setValue-result">-</span></div>
-                        <div><strong>isValid():</strong> <span id="isolated-isValid-result">-</span></div>
-                        <div><strong>validate():</strong> <span id="isolated-validate-result">-</span></div>
-                        <div><strong>checkValidity():</strong> <span id="isolated-checkValidity-result">-</span></div>
-                        <div><strong>triggerPop():</strong> <span id="isolated-triggerPop-result">-</span></div>
-                        <div><strong>getByteLength():</strong> <span id="isolated-getByteLength-result">-</span></div>
+                        <div><strong>getValue():</strong> <span id="getValue-result">-</span></div>
+                        <div><strong>setValue():</strong> <span id="setValue-result">-</span></div>
+                        <div><strong>isValid():</strong> <span id="isValid-result">-</span></div>
+                        <div><strong>validate():</strong> <span id="validate-result">-</span></div>
+                        <div><strong>checkValidity():</strong> <span id="checkValidity-result">-</span></div>
+                        <div><strong>triggerPop():</strong> <span id="triggerPop-result">-</span></div>
+                        <div><strong>getByteLength():</strong> <span id="getByteLength-result">-</span></div>
                     </div>
                 </div>
             </div>
