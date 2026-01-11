@@ -1,13 +1,12 @@
-import {customElement} from 'lit/decorators.js';
 import DateUtils from '../commons/Date.js'
-import {LitDatepickerParents} from "../container/LitDatepickerParents.js";
-import {LitDatepickerParentsIsolated} from "@/components/container/LitDatepickerParents_Isolated.js";
+import {LitDatepickerParents} from "@/components/container/LitDatepickerParents.js";
 
-@customElement('l-c-monthpicker')
-class LMonthpicker extends LitDatepickerParentsIsolated {
+class LMonthpicker extends LitDatepickerParents {
 
     constructor() {
         super();
         super.setDateType(DateUtils.DATE_TYPE.MONTH);
     }
 }
+
+customElements.define('l-c-monthpicker', LMonthpicker);

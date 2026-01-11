@@ -6,7 +6,6 @@ export default create({
   // 브랜드
   brandTitle: 'L-DX Component',
 //   brandUrl: 'https://example.com',
-  brandImage: '/path/to/logo.png', // 선택사항: 로고 이미지
 
   // UI
   colorPrimary: '#FF4785',

@@ -1,12 +1,10 @@
 import {css, html, LitElement} from 'lit';
-import {LLabel} from '../text/Label.js';
-import {LFeedback} from "../text/Feedback.js";
 import {classMap} from "lit/directives/class-map.js";
-import {customElement} from "lit/decorators.js";
 import {ifDefined} from "lit/directives/if-defined.js";
-import {LitParents} from "@/components/container/LitParents.js";
+import {LitParents} from "./LitParents.js";
+import "../text/Label.js";
+import "../text/Feedback.js";
 
-@customElement('l-label-feed-container')
 export class LabelAndFeedContainer extends LitParents {
 
     constructor() {
@@ -15,14 +13,16 @@ export class LabelAndFeedContainer extends LitParents {
 
     static styles =
         [
-            ...super.styles,
-            // component css
+            // LitParents의 기본 스타일만 포함 (SharedStyles 제외)
             css`
-              .container {
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-              }
+                :host {
+                    display: block;
+                }
+                .container {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
             `
         ];
 
@@ -214,3 +214,5 @@ export class LabelAndFeedContainer extends LitParents {
         `
     }
 }
+
+customElements.define('l-label-feed-container', LabelAndFeedContainer);

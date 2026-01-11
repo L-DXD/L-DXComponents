@@ -1,6 +1,5 @@
 import {css, html, LitElement} from 'lit';
 import '../../styles/common.css';
-import {customElement} from 'lit/decorators.js';
 import '../../../assets/css/Input.css';
 import 'flatpickr/dist/flatpickr.min.css'
 import DateUtils from '../commons/Date.js'
@@ -9,11 +8,27 @@ import {ifDefined} from "lit/directives/if-defined.js";
 import flatpickr from "flatpickr";
 import monthSelectPlugin from "flatpickr/dist/plugins/monthSelect";
 import 'flatpickr/dist/plugins/monthSelect/style.css'
+import {setupAttributeValidation} from "../commons/attributeValidation.js";
 
 class LitDatepickerParents extends LitElement {
 
     constructor() {
         super();
+    }
+
+    connectedCallback() {
+        super.connectedCallback();
+        if (!this._attributeValidationCleanup) {
+            this._attributeValidationCleanup = setupAttributeValidation(this);
+        }
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        if (this._attributeValidationCleanup) {
+            this._attributeValidationCleanup();
+            this._attributeValidationCleanup = null;
+        }
     }
 
     setDateType(dateType) {
@@ -79,15 +94,24 @@ class LitDatepickerParents extends LitElement {
     }
 
     initDatePicker() {
+        const selector = this.getSelector;
+        if (!selector) {
+            console.warn('DatePicker input element not found, retrying...');
+            setTimeout(() => this.initDatePicker(), 100);
+            return;
+        }
 
-        this._datepicker = flatpickr(this.getSelector, this.getOptions());
+        this._datepicker = flatpickr(selector, this.getOptions());
 
         const value = this['value'];
         this.setValue(value);
     }
 
     firstUpdated() {
-        this.initDatePicker();
+        // DOM이 완전히 렌더링된 후 Flatpickr 초기화
+        requestAnimationFrame(() => {
+            this.initDatePicker();
+        });
     }
 
     getValue = () => this._datepicker ? this._datepicker.input.value : null;
@@ -206,13 +230,11 @@ class LitDatepickerParents extends LitElement {
         }
     }
 
-
     render() {
         const inputId = `${this['id']}-input`;
         const feedbackId = `${this['id']}-feedback`;
 
         let isLabelLeft = (this['label-align'] && this['label-align'] === 'left');
-
 
         const feedbackHtml = {
             'normal': html`
@@ -311,7 +333,6 @@ class LitDatepickerParents extends LitElement {
         return true;
     }
 
-
     checkValidity() {
         this.validate();
     }
@@ -334,7 +355,6 @@ class LitDatepickerParents extends LitElement {
     }
 
     _handleClick = (_) => this.getSelector.click();
-
 
     validate() {
         const isFlag = this.isValid();
@@ -367,5 +387,7 @@ class LitDatepickerParents extends LitElement {
         this.setSelectorValid(true);
     }
 }
+
+customElements.define('l-datepicker-parents', LitDatepickerParents);
 
 export {LitDatepickerParents};
