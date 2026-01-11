@@ -146,4 +146,4 @@ class LTextarea extends LabelAndFeedContainer {
     }
 }
 
-customElements.define('l-textarea', LTextarea);
+customElements.define('l-c-textarea', LTextarea);

@@ -28,11 +28,11 @@ export function CodeHighlight({children, language}) {
     Prism.highlightAll();
 
     return (
-        <div>
-            <code class={`language-${language}`}>
+        <pre className="sbdocs sbdocs-pre">
+            <code class={`sbdocs sbdocs-code language-${language}`}>
                 {children}
             </code>
-        </div>
+        </pre>
     );
 }
 

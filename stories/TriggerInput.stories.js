@@ -89,7 +89,7 @@ const Template = (args) => {
             
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
-                <l-triggerinput
+                <l-c-triggerinput
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -115,7 +115,7 @@ const Template = (args) => {
                         autocomplete="${ifDefined(args.autocomplete)}"
                         .handleTrigger=${handleTrigger}
                 >
-                </l-triggerinput>
+                </l-c-triggerinput>
             </div>
         </div>
     `
@@ -155,7 +155,7 @@ const SizeTemplate = (args) => {
                     ${sizes.map(({size, label}, index) => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-triggerinput
+                            <l-c-triggerinput
                                     id="triggerinput-${index}"
                                     name="size-group"
                                     size=${ifDefined(size)}
@@ -163,7 +163,7 @@ const SizeTemplate = (args) => {
                                     value="${label} text"
                                     .handleTrigger=${handleTrigger}
                             >
-                            </l-triggerinput>
+                            </l-c-triggerinput>
                         </div>
                     `)}
                 </div>
@@ -188,23 +188,23 @@ const StateTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-triggerinput placeholder="Normal trigger input" value="Normal text" .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput placeholder="Normal trigger input" value="Normal text" .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-triggerinput placeholder="Disabled trigger input" value="Disabled text" disabled .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput placeholder="Disabled trigger input" value="Disabled text" disabled .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">ReadOnly:</label>
-                        <l-triggerinput value="ReadOnly text" readonly .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput value="ReadOnly text" readonly .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-triggerinput placeholder="Required trigger input" required .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput placeholder="Required trigger input" required .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Trigger Disabled:</label>
-                        <l-triggerinput placeholder="Trigger disabled" value="Click won't work" trigger-disabled .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput placeholder="Trigger disabled" value="Click won't work" trigger-disabled .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                 </div>
             </div>
@@ -226,10 +226,10 @@ const LabelAndFeedbackTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-triggerinput label="Search Term" placeholder="Enter search term" .handleTrigger=${handleTrigger}></l-triggerinput>
-                    <l-triggerinput label="Query" label-align="left" placeholder="Enter query" .handleTrigger=${handleTrigger}></l-triggerinput>
-                    <l-triggerinput label="Filter" feedback="Filter is required" feedback-type="error" .handleTrigger=${handleTrigger}></l-triggerinput>
-                    <l-triggerinput label="Keyword" feedback="Valid keyword format" feedback-type="success" value="example keyword" .handleTrigger=${handleTrigger}></l-triggerinput>
+                    <l-c-triggerinput label="Search Term" placeholder="Enter search term" .handleTrigger=${handleTrigger}></l-c-triggerinput>
+                    <l-c-triggerinput label="Query" label-align="left" placeholder="Enter query" .handleTrigger=${handleTrigger}></l-c-triggerinput>
+                    <l-c-triggerinput label="Filter" feedback="Filter is required" feedback-type="error" .handleTrigger=${handleTrigger}></l-c-triggerinput>
+                    <l-c-triggerinput label="Keyword" feedback="Valid keyword format" feedback-type="success" value="example keyword" .handleTrigger=${handleTrigger}></l-c-triggerinput>
                 </div>
             </div>
         </div>
@@ -252,21 +252,21 @@ const ValidationTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Pattern Validation (Phone):</label>
-                        <l-triggerinput pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="000-0000-0000" .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" placeholder="000-0000-0000" .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Max/Min Length:</label>
-                        <l-triggerinput maxlength="20" minlength="3" placeholder="3-20 characters" .handleTrigger=${handleTrigger}></l-triggerinput>
+                        <l-c-triggerinput maxlength="20" minlength="3" placeholder="3-20 characters" .handleTrigger=${handleTrigger}></l-c-triggerinput>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
-                        <l-triggerinput
+                        <l-c-triggerinput
                                 id="triggerinput-required"
                                 placeholder="Required trigger input"
                                 required
                                 .handleTrigger=${handleTrigger}
                         >
-                        </l-triggerinput>
+                        </l-c-triggerinput>
                         <p style="margin-top: 8px; font-size: 12px; color: #666;">
                             Leave empty and click outside to see validation
                         </p>
@@ -300,7 +300,7 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">TriggerInput (TriggerInputStyles.js)</h3>
-                <l-triggerinput
+                <l-c-triggerinput
                         id="test-triggerinput"
                         name="test-triggerinput"
                         label="Test TriggerInput"
@@ -311,7 +311,7 @@ const FunctionTestingTemplate = (args) => {
                         minlength="3"
                         .handleTrigger=${handleTrigger}
                 >
-                </l-triggerinput>
+                </l-c-triggerinput>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

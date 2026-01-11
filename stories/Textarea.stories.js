@@ -68,7 +68,7 @@ const Template = (args) => {
         <div style="display: flex; gap: 2rem; align-items: flex-start;">
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
-                <l-textarea
+                <l-c-textarea
                         size=${ifDefined(args.size)}
                         label=${ifDefined(args.label)}
                         label-align=${ifDefined(args['label-align'])}
@@ -94,7 +94,7 @@ const Template = (args) => {
                         value="${ifDefined(args.value)}"
                         autocomplete="${ifDefined(args.autocomplete)}"
                 >
-                </l-textarea>
+                </l-c-textarea>
             </div>
         </div>
     `
@@ -130,7 +130,7 @@ const SizeTemplate = (args) => {
                     ${sizes.map(({size, label}, index) => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${label}:</label>
-                            <l-textarea
+                            <l-c-textarea
                                     id="textarea-${index}"
                                     name="size-group"
                                     size=${ifDefined(size)}
@@ -138,7 +138,7 @@ const SizeTemplate = (args) => {
                                     value="${label} textarea content"
                                     
                             >
-                            </l-textarea>
+                            </l-c-textarea>
                         </div>
                     `)}
                 </div>
@@ -158,19 +158,19 @@ const StateTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Normal:</label>
-                        <l-textarea placeholder="Normal textarea" value="Normal content" ></l-textarea>
+                        <l-c-textarea placeholder="Normal textarea" value="Normal content" ></l-c-textarea>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Disabled:</label>
-                        <l-textarea placeholder="Disabled textarea" value="Disabled content" disabled ></l-textarea>
+                        <l-c-textarea placeholder="Disabled textarea" value="Disabled content" disabled ></l-c-textarea>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">ReadOnly:</label>
-                        <l-textarea value="ReadOnly content" readonly ></l-textarea>
+                        <l-c-textarea value="ReadOnly content" readonly ></l-c-textarea>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required:</label>
-                        <l-textarea placeholder="Required textarea" required ></l-textarea>
+                        <l-c-textarea placeholder="Required textarea" required ></l-c-textarea>
                     </div>
                 </div>
             </div>
@@ -188,10 +188,10 @@ const LabelAndFeedbackTemplate = (args) => {
             <div style="flex: 1;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <l-textarea label="Message" placeholder="Enter your message" rows="4"></l-textarea>
-                    <l-textarea label="Description" label-align="left" placeholder="Enter description" rows="4"></l-textarea>
-                    <l-textarea label="Comment" feedback="Comment is required" feedback-type="error" rows="4"></l-textarea>
-                    <l-textarea label="Review" feedback="Great feedback!" feedback-type="success" value="This is a good review..." rows="4"></l-textarea>
+                    <l-c-textarea label="Message" placeholder="Enter your message" rows="4"></l-c-textarea>
+                    <l-c-textarea label="Description" label-align="left" placeholder="Enter description" rows="4"></l-c-textarea>
+                    <l-c-textarea label="Comment" feedback="Comment is required" feedback-type="error" rows="4"></l-c-textarea>
+                    <l-c-textarea label="Review" feedback="Great feedback!" feedback-type="success" value="This is a good review..." rows="4"></l-c-textarea>
                 </div>
             </div>
         </div>
@@ -212,12 +212,12 @@ const RowsTemplate = (args) => {
                     ${rowCounts.map(rows => html`
                         <div>
                             <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">${rows} rows:</label>
-                            <l-textarea
+                            <l-c-textarea
                                     placeholder="${rows} rows textarea"
                                     value="Content for ${rows} rows textarea"
                                     rows="${rows}"
                             >
-                            </l-textarea>
+                            </l-c-textarea>
                         </div>
                     `)}
                 </div>
@@ -238,26 +238,26 @@ const ValidationTemplate = (args) => {
                 <div style="display: flex; flex-direction: column; gap: 16px;">
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Required (empty to test):</label>
-                        <l-textarea
+                        <l-c-textarea
                                 id="textarea-required"
                                 placeholder="Required textarea"
                                 required
                                 
                         >
-                        </l-textarea>
+                        </l-c-textarea>
                         <p style="margin-top: 8px; font-size: 12px; color: #666;">
                             Leave empty and click outside to see validation
                         </p>
                     </div>
                     <div>
                         <label style="display: block; margin-bottom: 4px; font-weight: bold; color: #555;">Max/Min Length:</label>
-                        <l-textarea
+                        <l-c-textarea
                                 maxlength="50"
                                 minlength="10"
                                 placeholder="10-50 characters"
                                 
                         >
-                        </l-textarea>
+                        </l-c-textarea>
                     </div>
                     <div>
                         <button type="button" onclick="
@@ -282,7 +282,7 @@ const FunctionTestingTemplate = (args) => {
             
             <div style="flex: 1; border: 1px solid #ddd; padding: 16px; border-radius: 8px;">
                 <h3 style="margin: 0 0 1rem 0; color: #333; font-size: 1rem;">Textarea (FormControlStyles.js)</h3>
-                <l-textarea
+                <l-c-textarea
                         id="test-textarea"
                         name="test-textarea"
                         label="Test Textarea"
@@ -290,7 +290,7 @@ const FunctionTestingTemplate = (args) => {
                         value="Sample textarea content for testing"
                         rows="3"
                 >
-                </l-textarea>
+                </l-c-textarea>
                 
                 <div style="margin-top: 16px; padding: 12px; background: #f8f9fa; border-radius: 4px;">
                     <h4 style="margin: 0 0 8px 0; font-size: 14px; color: #666;">Function Testing</h4>

@@ -150,4 +150,4 @@ class TriggerInput extends LabelAndFeedContainer {
     }
 }
 
-customElements.define('l-triggerinput', TriggerInput);
+customElements.define('l-c-triggerinput', TriggerInput);

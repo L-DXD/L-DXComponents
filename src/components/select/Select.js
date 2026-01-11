@@ -202,4 +202,4 @@ class LSelect extends LabelAndFeedContainer {
     }
 }
 
-customElements.define('l-select', LSelect);
+customElements.define('l-c-select', LSelect);

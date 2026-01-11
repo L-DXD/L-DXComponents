@@ -188,4 +188,4 @@ class LInput extends LabelAndFeedContainer {
     }
 }
 
-customElements.define('l-input', LInput);
+customElements.define('l-c-input', LInput);
